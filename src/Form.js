@@ -14,6 +14,8 @@ import {
   IconButton,
   Tooltip,
   CircularProgress,
+  Dialog
+  
 } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -48,41 +50,6 @@ function Form() {
             </Step>
           ))}
         </Stepper>
-        {/* <form className="w-full rounded-md bg-white h-full shadow-md  p-8 justify-center space-x-2 mt-8">
-         
-          
-          <TextField
-            label="DOB"
-            type="date"
-            size="small"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-         
-          <TextField
-            label="Photo Upload"
-            type="file"
-            size="small"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-         
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-            <InputLabel id="demo-select-small">Course</InputLabel>
-            <Select
-              id="demo-select-small"
-              value={age}
-              onChange={handleChange}
-              label="Course"
-            >
-              <MenuItem value={10}>BTech</MenuItem>
-              <MenuItem value={20}>MTech</MenuItem>
-              <MenuItem value={30}>MCA</MenuItem>
-            </Select>
-          </FormControl>
-        </form> */}
         <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-8">
           <div className="xl:w-1/2 h-[584px] pt-6 ">
             <div className="flex items-center justify-center p-5 space-x-2">
@@ -135,6 +102,7 @@ function Form() {
                 </IconButton>
               </Tooltip>
               <Button onClick={handleEye} variant="contained">Upload</Button>
+              <Dialog open={eye} onClose={handleEye}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH9aYvIvK5n5XSvS1U-QsNAmEvuKL4DYb7dw&usqp=CAU" /></Dialog>
             </div>
             <div className=" flex flex-col space-y-2 p-5 mt-4 ">
               <label className="text-xl ml-2">Contact Address</label>
