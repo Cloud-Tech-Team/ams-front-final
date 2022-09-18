@@ -1,6 +1,6 @@
 import React from "react";
 import ErrorTwoToneIcon from "@mui/icons-material/ErrorTwoTone";
-import { TextField, Checkbox, Button } from "@mui/material";
+import { TextField, Checkbox, Button, Dialog } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 
 const steps = ["Personal Details", "Payment"];
@@ -66,7 +66,7 @@ function Payment() {
             />
           </div>
           <div className="w-full flex justify-center items-center">
-            <Checkbox className="ml-6"></Checkbox>
+            <Checkbox required className="ml-6"></Checkbox>
             <label>
               I agree that I have reviewed the form, and is proceeding for final
               Submit
@@ -77,11 +77,11 @@ function Payment() {
               Back
             </Button>
             <Button
-              onClick={() => {
-                window.alert(
-                  "After final Submit no further changes can be made, Proceed ?"
-                );
-              }}
+              // onClick={() => {
+              //   window.alert(
+              //     "After final Submit no further changes can be made, Proceed ?"
+              //   );
+              // }}
               variant="contained"
               type="submit"
             >

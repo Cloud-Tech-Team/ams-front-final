@@ -10,7 +10,10 @@ import {
   IconButton,
   Tooltip,
   CircularProgress,
+  LinearProgress,
   Dialog,
+  DialogTitle,
+  Box,
 } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -20,6 +23,7 @@ function Personal() {
   const [age, setAge] = React.useState("");
   const [eye, setEye] = useState(false);
   const steps = ["Personal Details", "Payment"];
+  const [loader, setLoader] = useState(false);
 
   const handleEye = () => {
     setTimeout(setEye(!eye), 3000);
@@ -89,12 +93,9 @@ function Personal() {
                 {eye && <CircularProgress sx={{ position: "absolute" }} />}
               </IconButton>
             </Tooltip>
-            <Button onClick={handleEye} variant="contained">
+            <Button variant="contained" type="submit">
               Upload
             </Button>
-            <Dialog open={eye} onClose={handleEye}>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH9aYvIvK5n5XSvS1U-QsNAmEvuKL4DYb7dw&usqp=CAU" />
-            </Dialog>
           </div>
           <div className=" flex flex-col space-y-2 p-5 mt-4 ">
             <label className="text-xl ml-2">Contact Address</label>
@@ -229,12 +230,28 @@ function Personal() {
                 <MenuItem value={50}>Civil</MenuItem>
               </Select>
             </FormControl>
-            <Button variant="contained" type="submit">
+            <Button
+              onClick={() => {
+                setLoader(!loader);
+              }}
+              variant="contained"
+            >
               Save
             </Button>
-            <Button variant="outlined" type="submit">
-              next
-            </Button>
+            <Dialog
+              open={loader}
+              onClose={() => {
+                setLoader(!loader);
+              }}
+            >
+              {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH9aYvIvK5n5XSvS1U-QsNAmEvuKL4DYb7dw&usqp=CAU" /> */}
+              <div className="w-56 h-32 space-y-4 p-4 flex flex-col items-center justify-center">
+                <p className="text-lg text-black">Saving...</p>
+                <Box sx={{ width: "100%" }}>
+                  <LinearProgress />
+                </Box>
+              </div>
+            </Dialog>
           </div>
         </div>
       </div>

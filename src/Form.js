@@ -25,15 +25,16 @@ function Form() {
     setHelp(!help);
     console.log(help);
   };
-
+  
   return (
+    
     <div className="w-screen h-auto xl:h-screen bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
       <Tooltip title="Help">
         <button onClick={handleHelp} className="absolute bg-gray-100 rounded-full p-1 right-10 top-10">
           <ContactSupportIcon fontSize="large" />
         </button>
       </Tooltip>
-      <Tooltip title="Logout">
+      <Tooltip title="Log out">
         <button onClick={handleHelp} className="absolute bg-gray-200 rounded-full p-1 left-10 top-10">
           <AccountCircleIcon fontSize="large" />
         </button>
@@ -57,8 +58,8 @@ function Form() {
           </DialogActions>
         </Dialog>
       )}
-      <Personal />
-      {/* <Payment /> */}
+      {/* <Personal /> */}
+      <Payment />
     </div>
   );
 }

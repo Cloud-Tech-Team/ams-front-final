@@ -1,4 +1,6 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Dashboard from "./Dashboard"
+
 import Form from "./Form";
 // import Register from "./Register";
 
@@ -18,8 +20,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Form />
+        {/* <Form /> */}
         {/* <Register /> */}
+        <Dashboard />
       </ThemeProvider>
     </>
   );
