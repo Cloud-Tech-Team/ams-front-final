@@ -2,6 +2,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Dashboard from "./Dashboard"
 
 import Form from "./Form";
+import { Pdf } from "./Pdf";
 // import Register from "./Register";
 
 const themeOptions = {
@@ -23,6 +24,7 @@ function App() {
         {/* <Form /> */}
         {/* <Register /> */}
         <Dashboard />
+        {/* <Pdf /> */}
       </ThemeProvider>
     </>
   );

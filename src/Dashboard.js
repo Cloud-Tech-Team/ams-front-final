@@ -1,13 +1,25 @@
 import React from "react";
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import SchoolIcon from '@mui/icons-material/School';
+import CallIcon from '@mui/icons-material/Call';
+import HomeIcon from '@mui/icons-material/Home';
+import { jsPDF } from "jspdf"
+import nri from "./nri.jpg"
+
+const doc = new jsPDF();
+const handle_click = () => {
+   doc.addImage(nri,0,0,210,297)
+    doc.save("dash.pdf")
+}
 
 const Dashboard = () => {
   return (
     <div className="w-screen overflow-x-hidden h-screen bg-slate-200">
-      <div className="w-full bg-white h-[140px] sm:h-[230px]">
+      <div className="w-full relative bg-white h-[140px] sm:h-[230px]">
         <img
-          src="https://images.hdqwalls.com/download/black-gradient-b9-1920x1080.jpg"
+          src="https://wallpaperaccess.com/full/5330689.jpg"
           alt=""
-          className="object-cover w-screen h-full"
+          className="w-screen h-full object-cover "
         />
       </div>
       <div className=" m-8 lg:absolute top-24 right-10 rounded-md bg-gray-100 shadow-2xl h-auto w-auto">
@@ -21,10 +33,10 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-full p-4 rounded-md h-2/5 ">
-          <p className="text-center mb-5 font-bold text-lg uppercase ">
+          <p className="text-center font-bold text-lg uppercase ">
             Marc Benedict
           </p>
-          <div className="w-full font-semibold text-center text- italic h-auto pb-8">
+          <div className="w-full font-semibold text-center text- italic h-auto py-6">
             Dob:&nbsp;&nbsp;12/02/2001
             <br />
             dhjgchx@gmail.com
@@ -34,10 +46,10 @@ const Dashboard = () => {
             Ph2: 4923-598-129
           </div>
           <div className="flex space-x-2 items-center justify-center w-full h-auto">
-            <button className="w-32 h-12 mr-2 font-bold rounded-md border-[2px] border-black">
+            <button className="w-32 h-12 mr-2 font-bold rounded-md border-[2px] border-black hover:bg-gray-300">
               Sign Out
             </button>
-            <button className="w-32 text-white text-center h-12 rounded-md bg-gray-800">
+            <button onClick={handle_click} className="w-32 text-white text-center h-12 rounded-md bg-gray-800 hover:bg-gray-700">
               Print
             </button>
           </div>
@@ -45,7 +57,10 @@ const Dashboard = () => {
       </div>
       <div className="xl:w-4/6 lg:flex lg:space-x-8 lg:space-y-0 space-y-4 lg:p-8 m-8 h-auto">
         <div className="xl:w-1/2 p-8 space-y-2 shadow-xl bg-white rounded-md">
+          <div className="w-full flex items-center space-x-3">
+          <SupervisorAccountIcon />
           <p className="text-2xl sm:text-3xl mb-2 ">Parental Details</p>
+          </div>
           <p className="text-lg font-light mb-2 italic ">
             {" "}
             Parent/Gaurdian: <b>Benedict</b>
@@ -56,28 +71,34 @@ const Dashboard = () => {
             <br />
             NRI Sponsor: <b>Nil</b>
           </p>
-
+          <div className="w-full flex items-center space-x-3">
+          <HomeIcon />
           <p className="text-2xl sm:text-3xl mb-2 ">Permanent Address</p>
+          </div>
           <p className="text-lg font-light italic ">
             {" "}
             123 Main Street, New York, NY 10030
             <br />
-            City, District, State
-            <br />
+            City, District, State,
             pin: 364378
           </p>
         </div>
         <div className="xl:w-1/2 p-8 shadow-xl bg-white rounded-md">
+        <div className="w-full flex items-center space-x-3">
+          <CallIcon />
           <p className="text-2xl sm:text-3xl mb-2 ">Contact Address</p>
+          </div>
           <p className="text-lg font-light italic ">
             {" "}
             123 Main Street, New York, NY 10030
             <br />
-            City, District, State
-            <br />
+            City, District, State,
             pin: 364378
           </p>
-          <p className="text-2xl sm:text-3xl mt-2 ">Course Details</p>
+          <div className="w-full flex pt-8 items-baseline space-x-3">
+          <SchoolIcon />
+          <p className="text-2xl sm:text-3xl  ">Course Details</p>
+          </div>
           <p className="text-lg font-light mt-2 italic ">
             {" "}
             Course: <b>B-Tech</b>
