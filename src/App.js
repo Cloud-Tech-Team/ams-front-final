@@ -1,9 +1,15 @@
+//packages
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Dashboard from "./Dashboard"
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
+//components
 import Form from "./Form";
 import { Pdf } from "./Pdf";
-// import Register from "./Register";
+import Dashboard from "./Dashboard"
+import Register from "./Register";
+import PrivateRoutes from "./components/PrivateRoutes";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+
 
 const themeOptions = {
   palette: {
@@ -20,12 +26,26 @@ const theme = createTheme(themeOptions);
 function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        {/* <Form /> */}
-        {/* <Register /> */}
-        <Dashboard />
-        {/* <Pdf /> */}
-      </ThemeProvider>
+      <Router>
+        <ThemeProvider theme={theme}>
+          {/* <Form /> */}
+          {/* <Register /> */}
+          {/* <Dashboard /> */}
+          {/* <Pdf /> */}
+            <Routes>
+              {/* <Route element={<Home/>} path='/' exact/> */}
+              {/* <Route element={<Login/>} path='/login' exact/> */}
+              <Route element={<Register/>} path='/register' exact/>
+              <Route element={<PrivateRoutes/>}>
+                <Route element={<Form/>} path='/nriform' exact/>
+                <Route element={<Dashboard/>} path='/dashboard' exact/>
+              </Route>
+              {/* <Route element={<ProtectedRoutes/>}>
+                <Route element={<Admin/>} path='/admin' exact/>
+              </Route> */}
+            </Routes>
+        </ThemeProvider>
+      </Router>
     </>
   );
 }
