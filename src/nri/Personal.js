@@ -24,6 +24,7 @@ function Personal() {
   const [eye, setEye] = useState(false);
   const steps = ["Personal Details", "Payment"];
   const [loader, setLoader] = useState(false);
+  const [check,setCheck] = useState(true)
 
   const handleEye = () => {
     setTimeout(setEye(!eye), 3000);
@@ -32,6 +33,12 @@ function Personal() {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  function autofill() {
+    setCheck(!check)
+    console.log(check)
+    //do autofill
+  }
 
   return (
     <div className=" xl:w-[1180px] my-[30px] xl:my-auto">
@@ -180,7 +187,7 @@ function Personal() {
             />
           </div>
           <div className="w-full px-3">
-            <Checkbox className="ml-6"></Checkbox>
+            <Checkbox className="ml-6" id='checkbox' onClick={autofill}></Checkbox>
             <label>Use Contact address as Permanent address</label>
           </div>
 

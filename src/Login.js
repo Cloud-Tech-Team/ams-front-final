@@ -33,7 +33,26 @@ const Login = () => {
       window.alert('login failed')
     })
   }
+  const recover=(e)=>{
+    e.preventDefault()
+    const data = { 
+      "applicationNo" : document.getElementById("application").value 
+    }
 
+    axios.post("https://ams-backend-api.herokuapp.com/user/recover",data).then((res)=>{
+      console.log(res.data)
+      if(res.status === 200){
+        window.alert("password forwared to reg email")
+        document.getElementById("application").value = null
+        setForgotPassword(!ForgotPassword)
+      }else{
+        window.alert("invalid email")
+      }
+    }).catch((e)=>{
+      console.log(e)
+      window.alert("error")
+    })
+  }
   return (
     <div className="min-w-screen relative  h-screen flex items-center justify-center bg-zinc-700">
       <div className="w-full top-1 h-14 absolute z-20 flex items-center justify-between px-8">
@@ -55,12 +74,12 @@ const Login = () => {
             </p>
             <TextField
             required
-              label="Registered email"
+              label="Application No."
               type="email"
-              id="email-id"
+              id="application"
               size="small"
               fullWidth />
-           <Button variant='contained'>
+           <Button variant='contained' onClick={recover}>
                 Resend
             </Button>
           </div>
@@ -91,7 +110,7 @@ const Login = () => {
             <TextField
             required
               label="Password"
-              type="password"
+              type="text"
               id="password"
               varient="outlined"
               size='small'
