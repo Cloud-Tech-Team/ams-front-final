@@ -17,7 +17,7 @@ const Dashboard = () => {
     <div className="w-screen overflow-x-hidden h-screen bg-slate-200">
       <div className="w-full relative bg-white h-[140px] sm:h-[230px]">
         <img
-          src="https://wallpaperaccess.com/full/5330689.jpg"
+          src="https://th.bing.com/th/id/R.4b016087bef1cdb837ae3cf6a366de59?rik=u5ZKGPBtamCH2w&riu=http%3a%2f%2fmgmits.ac.in%2fwp-content%2fuploads%2f2019%2f05%2fmits.jpg&ehk=8%2b0FtsP83SD2uVTuQmjohvP5frJoWmAcW8lB8%2f7nJ8g%3d&risl=&pid=ImgRaw&r=0"
           alt=""
           className="w-screen h-full object-cover "
         />

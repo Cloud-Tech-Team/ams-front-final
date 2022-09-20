@@ -1,7 +1,39 @@
+import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 function Register() {
+  const nav = useNavigate()
+  const nriregister = async(e) =>{
+     e.preventDefault();
+     const data ={
+       firstname:document.getElementById("fname").value,
+       middlename:document.getElementById("mname").value,
+       lastname:document.getElementById("lname").value,
+       email:document.getElementById("email").value,
+       phone:document.getElementById("phone").value,
+       gender:document.getElementById("gender").value,
+       course:document.getElementById("program").value,
+       quota:document.getElementById("quota").value,
+       aadhaar:document.getElementById("aadhar").value,
+       dob:document.getElementById("dob").value,
+       age:20
+     }
+     console.log(data);
+
+     axios.post("https://ams-backend-api.herokuapp.com/user/register",data)
+     .then((response)=>{
+        console.log(response);
+        if(response.status===200){
+          window.alert("Registration success");
+          nav('/login')
+        }
+     }).catch((e)=()=>{
+      console.log(e);
+      window.alert("e.response.data.message");
+     })
+  }
   return (
     <div className="w-screen h-screen bg-gradient-to-tl from-rock-blue-300 flex items-center justify-center via-rock-blue-300 to-rock-blue-400 ">
         <form
@@ -143,7 +175,8 @@ function Register() {
 
         {/* button_div */}
         <div className="w-full pt-2 flex items-center justify-between px-1">
-          <button className="w-auto h-auto p-3 text-xl text-white rounded-md italic hover:bg-pink-600 bg-pink-800">
+          <button className="w-auto h-auto p-3 text-xl text-white rounded-md italic hover:bg-pink-600 bg-pink-800"
+          onClick={nriregister}>
           Submit
           </button>
           <p className="font-thin text-lg">Already Registered ? Try <Link className="font-semibold hover:text-blue-500" to="/login">Sign-in</Link></p>
