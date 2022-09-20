@@ -29,10 +29,10 @@ function Register() {
           window.alert("Registration success");
           nav('/login')
         }
-     }).catch((e)=()=>{
-      console.log(e);
-      window.alert("e.response.data.message");
-     })
+     }).catch((error)=>{
+      console.log(error)
+      window.alert("Registration Failed")
+    })
   }
   return (
     <div className="w-screen h-screen bg-gradient-to-tl from-rock-blue-300 flex items-center justify-center via-rock-blue-300 to-rock-blue-400 ">
