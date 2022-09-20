@@ -1,9 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
   const [ForgotPassword, setForgotPassword] = useState(false);
+
+  const handlelogin=(e)=>{
+    e.preventDefault()
+
+    const data={
+      applicationNo:document.getElementById("userID").value,
+      password     :document.getElementById("password").value,
+    }
+    console.log(data)
+    axios
+    .post("https://ams-backend-api.herokuapp.com/user/login",data)
+    .then((response) => {
+      console.log(response)
+      if(response.status === 200){
+        window.alert("login success")
+      }else{
+        window.alert("login failed")
+      }
+    }).catch((error)=>{
+      console.log(error)
+      window.alert('login failed')
+    })
+  }
 
   return (
     <div className="min-w-screen relative  h-screen flex items-center justify-center bg-zinc-700">
@@ -63,7 +87,8 @@ const Login = () => {
               className="h-12 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
             <Link to='/nriform' 
-            className="w-auto px-4 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800 h-12">
+            onClick={handlelogin}
+            className="w-auto px-4 py-2 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800">
               Sign-In
             </Link>
           </div>

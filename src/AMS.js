@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./Icons/logo.png";
 // import reg from "./Icons/reg.png";
-// import Typewriter from "typewriter-effect";
+import Typewriter from "typewriter-effect";
 
 function AMS() {
   return (
@@ -31,7 +31,7 @@ function AMS() {
               <div className="w-3 h-3 rounded-full bg-green-600"></div>
             </div>
             <div className="w-full  italic h-full py-4 px-5 text-lg ">
-              {/* <Typewriter
+              <Typewriter
                 options={{
                   strings: [
                     "<u>Registration</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content. The purpose of lorem ipsum is to create a natural looking, though nonsensical, text that doesn't distract from the layout.",
@@ -45,7 +45,7 @@ function AMS() {
                   deleteSpeed: 20,
                   pauseFor: 10000,
                 }}
-              /> */}
+              />
             </div>
           </div>
         </div>
