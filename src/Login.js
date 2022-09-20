@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, Route, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
 
 const Login = () => {
   const [ForgotPassword, setForgotPassword] = useState(false);
-
+  const nav = useNavigate()
   const handlelogin=(e)=>{
     e.preventDefault()
 
@@ -19,6 +19,7 @@ const Login = () => {
     .then((response) => {
       console.log(response)
       if(response.status === 200){
+        nav("/nriform")
         window.alert("login success")
       }else{
         window.alert("login failed")
@@ -86,11 +87,9 @@ const Login = () => {
               id="password"
               className="h-12 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
-            <Link to='/nriform' 
-            onClick={handlelogin}
-            className="w-auto px-4 py-2 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800">
-              Sign-In
-            </Link>
+            <div className='w-24 px-4 py-2 text-white text-lg rounded-md hover:bg-pink-700 bg-pink-800' onClick={handlelogin}>
+                Sign-In
+            </div>
           </div>
           <p
             onClick={() => {
