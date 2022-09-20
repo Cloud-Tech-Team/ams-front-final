@@ -3,7 +3,7 @@ import Personal from "./Personal";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useState } from "react";
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route,Navigate, useNavigate} from 'react-router-dom'
 import {
   Button,
   Dialog,
@@ -23,10 +23,16 @@ import {
 function Form() {
   const [help, setHelp] = useState(false);
   const [form, setForm] = useState(false);
+  const nav = useNavigate()
   const handleHelp = () => {
     setHelp(!help);
     console.log(help);
   };
+
+  const signout=()=>{
+    localStorage.removeItem("access_token")
+    nav("/login")
+  }
   
   return (
     
@@ -37,7 +43,7 @@ function Form() {
         </button>
       </Tooltip>
       <Tooltip title="Log out">
-        <button onClick={handleHelp} className="absolute bg-gray-200 rounded-full p-1 left-10 top-10">
+        <button onClick={handleHelp} className="absolute bg-gray-200 rounded-full p-1 left-10 top-10" onClick={signout}>
           <AccountCircleIcon fontSize="large" />
         </button>
       </Tooltip>

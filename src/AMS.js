@@ -6,7 +6,7 @@ import Typewriter from "typewriter-effect";
 
 function AMS() {
   return (
-    <div className="w-screen h-screen overflow-hidden bg-shade bg-gray-600">
+    <div className="w-screen h-screen overflow-hidden bg-shade bg-zinc-700">
       <div className="flex font-poppins items-center text-white cursor-pointer space-x-8 justify-end p-8 w-screen h-16">
         <p className="text-md hover:text-red-600">Home</p>
         <p className="text-md hover:text-red-600">About</p>
