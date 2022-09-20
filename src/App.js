@@ -21,6 +21,9 @@ const themeOptions = {
     },
     ternery: {
       main: "#6a6a6a"
+    },
+    white:{
+      main:'#ffffff'
     }
   },
 };

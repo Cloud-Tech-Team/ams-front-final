@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Navigate, Route, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Login = () => {
   const [ForgotPassword, setForgotPassword] = useState(false);
@@ -21,6 +22,8 @@ const Login = () => {
       if(response.status === 200){
         nav("/nriform")
         window.alert("login success")
+        localStorage.setItem("access_token", response.data.token);
+        localStorage.setItem("user_id",data.applicationNo)
       }else{
         window.alert("login failed")
       }
@@ -34,7 +37,7 @@ const Login = () => {
     <div className="min-w-screen relative  h-screen flex items-center justify-center bg-zinc-700">
       <div className="w-full top-1 h-14 absolute z-20 flex items-center justify-between px-8">
         <Link to="/">
-        home
+        <HomeIcon color="white"/>
         </Link>
       </div>
       {ForgotPassword ? (
