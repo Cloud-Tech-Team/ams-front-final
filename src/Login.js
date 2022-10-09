@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, Navigate, Route, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { Backdrop, Button, CircularProgress, LinearProgress, TextField } from "@mui/material";
+import { Backdrop, Button, LinearProgress, TextField } from "@mui/material";
 import Home from "./Icons/home.svg"
 
 const Login = () => {
@@ -74,7 +74,7 @@ const Login = () => {
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={loading}
         >
-          <div className="w-screen absolute top-0"><LinearProgress color="inherit"/></div>
+          <div className="w-screen absolute top-0"><LinearProgress color="primary"/></div>
         </Backdrop>
       </div>
       {ForgotPassword ? (
