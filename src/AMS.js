@@ -30,7 +30,7 @@ function AMS() {
               <div className="w-3 h-3 rounded-full bg-yellow-600"></div>
               <div className="w-3 h-3 rounded-full bg-green-600"></div>
             </div>
-            <div className="w-full  italic h-full py-4 px-5 text-lg ">
+            <div className="w-1/2 h-1/2 sm:w-full  italic sm:h-full py-4 px-5 text-lg ">
               <Typewriter
                 options={{
                   strings: [
