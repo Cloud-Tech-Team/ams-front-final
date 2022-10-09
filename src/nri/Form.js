@@ -66,8 +66,8 @@ function Form() {
           </DialogActions>
         </Dialog>
       )}
-      <Personal />
-      {/* <Payment /> */}
+      {/* <Personal /> */}
+      <Payment />
     </div>
   );
 }

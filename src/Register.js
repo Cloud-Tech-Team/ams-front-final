@@ -17,7 +17,7 @@ function Register() {
        course:document.getElementById("program").value,
        quota:document.getElementById("quota").value,
        aadhaar:document.getElementById("aadhar").value,
-       dob:document.getElementById("dob").value,
+       dob:'2000-10-10',
        age:20
      }
      console.log(data);
