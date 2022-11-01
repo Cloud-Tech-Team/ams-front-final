@@ -8,7 +8,7 @@ const TitleBar = (props) => {
     nav("/adminlogin")
   }
   return (
-    <div className="w-full rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
+    <div className="w-full  rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
       <div className="flex w-auto">
         <p className="text-lg hidden xl:flex  italic">Registration Status: </p>
         <svg

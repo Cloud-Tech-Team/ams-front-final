@@ -8,7 +8,7 @@ import Settings from "./Pages/Settings";
 
 
 const Admin = () => {
-  const open = "w-screen h-full top-0 bg-zinc-800 z-20 bg-opacity-90 xl:bg-opacity-100 fixed xl:relative xl:rounded-md xl:w-1/6 p- "
+  const open = "w-screen h-full top-0 bg-zinc-800 z-20 bg-opacity-90 xl:bg-opacity-100 fixed xl:relative xl:rounded-md xl:w-1/6 "
   const close = "bg-zinc-800 hidden xl:flex  fixed xl:relative xl:rounded-md xl:w-1/6 p-2 h-full"
   const [toggleBar,setToggleBar] = useState(close);
   const closeNavBar = (e) => {
