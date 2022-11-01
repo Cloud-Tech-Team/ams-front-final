@@ -1,24 +1,14 @@
 import React, { useState } from 'react';
+import { CoadminCard } from '../Components/CoadminCard';
 
 const Nri = () => {
-  let yr =  new Date().getFullYear();
-  let yr_ = yr + 1;
-  let users = [];
-  
-  const [data,setData] = useState(users);
- const columns=[
-    { title: 'Reg.No' ,field:'id' },
-    { title:'Name',field:'name'},
-    { title:'Gender',field:'gender'},
-    { title:'DOB',field:'dob',cellStyle : { minWidth: 120,} },
-    { title:'Email',field:'email'},
-    { title:'Branch',field:'branch'},
-    { title:'Phone',field:'phone',cellStyle : { minWidth: 200,}},
-  ]
   
   return (
-    <div className="overflow-x-auto w-[350px] h-[720px] sm:w-auto border-[4px] bg-white rounded-md border-black">
-        
+    <div className="overflow-x-auto space-y-4 xl:space-y-0 xl:space-x-3 lg:flex  w-[350px] h-auto sm:w-auto">
+        <CoadminCard />
+        <CoadminCard />
+        <CoadminCard />
+        <div className="w-16 rounded-full flex items-center justify-center text-3xl right-6 bottom-6 text-white fixed h-16 bg-black">+</div>
     </div>
   );
 };

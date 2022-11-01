@@ -7,7 +7,7 @@ import { useEffect,useState } from "react";
 
 const HomePage = () => {
 
-  const [count,setCount] = useState();
+  const [count,setCount] = useState(0);
   useEffect(() => {
     axios.get("https://ams-backend-api.herokuapp.com/admin/count",{
       headers: {

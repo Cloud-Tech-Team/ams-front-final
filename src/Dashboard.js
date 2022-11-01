@@ -5,14 +5,21 @@ import CallIcon from '@mui/icons-material/Call';
 import HomeIcon from '@mui/icons-material/Home';
 import { jsPDF } from "jspdf"
 import nri from "./nri.jpg"
+import { useNavigate} from "react-router-dom"
 
 const doc = new jsPDF();
+
 const handle_click = () => {
    doc.addImage(nri,0,0,210,297)
     doc.save("dash.pdf")
 }
 
 const Dashboard = () => {
+  const nav = useNavigate()
+  const signout=()=>{
+    localStorage.removeItem("access_token")
+    nav("/login")
+  }
   return (
     <div className="w-screen overflow-x-hidden h-screen bg-slate-200">
       <div className="w-full relative bg-white h-[140px] sm:h-[230px]">
@@ -46,7 +53,7 @@ const Dashboard = () => {
             Ph2: 4923-598-129
           </div>
           <div className="flex space-x-2 items-center justify-center w-full h-auto">
-            <button className="w-32 h-12 mr-2 font-bold rounded-md border-[2px] border-black hover:bg-gray-300">
+            <button onClick={signout} className="w-32 h-12 mr-2 font-bold rounded-md border-[2px] border-black hover:bg-gray-300">
               Sign Out
             </button>
             <button onClick={handle_click} className="w-32 text-white text-center h-12 rounded-md bg-gray-800 hover:bg-gray-700">
