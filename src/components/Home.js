@@ -11,19 +11,6 @@ const Home = () => {
                 <ParallaxLayer speed={1}>
                     <AMS/>
                 </ParallaxLayer>
-                <ParallaxLayer
-                    speed={0.2}
-                    offset={1}
-                    style={{
-                        background:`url(${logo})`,
-                        backgroundsize: 'auto',
-                    }}>
-                </ParallaxLayer>
-                <ParallaxLayer 
-                    speed={1.2} 
-                    offset={1}>
-                    <img src={mits}/>
-                </ParallaxLayer>
             </Parallax>
     </>
   )

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { Backdrop, Button, LinearProgress, TextField } from "@mui/material";
-import Home from "./Icons/home.svg"
+import Home from "../Icons/home.svg"
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -14,20 +14,20 @@ const Login = () => {
     setLoading(true)
 
     const data = {
-      applicationNo: document.getElementById("userID").value,
+      email: document.getElementById("email").value,
       password: document.getElementById("password").value,
     };
     console.log(data);
     axios
-      .post("https://ams-backend-api.herokuapp.com/user/login", data)
+      .post("https://ams-backend-api.herokuapp.com/admin/login", data)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
           setLoading(false)
-          nav("/nriform");
+          nav("/admin");
           // window.alert("login success")
-          localStorage.setItem("access_token", response.data.token);
-          localStorage.setItem("user_id", data.applicationNo);
+          localStorage.setItem("admin_access_token", response.data.token);
+          localStorage.setItem("role", response.data.role);
         } else {
           setLoading(false)
           window.alert("login failed");
@@ -116,13 +116,13 @@ const Login = () => {
           onSubmit={Login}
           className="w-80 sm:w-[350px] p-4 sm:p-8  h-auto absolute z-20 shadow-2xl rounded-sm  bg-white"
         >
-          <p className="text-4xl mt-3 text-center sm:font-semibold">SIGN-IN</p>
+          <p className="text-4xl mt-3 text-center sm:font-semibold">ADMIN-SIGN-IN</p>
           <div className="w-full mt-5 space-y-8 p-2 h-auto ">
             <TextField
               required
-              label="Registration No."
-              type="text"
-              id="userID"
+              label="email id."
+              type="email"
+              id="email"
               size="small"
               fullWidth
             />
@@ -148,10 +148,7 @@ const Login = () => {
             Forgot Password!
           </p>
         </form>
-       
       )}
-          <Link to="/adminlogin" className="absolute z-50 bottom-10 right-10 underline" >Admin</Link>
-       
     </div>
   );
 };

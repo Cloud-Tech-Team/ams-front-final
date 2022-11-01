@@ -11,6 +11,11 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./Login";
 import Home from "./components/Home";
+import Adminlogin from "../src/Admin/Adminlogin";
+import Admin from "../src/Admin/Admin"
+import HomePage from "./Admin/Pages/HomePage";
+import Settings from "./Admin/Pages/Settings"
+import Nri from "./Admin/Pages/Nri"
 
 
 const themeOptions = {
@@ -40,10 +45,18 @@ function App() {
             <Routes>
               <Route element={<Home/>} path='/' exact/>
               <Route element={<Login/>} path='/login' exact/>
+              <Route element={<Adminlogin/>} path='/adminlogin' exact/>
               <Route element={<Register/>} path='/register' exact/>
               <Route element={<PrivateRoutes/>}>
                 <Route element={<Form/>} path='/nriform' exact/>
                 <Route element={<Dashboard/>} path='/dashboard' exact/>
+              </Route>
+              <Route element={<ProtectedRoutes/>}>
+                <Route element={<Admin/>}>
+                  <Route element={<HomePage/>} path="/admin" exact/>
+                  <Route element={<Nri/>} path="/admin/nri" exact/>
+                  <Route element={<Settings/>} path="/admin/settings" exact/>
+                </Route>
               </Route>
             </Routes>
         </ThemeProvider>
