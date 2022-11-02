@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 
 const CoAdmin = () => {
-  const [card, addCard] = useState([]);
+  const [card, addCard] = useState([0,1,2,3]);
   const [actionIcon, setActionIcon] = useState("+");
   console.log(card);
   function handleActionClick(index) {
@@ -18,12 +18,12 @@ const CoAdmin = () => {
   }
 
   function saveCoadmin(){
-    addCard([...card, card.length])
+    // addCard([...card, card.length])
     setActionIcon("+")
   }
 
   return (
-    <div className="overflow-x-auto space-y-4 xl:space-y-0 xl:space-x-3 lg:flex  w-[350px] h-auto sm:w-auto">
+    <div className="overflow-x-auto space-y-4 xl:space-y-0  lg:grid grid-cols-3 gap-3 w-[350px] h-auto sm:w-auto">
       {card.length === 0 && (
         <div className="w-full italic h-[500px]  flex items-center justify-center">
           <p className="text-3xl text-center">Click + to add Co-Admin</p>
@@ -36,21 +36,13 @@ const CoAdmin = () => {
         return (
           <div
             key={index}
-            className="w-full xl:w-[400px] p-4 space-y-4 rounded-md border-[3px] bg-white border-black"
+            className="w-full xl:w-auto p-4 space-y-4 rounded-md border-[3px] bg-white border-black"
           >
             <div className="w-full space-y-4 sm:space-y-0 h-auto sm:flex sm:space-x-3">
               <TextField
                 required
                 label="FirstName"
                 id="firstName"
-                type="text"
-                size="small"
-                fullWidth
-              />
-              <TextField
-                required
-                label="MiddleName"
-                id="middleName"
                 type="text"
                 size="small"
                 fullWidth
