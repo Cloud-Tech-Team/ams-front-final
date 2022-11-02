@@ -1,10 +1,24 @@
 import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import {
+  TextField,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+  IconButton,
+  Button,
+} from "@mui/material";
 
 const CoAdmin = () => {
-  const [card, addCard] = useState([0,1,2,3]);
+  const [dept, setDept] = useState();
+  const [card, addCard] = useState([]);
   const [actionIcon, setActionIcon] = useState("+");
   console.log(card);
+  function handleDeptChange(e) {
+    setDept(e.target.value);
+  }
   function handleActionClick(index) {
     if (actionIcon === "+") {
       setActionIcon("-");
@@ -12,31 +26,31 @@ const CoAdmin = () => {
     } else {
       setActionIcon("+");
       const list = [...card];
-      list.pop()
+      list.pop();
       addCard(list);
     }
   }
 
-  function saveCoadmin(){
-    // addCard([...card, card.length])
-    setActionIcon("+")
+  function saveCoadmin() {
+    addCard([...card, card.length])
+    setActionIcon("+");
   }
 
   return (
-    <div className="overflow-x-auto space-y-4 sm:space-y-0  lg:grid grid-cols-2 xl:grid-cols-3 gap-3 w-[350px] h-auto sm:w-auto">
+    <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-black xl:pr-5 space-y-4 lg:space-y-0  lg:grid grid-cols-2 xl:grid-cols-3 gap-3 w-[350px] h-auto sm:w-auto">
       {card.length === 0 && (
-        <div className="w-full italic h-[500px]  flex items-center justify-center">
+        <div className="w-full col-span-3 italic h-[500px]  flex items-center justify-center">
           <p className="text-3xl text-center">Click + to add Co-Admin</p>
         </div>
       )}
 
       {/* mapping render function to elements in array card */}
 
-      { card.map((index) => {
+      {card.map((index) => {
         return (
           <div
             key={index}
-            className="w-full xl:w-auto p-4 space-y-4 rounded-md border-[3px] bg-white border-black"
+            className="w-full xl:w-auto p-6 pb-4 space-y-4 rounded-md border-[3px] bg-white border-black"
           >
             <div className="w-full space-y-4 sm:space-y-0 h-auto sm:flex sm:space-x-3">
               <TextField
@@ -57,6 +71,22 @@ const CoAdmin = () => {
               />
             </div>
 
+            <FormControl className="w-full" size="small">
+              <InputLabel id="demo-select-small">Dept.</InputLabel>
+              <Select
+                id="demo-select-small"
+                value={dept}
+                onChange={handleDeptChange}
+                label="Dept."
+              >
+                <MenuItem value={10}>Computer Science</MenuItem>
+                <MenuItem value={20}>Computer Science (AI&DS)</MenuItem>
+                <MenuItem value={30}>Electronics and Communications</MenuItem>
+                <MenuItem value={40}>Electrical and Electronics</MenuItem>
+                <MenuItem value={50}>Mechanical</MenuItem>
+                <MenuItem value={60}>Civil</MenuItem>
+              </Select>
+            </FormControl>
             <TextField
               required
               label="EmailID"
@@ -73,7 +103,17 @@ const CoAdmin = () => {
               size="small"
               fullWidth
             />
-            <Button onClick={saveCoadmin} variant="contained">Save</Button>
+            <div className="w-full flex justify-between">
+              <div className="w-auto flex gap-2">
+                <IconButton size="large" onClick={saveCoadmin} color="primary">
+                  <SaveIcon fontSize="inherit" />
+                </IconButton>
+                <IconButton color="primary" size="large">
+                  <RemoveCircleIcon fontSize="inherit" />
+                </IconButton>
+              </div>
+              <Button>View more</Button>
+            </div>
           </div>
         );
       })}

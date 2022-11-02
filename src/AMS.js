@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import logo from "./Icons/logo.png";
 // import reg from "./Icons/reg.png";
 import Typewriter from "typewriter-effect";
+import video from "./videos/muthoot-video.mp4"
 
 function AMS() {
   return (
-    <div className="w-screen h-screen overflow-hidden bg-shade bg-zinc-700">
-      <div className="flex font-poppins items-center text-white cursor-pointer space-x-8 justify-end p-8 w-screen h-16">
+    <div className="w-screen h-screen  bg-shade">
+      <div className="w-screen h-screen opacity-80 bg-gray-900 absolute"></div>
+      <div className="flex fixed z-20 font-poppins items-center text-white cursor-pointer space-x-8 justify-start p-8 w-screen h-16">
         <p className="text-md hover:text-red-600">Home</p>
         <p className="text-md hover:text-red-600">About</p>
         <Link
@@ -20,8 +22,8 @@ function AMS() {
           Login
         </Link>
       </div>
-      <div className="bg-shade w-full  sm:flex sm:flex-col md:flex-row justify-between p-8 h-full">
-        <div className="w-[380px] xl:mt-14 xl:ml-40 2xl:mt-24 h-[520px] 2xl:ml-44  relative">
+      {/* <div className="bg-shade w-full  sm:flex sm:flex-col md:flex-row justify-between p-8 h-full"> */}
+        {/* <div className="w-[380px] xl:mt-14 xl:ml-40 2xl:mt-24 h-[520px] 2xl:ml-44  relative">
           <div className="h-[300px]  rounded-md w-[400px]  shadow-xl bg-slate-300 top-8 -right-10 absolute"></div>
           <div className="h-[300px]  rounded-md w-[400px]  shadow-xl bg-slate-200 top-12 -right-16 absolute"></div>
           <div className="h-[300px] rounded-md w-[400px] shadow-xl  bg-slate-50 top-16 -right-24 absolute">
@@ -51,8 +53,9 @@ function AMS() {
         </div>
         <div className="xl:w-[400px] 2xl:w-1/2 hidden sm:flex h-[520px] items-center justify-center">
           <img src={logo} alt="" className="md:w-[480px]  2xl:w-auto h-auto" />
-        </div>
-      </div>
+        </div> */}
+        <video className="object-cover h-screen w-full" src={video} autoPlay loop muted />
+      {/* </div> */}
     </div>
   );
 }
