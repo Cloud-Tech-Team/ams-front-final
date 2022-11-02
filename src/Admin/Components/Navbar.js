@@ -9,7 +9,7 @@ const Navbar = (props) => {
         <Link onClick={props.onToggle} to="/admin" className="text-white   hover:scale-110  italic ">
           Home
         </Link>
-        <Link onClick={props.onToggle} to="" className="text-white  hover:scale-110  italic ">
+        <Link onClick={props.onToggle} to="/admin/search" className="text-white  hover:scale-110  italic ">
           Search
         </Link>
         <Link onClick={props.onToggle} to="/admin/nri" className="text-white hover:scale-110 italic ">

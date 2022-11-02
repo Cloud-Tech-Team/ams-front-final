@@ -8,9 +8,9 @@ function Register() {
   const nriregister = async(e) =>{
      e.preventDefault();
      const data ={
-       firstname:document.getElementById("fname").value,
-       middlename:document.getElementById("mname").value,
-       lastname:document.getElementById("lname").value,
+       firstName:document.getElementById("fname").value,
+       middleName:document.getElementById("mname").value,
+       lastName:document.getElementById("lname").value,
        email:document.getElementById("email").value,
        phone:document.getElementById("phone").value,
        gender:document.getElementById("gender").value,

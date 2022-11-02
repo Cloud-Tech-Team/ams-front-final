@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SaveIcon from "@mui/icons-material/Save";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import axios from "axios";
 import {
   TextField,
   MenuItem,
@@ -31,9 +32,35 @@ const CoAdmin = () => {
     }
   }
 
-  function saveCoadmin() {
+  const saveCoadmin=(e)=>{
+    e.preventDefault()
     addCard([...card, card.length])
-    setActionIcon("+");
+    setActionIcon("+") 
+    const data = {
+      "headers" : {
+        'Authorization':'Bearer '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTY2OTdlODg3YTM1MGU4ZDJmNDFlMSIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY3MjgzMzY4LCJleHAiOjE2NjczNjk3Njh9.MwavSkILEuIBAax7in9cfOs1fNSgvJBNao4KoySgOeA',
+      },
+      "firstName":document.getElementById("firstName").value,
+      "middleName":document.getElementById("middleName").value,
+      "lastName":document.getElementById("lastName").value,
+      "email":document.getElementById("email").value,
+      "password":document.getElementById("password").value,
+      
+    }
+    const data2 ={
+      "firstName":"abijith",
+      "middleName":"biju",
+      "lastName":"biju",
+      "email":"abijith@gmail.com",
+      "password":"blabla",
+      headers : {
+        'authorization':'Bearer '+localStorage.getItem("admin_access_token"),
+      },
+}
+    console.log(data)
+    axios.post("https://ams-backend-api.herokuapp.com/admin/add_coadmin",data).then((res)=>{
+        console.log(res)
+      }).catch((e)=>{console.log(e)})
   }
 
   return (
