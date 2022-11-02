@@ -23,7 +23,7 @@ const CoAdmin = () => {
   }
 
   return (
-    <div className="overflow-x-auto space-y-4 xl:space-y-0  lg:grid grid-cols-3 gap-3 w-[350px] h-auto sm:w-auto">
+    <div className="overflow-x-auto space-y-4 sm:space-y-0  lg:grid grid-cols-2 xl:grid-cols-3 gap-3 w-[350px] h-auto sm:w-auto">
       {card.length === 0 && (
         <div className="w-full italic h-[500px]  flex items-center justify-center">
           <p className="text-3xl text-center">Click + to add Co-Admin</p>
