@@ -20,7 +20,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 function Personal() {
-  const [age, setAge] = React.useState("");
+  const [course,setCourse] = useState("")
   const [eye, setEye] = useState(false);
   const steps = ["Personal Details", "Payment"];
   const [loader, setLoader] = useState(false);
@@ -31,7 +31,7 @@ function Personal() {
   };
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCourse(event.target.value);
   };
 
   function autofill() {
@@ -226,7 +226,7 @@ function Personal() {
               <InputLabel id="demo-select-small">Course</InputLabel>
               <Select
                 id="demo-select-small"
-                value={age}
+                value={course}
                 onChange={handleChange}
                 label="Course"
               >
