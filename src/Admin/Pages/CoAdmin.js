@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 
-const Nri = () => {
+const CoAdmin = () => {
   const [card, addCard] = useState([]);
   const [actionIcon, setActionIcon] = useState("+");
   console.log(card);
@@ -94,4 +94,4 @@ const Nri = () => {
     </div>
   );
 };
-export default Nri;
+export default CoAdmin;

@@ -15,7 +15,7 @@ import Adminlogin from "../src/Admin/Adminlogin";
 import Admin from "../src/Admin/Admin"
 import HomePage from "./Admin/Pages/HomePage";
 import Settings from "./Admin/Pages/Settings"
-import Nri from "./Admin/Pages/Nri"
+import CoAdmin from "./Admin/Pages/CoAdmin"
 
 
 const themeOptions = {
@@ -54,7 +54,7 @@ function App() {
               <Route element={<ProtectedRoutes/>}>
                 <Route element={<Admin/>}>
                   <Route element={<HomePage/>} path="/admin" exact/>
-                  <Route element={<Nri/>} path="/admin/nri" exact/>
+                  <Route element={<CoAdmin/>} path="/admin/nri" exact/>
                   <Route element={<Settings/>} path="/admin/settings" exact/>
                 </Route>
               </Route>
