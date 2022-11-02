@@ -18,6 +18,7 @@ import {
 import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { Link } from "react-router-dom";
 
 function Personal() {
   const [age, setAge] = React.useState("");
@@ -243,7 +244,7 @@ function Personal() {
               }}
               variant="contained"
             >
-              Save
+              <Link to="/nriform/payment">Save</Link>
             </Button>
             <Dialog
               open={loader}

@@ -2,6 +2,7 @@ import React from "react";
 import ErrorTwoToneIcon from "@mui/icons-material/ErrorTwoTone";
 import { TextField, Checkbox, Button, Dialog } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const steps = ["Personal Details", "Payment"];
 function Payment() {
@@ -74,7 +75,7 @@ function Payment() {
           </div>
           <div className="w-full flex space-x-4 justify-center items-center">
             <Button variant="outlined" type="submit">
-              Back
+              <Link to="/nriform">Back</Link>
             </Button>
             <Button
             disabled

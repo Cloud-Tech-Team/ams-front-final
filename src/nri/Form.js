@@ -3,7 +3,7 @@ import Personal from "./Personal";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useState } from "react";
-import {Routes,Route,Navigate, useNavigate} from 'react-router-dom'
+import {Routes,Route,Navigate, useNavigate, Outlet} from 'react-router-dom'
 import {
   Button,
   Dialog,
@@ -66,8 +66,7 @@ function Form() {
           </DialogActions>
         </Dialog>
       )}
-      {/* <Personal /> */}
-      <Payment />
+      <Outlet/>
     </div>
   );
 }

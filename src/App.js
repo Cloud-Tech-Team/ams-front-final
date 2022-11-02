@@ -16,6 +16,9 @@ import Admin from "../src/Admin/Admin"
 import HomePage from "./Admin/Pages/HomePage";
 import Settings from "./Admin/Pages/Settings"
 import CoAdmin from "./Admin/Pages/CoAdmin"
+import Search from "./Admin/Pages/Search"
+import Personal from "./nri/Personal"
+import Payment from "./nri/Payment"
 
 
 const themeOptions = {
@@ -48,7 +51,10 @@ function App() {
               <Route element={<Adminlogin/>} path='/adminlogin' exact/>
               <Route element={<Register/>} path='/register' exact/>
               <Route element={<PrivateRoutes/>}>
-                <Route element={<Form/>} path='/nriform' exact/>
+                <Route element={<Form/>}>
+                  <Route element={<Personal/>} path="/nriform" exact/>
+                  <Route element={<Payment/>} path="/nriform/payment" exact/>
+                </Route>
                 <Route element={<Dashboard/>} path='/dashboard' exact/>
               </Route>
               <Route element={<ProtectedRoutes/>}>
@@ -56,6 +62,7 @@ function App() {
                   <Route element={<HomePage/>} path="/admin" exact/>
                   <Route element={<CoAdmin/>} path="/admin/nri" exact/>
                   <Route element={<Settings/>} path="/admin/settings" exact/>
+                  <Route element={<Search/>} path="/admin/search" exact/>
                 </Route>
               </Route>
             </Routes>
