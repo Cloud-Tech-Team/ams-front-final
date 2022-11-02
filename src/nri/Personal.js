@@ -231,11 +231,14 @@ function Personal() {
                 onChange={handleChange}
                 label="Course"
               >
-                <MenuItem value={10}>Computer Science</MenuItem>
-                <MenuItem value={20}>Electronics and Communications</MenuItem>
-                <MenuItem value={30}>Electrical and Electronics</MenuItem>
-                <MenuItem value={40}>Mechanical</MenuItem>
-                <MenuItem value={50}>Civil</MenuItem>
+                <MenuItem value={10}>Computer Science and Engineering</MenuItem>
+                <MenuItem value={20}>CSE (Artificial Intelligence)</MenuItem>
+                <MenuItem value={30}>Artificial Intelligence & Data Science</MenuItem>
+                <MenuItem value={40}>Cyber Security</MenuItem>
+                <MenuItem value={50}>Electronics and Communications Engineering</MenuItem>
+                <MenuItem value={60}>Electrical and Electronics Engineering</MenuItem>
+                <MenuItem value={70}>Mechanical Engineering</MenuItem>
+                <MenuItem value={80}>Civil Engineering</MenuItem>
               </Select>
             </FormControl>
             <Button
