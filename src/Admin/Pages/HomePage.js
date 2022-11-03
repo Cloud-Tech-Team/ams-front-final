@@ -14,25 +14,32 @@ const HomePage = () => {
   const token = localStorage.getItem("admin_access_token")
   const query = {
     headers: {
-      Authorization: "Bearer " + token,
+      authorization: "Bearer " + token,
+      "content-type" : 'application/json'
     },
-    queries: [
-      { quota: "Government" },
-      { quota: "Management" },
-      { quota: "Nri" },
-      { verified: false },
-      { verified: true },
-    ],
+    // queries: [
+    //   { quota: "Government" },
+    //   { quota: "Management" },
+    //   { quota: "Nri" },
+    //   { verified: false },
+    //   { verified: true },
+    // ],
   };
-
+  const local = "http://localhost:3001/admin/count"
+  const api = "https://ams-backend-api.herokuapp.com/admin/count"
   useEffect(() => {
     console.log(token)
     axios
-      .get("https://ams-backend-api.herokuapp.com/admin/count", JSON.stringify(query))
+      .get(local,query)
       .then((res) => {
         console.log(res.data);
+        setGov(Number(res.data.result[0]))
+        setMgmt(Number(res.data.result[1]))
+        setNri(Number(res.data.result[2]))
+        setCount(Number(res.data.result[3]))
+        setVerified(Number(res.data.result[4]))
       });
-  });
+  },[]);
 
   return (
     <div className="w-full pb-6 xl:p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
@@ -69,7 +76,7 @@ const HomePage = () => {
               Verified
             </p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
-              {verified}
+              {0}
             </p>
           </div>
           <div className="w-1/2 h-auto flex flex-col items-center justify-center bg-white border-l-[8px] border-black">
@@ -77,7 +84,7 @@ const HomePage = () => {
               Unverified
             </p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
-              {completed - verified}
+              {count}
             </p>
           </div>
         </div>

@@ -9,7 +9,7 @@ import mits_logo from "./Icons/MITS.png"
 function AMS() {
   return (
     <div className="w-screen h-screen  bg-shade">
-      <div className="w-screen z-10 h-screen opacity-70 bg-gray-900 absolute"></div>
+      <div className="w-screen z-10 h-screen opacity-60 bg-gray-900 absolute"></div>
       <div className="flex fixed z-20 font-poppins items-center text-white cursor-pointer space-x-8 justify-between p-8 w-screen h-16">
        <div className="w-auto flex gap-8">
        <p className="text-xl hover:text-red-600">Home</p>
