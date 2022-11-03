@@ -11,10 +11,10 @@ const HomePage = () => {
   const [mgmt, setMgmt] = useState(0);
   const [verified, setVerified] = useState(0);
   const [completed, setCompleted] = useState(0);
-
+  const token = localStorage.getItem("admin_access_token")
   const query = {
     headers: {
-      Authorization: "Bearer " + localStorage.getItem("admin_access_token"),
+      Authorization: "Bearer " + token,
     },
     queries: [
       { quota: "Government" },
@@ -26,8 +26,9 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    console.log(token)
     axios
-      .get("https://ams-backend-api.herokuapp.com/admin/count", query)
+      .get("https://ams-backend-api.herokuapp.com/admin/count", JSON.stringify(query))
       .then((res) => {
         console.log(res.data);
       });
@@ -91,7 +92,7 @@ const HomePage = () => {
           </div>
           <div className="w-1/3 h-full flex flex-col  items-center justify-center bg-white ">
             <p className="text-center text-bold uppercase text-2xl sm:text-4xl">
-              Mgmy
+              Mgmt
             </p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
               {mgmt}

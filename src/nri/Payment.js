@@ -3,9 +3,19 @@ import ErrorTwoToneIcon from "@mui/icons-material/ErrorTwoTone";
 import { TextField, Checkbox, Button, Dialog } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const steps = ["Personal Details", "Payment"];
 function Payment() {
+  const [enable,setEnable] = useState(true);
+  const handleCheck=()=>{
+    if(document.getElementById("check").checked === true){
+    console.log("something")
+    setEnable(false)      
+    }else{
+      setEnable(true)
+    }
+  }
   return (
     <>
       <div className=" xl:w-[1180px] my-[30px] xl:my-auto">
@@ -16,7 +26,7 @@ function Payment() {
             </Step>
           ))}
         </Stepper>
-        <div className="w-full bg-white space-y-3 rounded-md h-auto py-6 font-poppins flex flex-col items-center shadow-md mt-8">
+        <div className="w-full bg-white space-y-3 rounded-md h-auto py-6 font-poppins flex flex-col px-20 shadow-md mt-8">
           <div className="w-full flex justify-center space-x-4">
             <ErrorTwoToneIcon color="primary" />
             <label className="text-red-500 font-semibold ml-5 italic ">
@@ -26,34 +36,41 @@ function Payment() {
             </label>
           </div>
 
-          <label>
-            Name: <b>Muthoot Institute of Technolgy and Science</b>
-          </label>
-          <label>
-            Address: <b>Varikoli, Puthencruz - 682308</b>
-          </label>
-          <label>
-            Phone: <b>0484-2732100</b>
-          </label>
-          <label>
-            Bank: <b>FEDERAL BANK</b>
-          </label>
-          <label>
-            Address: <b>PUTHENCRUZ</b>
-          </label>
-          <label>
-            Branch: <b>Puthencruz</b>
-          </label>
-          <label>
-            Phone: <b>0484-2731259</b>
-          </label>
-          <label>
-            IFSC Code: <b>FDRL0001223</b>
-          </label>
-          <label>
-            MICR Code: <b>682049055</b>
-          </label>
-          <label>Branch Selected: Computer Science</label>
+          <div className="w-full h-auto flex">
+          <div className="w-1/2 space-y-5 flex flex-col ">
+              <label>
+                Name: <b>Muthoot Institute of Technolgy and Science</b>
+              </label>
+              <label>
+                Address: <b>Varikoli, Puthencruz - 682308</b>
+              </label>
+              <label>
+                Phone: <b>0484-2732100</b>
+              </label>
+              <label>
+                Bank: <b>FEDERAL BANK</b>
+              </label>
+              <label>
+                Address: <b>PUTHENCRUZ</b>
+              </label>
+              
+          </div>
+          <div className="w-1/2 space-y-5 flex flex-col ">
+                <label>
+                      Branch: <b>Puthencruz</b>
+                    </label>
+                <label>
+                  Phone: <b>0484-2731259</b>
+                </label>
+                <label>
+                  IFSC Code: <b>FDRL0001223</b>
+                </label>
+                <label>
+                  MICR Code: <b>682049055</b>
+                </label>
+          </div>
+          </div>
+          <label className="py-5">Branch Selected: Computer Science</label>
           <div className="w-full flex justify-center ">
             <label className="text-md mr-3">Transaction Slip:</label>
             <TextField
@@ -67,18 +84,18 @@ function Payment() {
             />
           </div>
           <div className="w-full flex justify-center items-center">
-            <Checkbox required className="ml-6"></Checkbox>
+            <Checkbox id="check" onClick={handleCheck} required className="ml-6"></Checkbox>
             <label>
               I agree that I have reviewed the form, and is proceeding for final
               Submit
             </label>
           </div>
           <div className="w-full flex space-x-4 justify-center items-center">
-            <Button variant="outlined" type="submit">
+            <Button variant="contained" type="submit">
               <Link to="/nriform">Back</Link>
             </Button>
             <Button
-            disabled
+            disabled = {enable}
               // onClick={() => {
               //   window.alert(
               //     "After final Submit no further changes can be made, Proceed ?"
@@ -86,6 +103,7 @@ function Payment() {
               // }}
               variant="contained"
               type="submit"
+              id="submitButton"
             >
               Submit
             </Button>
