@@ -42,7 +42,9 @@ function Personal() {
   }
 
   return (
+
     <div className=" xl:w-[1180px] my-[30px] xl:my-auto">
+      
       <Stepper className="xl:w-[780px] px-3 mx-auto" activeStep={0}>
         {steps.map((label) => (
           <Step key={label}>
