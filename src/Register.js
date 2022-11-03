@@ -1,10 +1,16 @@
 import axios from "axios";
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 
 function Register() {
   const nav = useNavigate()
+
+  let nri = localStorage.getItem("nri_active")
+  let mgmt = localStorage.getItem("mgmt_active")
+  let gov = localStorage.getItem("gov_active")
+
   const nriregister = async(e) =>{
      e.preventDefault();
      const data ={
@@ -137,9 +143,9 @@ function Register() {
               id="quota"
             >
               <option value=""></option>
-              <option value="NRI">NRI</option>
-              <option value="Government">Government</option>
-              <option value="Management">Management</option>
+              {nri && <option value="NRI">NRI</option>}
+              {gov && <option value="Government">Government</option>}
+              {mgmt && <option value="Management">Management</option>}
             </select>
           </div>
         </div>
