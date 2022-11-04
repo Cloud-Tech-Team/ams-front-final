@@ -30,7 +30,7 @@ const HomePage = () => {
   useEffect(() => {
     console.log(token)
     axios
-      .get(local,query)
+      .get(api,query)
       .then((res) => {
         console.log(res.data);
         setGov(Number(res.data.result[0]))

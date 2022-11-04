@@ -27,7 +27,7 @@ function AMS() {
         <img className="h-20 mt-3" src={mits_logo}/>
       </div>
       {/* <div className="bg-shade w-full  sm:flex sm:flex-col md:flex-row justify-between p-8 h-full"> */}
-        {/* <div className="w-[380px] absolute z-50 mt-20 xl:mt-14 xl:ml-40 2xl:mt-24 h-[520px] 2xl:ml-20">
+        <div className="w-[380px] absolute z-50 mt-20 xl:mt-14 xl:ml-40 2xl:mt-24 h-[520px] 2xl:ml-20">
           <div className="h-[300px]  rounded-md w-[400px]  shadow-xl bg-slate-300 top-8 -right-10 absolute"></div>
           <div className="h-[300px]  rounded-md w-[400px]  shadow-xl bg-slate-200 top-12 -right-16 absolute"></div>
           <div className="h-[300px] rounded-md w-[400px] shadow-xl  bg-slate-50 top-16 -right-24 absolute">
@@ -40,21 +40,20 @@ function AMS() {
               <Typewriter
                 options={{
                   strings: [
-                    "<u>Registration</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content. The purpose of lorem ipsum is to create a natural looking, though nonsensical, text that doesn't distract from the layout.",
-                    "<u>Login</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content.",
-                    "<u>Forms</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content.",
-                    "<u>Payment</u> <br/> Lorem ipsum – These words tell the brain to focus all attention on the visual design and safely ignore the content.",
+                    "<u>MITS</u> <br/> Muthoot Institute of Technology and Science (MITS) is promoted by Muthoot M. George Institute of Technology, a Section 25 Company within the Muthoot Group.",
+                    "<u>MITS</u> <br/> MITS is a self financing technical institution offering postgraduate and undergraduate engineering programmes,",
+                    "<u>MITS</u> <br/> situated in the industrial suburb of Kochi, close to the Smart City and Info Park, approximately 15 kms from Vytilla Junction towards Muvattupuzha on the Cochin Madurai National Highway.",
                   ],
                   autoStart: true,
                   loop: true,
-                  delay: 20,
+                  delay: 10,
                   deleteSpeed: 20,
                   pauseFor: 10000,
                 }}
               />
             </div>
           </div>
-        </div> */}
+        </div>
         <video className="object-cover object-bottom h-screen w-full" src={video} autoPlay loop muted />
       {/* </div> */}
     </div>

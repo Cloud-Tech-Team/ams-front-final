@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom"
 function Register() {
   const nav = useNavigate()
 
-  let nri = localStorage.getItem("nri_active")
-  let mgmt = localStorage.getItem("mgmt_active")
-  let gov = localStorage.getItem("gov_active")
+  let nri = true
+  let mgmt = true
+  let gov = true
 
   const nriregister = async(e) =>{
      e.preventDefault();
@@ -27,7 +27,6 @@ function Register() {
        age:20
      }
      console.log(data);
-
      axios.post("https://ams-backend-api.herokuapp.com/user/register",data)
      .then((response)=>{
         console.log(response);
@@ -136,6 +135,7 @@ function Register() {
               <option value=""></option>
               <option value="BTech">BTech</option>
               <option value="MTech">MTech</option>
+              <option value="MCA">MCA</option>
             </select>
             <select
               name="quota"

@@ -38,26 +38,15 @@ const CoAdmin = () => {
     setActionIcon("+") 
     const data = {
       "headers" : {
-        'Authorization':'Bearer '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTY2OTdlODg3YTM1MGU4ZDJmNDFlMSIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY3MjgzMzY4LCJleHAiOjE2NjczNjk3Njh9.MwavSkILEuIBAax7in9cfOs1fNSgvJBNao4KoySgOeA',
+        'Authorization':'Bearer '+localStorage.getItem("admin_access_token"),
       },
       "firstName":document.getElementById("firstName").value,
       "middleName":document.getElementById("middleName").value,
       "lastName":document.getElementById("lastName").value,
       "email":document.getElementById("email").value,
       "password":document.getElementById("password").value,
-      
     }
-    const data2 ={
-      "firstName":"abijith",
-      "middleName":"biju",
-      "lastName":"biju",
-      "email":"abijith@gmail.com",
-      "password":"blabla",
-      headers : {
-        'authorization':'Bearer '+localStorage.getItem("admin_access_token"),
-      },
-}
-    console.log(data)
+    console.log("something")
     axios.post("https://ams-backend-api.herokuapp.com/admin/add_coadmin",data).then((res)=>{
         console.log(res)
       }).catch((e)=>{console.log(e)})
@@ -132,8 +121,8 @@ const CoAdmin = () => {
             />
             <div className="w-full flex justify-between">
               <div className="w-auto flex gap-2">
-                <IconButton size="large" onClick={saveCoadmin} color="primary">
-                  <SaveIcon fontSize="inherit" />
+                <IconButton size="large"  color="primary">
+                  <SaveIcon fontSize="inherit" onClick={saveCoadmin}/>
                 </IconButton>
                 <IconButton color="primary" size="large">
                   <RemoveCircleIcon fontSize="inherit" />
