@@ -11,12 +11,8 @@ function Register() {
   let nri = true
   let mgmt = true
   let gov = true
-<<<<<<< Updated upstream
   let opc = true
 
-=======
-  
->>>>>>> Stashed changes
   const nriregister = async(e) =>{
      e.preventDefault();
      const data ={

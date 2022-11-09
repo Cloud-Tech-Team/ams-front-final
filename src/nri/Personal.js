@@ -22,28 +22,30 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 function Personal() {
-  const [course,setCourse] = useState("")
+  const [course, setCourse] = useState("");
   const [eye, setEye] = useState(false);
   const steps = ["Personal Details", "Payment"];
   const [loader, setLoader] = useState(false);
-  const [check,setCheck] = useState(true)
+  const [check, setCheck] = useState(true);
 
   useEffect(() => {
-    axios.get('https://ams-backend-api.herokuapp.com/user/nri/application',{
-      headers : {
-        Authorization : 'Bearer '+localStorage.getItem('access_token')
-      }
-    }).then(res => {
-      console.log(res)
-      document.getElementById('fname').value = res.data.user.firstName
-      document.getElementById('mname').value = res.data.user.middleName
-      document.getElementById('lname').value = res.data.user.lastName
-      document.getElementById('phonek').value = res.data.user.phone
-      document.getElementById('dob').valueAsDate = new Date(res.data.user.dob)
-      console.log(Date(res.data.user.dob))
-    })
-  }, [])
-  const [selectedFile,setSelectedFile] = useState([])
+    axios
+      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        document.getElementById("fname").value = res.data.user.firstName;
+        document.getElementById("mname").value = res.data.user.middleName;
+        document.getElementById("lname").value = res.data.user.lastName;
+        document.getElementById("phoneKerala").value = res.data.user.phone;
+        document.getElementById("dob").valueAsDate = new Date(res.data.user.dob);
+        console.log(document.getElementById("dob").value);
+      });
+  }, []);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleEye = () => {
     setTimeout(setEye(!eye), 3000);
@@ -54,74 +56,81 @@ function Personal() {
   };
 
   function autofill() {
-    setCheck(!check)
-    console.log(check)
+    setCheck(!check);
+    console.log(check);
     //do autofill
   }
 
-  const handlePhotoFile = async(e) => {
-    const file=e.target.files[0]
+  const handlePhotoFile = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+
+    formData.append("photo", file);
+
     setSelectedFile(file);
-    console.log(file);
-  }
 
-  const personalUpload = async(e) =>{
-      e.preventDefault();
-      setLoader(!loader)
-      const data = {
-        firstName:document.getElementById("firstName").value,
-        middleName:document.getElementById("midName").value,
-        lastName:document.getElementById("lastName").value,
-        aphoneNo:document.getElementById("phone1").value,
-        phoneKerala:document.getElementById("phoneKerala").value,
-        filePhotograph:selectedFile,
-        contactAddress:{
-          addressL1:document.getElementById("Chouse").value,
-          city:document.getElementById("Ccity").value,
-          district:document.getElementById("Cdistrict").value,
-          state:document.getElementById("Cstate").value,
-          pincode:document.getElementById("Cpincode").value
-        },
-        permanentAddress:{
-          addressL1:document.getElementById("Phouse").value,
-          city:document.getElementById("Pcity").value,
-          district:document.getElementById("Pdistrict").value,
-          state:document.getElementById("Pstate").value,
-          pincode:document.getElementById("Ppincode").value
-        },
-        fatherDetails:{
-          name:document.getElementById("parentName").value,
-          occupation:document.getElementById("parentOccupation").value
-        },
-        NRIdetails:{
-          name:document.getElementById("sponsorName").value,
-          relation:document.getElementById("sponsorRelation").value
-        }
-      }
+    console.log(formData);
+  };
 
-      console.log(data);
-      try{
-           await axios.patch("https://ams-backend-api.herokuapp.com/user/application/"+localStorage.getItem('user_id'),data)
-           .then((res) => {
-            console.log(res);
-            if(res.data.status === "SUCCESS "){
-               setLoader(!loader)
-               console.log("details patched")
-            }
-            else{
-              setLoader(!loader)
-              console.log("Something wrong happened")
-            }
-         })
-      }catch(error){
-        console.log(error);
-      }
-  }
+  const personalUpload = async (e) => {
+    e.preventDefault();
+    // setLoader(!loader)
+    const data = {
+      firstName     : document.getElementById("fname").value,
+      middleName    : document.getElementById("mname").value,
+      lastName      : document.getElementById("lname").value,
+      aphoneNo      : document.getElementById("phone1").value,
+      phoneKerala   : document.getElementById("phoneKerala").value,
+      // filePhotograph:selectedFile,
+      contactAddress: {
+        addressL1 : document.getElementById("Chouse").value,
+        city      : document.getElementById("Ccity").value,
+        district  : document.getElementById("Cdistrict").value,
+        state     : document.getElementById("Cstate").value,
+        pincode   : document.getElementById("Cpincode").value,
+      },
+      permanentAddress: {
+        addressL1 : document.getElementById("Phouse").value,
+        city      : document.getElementById("Pcity").value,
+        district  : document.getElementById("Pdistrict").value,
+        state     : document.getElementById("Pstate").value,
+        pincode   : document.getElementById("Ppincode").value,
+      },
+      fatherDetails: {
+        name      : document.getElementById("parentName").value,
+        occupation: document.getElementById("parentOccupation").value,
+      },
+      NRIdetails: {
+        name    : document.getElementById("sponsorName").value,
+        relation: document.getElementById("sponsorRelation").value,
+      },
+    };
+    console.log(data);
+    try {
+      await axios
+        .patch("https://ams-backend-api.herokuapp.com/user/application/"+localStorage.getItem("user_id"),data,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+            },
+          })
+        .then((res) => {
+          console.log(res);
+          if (res.data.status === "SUCCESS ") {
+            //  setLoader(!loader)
+            console.log("details patched");
+          } else {
+            // setLoader(!loader)
+            console.log("Something wrong happened");
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-
     <div className=" xl:w-[1180px] my-[30px] xl:my-auto">
-      
       <Stepper className="xl:w-[780px] px-3 mx-auto" activeStep={0}>
         {steps.map((label) => (
           <Step key={label}>
@@ -132,30 +141,42 @@ function Personal() {
       <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-8">
         <div className="xl:w-1/2 h-[584px] pt-6 ">
           <div className="flex items-center justify-center p-5 space-x-2">
-            <TextField InputLabelProps={
-              {
-                shrink:true
-              }
-            }
-             id='fname' defaultValue="" label="First Name" type="text" size="small" required/>
-            <TextField InputLabelProps={
-              {
-                shrink:true
-              }
-            }
-             id='mname' label="Middle Name" type="text" size="small" />
-            <TextField InputLabelProps={
-              {
-                shrink:true
-              }
-            }
-             id='lname' label="Last Name" type="text" size="small" required/>
+            <TextField
+              InputLabelProps={{
+                shrink: true,
+              }}
+              id="fname"
+              defaultValue=""
+              label="First Name"
+              type="text"
+              size="small"
+              required
+            />
+            <TextField
+              InputLabelProps={{
+                shrink: true,
+              }}
+              id="mname"
+              label="Middle Name"
+              type="text"
+              size="small"
+            />
+            <TextField
+              InputLabelProps={{
+                shrink: true,
+              }}
+              id="lname"
+              label="Last Name"
+              type="text"
+              size="small"
+              required
+            />
           </div>
 
           <div className=" flex  p-5 space-x-2">
             <TextField
-            InputLabelProps={{
-                shrink:true
+              InputLabelProps={{
+                shrink: true,
               }}
               id="phone1"
               label="Contact Ph. No(M)"
@@ -164,8 +185,8 @@ function Personal() {
               required
             />
             <TextField
-            InputLabelProps={{
-                shrink:true
+              InputLabelProps={{
+                shrink: true,
               }}
               id="phoneKerala"
               label="Contact Ph. No(Kerala)"
@@ -177,7 +198,7 @@ function Personal() {
               label="DOB"
               type="date"
               size="small"
-              id = 'dob'
+              id="dob"
               InputLabelProps={{
                 shrink: true,
               }}
@@ -188,8 +209,8 @@ function Personal() {
               label="Photo Upload"
               type="file"
               size="small"
-              id='photo'
-              onChange = {handlePhotoFile}
+              id="photo"
+              onChange={handlePhotoFile}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -303,7 +324,11 @@ function Personal() {
             />
           </div>
           <div className="w-full px-3">
-            <Checkbox className="ml-6" id='checkbox' onClick={autofill}></Checkbox>
+            <Checkbox
+              className="ml-6"
+              id="checkbox"
+              onClick={autofill}
+            ></Checkbox>
             <label>Use Contact address as Permanent address</label>
           </div>
 
@@ -360,11 +385,8 @@ function Personal() {
                 <MenuItem value={80}>Civil Engineering</MenuItem>
               </Select>
             </FormControl> */}
-            <Button
-              onClick={personalUpload}
-              variant="contained"
-            >
-              Save
+            <Button onClick={personalUpload} variant="contained">
+              Save & Continue
             </Button>
             <Dialog
               open={loader}
