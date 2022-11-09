@@ -19,7 +19,7 @@ import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 function Personal() {
   const [course,setCourse] = useState("")
@@ -43,6 +43,7 @@ function Personal() {
       console.log(Date(res.data.user.dob))
     })
   }, [])
+  const [selectedFile,setSelectedFile] = useState([])
 
   const handleEye = () => {
     setTimeout(setEye(!eye), 3000);
@@ -56,6 +57,65 @@ function Personal() {
     setCheck(!check)
     console.log(check)
     //do autofill
+  }
+
+  const handlePhotoFile = async(e) => {
+    const file=e.target.files[0]
+    setSelectedFile(file);
+    console.log(file);
+  }
+
+  const personalUpload = async(e) =>{
+      e.preventDefault();
+      setLoader(!loader)
+      const data = {
+        firstName:document.getElementById("firstName").value,
+        middleName:document.getElementById("midName").value,
+        lastName:document.getElementById("lastName").value,
+        aphoneNo:document.getElementById("phone1").value,
+        phoneKerala:document.getElementById("phoneKerala").value,
+        filePhotograph:selectedFile,
+        contactAddress:{
+          addressL1:document.getElementById("Chouse").value,
+          city:document.getElementById("Ccity").value,
+          district:document.getElementById("Cdistrict").value,
+          state:document.getElementById("Cstate").value,
+          pincode:document.getElementById("Cpincode").value
+        },
+        permanentAddress:{
+          addressL1:document.getElementById("Phouse").value,
+          city:document.getElementById("Pcity").value,
+          district:document.getElementById("Pdistrict").value,
+          state:document.getElementById("Pstate").value,
+          pincode:document.getElementById("Ppincode").value
+        },
+        fatherDetails:{
+          name:document.getElementById("parentName").value,
+          occupation:document.getElementById("parentOccupation").value
+        },
+        NRIdetails:{
+          name:document.getElementById("sponsorName").value,
+          relation:document.getElementById("sponsorRelation").value
+        }
+      }
+
+      console.log(data);
+      try{
+           await axios.patch("https://ams-backend-api.herokuapp.com/user/application/"+localStorage.getItem('user_id'),data)
+           .then((res) => {
+            console.log(res);
+            if(res.data.status === "SUCCESS "){
+               setLoader(!loader)
+               console.log("details patched")
+            }
+            else{
+              setLoader(!loader)
+              console.log("Something wrong happened")
+            }
+         })
+      }catch(error){
+        console.log(error);
+      }
   }
 
   return (
@@ -97,20 +157,20 @@ function Personal() {
             InputLabelProps={{
                 shrink:true
               }}
+              id="phone1"
               label="Contact Ph. No(M)"
               type="text"
               size="small"
-              id = 'phoneM'
               required
             />
             <TextField
             InputLabelProps={{
                 shrink:true
               }}
+              id="phoneKerala"
               label="Contact Ph. No(Kerala)"
               type="text"
               size="small"
-              id = 'phonek'
               required
             />
             <TextField
@@ -128,6 +188,8 @@ function Personal() {
               label="Photo Upload"
               type="file"
               size="small"
+              id='photo'
+              onChange = {handlePhotoFile}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -151,6 +213,7 @@ function Personal() {
           <div className=" flex flex-col space-y-2 p-5 mt-4 ">
             <label className="text-xl ml-2">Contact Address</label>
             <TextField
+              id="Chouse"
               fullWidth
               label="House Name"
               type="text"
@@ -160,6 +223,7 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+              id="Cstate"
               className="w-1/2"
               label="State"
               type="text"
@@ -167,6 +231,7 @@ function Personal() {
               required
             />
             <TextField
+              id="Cdistrict"
               className="w-1/2"
               label="District"
               type="text"
@@ -175,6 +240,7 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+              id="Ccity"
               className="w-1/2"
               label="City"
               type="text"
@@ -182,6 +248,7 @@ function Personal() {
               required
             />
             <TextField
+              id="Cpincode"
               className="w-1/2"
               label="Pincode"
               type="text"
@@ -193,6 +260,7 @@ function Personal() {
           <div className=" flex flex-col space-y-2 p-5 mt-1 ">
             <label className="text-xl ml-2">Permanent Address</label>
             <TextField
+              id="Phouse"
               fullWidth
               label="House Name"
               type="text"
@@ -202,6 +270,7 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+              id="Pstate"
               className="w-1/2"
               label="State"
               type="text"
@@ -209,6 +278,7 @@ function Personal() {
               required
             />
             <TextField
+              id="Pdistrict"
               className="w-1/2"
               label="District"
               type="text"
@@ -217,6 +287,7 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+              id="Pcity"
               className="w-1/2"
               label="City"
               type="text"
@@ -224,6 +295,7 @@ function Personal() {
               required
             />
             <TextField
+              id="Ppincode"
               className="w-1/2"
               label="Pincode"
               type="text"
@@ -237,6 +309,7 @@ function Personal() {
 
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+              id="parentName"
               className="w-1/2"
               label="Parent/Gaurdian"
               type="text"
@@ -244,6 +317,7 @@ function Personal() {
               required
             />
             <TextField
+              id="parentOccupation"
               className="w-1/2"
               label="Occupation"
               type="text"
@@ -252,6 +326,7 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+              id="sponsorName"
               className="w-1/2"
               label="NRI Sponsor"
               type="text"
@@ -259,6 +334,7 @@ function Personal() {
               required
             />
             <TextField
+              id="sponsorRelation"
               className="w-1/2"
               label="Relation with applicant"
               type="text"
@@ -266,7 +342,7 @@ function Personal() {
             />
           </div>
           <div className=" flex px-5 py-2 mt-5 space-x-5">
-            <FormControl className="w-full" size="small">
+            {/* <FormControl className="w-full" size="small">
               <InputLabel id="demo-select-small">Course</InputLabel>
               <Select
                 id="demo-select-small"
@@ -283,14 +359,12 @@ function Personal() {
                 <MenuItem value={70}>Mechanical Engineering</MenuItem>
                 <MenuItem value={80}>Civil Engineering</MenuItem>
               </Select>
-            </FormControl>
+            </FormControl> */}
             <Button
-              onClick={() => {
-                setLoader(!loader);
-              }}
+              onClick={personalUpload}
               variant="contained"
             >
-              <Link to="/nriform/payment">Save</Link>
+              Save
             </Button>
             <Dialog
               open={loader}
