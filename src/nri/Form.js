@@ -10,9 +10,11 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  MobileStepper,
   Tooltip,
 } from "@mui/material";
 import { Stepper, Step, StepLabel} from "@mui/material";
+import { color } from "@mui/system";
 
 
 const steps = [
@@ -43,25 +45,45 @@ function Form() {
     localStorage.removeItem("access_token")
     nav("/login")
   }
+
   
+
   return (
     
-    <div className="min-w-screen flex-col h-auto bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
-      <div className="w-full h-16 flex fixed top-0 bg-gradient-to-tl from-rock-blue-300 via-rock-blue-400 to-rock-blue-400 items-center justify-between px-3">
+    <div className="min-w-screen   h-auto bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
+      
+      <div className="w-full  flex fixed top-0 bg-gradient-to-tl from-rock-blue-300 via-rock-blue-400 to-rock-blue-400 items-center justify-between p-4">
       <Tooltip title="Help">
-        <button onClick={handleHelp} className=" bg-gray-100 rounded-full p-1 right-8 top-8">
+        <button onClick={handleHelp} className=" bg-gray-100 rounded-full p-1 ">
           <ContactSupportIcon fontSize="large" />
         </button>
       </Tooltip>
-      <Stepper className="w-3/5 invisible lg:visible" activeStep={1}>
+      <div className="mx-auto lg:hidden"><p>{steps[4]}</p></div>
+      <Stepper className="w-[0px] lg:w-3/5 invisible lg:visible" activeStep={1}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
+      
+      {/* <MobileStepper 
+      variant="dots"
+      steps={steps.length}
+      position="static"
+      activeStep={2}
+      sx={{
+        width: "30%",
+        position: "absolute",
+        "background-color": "transparent",
+        left : "50%",
+      }}
+      >
+      </MobileStepper> */}
+      
+      
       <Tooltip title="Log out">
-        <button onClick={signout} className=" bg-gray-200 rounded-full p-1 left-8 top-8">
+        <button onClick={signout} className=" bg-gray-200 rounded-full p-1 ">
           <AccountCircleIcon fontSize="large" />
         </button>
       </Tooltip>

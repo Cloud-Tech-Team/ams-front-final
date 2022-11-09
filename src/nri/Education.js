@@ -1,11 +1,13 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+
 
 const Education = () => {
   return (
-    <div className="font-poppins mx-auto w-11/12 md:w-4/6 py-10  xl:my-auto">
-      <div className="h-auto w-full pt-2  space-y-4">
-        <div className="w-full bg-white rounded-[4px] h-auto flex p-3 flex-col xl:flex-row shadow-md mt-6">
+    <div className="font-poppins mx-auto w-11/12 lg:w-3/4 py-10  xl:my-auto">
+      <div className="h-auto w-full mt-10 bg-white rounded-[4px] ">
+        <div className="w-full  h-auto flex p-3 flex-col xl:flex-row  mt-3">
           <div className="xl:w-1/2   p-4 h-full">
             <p className="text-lg mb-3 text-center">12th Exam details </p>
             <div className="w-full mb-3 ">
@@ -138,7 +140,7 @@ const Education = () => {
             </div>
           </div>
         </div>
-        <div className="w-full bg-white rounded-[4px] h-auto flex p-1 flex-col xl:flex-row shadow-md mt-6">
+        <div className="w-full  h-auto flex p-1 flex-col xl:flex-row shadow-md ">
           <div className="xl:w-1/2   p-4 h-full">
             <p className="text-lg mb-3  text-center">10th Marks Details </p>
             <div className="w-full  ">
@@ -287,7 +289,7 @@ const Education = () => {
             {/* <div className="w-full flex flex-col items-end justify-end p-3"> */}
             <div className="w-full rounded-md my-4 bg-red-100 h-24"></div>
             <Button className="" variant="contained">
-              Save
+            <Link to="/nriform/payment">Save</Link>
             </Button>
             {/* </div> */}
           </div>

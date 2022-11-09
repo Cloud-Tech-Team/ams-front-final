@@ -48,14 +48,8 @@ function Personal() {
   }
 
   return (
-    <div className=" xl:w-[1180px] xl:my-auto">
-      <Stepper activeStep={0}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+    <div className=" xl:w-[1180px] mx-auto flex items-center justify-center h-screen ">
+      
       <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-6">
         <div className="xl:w-1/2 h-[584px] pt-6 ">
           <div className="flex items-center justify-center p-5 space-x-2">
@@ -263,6 +257,7 @@ function Personal() {
             <Button
               onClick={() => {
                 setLoader(!loader);
+                localStorage.setItem({step: "3"})
               }}
               variant="contained"
             >
