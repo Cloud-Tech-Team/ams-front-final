@@ -12,6 +12,16 @@ import {
   DialogTitle,
   Tooltip,
 } from "@mui/material";
+import { Stepper, Step, StepLabel} from "@mui/material";
+
+
+const steps = [
+  "Personal Details",
+  "Educational Details",
+  "Declaration",
+  "Final Verification",
+  "Payment",
+];
 
 // const CssTextField = styled(TextField)({
 //     '& input:valid + fieldset': {
@@ -36,14 +46,22 @@ function Form() {
   
   return (
     
-    <div className="w-screen h-auto overflow-x-hidden bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
+    <div className="min-w-screen flex-col h-auto bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
+      <div className="w-full h-16 flex fixed top-0 bg-gradient-to-tl from-rock-blue-300 via-rock-blue-400 to-rock-blue-400 items-center justify-between px-3">
       <Tooltip title="Help">
-        <button onClick={handleHelp} className="absolute bg-gray-100 rounded-full p-1 right-8 top-8">
+        <button onClick={handleHelp} className=" bg-gray-100 rounded-full p-1 right-8 top-8">
           <ContactSupportIcon fontSize="large" />
         </button>
       </Tooltip>
+      <Stepper className="w-3/5 invisible lg:visible" activeStep={1}>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
       <Tooltip title="Log out">
-        <button onClick={signout} className="absolute bg-gray-200 rounded-full p-1 left-8 top-8">
+        <button onClick={signout} className=" bg-gray-200 rounded-full p-1 left-8 top-8">
           <AccountCircleIcon fontSize="large" />
         </button>
       </Tooltip>
@@ -66,7 +84,9 @@ function Form() {
           </DialogActions>
         </Dialog>
       )}
+      </div>
       <Outlet/>
+
     </div>
   );
 }
