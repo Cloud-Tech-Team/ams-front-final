@@ -19,6 +19,7 @@ import CoAdmin from "./Admin/Pages/CoAdmin"
 import Search from "./Admin/Pages/Search"
 import Personal from "./nri/Personal"
 import Payment from "./nri/Payment"
+import Education from "./nri/Education";
 
 
 const themeOptions = {
@@ -53,6 +54,7 @@ function App() {
               <Route element={<PrivateRoutes/>}>
                 <Route element={<Form/>}>
                   <Route element={<Personal/>} path="/nriform" exact/>
+                  <Route element={<Education/>} path="/nriform/education" exact/>
                   <Route element={<Payment/>} path="/nriform/payment" exact/>
                 </Route>
                 <Route element={<Dashboard/>} path='/dashboard' exact/>

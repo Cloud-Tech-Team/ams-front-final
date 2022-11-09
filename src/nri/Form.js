@@ -36,14 +36,14 @@ function Form() {
   
   return (
     
-    <div className="w-screen h-auto xl:h-screen bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
+    <div className="w-screen h-auto overflow-x-hidden bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
       <Tooltip title="Help">
-        <button onClick={handleHelp} className="absolute bg-gray-100 rounded-full p-1 right-10 top-10">
+        <button onClick={handleHelp} className="absolute bg-gray-100 rounded-full p-1 right-8 top-8">
           <ContactSupportIcon fontSize="large" />
         </button>
       </Tooltip>
       <Tooltip title="Log out">
-        <button onClick={signout} className="absolute bg-gray-200 rounded-full p-1 left-10 top-10">
+        <button onClick={signout} className="absolute bg-gray-200 rounded-full p-1 left-8 top-8">
           <AccountCircleIcon fontSize="large" />
         </button>
       </Tooltip>

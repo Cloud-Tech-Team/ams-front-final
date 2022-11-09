@@ -21,11 +21,17 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
 
 function Personal() {
-  const [course,setCourse] = useState("")
+  const [course, setCourse] = useState("");
   const [eye, setEye] = useState(false);
-  const steps = ["Personal Details", "Payment"];
+  const steps = [
+    "Personal Details",
+    "Educational Details",
+    "Declaration",
+    "Final Verification",
+    "Payment",
+  ];
   const [loader, setLoader] = useState(false);
-  const [check,setCheck] = useState(true)
+  const [check, setCheck] = useState(true);
 
   const handleEye = () => {
     setTimeout(setEye(!eye), 3000);
@@ -36,23 +42,21 @@ function Personal() {
   };
 
   function autofill() {
-    setCheck(!check)
-    console.log(check)
+    setCheck(!check);
+    console.log(check);
     //do autofill
   }
 
   return (
-
-    <div className=" xl:w-[1180px] my-[30px] xl:my-auto">
-      
-      <Stepper className="xl:w-[780px] px-3 mx-auto" activeStep={0}>
+    <div className=" xl:w-[1180px] xl:my-auto">
+      <Stepper activeStep={0}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-      <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-8">
+      <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-6">
         <div className="xl:w-1/2 h-[584px] pt-6 ">
           <div className="flex items-center justify-center p-5 space-x-2">
             <TextField label="First Name" type="text" size="small" required />
@@ -82,7 +86,7 @@ function Personal() {
               }}
             />
           </div>
-          <div className=" flex  p-5  justify-between">
+          <div className=" flex items-center  p-5  justify-between">
             <TextField
               label="Photo Upload"
               type="file"
@@ -92,7 +96,10 @@ function Personal() {
               }}
               required
             />
-            <Tooltip arrow title={eye ? "preview" : "no preview"}>
+            <p className="text-center p-2 bg-red-100 rounded-md w-1/2 text-sm mx-3">
+               Please select a passport size photo of file size less than 5mb
+            </p>
+            {/* <Tooltip arrow title={eye ? "preview" : "no preview"}>
               <IconButton
                 sx={{ p: 1, mr: 1 }}
                 onClick={handleEye}
@@ -102,10 +109,10 @@ function Personal() {
                 {eye ? <RemoveRedEyeIcon /> : <VisibilityOffIcon />}
                 {eye && <CircularProgress sx={{ position: "absolute" }} />}
               </IconButton>
-            </Tooltip>
-            <Button variant="contained" type="submit">
+            </Tooltip> */}
+            {/* <Button variant="contained" type="submit">
               Upload
-            </Button>
+            </Button> */}
           </div>
           <div className=" flex flex-col space-y-2 p-5 mt-4 ">
             <label className="text-xl ml-2">Contact Address</label>
@@ -190,7 +197,11 @@ function Personal() {
             />
           </div>
           <div className="w-full px-3">
-            <Checkbox className="ml-6" id='checkbox' onClick={autofill}></Checkbox>
+            <Checkbox
+              className="ml-6"
+              id="checkbox"
+              onClick={autofill}
+            ></Checkbox>
             <label>Use Contact address as Permanent address</label>
           </div>
 
@@ -235,10 +246,16 @@ function Personal() {
               >
                 <MenuItem value={10}>Computer Science and Engineering</MenuItem>
                 <MenuItem value={20}>CSE (Artificial Intelligence)</MenuItem>
-                <MenuItem value={30}>Artificial Intelligence & Data Science</MenuItem>
+                <MenuItem value={30}>
+                  Artificial Intelligence & Data Science
+                </MenuItem>
                 <MenuItem value={40}>Cyber Security</MenuItem>
-                <MenuItem value={50}>Electronics and Communications Engineering</MenuItem>
-                <MenuItem value={60}>Electrical and Electronics Engineering</MenuItem>
+                <MenuItem value={50}>
+                  Electronics and Communications Engineering
+                </MenuItem>
+                <MenuItem value={60}>
+                  Electrical and Electronics Engineering
+                </MenuItem>
                 <MenuItem value={70}>Mechanical Engineering</MenuItem>
                 <MenuItem value={80}>Civil Engineering</MenuItem>
               </Select>
@@ -249,7 +266,7 @@ function Personal() {
               }}
               variant="contained"
             >
-              <Link to="/nriform/payment">Save</Link>
+              <Link to="/nriform/education">Save</Link>
             </Button>
             <Dialog
               open={loader}
