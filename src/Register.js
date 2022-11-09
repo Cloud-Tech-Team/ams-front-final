@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
+import PhoneInput from 'react-phone-number-input'
 
 function Register() {
   const nav = useNavigate()
@@ -10,6 +11,7 @@ function Register() {
   let nri = true
   let mgmt = true
   let gov = true
+  let opc = true
 
   const nriregister = async(e) =>{
      e.preventDefault();
@@ -23,13 +25,14 @@ function Register() {
        course:document.getElementById("program").value,
        quota:document.getElementById("quota").value,
        aadhaar:document.getElementById("aadhar").value,
-       dob:'2000-10-10',
+       dob:document.getElementById("dob").value,
        age:20
      }
      console.log(data);
      axios.post("https://ams-backend-api.herokuapp.com/user/register",data)
      .then((response)=>{
         console.log(response);
+        console.log(data);
         if(response.status===200){
           window.alert("Registration success");
           nav('/login')
@@ -146,6 +149,7 @@ function Register() {
               {nri && <option value="NRI">NRI</option>}
               {gov && <option value="Government">Government</option>}
               {mgmt && <option value="Management">Management</option>}
+              {opc && <option value="Management">OCI/PIO/CIWG</option>}
             </select>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextField,
   Button,
@@ -19,6 +19,7 @@ import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Link } from "react-router-dom";
+import axios, { Axios } from "axios";
 
 function Personal() {
   const [course,setCourse] = useState("")
@@ -26,6 +27,22 @@ function Personal() {
   const steps = ["Personal Details", "Payment"];
   const [loader, setLoader] = useState(false);
   const [check,setCheck] = useState(true)
+
+  useEffect(() => {
+    axios.get('https://ams-backend-api.herokuapp.com/user/nri/application',{
+      headers : {
+        Authorization : 'Bearer '+localStorage.getItem('access_token')
+      }
+    }).then(res => {
+      console.log(res)
+      document.getElementById('fname').value = res.data.user.firstName
+      document.getElementById('mname').value = res.data.user.middleName
+      document.getElementById('lname').value = res.data.user.lastName
+      document.getElementById('phonek').value = res.data.user.phone
+      document.getElementById('dob').valueAsDate = new Date(res.data.user.dob)
+      console.log(Date(res.data.user.dob))
+    })
+  }, [])
 
   const handleEye = () => {
     setTimeout(setEye(!eye), 3000);
@@ -55,28 +72,52 @@ function Personal() {
       <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-8">
         <div className="xl:w-1/2 h-[584px] pt-6 ">
           <div className="flex items-center justify-center p-5 space-x-2">
-            <TextField label="First Name" type="text" size="small" required />
-            <TextField label="Middle Name" type="text" size="small" />
-            <TextField label="Last Name" type="text" size="small" />
+            <TextField InputLabelProps={
+              {
+                shrink:true
+              }
+            }
+             id='fname' defaultValue="" label="First Name" type="text" size="small" required/>
+            <TextField InputLabelProps={
+              {
+                shrink:true
+              }
+            }
+             id='mname' label="Middle Name" type="text" size="small" />
+            <TextField InputLabelProps={
+              {
+                shrink:true
+              }
+            }
+             id='lname' label="Last Name" type="text" size="small" required/>
           </div>
 
           <div className=" flex  p-5 space-x-2">
             <TextField
+            InputLabelProps={{
+                shrink:true
+              }}
               label="Contact Ph. No(M)"
               type="text"
               size="small"
+              id = 'phoneM'
               required
             />
             <TextField
+            InputLabelProps={{
+                shrink:true
+              }}
               label="Contact Ph. No(Kerala)"
               type="text"
               size="small"
+              id = 'phonek'
               required
             />
             <TextField
               label="DOB"
               type="date"
               size="small"
+              id = 'dob'
               InputLabelProps={{
                 shrink: true,
               }}
