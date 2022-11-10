@@ -42,9 +42,27 @@ function Personal() {
         document.getElementById("lname").value = res.data.user.lastName;
         document.getElementById("phoneKerala").value = res.data.user.phone;
         document.getElementById("dob").valueAsDate = new Date(res.data.user.dob);
-        console.log(document.getElementById("dob").value);
+        document.getElementById("phone1").value = res.data.user.NRIdetails.aPhone === undefined ? "" : Number(res.data.user.NRIdetails.aPhone);
+
+        document.getElementById("Chouse").value = res.data.user.contactAddress.addressL1
+        document.getElementById("Ccity").value = res.data.user.contactAddress.city
+        document.getElementById("Cdistrict").value = res.data.user.contactAddress.district
+        document.getElementById("Cstate").value = res.data.user.contactAddress.state
+        document.getElementById("Cpincode").value = res.data.user.contactAddress.pincode
+
+        document.getElementById("Phouse").value = res.data.user.permanentAddress.addressL1
+        document.getElementById("Pcity").value = res.data.user.permanentAddress.city
+        document.getElementById("Pdistrict").value = res.data.user.permanentAddress.district
+        document.getElementById("Pstate").value = res.data.user.permanentAddress.state
+        document.getElementById("Ppincode").value = res.data.user.permanentAddress.pincode
+
+        document.getElementById("parentName").value = res.data.user.fatherDetails.name
+        document.getElementById("parentOccupation").value = res.data.user.fatherDetails.occupation
+        document.getElementById("sponsorName").value = res.data.user.NRIdetails.name
+        document.getElementById("sponsorRelation").value = res.data.user.NRIdetails.relation
       });
   }, []);
+
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleEye = () => {
@@ -79,31 +97,28 @@ function Personal() {
       firstName     : document.getElementById("fname").value,
       middleName    : document.getElementById("mname").value,
       lastName      : document.getElementById("lname").value,
-      aphoneNo      : document.getElementById("phone1").value,
+      aphoneNo      : Number(document.getElementById("phone1").value),
       phoneKerala   : document.getElementById("phoneKerala").value,
       // filePhotograph:selectedFile,
-      contactAddress: {
-        addressL1 : document.getElementById("Chouse").value,
-        city      : document.getElementById("Ccity").value,
-        district  : document.getElementById("Cdistrict").value,
-        state     : document.getElementById("Cstate").value,
-        pincode   : document.getElementById("Cpincode").value,
-      },
-      permanentAddress: {
-        addressL1 : document.getElementById("Phouse").value,
-        city      : document.getElementById("Pcity").value,
-        district  : document.getElementById("Pdistrict").value,
-        state     : document.getElementById("Pstate").value,
-        pincode   : document.getElementById("Ppincode").value,
-      },
-      fatherDetails: {
-        name      : document.getElementById("parentName").value,
-        occupation: document.getElementById("parentOccupation").value,
-      },
-      NRIdetails: {
-        name    : document.getElementById("sponsorName").value,
-        relation: document.getElementById("sponsorRelation").value,
-      },
+
+        addressL1C: document.getElementById("Chouse").value,
+        cityC     : document.getElementById("Ccity").value,
+        districtC : document.getElementById("Cdistrict").value,
+        stateC    : document.getElementById("Cstate").value,
+        pincodeC  : document.getElementById("Cpincode").value,
+
+        addressL1P: document.getElementById("Phouse").value,
+        cityP     : document.getElementById("Pcity").value,
+        districtP : document.getElementById("Pdistrict").value,
+        stateP    : document.getElementById("Pstate").value,
+        pincodeP  : document.getElementById("Ppincode").value,
+
+        fatherName      : document.getElementById("parentName").value,
+        fatherOccupation: document.getElementById("parentOccupation").value,
+
+        NRIname    : document.getElementById("sponsorName").value,
+        NRIrelation: document.getElementById("sponsorRelation").value,
+
     };
     console.log(data);
     try {
@@ -234,6 +249,9 @@ function Personal() {
           <div className=" flex flex-col space-y-2 p-5 mt-4 ">
             <label className="text-xl ml-2">Contact Address</label>
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Chouse"
               fullWidth
               label="House Name"
@@ -244,6 +262,9 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Cstate"
               className="w-1/2"
               label="State"
@@ -252,6 +273,9 @@ function Personal() {
               required
             />
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Cdistrict"
               className="w-1/2"
               label="District"
@@ -261,6 +285,9 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Ccity"
               className="w-1/2"
               label="City"
@@ -269,6 +296,9 @@ function Personal() {
               required
             />
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Cpincode"
               className="w-1/2"
               label="Pincode"
@@ -281,6 +311,9 @@ function Personal() {
           <div className=" flex flex-col space-y-2 p-5 mt-1 ">
             <label className="text-xl ml-2">Permanent Address</label>
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Phouse"
               fullWidth
               label="House Name"
@@ -291,6 +324,9 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Pstate"
               className="w-1/2"
               label="State"
@@ -299,6 +335,9 @@ function Personal() {
               required
             />
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Pdistrict"
               className="w-1/2"
               label="District"
@@ -308,6 +347,9 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Pcity"
               className="w-1/2"
               label="City"
@@ -316,6 +358,9 @@ function Personal() {
               required
             />
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="Ppincode"
               className="w-1/2"
               label="Pincode"
@@ -334,6 +379,9 @@ function Personal() {
 
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="parentName"
               className="w-1/2"
               label="Parent/Gaurdian"
@@ -342,6 +390,9 @@ function Personal() {
               required
             />
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="parentOccupation"
               className="w-1/2"
               label="Occupation"
@@ -351,6 +402,9 @@ function Personal() {
           </div>
           <div className=" flex items-center p-5 space-x-2">
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="sponsorName"
               className="w-1/2"
               label="NRI Sponsor"
@@ -359,6 +413,9 @@ function Personal() {
               required
             />
             <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
               id="sponsorRelation"
               className="w-1/2"
               label="Relation with applicant"
