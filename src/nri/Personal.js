@@ -95,7 +95,11 @@ function Personal() {
     console.log(check);
     //do autofill
   }
-
+  
+  const handlephotoFile = async(e) =>{
+    const file = e.target.files[0];
+    setSelectedFile(file)
+  }
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(!loader)
@@ -129,7 +133,7 @@ function Personal() {
     console.log(data);
     try {
       await axios
-        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page1/"+localStorage.getItem("user_id"),data,
+        .patch("https://ams-backend-api.herokuapp.com/user/nri/application"+localStorage.getItem("user_id"),data,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("access_token"),
@@ -237,6 +241,7 @@ function Personal() {
                 type="file"
                 size="small"
                 id="photo"
+                onChange={handlephotoFile}
                 InputLabelProps={{
                   shrink: true,
                 }}
