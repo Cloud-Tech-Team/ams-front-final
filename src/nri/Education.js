@@ -289,7 +289,7 @@ const Education = () => {
             {/* <div className="w-full flex flex-col items-end justify-end p-3"> */}
             <div className="w-full rounded-md my-4 bg-red-100 h-24"></div>
             <Button className="" variant="contained">
-            <Link to="/nriform/payment">Save</Link>
+            <Link to="/nriform/declaration">Save</Link>
             </Button>
             {/* </div> */}
           </div>

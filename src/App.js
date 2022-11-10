@@ -20,6 +20,7 @@ import Search from "./Admin/Pages/Search"
 import Personal from "./nri/Personal"
 import Payment from "./nri/Payment"
 import Education from "./nri/Education";
+import Declaration from "./nri/Declaration";
 
 
 const themeOptions = {
@@ -30,6 +31,9 @@ const themeOptions = {
     },
     ternery: {
       main: "#6a6a6a"
+    },
+    greenary: {
+      main: "#2fc32f"
     },
     white:{
       main:'#ffffff'
@@ -55,6 +59,7 @@ function App() {
                 <Route element={<Form/>}>
                   <Route element={<Personal/>} path="/nriform" exact/>
                   <Route element={<Education/>} path="/nriform/education" exact/>
+                  <Route element={<Declaration/>} path="/nriform/declaration" exact/>
                   <Route element={<Payment/>} path="/nriform/payment" exact/>
                 </Route>
                 <Route element={<Dashboard/>} path='/dashboard' exact/>
