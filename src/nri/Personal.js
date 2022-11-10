@@ -14,6 +14,7 @@ import {
   Dialog,
   DialogTitle,
   Box,
+  Backdrop,
 } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -29,6 +30,7 @@ function Personal() {
   const [check, setCheck] = useState(true);
 
   useEffect(() => {
+    setLoader(!loader)
     axios
       .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
         headers: {
@@ -60,6 +62,8 @@ function Personal() {
         document.getElementById("parentOccupation").value = res.data.user.fatherDetails.occupation
         document.getElementById("sponsorName").value = res.data.user.NRIdetails.name
         document.getElementById("sponsorRelation").value = res.data.user.NRIdetails.relation
+      
+        setLoader(false)
       });
   }, []);
 
@@ -92,7 +96,7 @@ function Personal() {
 
   const personalUpload = async (e) => {
     e.preventDefault();
-    // setLoader(!loader)
+    setLoader(!loader)
     const data = {
       firstName     : document.getElementById("fname").value,
       middleName    : document.getElementById("mname").value,
@@ -132,7 +136,7 @@ function Personal() {
         .then((res) => {
           console.log(res);
           if (res.data.status === "SUCCESS ") {
-            //  setLoader(!loader)
+            setLoader(false)
             console.log("details patched");
           } else {
             // setLoader(!loader)
@@ -153,6 +157,14 @@ function Personal() {
           </Step>
         ))}
       </Stepper>
+
+      <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loader}
+        >
+          <div className="w-screen absolute top-0"><LinearProgress color="primary"/></div>
+        </Backdrop>
+
       <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-8">
         <div className="xl:w-1/2 h-[584px] pt-6 ">
           <div className="flex items-center justify-center p-5 space-x-2">
@@ -445,20 +457,6 @@ function Personal() {
             <Button onClick={personalUpload} variant="contained">
               Save & Continue
             </Button>
-            <Dialog
-              open={loader}
-              onClose={() => {
-                setLoader(!loader);
-              }}
-            >
-              {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH9aYvIvK5n5XSvS1U-QsNAmEvuKL4DYb7dw&usqp=CAU" /> */}
-              <div className="w-56 h-32 space-y-4 p-4 flex flex-col items-center justify-center">
-                <p className="text-lg text-black">Saving...</p>
-                <Box sx={{ width: "100%" }}>
-                  <LinearProgress />
-                </Box>
-              </div>
-            </Dialog>
           </div>
         </div>
       </div>
