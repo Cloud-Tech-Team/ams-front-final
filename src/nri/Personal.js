@@ -93,7 +93,11 @@ function Personal() {
     console.log(check);
     //do autofill
   }
-
+  
+  const handlephotoFile = async(e) =>{
+    const file = e.target.files[0];
+    setSelectedFile(file)
+  }
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(!loader)
@@ -234,6 +238,7 @@ function Personal() {
                 type="file"
                 size="small"
                 id="photo"
+                onChange={handlephotoFile}
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -439,7 +444,7 @@ function Personal() {
              
               <Button
               variant="contained"
-              // onClick={personalUpload}
+              onClick={personalUpload}
               >
                <Link to="/nriform/education">Save</Link> 
               </Button>
