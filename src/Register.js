@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-import PhoneInput from 'react-phone-number-input'
+// import PhoneInput from 'react-phone-number-input'
 
 function Register() {
   const nav = useNavigate()
