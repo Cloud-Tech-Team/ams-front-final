@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 
 const Education = () => {
+  localStorage.setItem('pageNo',2)
+
   return (
     <div className="font-poppins mx-auto w-11/12 lg:w-3/4 py-10  xl:my-auto">
       <div className="h-auto w-full mt-10 bg-white rounded-[4px] ">

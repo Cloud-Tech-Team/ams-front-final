@@ -21,11 +21,13 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Personal() {
   const [loader, setLoader] = useState(false);
   const [check, setCheck] = useState(true);
+  localStorage.setItem('pageNo',1)
+  const nav = useNavigate();
 
   useEffect(() => {
     setLoader(!loader);
@@ -46,9 +48,9 @@ function Personal() {
           res.data.user.dob
         );
         document.getElementById("phone1").value =
-          res.data.user.NRIdetails.aPhone === undefined
+          res.data.user.aPhone === undefined
             ? ""
-            : Number(res.data.user.NRIdetails.aPhone);
+            : Number(res.data.user.aPhone);
 
         document.getElementById("Chouse").value =
           res.data.user.contactAddress.addressL1;
@@ -101,7 +103,7 @@ function Personal() {
       firstName     : document.getElementById("fname").value,
       middleName    : document.getElementById("mname").value,
       lastName      : document.getElementById("lname").value,
-      aphone        : document.getElementById("phone1").value,
+      aPhone        : document.getElementById("phone1").value,
       phoneKerala   : document.getElementById("phoneKerala").value,
       // filePhotograph:selectedFile,
 
@@ -135,8 +137,9 @@ function Personal() {
           })
         .then((res) => {
           console.log("this is the response \n"+res);
-          if (res.data.status === "SUCCESS ") {
+          if (res.data.status === "SUCCESS") {
             setLoader(false)
+            nav('/nriform/education');
             console.log("details patched");
           } else {
             setLoader(false)
@@ -439,9 +442,10 @@ function Personal() {
              
               <Button
               variant="contained"
-              // onClick={personalUpload}
+              onClick={personalUpload}
               >
-               <Link to="/nriform/education">Save</Link> 
+                Save
+               {/* <Link to="/nriform/education">Save</Link>  */}
               </Button>
             </div>
           </div>

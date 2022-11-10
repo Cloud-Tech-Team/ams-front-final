@@ -2,7 +2,7 @@ import Payment from "./Payment";
 import Personal from "./Personal";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate, Outlet } from "react-router-dom";
 import {
   Button,
@@ -34,6 +34,12 @@ const steps = [
 function Form() {
   const [help, setHelp] = useState(false);
   const [form, setForm] = useState(false);
+  const [page,setPage]  = useState();
+  useEffect(() => {
+    return () => {
+      setPage(localStorage.getItem('pageNo'))
+    };
+  })
   const nav = useNavigate();
   const handleHelp = () => {
     setHelp(!help);
@@ -57,11 +63,11 @@ function Form() {
           </button>
         </Tooltip>
         <div className="mx-auto lg:hidden">
-          <p>{steps[4]}</p>
+          <p>{steps[page-1]}</p>
         </div>
         <Stepper
           className="w-[0px] lg:w-3/5 invisible lg:visible"
-          activeStep={1}
+          activeStep={page}
         >
           {steps.map((label) => (
             <Step key={label}>
