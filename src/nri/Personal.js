@@ -133,7 +133,7 @@ function Personal() {
     console.log(data);
     try {
       await axios
-        .patch("https://ams-backend-api.herokuapp.com/user/nri/application"+localStorage.getItem("user_id"),data,
+        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page1/"+localStorage.getItem("user_id"),data,
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("access_token"),
