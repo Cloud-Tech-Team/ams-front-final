@@ -2,8 +2,17 @@ import React from "react";
 
 export const Verification = () => {
   return (
-    <div className="font-poppins mx-auto w-11/12 lg:w-3/4 py-10  xl:my-auto">
+    <div className="font-poppins min-h-screen mx-auto w-11/12 lg:w-3/4 py-10  xl:my-auto">
       <div className="h-auto w-full mt-10 bg-white rounded-[4px] ">
+        {/* <div className="w-full grid grid-cols-2 p-4">
+            <div className="w-full flex flex-col bg-red-200">
+            <label>Name of the applicant: here</label>
+            <label>Name of parent/Gaurdian: here</label>
+            <label>Date of Birth : here</label>
+            <label>Gende: here</label>
+            </div>
+            <div className="w-full bg-red-300"></div>
+        </div> */}
       <p className="text-lg font-semibold underline text-center">12th Exam details </p>
          <div className="w-full  h-auto flex px-3  flex-col xl:flex-row  mt-3">
            

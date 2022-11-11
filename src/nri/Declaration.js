@@ -1,4 +1,4 @@
-import { CheckBox } from "@mui/icons-material";
+
 import { Button } from "@mui/material";
 import React from "react";
 
@@ -95,7 +95,7 @@ const Declaration = () => {
             <li><b>3. </b> I hereby declare
           that all the information furnished above are true and correct and we
           will obey the rules and regulations of the institution if admitted </li>
-          <li className="mt-6 text-center"><CheckBox></CheckBox><label>I have clearly read the instructions mentioned above and would like to proceed further</label></li>
+          <li className="mt-6 text-center"> <input type="checkbox" className="w-4 h-4 accent-red-600 mr-2"/><label>I have clearly read the instructions mentioned above and would like to proceed further</label></li>
           </ul>
           
         </p>
@@ -122,6 +122,7 @@ const Declaration = () => {
           </Button>
         </div>
       </div>
+      
     </div>
   );
 };
