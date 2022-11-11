@@ -19,6 +19,7 @@ import {
 import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import FormData from "form-data";
 
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -97,8 +98,37 @@ function Personal() {
   }
   
   const handlephotoFile = async(e) =>{
+    e.preventDefault();
     const file = e.target.files[0];
     setSelectedFile(file)
+    console.log(file);
+    const formData = new FormData();
+    formData.append("filePhotograph",file);
+    console.log(formData)
+
+    try {
+      await axios
+        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page1/"+localStorage.getItem("user_id"),formData,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+              "Content-Type": "multipart/form-data",
+            },
+          })
+        .then((res) => {
+          console.log("this is the response \n"+res);
+          if (res.data.status === "SUCCESS") {
+            console.log("photo uploaded");
+          } else {
+            window.alert("Something wrong happened")
+            console.log("Something wrong happened");
+          }
+        });
+    } catch (error) {
+      setLoader(false)
+            window.alert(" wrong happened")
+      console.log(error);
+    }
   }
   const personalUpload = async (e) => {
     e.preventDefault();
@@ -241,7 +271,7 @@ function Personal() {
                 type="file"
                 size="small"
                 id="photo"
-                onChange={handlephotoFile}
+                onClick={handlephotoFile}
                 InputLabelProps={{
                   shrink: true,
                 }}

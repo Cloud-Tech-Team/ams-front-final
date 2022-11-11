@@ -54,6 +54,20 @@ const Education = () => {
     });
   }, [])
 
+  const [hsemarklist,setHsemarklist] = useState(null)
+  const [sslcmarklist,setSslcmarklist] = useState(null)
+  const [keammarklist,setKeammarklist] = useState(null)
+
+  // const markupload = async(e) =>{
+  //   e.preventDefault();
+  //   const file = e.target.files[0];
+  //   setSelectedFile(file)
+  //   console.log(file);
+  //   const formData = new FormData();
+  //   formData.append(e.target.id.value,file);
+  //   console.log(formData)
+  // }
+
   const eduDetailUpload = async(e) =>{
         e.preventDefault();
         const data = {
@@ -262,7 +276,7 @@ const Education = () => {
             <div className="w-full pt-3 space-y-2">
               <label className="text-md">Mark list upload [12th]*</label>
               <input
-                id="+2file"
+                id="plustwofile"
                 type="file"
                 className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               />
