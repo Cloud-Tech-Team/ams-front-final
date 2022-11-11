@@ -57,19 +57,37 @@ const Education = () => {
     });
   }, [])
 
-  const [hsemarklist,setHsemarklist] = useState(null)
-  const [sslcmarklist,setSslcmarklist] = useState(null)
-  const [keammarklist,setKeammarklist] = useState(null)
 
-  // const markupload = async(e) =>{
-  //   e.preventDefault();
-  //   const file = e.target.files[0];
-  //   setSelectedFile(file)
-  //   console.log(file);
-  //   const formData = new FormData();
-  //   formData.append(e.target.id.value,file);
-  //   console.log(formData)
-  // }
+  const markupload = async(e) =>{
+    e.preventDefault();
+    const file = e.target.files[0];
+    console.log(file);
+    const formData = new FormData();
+    formData.append(e.target.id.value,file);
+    console.log(formData)
+    try {
+      await axios
+        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page2/"+localStorage.getItem("user_id"),formData,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+              "Content-Type": "multipart/form-data",
+            },
+          })
+        .then((res) => {
+          console.log("this is the response \n"+res);
+          if (res.data.status === "SUCCESS") {
+            console.log("photo uploaded");
+          } else {
+            console.log("Something wrong happened");
+          }
+        });
+    } catch (error) {
+            window.alert("error wrong happened")
+            console.log(error);
+    }
+  }
+
 
   const eduDetailUpload = async(e) =>{
         e.preventDefault();
@@ -284,7 +302,8 @@ const Education = () => {
             <div className="w-full pt-3 space-y-2">
               <label className="text-md">Mark list upload [12th]</label>
               <input
-                id="plustwofile"
+                onChange= {markupload}
+                id="file12th"
                 type="file"
                 className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               />
@@ -378,7 +397,8 @@ const Education = () => {
             <div className="w-full pt-3 space-y-2">
               <label className="text-md">Mark list upload [10th]*</label>
               <input
-                id="sslcfile"
+                id="file10th"
+                 onChange={markupload}
                 type="file"
                 className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               />
@@ -448,7 +468,8 @@ const Education = () => {
             <div className="w-full pt-3 space-y-2">
               <label className="text-md">Mark list upload [KEAM]</label>
               <input
-                id="keamfile"
+                id="fileKeam"
+                 onChange={markupload}
                 type="file"
                 className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               />
