@@ -7,7 +7,6 @@ import { jsPDF } from "jspdf"
 import nri from "./nri.jpg"
 import application from "./application.pdf"
 import { useNavigate} from "react-router-dom"
-import { PDFDocument, PDFDocumentWriter } from 'pdf-lib'
 
 const doc = new jsPDF();
 
