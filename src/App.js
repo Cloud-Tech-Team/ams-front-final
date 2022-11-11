@@ -21,6 +21,7 @@ import Personal from "./nri/Personal"
 import Payment from "./nri/Payment"
 import Education from "./nri/Education";
 import Declaration from "./nri/Declaration";
+import { Verification } from "./nri/Verification";
 
 
 const themeOptions = {
@@ -60,6 +61,7 @@ function App() {
                   <Route element={<Personal/>} path="/nriform" exact/>
                   <Route element={<Education/>} path="/nriform/education" exact/>
                   <Route element={<Declaration/>} path="/nriform/declaration" exact/>
+                  <Route element={<Verification/>} path="/nriform/verification" exact/>
                   <Route element={<Payment/>} path="/nriform/payment" exact/>
                 </Route>
                 <Route element={<Dashboard/>} path='/dashboard' exact/>

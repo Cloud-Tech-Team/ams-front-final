@@ -55,7 +55,7 @@ const Education = () => {
             })
           .then((res) => {
             console.log(res);
-            if (res.data.status === "SUCCESS ") {
+            if (res.data.status === "SUCCESS") {
               console.log(res)              
             } else {
               console.log("something went wrong")              
