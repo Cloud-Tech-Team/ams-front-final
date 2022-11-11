@@ -15,6 +15,27 @@ const Declaration = () => {
       
     };
   }, [])
+
+  const handleBranch = async(e) =>{
+    e.preventDefault()
+    const data = {
+      branch : document.getElementById("bp").value
+    }
+    try {
+       await 
+       axios.get("https://ams-backend-api.herokuapp.com/user/branch/get",data,{
+        headers : {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        }
+       })
+       .then((res) => {
+        console.log(res)
+       })
+    }catch(error){
+      console.log(error);
+    }
+  }
+  
   const handleProceed=(e)=>{
     setLoader(true)
     e.preventDefault()
@@ -56,10 +77,10 @@ const Declaration = () => {
           <div className=" xl:w-1/2 rounded-md border-[2px] p-4 py-8 space-y-6">
                   <p className="text-lg mb-4">Branch Preference</p>
             <div className="sm:space-x-3 xl:flex justify-between">
-              <label>Preference I</label>
+              <label>Select Branch</label>
               <select
                 className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
-                id="bp1"
+                id="bp" onChange={handleBranch}
               >
                 <option value=""></option>
                 <option value="Computer Science">Computer Science</option>
@@ -74,7 +95,7 @@ const Declaration = () => {
                 <option value="EEE">EC</option>
               </select>
             </div>
-            <div className="sm:space-x-3 w-full xl:flex justify-between">
+            {/* <div className="sm:space-x-3 w-full xl:flex justify-between">
               <label>Preference II</label>
               <select
                 className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
@@ -111,7 +132,7 @@ const Declaration = () => {
                 <option value="EEE">EEE</option>
                 <option value="EEE">EC</option>
               </select>
-            </div>
+            </div> */}
           </div>
           <div className="xl:w-1/2 mt-6 xl:mt-0 xl:mx-8 p-4 bg-red-50 border-[2px] border-red-500 rounded-lg ">
             <b>Please Note</b><br/>
