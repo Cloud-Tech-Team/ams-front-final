@@ -23,17 +23,17 @@ const Education = () => {
            plustwophymark: document.getElementById("+2phy").value,
            plutwochemark : document.getElementById("+2chem").value,
            plustwobiomark: document.getElementById("+2bio").value,
-           plustwofile   : document.getElementById("+2file").value,
+          //  plustwofile   : document.getElementById("+2file").value,
            
            sslcschool    : document.getElementById("sslcschool").value,
            sslcboard     : document.getElementById("sslcboard").value,
-           sslcengmark   : document.getElementById("sslcenglish").value,
+           sslcengmark   : document.getElementById("sslceng").value,
            sslcmtsmark   : document.getElementById("sslcmaths").value,
            sslccsmark    : document.getElementById("sslccs").value,
            sslcphymark   : document.getElementById("sslcphy").value,
            sslcchemmark  : document.getElementById("sslcchem").value,
            sslcbiomark   : document.getElementById("sslcbio").value,
-           sslcfile      : document.getElementById("sslcfile").value,
+          //  sslcfile      : document.getElementById("sslcfile").value,
 
            keamyear      : document.getElementById("keamyear").value,
            keamrollno    : document.getElementById("keamroll").value,
@@ -41,26 +41,24 @@ const Education = () => {
            keampaper1    : document.getElementById("keamp1").value,
            keampaper2    : document.getElementById("keamp2").value,
            keamtotal     : document.getElementById("keamtotal").value,
-           keamfile      : document.getElementById("keamfile").value
+          //  keamfile      : document.getElementById("keamfile").value
         }
         console.log(data);
 
         try{
           await axios
-          .post("",data,
+          .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page2/"+localStorage.getItem("user_id"),data,
             {
               headers: {
                 Authorization: "Bearer " + localStorage.getItem("access_token"),
               },
             })
           .then((res) => {
-            console.log("this is the response \n"+res);
+            console.log(res);
             if (res.data.status === "SUCCESS ") {
-              
-              
+              console.log(res)              
             } else {
-              
-              
+              console.log("something went wrong")              
             }
           });
         }catch(error){
@@ -384,7 +382,7 @@ const Education = () => {
             <div className="w-full rounded-md my-4 bg-red-100 h-24"></div>
             <Button className="" variant="contained">
             <Link to="/nriform/payment" onClick = { eduDetailUpload }>Save</Link>
-            <Link to="/nriform/declaration">Save</Link>
+            {/* <Link to="/nriform/declaration">Save</Link> */}
             </Button>
             {/* </div> */}
           </div>
