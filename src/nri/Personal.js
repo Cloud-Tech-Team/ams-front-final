@@ -49,9 +49,7 @@ function Personal() {
           res.data.user.dob
         );
         document.getElementById("phone1").value =
-          res.data.user.aPhone === undefined
-            ? ""
-            : Number(res.data.user.aPhone);
+          res.data.user.aPhone = Number(res.data.user.aPhone);
 
         document.getElementById("Chouse").value =
           res.data.user.contactAddress.addressL1;
@@ -183,7 +181,7 @@ function Personal() {
         });
     } catch (error) {
       setLoader(false)
-            window.alert("Something wrong happened")
+            window.alert("error wrong happened")
       console.log(error);
     }
   };
@@ -243,7 +241,7 @@ function Personal() {
                 label="Contact Ph. No(M)"
                 type="text"
                 size="small"
-                required
+                required 
               />
               <TextField
                 InputLabelProps={{
@@ -480,8 +478,9 @@ function Personal() {
               onClick={personalUpload}
               >
                 Save
-               {/* <Link to="/nriform/education">Save</Link>  */}
-              </Button>
+               {/* Link to="/nriform/education">Save</Link>  */}
+              </Button> 
+              
             </div>
           </div>
         </div>

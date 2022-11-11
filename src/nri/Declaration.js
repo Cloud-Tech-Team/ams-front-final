@@ -5,7 +5,7 @@ import React from "react";
 const Declaration = () => {
   localStorage.setItem('pageNo',3)
   return (
-    <div className="font-poppins py-20 h-auto  mx-auto w-11/12 lg:w-3/5 flex items-center xl:my-auto">
+    <div className="font-poppins py-20 h-auto min-h-screen  mx-auto w-11/12 lg:w-3/5 flex items-center xl:my-auto">
       <div className="h-auto   w-full p-6 bg-white  rounded-[4px] ">
         <div className="w-full items-center xl:flex">
           <div className=" xl:w-1/2 rounded-md border-[2px] p-4 py-8 space-y-6">
