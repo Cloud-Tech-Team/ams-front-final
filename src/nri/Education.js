@@ -2,9 +2,57 @@ import React from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import {Backdrop, LinearProgress} from "@mui/material";
 
 const Education = () => {
   localStorage.setItem('pageNo',2)
+  const [loader, setLoader] = useState(true)
+  useEffect(() => {
+    axios
+    .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      },
+    })
+    .then((res) => {
+      setLoader(false);
+      console.log(res);
+      const plusTwo = res.data.user.grade12
+      document.getElementById("hseschool").value = plusTwo.school
+      document.getElementById("hseboard").value = plusTwo.board
+      document.getElementById("plustworeg").value = plusTwo.registerNumber
+      document.getElementById("plustwoyear").value = plusTwo.year
+      document.getElementById("plustwoattempt").value = plusTwo.attemptNumber
+      document.getElementById("plustwomark").value = plusTwo.mark
+      document.getElementById("plustwomaxmark").value = plusTwo.maxMark
+      document.getElementById("plustwopercent").value = plusTwo.percentage
+      document.getElementById("+2eng").value = plusTwo.markEnglish
+      document.getElementById("+2maths").value = plusTwo.markMaths
+      document.getElementById("+2cs").value = plusTwo.markCS
+      document.getElementById("+2phy").value = plusTwo.markPhy
+      document.getElementById("+2chem").value = plusTwo.markChem
+      document.getElementById("+2bio").value = plusTwo.markBio
+
+      const tenTh = res.data.user.grade12
+      document.getElementById("sslcschool").value = tenTh.school
+      document.getElementById("sslcboard").value = tenTh.board
+      document.getElementById("sslceng").value = tenTh.markEnglish
+      document.getElementById("sslcmaths").value = tenTh.markMaths
+      document.getElementById("sslccs").value = tenTh.markCS
+      document.getElementById("sslcphy").value = tenTh.markPhy
+      document.getElementById("sslcchem").value = tenTh.markChem
+      document.getElementById("sslcbio").value = tenTh.markBio
+      
+      const keam = res.data.user.keam
+      document.getElementById("keamyear").value = keam.year
+      document.getElementById("keamroll").value = keam.rollNumber
+      document.getElementById("keamrank").value = keam.rank
+      document.getElementById("keamp1").value = keam.markPaper1
+      document.getElementById("keamp2").value = keam.markPaper2
+      document.getElementById("keamtotal").value = keam.totalMark
+    });
+  }, [])
 
   const eduDetailUpload = async(e) =>{
         e.preventDefault();
@@ -55,7 +103,7 @@ const Education = () => {
             })
           .then((res) => {
             console.log(res);
-            if (res.data.status === "SUCCESS ") {
+            if (res.data.status === "SUCCESS") {
               console.log(res)              
             } else {
               console.log("something went wrong")              
@@ -68,6 +116,14 @@ const Education = () => {
   return (
     <div className="font-poppins mx-auto w-11/12 lg:w-3/4 py-10  xl:my-auto">
       <div className="h-auto w-full mt-10 bg-white rounded-[4px] ">
+      <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loader}
+        >
+          <div className="w-screen absolute top-0">
+            <LinearProgress color="primary" />
+          </div>
+        </Backdrop>
         <div className="w-full  h-auto flex p-3 flex-col xl:flex-row  mt-3">
           <div className="xl:w-1/2   p-4 h-full">
             <p className="text-lg mb-3 text-center">12th Exam details </p>
