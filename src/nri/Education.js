@@ -63,7 +63,8 @@ const Education = () => {
     const file = e.target.files[0];
     console.log(file);
     const formData = new FormData();
-    formData.append(e.target.id.value,file);
+    console.log(e.target.id)
+    formData.append(e.target.id,file);
     console.log(formData)
     try {
       await axios
