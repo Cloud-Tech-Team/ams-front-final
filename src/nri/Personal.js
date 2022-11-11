@@ -15,6 +15,8 @@ import {
   DialogTitle,
   Box,
   Backdrop,
+  DialogContent,
+  DialogActions
 } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -27,6 +29,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Personal() {
   const [loader, setLoader] = useState(false);
   const [check, setCheck] = useState(true);
+  const [msg, setMsg] = useState(true);
   localStorage.setItem('pageNo',1)
   const nav = useNavigate();
 
@@ -195,6 +198,22 @@ function Personal() {
           <div className="w-screen absolute top-0">
             <LinearProgress color="primary" />
           </div>
+        </Backdrop>
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={msg}
+        >
+          <Dialog open={msg} onClose={() => {setMsg(false)}}>
+            <DialogTitle>Important Message</DialogTitle>
+            <DialogContent>
+              We highly recommed you to contact<br/><b>Mr Binoy P.K (ph:9446717178) </b> before proceeding
+              <br/>Ignore this message if already contacted 
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => {setMsg(false)}}>Close</Button>
+            </DialogActions>
+          </Dialog>
+          
         </Backdrop>
 
         <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-8">
