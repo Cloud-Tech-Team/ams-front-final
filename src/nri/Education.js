@@ -8,9 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 const Education = () => {
   localStorage.setItem('pageNo',2)
-  const [loader, setLoader] = useState(true)
+  const [loader, setLoader] = useState(false)
   const nav = useNavigate();
   useEffect(() => {
+    setLoader(true)
     axios
     .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
       headers: {
@@ -72,6 +73,7 @@ const Education = () => {
 
   const eduDetailUpload = async(e) =>{
         e.preventDefault();
+        setLoader(true)
         const data = {
            plustwoschool : document.getElementById("hseschool").value,
            plustwoboard  : document.getElementById("hseboard").value,
@@ -121,12 +123,15 @@ const Education = () => {
             console.log(res);
             if (res.data.status === "SUCCESS") {
               console.log(res) 
-              nav("/nriform/declaration")             
+              setLoader(false)          
+              nav("/nriform/declaration")   
             } else {
-              console.log("something went wrong")              
+              console.log("something went wrong") 
+              setLoader(false)          
             }
           });
         }catch(error){
+          setLoader(false)          
            console.log(error);
         }
   };

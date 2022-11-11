@@ -2,17 +2,21 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {Backdrop, LinearProgress} from "@mui/material";
 
 const Declaration = () => {
   localStorage.setItem('pageNo',3)
-
+  const [loader,setLoader] = useState(false)
+  const nav = useNavigate();
   useEffect(() => {
     return () => {
       
     };
   }, [])
   const handleProceed=(e)=>{
+    setLoader(true)
     e.preventDefault()
     const data = {
       bp1 : document.getElementById('bp1').value,
@@ -27,8 +31,10 @@ const Declaration = () => {
       },
     })
   .then((res) => {
+    setLoader(false)
+    nav('/nriform/verification')            
     if (res.data.status === "SUCCESS") {
-      console.log(res)             
+      console.log(res) 
     } else {
       console.log(res)
       console.log("something went wrong")              
@@ -37,6 +43,14 @@ const Declaration = () => {
   }
   return (
     <div className="font-poppins py-20 h-auto min-h-screen  mx-auto w-11/12 lg:w-3/5 flex items-center xl:my-auto">
+      <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loader}
+        >
+          <div className="w-screen absolute top-0">
+            <LinearProgress color="primary" />
+          </div>
+        </Backdrop>
       <div className="h-auto   w-full p-6 bg-white  rounded-[4px] ">
         <div className="w-full items-center xl:flex">
           <div className=" xl:w-1/2 rounded-md border-[2px] p-4 py-8 space-y-6">

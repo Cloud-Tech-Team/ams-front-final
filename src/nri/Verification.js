@@ -1,6 +1,7 @@
 import React from "react";
 
 export const Verification = () => {
+  localStorage.setItem('pageNo',4)
   return (
     <div className="font-poppins min-h-screen mx-auto w-11/12 lg:w-3/4 py-10  xl:my-auto">
       <div className="h-auto w-full mt-10 bg-white rounded-[4px] ">
@@ -114,7 +115,7 @@ export const Verification = () => {
               </div>
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-1">3.</label>
-                <label className="text-md  mr-6">Computer Science</label>
+                <label className="text-md  mr-6">Science</label>
                 <label>here</label>
               </div>
               <div className="w-auto justify-between sm:flex items-center">
