@@ -277,7 +277,7 @@ const Education = () => {
               </div>
             </div>
             <div className="w-full pt-3 space-y-2">
-              <label className="text-md">Mark list upload [12th]*</label>
+              <label className="text-md">Mark list upload [12th]</label>
               <input
                 id="plustwofile"
                 type="file"
@@ -291,7 +291,7 @@ const Education = () => {
         </div>
         <div className="w-full  h-auto flex p-1 flex-col xl:flex-row shadow-md ">
           <div className="xl:w-1/2   p-4 h-full">
-            <p className="text-lg mb-3  text-center">10th Marks Details </p>
+            <p className="text-lg mb-3  text-center">10th Marks Details*</p>
             <div className="w-full  ">
               <input
                 id="sslcschool"
@@ -325,7 +325,7 @@ const Education = () => {
                 <input
                   id="sslcmaths"
                   type="text"
-                  placeholder="Grade-obtained*"
+                  placeholder="Percentage-obtained*"
                   className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
                 />
               </div>
@@ -335,7 +335,7 @@ const Education = () => {
                 <input
                   id="sslccs"
                   type="text"
-                  placeholder="Grade-obtained*"
+                  placeholder="Percentage-obtained*"
                   className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
                 />
               </div>
@@ -345,7 +345,7 @@ const Education = () => {
                 <input
                   id="sslcphy"
                   type="text"
-                  placeholder="Grade-obtained*"
+                  placeholder="Percentage-obtained*"
                   className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
                 />
               </div>
@@ -355,7 +355,7 @@ const Education = () => {
                 <input
                   id="sslcchem"
                   type="text"
-                  placeholder="Grade-obtained*"
+                  placeholder="Percentage-obtained*"
                   className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
                 />
               </div>
@@ -365,7 +365,7 @@ const Education = () => {
                 <input
                   id="sslcbio"
                   type="text"
-                  placeholder="Grade-obtained*"
+                  placeholder="Percentage-obtained*"
                   className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
                 />
               </div>
@@ -441,7 +441,7 @@ const Education = () => {
               </div>
             </div>
             <div className="w-full pt-3 space-y-2">
-              <label className="text-md">Mark list upload [KEAM]*</label>
+              <label className="text-md">Mark list upload [KEAM]</label>
               <input
                 id="keamfile"
                 type="file"

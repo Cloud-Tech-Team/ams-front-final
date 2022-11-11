@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 // import PhoneInput from 'react-phone-number-input'
+import { Backdrop, LinearProgress } from "@mui/material";
 
 function Register() {
   const nav = useNavigate()
@@ -13,8 +14,10 @@ function Register() {
   let gov = true
   let opc = true
 
+  const [loader,setLoader] = useState(false)
   const nriregister = async(e) =>{
      e.preventDefault();
+     setLoader(true)
      const data ={
        firstName:document.getElementById("fname").value,
        middleName:document.getElementById("mname").value,
@@ -36,14 +39,25 @@ function Register() {
         if(response.status===200){
           window.alert("Registration success");
           nav('/login')
-        }
+        }else
+          window.alert(response.statusText)
+        setLoader(false)
      }).catch((error)=>{
       console.log(error)
       window.alert("Registration Failed")
+      setLoader(false)
     })
   }
   return (
     <div className="w-screen h-screen bg-gradient-to-tl from-rock-blue-300 flex items-center justify-center via-rock-blue-300 to-rock-blue-400 ">
+      <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loader}
+        >
+          <div className="w-screen absolute top-0">
+            <LinearProgress color="primary" />
+          </div>
+        </Backdrop>
         <form
         action=""
         className="w-[600px] absolute z-20 h-auto py-8 px-9 space-y-4 rounded-sm bg-white shadow-2xl shadow-zinc-900">
