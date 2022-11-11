@@ -1,7 +1,9 @@
+import { CheckBox } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import React from "react";
 
 const Declaration = () => {
+  localStorage.setItem('pageNo',3)
   return (
     <div className="font-poppins py-20 h-auto  mx-auto w-11/12 lg:w-3/5 flex items-center xl:my-auto">
       <div className="h-auto   w-full p-6 bg-white  rounded-[4px] ">
@@ -74,15 +76,28 @@ const Declaration = () => {
             KEAM result publication
           </div>
         </div>
-        <p className="text-xl my-6 text-center underline">Undertaking</p>
-        <p className="text-center">
-          We.............................(applicant) &
+        <p className="text-xl my-6 text-center underline">Instructions</p>
+        <p className="">
+          {/* We.............................(applicant) &
           ...............................(parent/guardian) do hereby declare
           that all the information furnished above are true and correct and we
           will obey the rules and regulations of the institution if admitted.We
           promise to submit all certificates and documents in original at the
           time of admission failing with the admission will be liable for
-          cancellation.
+          cancellation. */}
+          <ul>
+            <li><b>1. </b>I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI Quota admission for the year
+              2023, such that my ward has to attain 70% Marks for Mathematics individually anf 70% put together in Physics, Chemistry & Mathematics, in the 12th
+              stadard, for Qualifying examination. If my ward failed to do so, there is no claim, from my side for the admission </li>
+            <li><b>2. </b> A student opting to <b>EXIT</b> before <b>5</b> days after the publication of KEAM
+            2023 score will be reimbursed the entire amount after deducting Rs
+            <b> 1000</b></li>
+            <li><b>3. </b> I hereby declare
+          that all the information furnished above are true and correct and we
+          will obey the rules and regulations of the institution if admitted </li>
+          <li className="mt-6 text-center"><CheckBox></CheckBox><label>I have clearly read the instructions mentioned above and would like to proceed further</label></li>
+          </ul>
+          
         </p>
         <div className=" xl:flex items-center mt-3 gap-4 justify-center">
           <p className="font-semibold">Signature Upload (applicant)*</p>

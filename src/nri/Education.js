@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {Backdrop, LinearProgress} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Education = () => {
   localStorage.setItem('pageNo',2)
   const [loader, setLoader] = useState(true)
+  const nav = useNavigate();
   useEffect(() => {
     axios
     .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
@@ -34,7 +36,7 @@ const Education = () => {
       document.getElementById("+2chem").value = plusTwo.markChem
       document.getElementById("+2bio").value = plusTwo.markBio
 
-      const tenTh = res.data.user.grade12
+      const tenTh = res.data.user.grade10
       document.getElementById("sslcschool").value = tenTh.school
       document.getElementById("sslcboard").value = tenTh.board
       document.getElementById("sslceng").value = tenTh.markEnglish
@@ -118,7 +120,8 @@ const Education = () => {
           .then((res) => {
             console.log(res);
             if (res.data.status === "SUCCESS") {
-              console.log(res)              
+              console.log(res) 
+              nav("/nriform/declaration")             
             } else {
               console.log("something went wrong")              
             }
@@ -304,7 +307,7 @@ const Education = () => {
                 className="rounded-[4px]  border-[1px] w-full my-3 hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               />
             </div>
-            <p className="text-lg my-3 text-center">Marks obtained in 10th </p>
+            <p className="text-lg my-3 text-center">Percentage obtained in 10th </p>
             <div className="w-full space-y-3 p-3 border-[2px] rounded-[4px]">
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-1">1.</label>
@@ -312,7 +315,7 @@ const Education = () => {
                 <input
                   id="sslceng"
                   type="text"
-                  placeholder="Grade-obtained*"
+                  placeholder="Percentage-obtained*"
                   className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
                 />
               </div>
@@ -328,7 +331,7 @@ const Education = () => {
               </div>
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-1">3.</label>
-                <label className="text-md  mr-6">Computer Science</label>
+                <label className="text-md  mr-6">Science</label>
                 <input
                   id="sslccs"
                   type="text"

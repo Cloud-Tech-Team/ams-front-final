@@ -16,6 +16,7 @@
     "chartjs": "^0.3.24",
     "form-data": "^4.0.0",
     "jspdf": "^2.5.1",
+    "pdf-lib": "^1.17.1",
     "react": "^18.2.0",
     "react-background-video-player": "^1.1.8",
     "react-chartjs-2": "^4.3.1",

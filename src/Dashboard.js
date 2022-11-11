@@ -5,13 +5,15 @@ import CallIcon from '@mui/icons-material/Call';
 import HomeIcon from '@mui/icons-material/Home';
 import { jsPDF } from "jspdf"
 import nri from "./nri.jpg"
+import application from "./application.pdf"
 import { useNavigate} from "react-router-dom"
+import { PDFDocument, PDFDocumentWriter } from 'pdf-lib'
 
 const doc = new jsPDF();
 
 const handle_click = () => {
-   doc.addImage(nri,0,0,210,297)
-    doc.save("dash.pdf")
+  doc.addImage(nri,0,0,210,297)
+  doc.save("MITS_application.pdf")
 }
 
 const Dashboard = () => {

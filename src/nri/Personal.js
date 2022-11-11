@@ -271,7 +271,7 @@ function Personal() {
                 type="file"
                 size="small"
                 id="photo"
-                onClick={handlephotoFile}
+                onChange={handlephotoFile}
                 InputLabelProps={{
                   shrink: true,
                 }}
