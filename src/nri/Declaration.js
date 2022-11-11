@@ -134,14 +134,32 @@ const Declaration = () => {
           time of admission failing with the admission will be liable for
           cancellation. */}
           <ul>
-            <li><b>1. </b>I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI Quota admission for the year
-              2023, such that my ward has to attain 70% Marks for Mathematics individually anf 70% put together in Physics, Chemistry & Mathematics, in the 12th
-              stadard, for Qualifying examination. If my ward failed to do so, there is no claim, from my side for the admission </li>
-            <li><b>2. </b> A student opting to <b>EXIT</b> before <b>5</b> days after the publication of KEAM
-            2023 score will be reimbursed the entire amount after deducting Rs
-            <b> 1000</b></li>
-            <li><b>3. </b> I hereby declare
-          that all the information furnished above are true and correct and we
+            <li><b>1.GROUP A branches </b><br/>I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI Quota admission for the year
+              2023, such that my ward has to attain 75% Marks for Mathematics individually and 75% put together in Physics, Chemistry & Mathematics, in the 12th
+              stadard, for Qualifying examination(CBSE/ISC) OR
+              <br/>
+              attain 75% Marks for Mathematics individually and 75% put together in Physics, Chemistry & Mathematics, in the 12th
+              stadard(Terminal-evaluation TE), for Qualifying examination(State Board).
+              <li>
+              If my ward failed to do so, there is no claim, from my side for the admission
+                <br/>
+              <b>2.GROUP B branches </b><br/>I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI Quota admission for the year
+              2023, such that my ward has to attain 70% Marks for Mathematics individually and 70% put together in Physics, Chemistry & Mathematics, in the 12th
+              stadard, for Qualifying examination(CBSE/ISC) OR
+              <br/>
+              attain 70% Marks for Mathematics individually and 70% put together in Physics, Chemistry & Mathematics, in the 12th
+              stadard(Terminal-evaluation TE), for Qualifying examination(State Board).
+              </li>
+               If my ward failed to do so, there is no claim, from my side for the admission </li>
+            <li className="text-center"><b>EXIT OPTION </b><br/>1. A student can opt to <b>EXIT </b>from NRI quota before <b>5</b> days after the publication of KEAM
+            2023 score and will be reimbursed the entire amount after deducting Rs
+            <b> 1000</b> processing fee. However a student will be automatically
+            considered for MITS management quota from NRI quota if he desires so and has to freeze the registration in MITS. Request for exit should be mailed in admissions@mgits.ac.in within the stipulated time. There after the
+            registered choice will be freezed and will not be eligible for any
+            refund if the admission is cancelled after 5 days from the date of
+            KEAM result publication</li>
+            <li><b>2. </b> I hereby declare
+          that I have read all the instructions, Exit options and undertake that all the information furnished above are true and correct and I
           will obey the rules and regulations of the institution if admitted </li>
           <li className="mt-6 text-center"> <input type="checkbox" className="w-4 h-4 accent-red-600 mr-2"/><label>I have clearly read the instructions mentioned above and would like to proceed further</label></li>
           </ul>
@@ -158,7 +176,7 @@ const Declaration = () => {
           upload an image file (jpeg/png) of size less than 1mb*
         </p>
         <div className="w-full flex  justify-between">
-          <Button variant="contained">Exit</Button>
+          {/* <Button variant="contained">Cancel application</Button> */}
           <Button
             sx={{
               color: "#fff",

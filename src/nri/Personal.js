@@ -206,7 +206,7 @@ function Personal() {
           <Dialog open={msg} onClose={() => {setMsg(false)}}>
             <DialogTitle>Important Message</DialogTitle>
             <DialogContent>
-              We highly recommed you to contact<br/><b>Mr Binoy P.K (ph:9446717178) </b> before proceeding
+              We recommed you to contact<br/><b>Mr Binoy P.K (ph:9446717178) </b> before proceeding
               <br/>Ignore this message if already contacted 
             </DialogContent>
             <DialogActions>
