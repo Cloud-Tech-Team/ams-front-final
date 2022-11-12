@@ -18,24 +18,31 @@ const Declaration = () => {
 
   const handleBranch = async(e) =>{
     e.preventDefault()
-    const data = {
-      branch : document.getElementById("bp").value
-    }
+    const branch =  document.getElementById("bp").value
+    console.log(branch)
     try {
        await 
-       axios.get("https://ams-backend-api.herokuapp.com/user/branch/get",data,{
+       axios.get("https://ams-backend-api.herokuapp.com/branch/get",{
         headers : {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         }
        })
        .then((res) => {
         console.log(res)
+        console.log(res.data.list.length)
+        for(let i=0; i<res.data.list.length ; i++){
+             if(res.data.list[i].name === branch){
+                 if(res.data.list[i].NRIOccupied === res.data.list[i].NRISeats){
+                   window.alert("Seats in Preferred branch are filled..Select another one")
+                 }
+             }
+        }
        })
     }catch(error){
       console.log(error);
     }
   }
-  
+
   const handleProceed=(e)=>{
     setLoader(true)
     e.preventDefault()
