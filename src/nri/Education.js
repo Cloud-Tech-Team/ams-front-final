@@ -54,6 +54,13 @@ const Education = () => {
       document.getElementById("keamp1").value = keam.markPaper1
       document.getElementById("keamp2").value = keam.markPaper2
       document.getElementById("keamtotal").value = keam.totalMark
+
+      const mark12=plusTwo.marksheet
+      const mark10=tenTh.marksheet
+      const markKeam=keam.file
+      console.log(mark12)
+      console.log(mark10)
+      console.log(markKeam)
     });
   }, [])
 
