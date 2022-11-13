@@ -224,12 +224,12 @@ const Declaration = () => {
 
         <div className=" xl:flex items-center my-3 gap-4 justify-center">
           <p className="font-semibold">Signature Upload (applicant)*</p>
-          <span className="space-x-3">
+          <span className="sm:space-x-3">
           <input
             id="sign"
             onChange={handlesign}
             type="file"
-            className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
+            className="rounded-[4px] mb-2 border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
           />
           <Button variant="contained" onClick={signupload}>Upload</Button>
           </span>

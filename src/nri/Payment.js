@@ -7,16 +7,16 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const steps = ["Personal Details", "Payment"];
+
 function Payment() {
   const nav = useNavigate();
-  const [enable,setEnable] = useState(true);
-  const handleCheck=()=>{
-    if(document.getElementById("check").checked === true){
-    console.log("something")
-    setEnable(false)      
-    }else{
-      setEnable(true)
+  const [enable, setEnable] = useState(true);
+  const handleCheck = () => {
+    if (document.getElementById("check").checked === true) {
+      console.log("something");
+      setEnable(false);
+    } else {
+      setEnable(true);
     }
   }
 
@@ -27,6 +27,7 @@ function Payment() {
   }
   const finalsubmit = async(e) =>{
       e.preventDefault()
+      window.confirm("After final submit no changes can be made, Proceed?")
       const formData= new FormData()
       formData.append("fileTransactionID", document.getElementById('Transactionslip').files[0]);
       formData.append("transactionID",document.getElementById("TransactionId").value);
@@ -57,85 +58,62 @@ function Payment() {
      }
   }
 
-  return (
-    <>
-      <div className=" xl:w-[1180px] my-[30px] xl:my-auto">
-        <Stepper className="xl:w-[780px] px-3 mx-auto" activeStep={1}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <div className="w-full bg-white space-y-3 rounded-md h-auto py-6 font-poppins flex flex-col px-20 shadow-md mt-8">
-          <div className="w-full flex justify-center space-x-4">
-            <ErrorTwoToneIcon color="primary" />
-            <label className="text-red-500 font-semibold ml-5 italic ">
-              Pay advance Provisional registration fee of Rs 1,00,500 to the
-              following bank account and upload the photo of transaction slip
-              here
-            </label>
+    
+    return(
+    <div className="font-poppins min-h-screen  w-11/12 lg:w-3/5 py-20">
+      <div className="h-auto w-full mt-10 p-6 space-y-5 bg-white rounded-[4px] ">
+        <p className="text-center mb-4 font-semibold text-red-500">
+          Pay advance Provisional registration fee of Rs 1,00,500 to the
+          following bank account and upload the photo of transaction slip here
+        </p>
+        <div className="w-full sm:flex  p-2 ">
+          <div className="sm:w-1/2 space-y-5">
+            <p>
+              Name: <b>Muthoot Institute of Technolgy and Science</b>
+            </p>
+            <p>
+              Address: <b>Varikoli, Puthencruz - 682308</b>
+            </p>
+            <p>
+              Phone: <b>0484-2732100</b>
+            </p>
+            <p>
+              Bank: <b>FEDERAL BANK</b>
+            </p>
+            <p>
+              Address: <b>PUTHENCRUZ</b>
+            </p>
           </div>
 
-          <div className="w-full h-auto flex">
-          <div className="w-1/2 space-y-5 flex flex-col ">
-              <label>
-                Name: <b>Muthoot Institute of Technolgy and Science</b>
-              </label>
-              <label>
-                Address: <b>Varikoli, Puthencruz - 682308</b>
-              </label>
-              <label>
-                Phone: <b>0484-2732100</b>
-              </label>
-              <label>
-                Bank: <b>FEDERAL BANK</b>
-              </label>
-              <label>
-                Address: <b>PUTHENCRUZ</b>
-              </label>
-              
-          </div>
-          <div className="w-1/2 space-y-5 flex flex-col ">
-                <label>
-                      Branch: <b>Puthencruz</b>
-                    </label>
-                <label>
-                  Phone: <b>0484-2731259</b>
-                </label>
-                <label>
-                  IFSC Code: <b>FDRL0001223</b>
-                </label>
-                <label>
-                  MICR Code: <b>682049055</b>
-                </label>
+          <div className="sm:w-1/2 space-y-5">
+            <p>
+              Branch: <b>Puthencruz</b>
+            </p>
+            <p>
+              Phone: <b>0484-2731259</b>
+            </p>
+            <p>
+              IFSC Code: <b>FDRL0001223</b>
+            </p>
+            <p>
+              MICR Code: <b>682049055</b>
+            </p>
+            <div className="w-full sm:flex items-center ">
+              <p className="text-md mr-3">Transaction No:</p>
+              <input
+                id="TransactionId"
+                type="text"
+                className="rounded-[4px] p-1  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
+              />
+            </div>
           </div>
           </div>
-          <label className="py-5">Branch Selected: Computer Science</label>
           <div className="w-full flex justify-center ">
             <label className="text-md mr-3">Transaction Slip:</label>
-            <TextField
+            <input
               id="Transactionslip"
               onChange = {handleslip}
-              label="Photo Upload"
               type="file"
-              size="small"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              required
-            />
-          </div>
-          <div className="w-full flex justify-center ">
-            <label className="text-md mr-3">Transaction Id:</label>
-            <TextField
-              id="TransactionId"
-              label="Transaction Id"
-              type="text"
-              size="small"
-              InputLabelProps={{
-                shrink: true,
-              }}
               required
             />
           </div>
@@ -152,11 +130,7 @@ function Payment() {
             </Button>
             <Button
             disabled = {enable}
-              // onClick={() => {
-              //   window.alert(
-              //     "After final Submit no further changes can be made, Proceed ?"
-              //   );
-              // }}
+              
               onClick={finalsubmit}
               variant="contained"
               type="submit"
@@ -166,8 +140,8 @@ function Payment() {
             </Button>
           </div>
         </div>
-      </div>
-    </>
+    </div>
+    
   );
 }
 
