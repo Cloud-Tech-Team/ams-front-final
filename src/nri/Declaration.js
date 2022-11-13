@@ -4,6 +4,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Backdrop, LinearProgress } from "@mui/material";
+import FormData from "form-data";
 
 const Declaration = () => {
   localStorage.setItem("pageNo", 3);
@@ -41,20 +42,63 @@ const Declaration = () => {
          console.log(error);
     }
   };
+  
+  const [filesign, setFilesign] = useState();
+  const [signPick,setSignPick] = useState(false)
+  const handlesign = async(e) =>{
+    console.log(e.target.id);
+    setFilesign(e.target.files[0]);
+    setSignPick(true);
+  }
 
-  const handleProceed = (e) => {
+  const signupload = async(e) =>{
+     e.preventDefault()
+     const formData = new FormData();
+     formData.append("imgSign", filesign);
+     console.log(formData);
+     if (signPick === true) {
+      try {
+        await axios
+          .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
+            formData,
+            {
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res);
+            if (res.data.status === "SUCCESS ") {
+              window.alert("photo uploaded");
+            } else {
+              window.alert("Something wrong happened");
+            }
+          });
+      } catch (error) {
+        window.alert("error wrong happened");
+      }
+    } else {
+      window.alert("Please Pick the Signature");
+    }
+  }
+
+  const [isChecked , setIschecked] = useState(false)
+  const handlecheck = async(e) =>{
+    setIschecked(true)
+    console.log(e.target.id)
+  }
+  const handleProceed = async(e) => {
     setLoader(true);
     e.preventDefault();
     const data = {
-      bp1: document.getElementById("bp1").value,
-      bp2: document.getElementById("bp2").value,
-      bp3: document.getElementById("bp3").value,
-      imgSign: " ",
+      bp1: document.getElementById("bp").value,
     };
-    axios
-      .patch(
-        "https://ams-backend-api.herokuapp.com/user/nri/application-page3/" +
-          localStorage.getItem("user_id"),
+    if(isChecked === true ){
+    try{
+    await axios
+      .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
         data,
         {
           headers: {
@@ -72,6 +116,12 @@ const Declaration = () => {
           console.log("something went wrong");
         }
       });
+    }catch(error){
+      console.log(error)
+    }
+  }else{
+    window.alert("Kindly undertake the regulations");
+  }
   };
   return (
     <div className="font-poppins py-20 h-auto min-h-screen  mx-auto w-11/12 lg:w-3/5 flex items-center xl:my-auto">
@@ -170,20 +220,22 @@ const Declaration = () => {
           institution if admitted
           </p>
         </div>
-        <p className="mt-6 text-center"> <input type="checkbox" className="w-4 h-4 accent-red-600 mr-2"/><label>I have clearly read the instructions mentioned above and would like to proceed further</label></p>
+        <p className="mt-6 text-center"> <input id="proof" onChange={handlecheck} type="checkbox" className="w-4 h-4 accent-red-600 mr-2"/><label>I have clearly read the instructions mentioned above and would like to proceed further</label></p>
 
         <div className=" xl:flex items-center my-3 gap-4 justify-center">
           <p className="font-semibold">Signature Upload (applicant)*</p>
           <span className="space-x-3">
           <input
+            id="sign"
+            onChange={handlesign}
             type="file"
             className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
           />
-          <Button variant="contained">Upload</Button>
+          <Button variant="contained" onClick={signupload}>Upload</Button>
           </span>
           
         </div>
-        <LinearProgress sx={{width: "75%",margin:"auto"}} />
+        {/* <LinearProgress sx={{width: "75%",margin:"auto"}} /> */}
         <p className="text-center my-4 text-red-600">
           upload an image file (jpeg/png) of size less than 1mb*
         </p>
