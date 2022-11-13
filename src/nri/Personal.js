@@ -28,7 +28,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Personal() {
   const [loader, setLoader] = useState(false);
+  const [previewLoader,setPreviewLoader] = useState(false);
   const [msg, setMsg] = useState(true);
+  let [img,setImg] = useState();
   localStorage.setItem('pageNo',1)
   const nav = useNavigate();
 
@@ -75,14 +77,17 @@ function Personal() {
         document.getElementById("Ppincode").value =
           res.data.user.permanentAddress.pincode;
 
-        document.getElementById("parentName").value =
-          res.data.user.fatherDetails.name;
-        document.getElementById("parentOccupation").value =
-          res.data.user.fatherDetails.occupation;
-        document.getElementById("sponsorName").value =
-          res.data.user.NRIdetails.name;
-        document.getElementById("sponsorRelation").value =
-          res.data.user.NRIdetails.relation;
+        // document.getElementById("parentName").value =
+        //   res.data.user.fatherDetails.name;
+        // document.getElementById("parentOccupation").value =
+        //   res.data.user.fatherDetails.occupation;
+        // document.getElementById("sponsorName").value =
+        //   res.data.user.NRIdetails.name;
+        // document.getElementById("sponsorRelation").value =
+          // res.data.user.NRIdetails.relation;
+        img = res.data.user.filePhotograph
+          setImg(img)
+        console.log(img)
 
       });
   },[]);
@@ -102,7 +107,8 @@ function Personal() {
   
   const handlephotoFile = async(e) =>{
     e.preventDefault();
-    const file = e.target.files[0];
+    setPreviewLoader(true)
+    const file = document.getElementById('photo').files[0];
     setSelectedFile(file)
     console.log(file);
     const formData = new FormData();
@@ -121,7 +127,7 @@ function Personal() {
         .then((res) => {
           console.log("this is the response \n"+res);
           if (res.data.status === "SUCCESS") {
-            console.log("photo uploaded");
+            window.alert("photo uploaded");
           } else {
             window.alert("Something wrong happened")
             console.log("Something wrong happened");
@@ -132,6 +138,7 @@ function Personal() {
             window.alert(" wrong happened")
       console.log(error);
     }
+    setPreviewLoader(false)
   }
   const personalUpload = async (e) => {
     e.preventDefault();
@@ -290,15 +297,16 @@ function Personal() {
                 type="file"
                 size="small"
                 id="photo"
-                onChange={handlephotoFile}
                 InputLabelProps={{
                   shrink: true,
                 }}
                 required
               />
-              <p className="text-center p-2 bg-red-100 rounded-md w-1/2 text-sm mx-3">
+              <Button variant='contained' onClick={handlephotoFile}>Upload</Button>
+              <img src = {img} alt='photo' className="w-36 h-20"/>
+              {/* <p className="text-center p-2 bg-red-100 rounded-md w-1/2 text-sm mx-3">
                 Please select a passport size photo of file size less than 5mb
-              </p>
+              </p> */}
               {/* <Tooltip arrow title={eye ? "preview" : "no preview"}>
               <IconButton
                 sx={{ p: 1, mr: 1 }}
@@ -314,6 +322,7 @@ function Personal() {
               Upload
             </Button> */}
             </div>
+            {previewLoader && <LinearProgress/>}
             <div className=" flex flex-col space-y-2 p-5 mt-4 ">
               <label className="text-xl ml-2">Contact Address</label>
               <TextField
