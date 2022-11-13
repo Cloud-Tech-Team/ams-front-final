@@ -86,7 +86,7 @@ function Personal() {
         // document.getElementById("sponsorRelation").value =
           // res.data.user.NRIdetails.relation;
         img = res.data.user.filePhotograph
-          setImg(img)
+        setImg(img)
         console.log(img)
 
       });
@@ -105,8 +105,13 @@ function Personal() {
     }
   }
   
+  const [photopicked , setPhotopicked] = useState(false)
+  const forphoto = async(e) =>{
+    setPhotopicked(true)
+  }
   const handlephotoFile = async(e) =>{
     e.preventDefault();
+    console.log("in")
     setPreviewLoader(true)
     const file = document.getElementById('photo').files[0];
     setSelectedFile(file)
@@ -114,7 +119,7 @@ function Personal() {
     const formData = new FormData();
     formData.append("filePhotograph",file);
     console.log(formData)
-
+    if(photopicked === true){
     try {
       await axios
         .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page1/"+localStorage.getItem("user_id"),formData,
@@ -136,9 +141,13 @@ function Personal() {
     } catch (error) {
       setLoader(false)
             window.alert(" wrong happened")
-      console.log(error);
+            console.log(error);
     }
+   }else{
+    window.alert("Please select your photo")
+   }
     setPreviewLoader(false)
+    setPhotopicked(false)
   }
   const personalUpload = async (e) => {
     e.preventDefault();
@@ -149,7 +158,6 @@ function Personal() {
       lastName      : document.getElementById("lname").value,
       aPhone        : document.getElementById("phone1").value,
       phoneKerala   : document.getElementById("phoneKerala").value,
-      // filePhotograph:selectedFile,
 
         addressL1C: document.getElementById("Chouse").value,
         cityC     : document.getElementById("Ccity").value,
@@ -193,7 +201,7 @@ function Personal() {
         });
     } catch (error) {
       setLoader(false)
-            window.alert("error wrong happened")
+      window.alert("error wrong happened")
       console.log(error);
     }
   };
@@ -297,6 +305,7 @@ function Personal() {
                 type="file"
                 size="small"
                 id="photo"
+                onChange = {forphoto}
                 InputLabelProps={{
                   shrink: true,
                 }}
