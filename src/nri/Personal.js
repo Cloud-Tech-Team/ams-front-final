@@ -163,8 +163,8 @@ function Personal() {
         stateP    : document.getElementById("Pstate").value,
         pincodeP  : document.getElementById("Ppincode").value,
 
-        fatherName      : document.getElementById("parentName").value,
-        fatherOccupation: document.getElementById("parentOccupation").value,
+        guardianName      : document.getElementById("parentName").value,
+        guardianOccupation: document.getElementById("parentOccupation").value,
 
         NRIname    : document.getElementById("sponsorName").value,
         NRIrelation: document.getElementById("sponsorRelation").value,
