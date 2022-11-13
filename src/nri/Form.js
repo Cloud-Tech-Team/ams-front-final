@@ -53,7 +53,7 @@ function Form() {
 
   return (
     <div className="min-w-screen   h-auto bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex justify-center">
-      <div className="w-full  flex fixed top-0 bg-gradient-to-tl from-rock-blue-300 via-rock-blue-400 to-rock-blue-400 items-center justify-between p-4">
+      <div className="w-full z-30  flex fixed top-0 bg-gradient-to-tl from-rock-blue-300 via-rock-blue-400 to-rock-blue-400 items-center justify-between p-4">
         <Tooltip title="Help">
           <button
             onClick={handleHelp}

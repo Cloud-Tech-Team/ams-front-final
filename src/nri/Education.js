@@ -67,9 +67,9 @@ const Education = () => {
         mark10 = tenTh.marksheet;
         markkeam = keam.file;
         setMark10(mark10);
-        setMark12(mark12)
-        setMarkKeam(markkeam)
-        
+        setMark12(mark12);
+        setMarkKeam(markkeam);
+
         // console.log(tenTh)
         // console.log(mark12);
         // console.log(markKeam);
@@ -139,7 +139,7 @@ const Education = () => {
   const markupload12th = async (e) => {
     e.preventDefault();
     console.log(file12th);
-    setImgLoader12(true)
+    setImgLoader12(true);
     const formData = new FormData();
     formData.append("file12th", file12th);
     console.log(formData);
@@ -160,20 +160,19 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              setImgLoader12(false)
+              setImgLoader12(false);
               window.alert("photo uploaded");
             } else {
-              setImgLoader12(false)
+              setImgLoader12(false);
               window.alert("Something wrong happened");
             }
           });
       } catch (error) {
-        setImgLoader12(false)
+        setImgLoader12(false);
         window.alert("error wrong happened");
-        
       }
     } else {
-      setImgLoader12(false)
+      setImgLoader12(false);
       window.alert("Please upload your keam grade card");
     }
   };
@@ -186,7 +185,7 @@ const Education = () => {
 
   const keamupload = async (e) => {
     e.preventDefault();
-    setImgLoaderKeam(true)
+    setImgLoaderKeam(true);
     console.log(filekeam);
     const formData = new FormData();
     formData.append("fileKeam", filekeam);
@@ -208,20 +207,20 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              setImgLoaderKeam(false)
+              setImgLoaderKeam(false);
               window.alert("photo uploaded");
             } else {
-              setImgLoaderKeam(false)
+              setImgLoaderKeam(false);
               window.alert("Something wrong happened");
             }
           });
       } catch (error) {
-        setImgLoaderKeam(false)
+        setImgLoaderKeam(false);
         window.alert("error wrong happened");
         console.log(error);
       }
     } else {
-      setImgLoaderKeam(false)
+      setImgLoaderKeam(false);
       window.alert("Please upload your keam grade card");
     }
   };
@@ -520,29 +519,38 @@ const Education = () => {
             <div className="w-full pt-3 space-y-2">
               <label className="text-[15px]">Mark list upload [KEAM]</label>
 
-             
               <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
-              <img className="w-36 p-1 border-[1px] border-black rounded-md" src={markkeam} alt="keamfile" />
-              <div className="w-auto">
-                <input
-                  id="fileKeam"
-                  onChange={handlefileKeam}
-                  type="file"
-                  className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
+                <img
+                  className="w-36 p-1 border-[1px] border-black rounded-md"
+                  src={markkeam}
+                  alt="keamfile"
                 />
-               <Button  variant="contained" onClick={keamupload}>
-                  Upload
-                </Button>
-                </div> 
-               </div> 
-               {imgLoaderKeam && <LinearProgress />}
+                <div className="w-auto">
+                  <input
+                    id="fileKeam"
+                    onChange={handlefileKeam}
+                    type="file"
+                    className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
+                  />
+                  <Button variant="contained" onClick={keamupload}>
+                    Upload
+                  </Button>
+                </div>
+              </div>
+              {imgLoaderKeam && <LinearProgress />}
               <label className="text-sm text-red-600">
                 upload a pdf or image file of size less than 5mb*
               </label>
             </div>
           </div>
           <div className="w-full flex flex-col items-end justify-end ">
-            <div className="w-full rounded-md my-4 bg-red-100 h-24"></div>
+            <div className="w-full rounded-md my-4 bg-red-100 h-24">
+              <p className="p-2 text-center text-red-600 italic">
+                After selecting the mark list make sure you click <b>UPLOAD</b> button.
+                Your last change will be shown, you can use the upload button to
+                change the file.Please refresh the page to view recent changes.
+              </p>
+            </div>
             <Button className="" variant="contained">
               <Link to="/nriform/payment" onClick={eduDetailUpload}>
                 Save
