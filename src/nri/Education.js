@@ -309,7 +309,7 @@ const Education = () => {
   return (
     <div className="font-poppins min-h-screen w-11/12 lg:w-3/4 ">
       {console.log(mark10)}
-      <div className="h-auto w-full my-20 bg-white rounded-[4px] flex p-3 flex-col xl:flex-row ">
+      <div className="h-auto w-full my-20 bg-white rounded-[4px] flex p-2 flex-col xl:flex-row ">
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={loader}
@@ -362,7 +362,7 @@ const Education = () => {
 
               <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
                 <img
-                  className="w-36 p-1 border-[1px] border-black rounded-md"
+                  className="w-40 p-1 border-[1px] border-black rounded-md"
                   src={mark10}
                   alt="mrk10file"
                 />
@@ -384,7 +384,7 @@ const Education = () => {
               </div>
               {imgLoader && <LinearProgress />}
               <label className="text-sm text-red-600">
-                upload a pdf or image file of size less than 5mb*
+                upload an  image file of size less than 5mb*
               </label>
             </div>
           </div>
@@ -430,7 +430,7 @@ const Education = () => {
 
               <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
                 <img
-                  className="w-36 p-1 border-[1px] border-black rounded-md"
+                  className="w-40 p-1 border-[1px] border-black rounded-md"
                   src={mark12}
                   alt="mrk12file"
                 />
@@ -453,7 +453,7 @@ const Education = () => {
               {imgLoader12 && <LinearProgress />}
 
               <label className="text-sm text-red-600">
-                upload a pdf or image file of size less than 5mb*
+                upload an  image file of size less than 5mb*
               </label>
             </div>
           </div>
@@ -521,7 +521,7 @@ const Education = () => {
 
               <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
                 <img
-                  className="w-36 p-1 border-[1px] border-black rounded-md"
+                  className="w-40 p-1 border-[1px] border-black rounded-md"
                   src={markkeam}
                   alt="keamfile"
                 />
@@ -539,16 +539,16 @@ const Education = () => {
               </div>
               {imgLoaderKeam && <LinearProgress />}
               <label className="text-sm text-red-600">
-                upload a pdf or image file of size less than 5mb*
+                upload an  image file of size less than 5mb*
               </label>
             </div>
           </div>
           <div className="w-full flex flex-col items-end justify-end ">
-            <div className="w-full rounded-md my-4 bg-red-100 h-24">
+            <div className="w-full rounded-md my-4 bg-red-100 h-auto">
               <p className="p-2 text-center text-red-600 italic">
                 After selecting the mark list make sure you click <b>UPLOAD</b> button.
-                Your last change will be shown, you can use the upload button to
-                change the file.Please refresh the page to view recent changes.
+                Your last change will be shown, you can also use the upload button to
+                change the file later.Please refresh the page to view recent changes.
               </p>
             </div>
             <Button className="" variant="contained">
@@ -650,7 +650,7 @@ const Education = () => {
                 className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
               />
               <label className="text-sm text-red-600">
-                upload a pdf or image file of size less than 5mb*
+                upload a  image file of size less than 5mb*
               </label>
             </div>
           </div>
@@ -721,7 +721,7 @@ const Education = () => {
                 className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
               />
               <label className="text-sm text-red-600">
-                upload a pdf or image file of size less than 5mb*
+                upload a  image file of size less than 5mb*
               </label>
             </div>
             <div className="w-full flex flex-col items-end justify-end p-3">
