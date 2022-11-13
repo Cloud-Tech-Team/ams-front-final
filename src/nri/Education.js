@@ -10,8 +10,16 @@ const Education = () => {
   localStorage.setItem("pageNo", 2);
   const [loader, setLoader] = useState(false);
   const nav = useNavigate();
+  let [mark10, setMark10] = useState();
+  let [mark12, setMark12] = useState();
+  let [markkeam, setMarkKeam] = useState();
+  const [imgLoader, setImgLoader] = useState(false);
+  const [imgLoader12, setImgLoader12] = useState(false);
+  const [imgLoaderKeam, setImgLoaderKeam] = useState(false);
+
   useEffect(() => {
     setLoader(true);
+
     axios
       .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
         headers: {
@@ -55,140 +63,167 @@ const Education = () => {
         document.getElementById("keamp2").value = keam.markPaper2;
         document.getElementById("keamtotal").value = keam.totalMark;
 
-        const mark12 = plusTwo.marksheet;
-        const mark10 = tenTh.marksheet;
-        const markKeam = keam.file;
-        console.log(mark10);
-        console.log(mark12);
-        console.log(markKeam);
+        mark12 = plusTwo.marksheet;
+        mark10 = tenTh.marksheet;
+        markkeam = keam.file;
+        setMark10(mark10);
+        setMark12(mark12)
+        setMarkKeam(markkeam)
+        
+        // console.log(tenTh)
+        // console.log(mark12);
+        // console.log(markKeam);
+
+        handleBoardChange();
       });
   }, []);
-  
-  const [file10th,setFile10th] = useState()
-  const [file12th,setFile12th] = useState()
-  const [filekeam,setFilekeam] = useState()
-  const [is10thpicked, setIs10thpicked] = useState(false)
-  const [is12thpicked, setIs12thpicked] = useState(false)
-  const [iskeampicked, setIskeampicked] = useState(false)
 
-  const handle10thfile = async(e) =>{
-      console.log(e.target.id)
-      setFile10th(e.target.files[0]);
-      setIs10thpicked(true)
-  }
+  const [file10th, setFile10th] = useState();
+  const [file12th, setFile12th] = useState();
+  const [filekeam, setFilekeam] = useState();
+  const [is10thpicked, setIs10thpicked] = useState(false);
+  const [is12thpicked, setIs12thpicked] = useState(false);
+  const [iskeampicked, setIskeampicked] = useState(false);
+
+  const handle10thfile = async (e) => {
+    console.log(e.target.id);
+    setFile10th(e.target.files[0]);
+    setIs10thpicked(true);
+  };
   const markupload10th = async (e) => {
     e.preventDefault();
-    console.log(file10th);
+    setImgLoader(true);
     const formData = new FormData();
     formData.append("file10th", file10th);
     console.log(formData);
-    if (is10thpicked === true){
-    try {
-      await axios
-        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +localStorage.getItem("user_id"),
-          formData,
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access_token"),
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((res) => {
-          console.log("this is the response \n" + res);
-          if (res.data.status === "SUCCESS") {
-            console.log("photo uploaded");
-          } else {
-            console.log("Something wrong happened");
-          }
-        });
-    } catch (error) {
-      window.alert("error wrong happened");
-      console.log(error);
+    if (is10thpicked === true) {
+      try {
+        await axios
+          .patch(
+            "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+              localStorage.getItem("user_id"),
+            formData,
+            {
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((res) => {
+            console.log("this is the response \n" + res);
+            if (res.data.status === "SUCCESS") {
+              setImgLoader(false);
+              window.alert("photo uploaded");
+            } else {
+              setImgLoader(false);
+              window.alert("Something wrong happened");
+            }
+          });
+      } catch (error) {
+        setImgLoader(false);
+        window.alert("error wrong happened");
+      }
+    } else {
+      window.alert("Please Pick the 10th gradecard");
+      setImgLoader(false);
     }
-  }else{
-    window.alert("Please Pick the 10th gradecard")
-  }
   };
 
-  const handle12thfile = async(e) =>{
-    console.log(e.target.id)
+  const handle12thfile = async (e) => {
+    console.log(e.target.id);
     setFile12th(e.target.files[0]);
-    setIs12thpicked(true)
-  }
+    setIs12thpicked(true);
+  };
 
   const markupload12th = async (e) => {
     e.preventDefault();
     console.log(file12th);
+    setImgLoader12(true)
     const formData = new FormData();
     formData.append("file12th", file12th);
     console.log(formData);
-    if(is12thpicked === true){
-    try {
-      await axios
-        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +localStorage.getItem("user_id"),
-        formData,
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access_token"),
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        ).then((res) => {
-          console.log("this is the response \n" + res);
-          if (res.data.status === "SUCCESS") {
-            console.log("photo uploaded");
-          } else {
-            console.log("Something wrong happened");
-          }
-        });
-    } catch (error) {
-      window.alert("error wrong happened");
-      console.log(error);
+    if (is12thpicked === true) {
+      try {
+        await axios
+          .patch(
+            "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+              localStorage.getItem("user_id"),
+            formData,
+            {
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((res) => {
+            console.log("this is the response \n" + res);
+            if (res.data.status === "SUCCESS") {
+              setImgLoader12(false)
+              window.alert("photo uploaded");
+            } else {
+              setImgLoader12(false)
+              window.alert("Something wrong happened");
+            }
+          });
+      } catch (error) {
+        setImgLoader12(false)
+        window.alert("error wrong happened");
+        
+      }
+    } else {
+      setImgLoader12(false)
+      window.alert("Please upload your keam grade card");
     }
-  }else{
-    window.alert("Please upload your keam grade card")
-  }
   };
 
-  const handlefileKeam = async(e) =>{
-    console.log(e.target.id)
+  const handlefileKeam = async (e) => {
+    console.log(e.target.id);
     setFilekeam(e.target.files[0]);
-    setIskeampicked(true)
-  }
+    setIskeampicked(true);
+  };
 
   const keamupload = async (e) => {
     e.preventDefault();
+    setImgLoaderKeam(true)
     console.log(filekeam);
     const formData = new FormData();
     formData.append("fileKeam", filekeam);
     console.log(formData);
-    if(iskeampicked === true){
-    try {
-      await axios
-        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +localStorage.getItem("user_id"),
-        formData,
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("access_token"),
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        ).then((res) => {
-          console.log("this is the response \n" + res);
-          if (res.data.status === "SUCCESS") {
-            console.log("photo uploaded");
-          } else {
-            console.log("Something wrong happened");
-          }
-        });
-    } catch (error) {
-      window.alert("error wrong happened");
-      console.log(error);
+    if (iskeampicked === true) {
+      try {
+        await axios
+          .patch(
+            "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+              localStorage.getItem("user_id"),
+            formData,
+            {
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((res) => {
+            console.log("this is the response \n" + res);
+            if (res.data.status === "SUCCESS") {
+              setImgLoaderKeam(false)
+              window.alert("photo uploaded");
+            } else {
+              setImgLoaderKeam(false)
+              window.alert("Something wrong happened");
+            }
+          });
+      } catch (error) {
+        setImgLoaderKeam(false)
+        window.alert("error wrong happened");
+        console.log(error);
+      }
+    } else {
+      setImgLoaderKeam(false)
+      window.alert("Please upload your keam grade card");
     }
-  }else{
-    window.alert("Please upload your keam grade card")
-  }
   };
 
   const eduDetailUpload = async (e) => {
@@ -234,7 +269,8 @@ const Education = () => {
     try {
       await axios
         .patch(
-          "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" + localStorage.getItem("user_id"),
+          "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+            localStorage.getItem("user_id"),
           data,
           {
             headers: {
@@ -260,21 +296,20 @@ const Education = () => {
   };
 
   ///DOM-MANIP functions
-  const [oth_sslc, setOth_sslc] = useState(false);
-  const [oth_hse, setOth_hse] = useState(false);
-  const handleBoardChange = (e) => {
-    if (e.target.id === "sslcboard") {
-      if (e.target.value === "Others") setOth_sslc(true);
-      else setOth_sslc(false);
-    }
-    if (e.target.id === "hseboard") {
-      if (e.target.value === "Others") setOth_hse(true);
-      else setOth_hse(false);
-    }
-  };
+  const [oth_sslc, setOth_sslc] = useState();
+  const [oth_hse, setOth_hse] = useState();
+  function handleBoardChange() {
+    if (document.getElementById("sslcboard").value === "Others")
+      setOth_sslc(true);
+    else setOth_sslc(false);
+    if (document.getElementById("hseboard").value === "Others")
+      setOth_hse(true);
+    else setOth_hse(false);
+  }
 
   return (
     <div className="font-poppins min-h-screen w-11/12 lg:w-3/4 ">
+      {console.log(mark10)}
       <div className="h-auto w-full my-20 bg-white rounded-[4px] flex p-3 flex-col xl:flex-row ">
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -325,20 +360,30 @@ const Education = () => {
 
             <div className="w-full pt-3 space-y-2">
               <label className="text-[15px]">Mark list upload [10th]</label>
-              <div className="w-full space-x-3  justify-between flex">
-                <input
-                  id="file10th"
-                  onChange={handle10thfile}
-                  type="file"
-                  className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
+
+              <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
+                <img
+                  className="w-36 p-1 border-[1px] border-black rounded-md"
+                  src={mark10}
+                  alt="mrk10file"
                 />
-                {/* <div >
-                  <CircularProgress />
-                </div> */}
-                <Button id="file10th"sx={{ height: "100%" }} variant="contained" onClick={markupload10th}>
-                  Upload
-                </Button>
+                <div className="w-auto">
+                  <input
+                    id="file10th"
+                    onChange={handle10thfile}
+                    type="file"
+                    className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
+                  />
+                  <Button
+                    id="file10th"
+                    variant="contained"
+                    onClick={markupload10th}
+                  >
+                    Upload
+                  </Button>
+                </div>
               </div>
+              {imgLoader && <LinearProgress />}
               <label className="text-sm text-red-600">
                 upload a pdf or image file of size less than 5mb*
               </label>
@@ -383,20 +428,31 @@ const Education = () => {
 
             <div className="w-full pt-3 space-y-2">
               <label className="text-[15px]">Mark list upload [12th]</label>
-              <div className="w-full space-x-3  justify-between flex">
-                <input
-                  id="file12th"
-                  onChange={handle12thfile}
-                  type="file"
-                  className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
+
+              <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
+                <img
+                  className="w-36 p-1 border-[1px] border-black rounded-md"
+                  src={mark12}
+                  alt="mrk12file"
                 />
-                {/* <div >
-                  <CircularProgress />
-                </div> */}
-                <Button sx={{ height: "100%" }} variant="contained" onClick={markupload12th}>
-                  Upload
-                </Button>
+                <div className="w-auto">
+                  <input
+                    id="file12th"
+                    onChange={handle12thfile}
+                    type="file"
+                    className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
+                  />
+                  <Button
+                    id="file10th"
+                    variant="contained"
+                    onClick={markupload12th}
+                  >
+                    Upload
+                  </Button>
+                </div>
               </div>
+              {imgLoader12 && <LinearProgress />}
+
               <label className="text-sm text-red-600">
                 upload a pdf or image file of size less than 5mb*
               </label>
@@ -463,20 +519,23 @@ const Education = () => {
             </div>
             <div className="w-full pt-3 space-y-2">
               <label className="text-[15px]">Mark list upload [KEAM]</label>
-              <div className="w-full space-x-3  justify-between flex">
+
+             
+              <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
+              <img className="w-36 p-1 border-[1px] border-black rounded-md" src={markkeam} alt="keamfile" />
+              <div className="w-auto">
                 <input
                   id="fileKeam"
                   onChange={handlefileKeam}
                   type="file"
                   className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
                 />
-                {/* <div >
-                  <CircularProgress />
-                </div> */}
-                <Button  sx={{ height: "100%" }} variant="contained" onClick={keamupload}>
+               <Button  variant="contained" onClick={keamupload}>
                   Upload
                 </Button>
-              </div>
+                </div> 
+               </div> 
+               {imgLoaderKeam && <LinearProgress />}
               <label className="text-sm text-red-600">
                 upload a pdf or image file of size less than 5mb*
               </label>
@@ -485,10 +544,12 @@ const Education = () => {
           <div className="w-full flex flex-col items-end justify-end ">
             <div className="w-full rounded-md my-4 bg-red-100 h-24"></div>
             <Button className="" variant="contained">
-            <Link to="/nriform/payment" onClick = { eduDetailUpload }>Save</Link>
-            {/* <Link to="/nriform/declaration">Save</Link> */}
+              <Link to="/nriform/payment" onClick={eduDetailUpload}>
+                Save
+              </Link>
+              {/* <Link to="/nriform/declaration">Save</Link> */}
             </Button>
-            </div>
+          </div>
         </div>
         {/* </div> */}
         {/* <div className="w-full  h-auto flex p-1 flex-col xl:flex-row shadow-md ">
