@@ -28,7 +28,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Personal() {
   const [loader, setLoader] = useState(false);
-  const [check, setCheck] = useState(true);
   const [msg, setMsg] = useState(true);
   localStorage.setItem('pageNo',1)
   const nav = useNavigate();
@@ -90,12 +89,15 @@ function Personal() {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
-  function autofill() {
-    setCheck(!check);
-    console.log(check);
-    setCheck(!check);
-    console.log(check);
-    //do autofill
+  const autofill=(e)=> {
+    console.log(e.target.checked);
+    if(e.target.checked === true){
+      document.getElementById('Phouse').value = document.getElementById('Chouse').value
+      document.getElementById('Pstate').value = document.getElementById('Cstate').value
+      document.getElementById('Pdistrict').value = document.getElementById('Cdistrict').value
+      document.getElementById('Pcity').value = document.getElementById('Ccity').value
+      document.getElementById('Ppincode').value = document.getElementById('Cpincode').value
+    }
   }
   
   const handlephotoFile = async(e) =>{
@@ -374,6 +376,7 @@ function Personal() {
             </div>
           </div>
           <div className="xl:w-1/2  h-[584px]">
+            
             <div className=" flex flex-col space-y-2 p-5 mt-1 ">
               <label className="text-xl ml-2">Permanent Address</label>
               <TextField
