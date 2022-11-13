@@ -186,17 +186,17 @@ export const Verification = () => {
             <div className=" w-full rounded-md border-[2px] p-2 mx-16 space-y-6">
               <p className="text-lg font-semibold mb-4">Branch Preference</p>
               <div className="sm:space-x-3 xl:flex justify-between">
-              <label>Preference I</label>
+              <label>Preference</label>
               {/* <label>here</label> */}
               </div>
-              <div className="sm:space-x-3 w-full xl:flex justify-between">
+              {/* <div className="sm:space-x-3 w-full xl:flex justify-between">
               <label>Preference II</label>
                
               </div>
               <div className="sm:space-x-3 w-full xl:flex justify-between">
                 <label>Preference III</label>
                 
-              </div>
+              </div> */}
             </div>
             
           </div>

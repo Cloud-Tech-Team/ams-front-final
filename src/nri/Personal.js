@@ -147,7 +147,6 @@ function Personal() {
     window.alert("Please select your photo")
    }
     setPreviewLoader(false)
-    setPhotopicked(false)
   }
   const personalUpload = async (e) => {
     e.preventDefault();

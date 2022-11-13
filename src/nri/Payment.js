@@ -4,9 +4,12 @@ import { TextField, Checkbox, Button, Dialog } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const steps = ["Personal Details", "Payment"];
 function Payment() {
+  const nav = useNavigate();
   const [enable,setEnable] = useState(true);
   const handleCheck=()=>{
     if(document.getElementById("check").checked === true){
@@ -16,6 +19,44 @@ function Payment() {
       setEnable(true)
     }
   }
+
+  const [slipselect, setslipselect] = useState(false)
+  const handleslip = async(e) =>{
+    console.log(e.target.id)
+    setslipselect(true)
+  }
+  const finalsubmit = async(e) =>{
+      e.preventDefault()
+      const formData= new FormData()
+      formData.append("fileTransactionID", document.getElementById('Transactionslip').files[0]);
+      formData.append("transactionID",document.getElementById("TransactionId").value);
+      console.log(formData);
+      if(slipselect === true){
+        try{
+        await axios
+        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page5/" +localStorage.getItem("user_id"),
+        formData,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) =>{
+          console.log(res)
+          if(res.data.status === "SUCCESS "){
+            window.alert("Your Application Was Submitted")
+            nav("/dashboard")
+          }else{
+            window.alert("Something Went Wrong..Try again")
+          }
+        })
+      }catch(error){
+        console.log(error)
+      }
+     }
+  }
+
   return (
     <>
       <div className=" xl:w-[1180px] my-[30px] xl:my-auto">
@@ -74,8 +115,23 @@ function Payment() {
           <div className="w-full flex justify-center ">
             <label className="text-md mr-3">Transaction Slip:</label>
             <TextField
+              id="Transactionslip"
+              onChange = {handleslip}
               label="Photo Upload"
               type="file"
+              size="small"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              required
+            />
+          </div>
+          <div className="w-full flex justify-center ">
+            <label className="text-md mr-3">Transaction Id:</label>
+            <TextField
+              id="TransactionId"
+              label="Transaction Id"
+              type="text"
               size="small"
               InputLabelProps={{
                 shrink: true,
@@ -101,6 +157,7 @@ function Payment() {
               //     "After final Submit no further changes can be made, Proceed ?"
               //   );
               // }}
+              onClick={finalsubmit}
               variant="contained"
               type="submit"
               id="submitButton"

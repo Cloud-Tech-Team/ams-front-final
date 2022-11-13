@@ -95,7 +95,7 @@ const Declaration = () => {
     const data = {
       bp1: document.getElementById("bp").value,
     };
-    if(isChecked === true ){
+    if(isChecked === true && signPick ===true){
     try{
     await axios
       .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
