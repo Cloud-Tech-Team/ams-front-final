@@ -163,7 +163,7 @@ function Register() {
               {nri && <option value="NRI">NRI</option>}
               {gov && <option value="Government">Government</option>}
               {mgmt && <option value="Management">Management</option>}
-              {opc && <option value="Management">OCI/PIO/CIWG</option>}
+              {opc && <option value="Others">OCI/PIO/CIWG</option>}
             </select>
           </div>
         </div>

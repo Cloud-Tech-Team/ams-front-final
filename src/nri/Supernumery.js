@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { Button, Backdrop, LinearProgress, Tooltip } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useNavigate } from "react-router-dom";
 
 const Supernumery = () => {
   const [relation, setRelation] = useState(false);
   const [loader, setloader] = useState(false);
+  const nav = useNavigate();
   const handleQuota = (e) => {
     if (e.target.value === "ciwg") setRelation(true);
     else setRelation(false);
@@ -24,6 +26,7 @@ const Supernumery = () => {
   const handleProceed = (e) => {
     if (checkFill()) return;
     setloader(true);
+    nav('/nriform')
   };
   return (
     <div className="h-screen w-screen bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex items-center justify-center">

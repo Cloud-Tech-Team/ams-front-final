@@ -189,6 +189,18 @@ const Dashboard = () => {
   
     let pdf = doc.save("MITS_application");
       console.log(pdf)
+
+    const formData = new FormData();
+    formData.append('filePreview',pdf)
+
+    await axios.patch('https://ams-backend-api.herokuapp.com/user/nri/preview/'+localStorage.getItem('user_id'),formData,{
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+        "Content-Type": "multipart/form-data",
+      },
+    }).then(res => {
+      console.log(res)
+    })
   };
 
   return (

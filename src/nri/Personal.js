@@ -30,7 +30,7 @@ function Personal() {
   const [loader, setLoader] = useState(false);
   const [previewLoader,setPreviewLoader] = useState(false);
   const [msg, setMsg] = useState(true);
-  let [img,setImg] = useState();
+  const [img,setImg] = useState();
   localStorage.setItem('pageNo',1)
   const nav = useNavigate();
 
@@ -85,8 +85,7 @@ function Personal() {
           res.data.user.NRIdetails.name;
         document.getElementById("sponsorRelation").value =
           res.data.user.NRIdetails.relation;
-        img = res.data.user.filePhotograph
-        setImg(img)
+        setImg(res.data.user.filePhotograph)
         console.log(img)
 
       });
@@ -148,7 +147,7 @@ function Personal() {
    }
     setPreviewLoader(false)
   }
-  
+
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(!loader)

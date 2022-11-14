@@ -9,6 +9,7 @@ import FormData from "form-data";
 const Declaration = () => {
   localStorage.setItem("pageNo", 3);
   const [loader, setLoader] = useState(false);
+  const [msg,setMsg] = useState('');
   const nav = useNavigate();
   useEffect(() => {
     return () => {};
@@ -16,6 +17,7 @@ const Declaration = () => {
 
   const handleBranch = async (e) => {
     e.preventDefault();
+    setLoader(true)
     const branch = document.getElementById("bp").value;
     console.log(branch);
     try {
@@ -30,10 +32,12 @@ const Declaration = () => {
           console.log(res.data.list.length);
           for (let i = 0; i < res.data.list.length; i++) {
             if (res.data.list[i].name === branch) {
-              if (res.data.list[i].NRIOccupied === res.data.list[i].NRISeats) {
-                window.alert(
-                  "Seats in Preferred branch are filled..Select another one"
-                );
+              if (res.data.list[i].NRIOccupied >= res.data.list[i].NRISeats) {
+                // window.alert("Seats in Preferred branch are filled..Select another one");
+                setMsg(<p className="text-red-500 text-lg">Seats in Preferred branch are filled..Please select another one</p>)
+              }else{
+                // window.alert("Seat available")
+                setMsg(<p className="text-green-500 text-lg">Seat available</p>)
               }
             }
           }
@@ -41,6 +45,7 @@ const Declaration = () => {
     } catch (error) {
          console.log(error);
     }
+    setLoader(false)
   };
   
   const [filesign, setFilesign] = useState();
@@ -130,34 +135,30 @@ const Declaration = () => {
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loader}
       >
-        <div className="w-screen absolute top-0">
-          <LinearProgress color="primary" />
-        </div>
       </Backdrop>
       <div className="h-auto   w-full p-6 bg-white  rounded-[4px] ">
-        <div className=" xl:w-1/2 rounded-md border-[2px] p-4 py-8 space-y-6">
+        <div className=" w-auto xl:w-3/4 rounded-md border-[2px] p-4 py-8 space-y-6">
           <p className="text-lg mb-4">Branch Preference</p>
           <div className="sm:space-x-3 xl:flex justify-between">
             <label>Select Branch</label>
             <select
-              className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
+              className="rounded-[4px]  border-[1px] hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               id="bp"
               onChange={handleBranch}
             >
               <option value=""></option>
-              <option value="Computer Science">Computer Science</option>
-              <option value="Cyber Security">Cyber Security</option>
-              <option value="Artificial Intelligence">
-                Artificial Intelligence
-              </option>
-              <option value="CSE-AI&DS">CSE-AI&DS</option>
-              <option value="Civil">Civil</option>
-              <option value="Mech">Mech</option>
-              <option value="EEE">EEE</option>
-              <option value="EEE">EC</option>
+              <option value="CSE">Computer Science and Engineering</option>
+              <option value="CS">Cyber Security</option>
+              <option value="AI">Artificial Intelligence</option>
+              <option value="AI&DS">CSE-AI&DS</option>
+              <option value="CE">Civil Engineering</option>
+              <option value="ME">Mechanical Engineering</option>
+              <option value="EEE">Electrical and Electronics Engineering</option>
+              <option value="ECE">Electronics and Communication Engineeting</option>
             </select>
           </div>
-
+          {loader && <LinearProgress color="primary" />}
+          <label>{msg}</label>
           {/* <div className="xl:w-1/2 mt-6 xl:mt-0 xl:mx-8 p-4 bg-red-50 border-[2px] border-red-500 rounded-lg ">
             <b>Please Note</b><br/>
             A student opting to <b>EXIT</b> before <b>5</b> days after the publication of KEAM
