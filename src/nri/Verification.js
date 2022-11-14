@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export const Verification = () => {
   localStorage.setItem("pageNo", 4);
@@ -11,6 +12,9 @@ export const Verification = () => {
   const [marklistKeam, setMarklistKeam] = useState();
   const [photo, setPhoto] = useState();
   const [sign, setSign] = useState();
+  const [checked,setChecked] = useState(false)
+
+  const nav = useNavigate()
 
   useEffect(() => {
     axios
@@ -33,6 +37,17 @@ export const Verification = () => {
         setSign(signature)
       });
   }, []);
+  
+  const handlecheck = (e) =>{
+    setChecked(true)
+  }
+  const movetosubmit = async(e) =>{
+    if(checked === true){
+     nav("/nriform/payment")
+    }else{
+      window.alert("Confirm the form has Reviewed")
+    }
+  }
 
   return (
     <div className="font-poppins min-h-screen mx-auto w-11/12 lg:w-4/6 py-10  xl:my-auto">
@@ -215,12 +230,12 @@ export const Verification = () => {
         </div>
         <div className="p-6">
           <p className="text-center my-6">
-            <input type="checkbox" className="w-4 h-4 mr-2 accent-red-600" />I
+            <input type="checkbox" onChange={handlecheck} className="w-4 h-4 mr-2 accent-red-600" />I
             hereby declare that all the information furnished above are true and
             correct and we will obey the rules and regulations of the
             institution if admitted{" "}
           </p>
-          <Button color="blue" sx={{color: "#FFF"}} variant="contained">Final Submit</Button>
+          <Button color="blue" sx={{color: "#FFF"}} variant="contained" onClick={movetosubmit}>Final Submit</Button>
         </div>
         
       </div>

@@ -9,12 +9,25 @@ import { useNavigate } from "react-router-dom";
 
 
 function Payment() {
-  const nav = useNavigate();
-  useEffect(() => {
-    if(localStorage.getItem('dashboard'))
-      nav('/dashboard')
-  }, [])
   const [enable, setEnable] = useState(true);
+  const nav = useNavigate()
+
+  useEffect(() => {
+    axios
+      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById("TransactionId").value = res.data.user.transactionID ;
+        if(res.data.user.fileTransactionID != null){
+            setslipselect(true)
+        }
+      });
+  }, []);
+  
   const handleCheck = () => {
     if (document.getElementById("check").checked === true) {
       console.log("something");
