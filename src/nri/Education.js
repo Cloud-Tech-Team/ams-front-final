@@ -10,9 +10,7 @@ const Education = () => {
   localStorage.setItem("pageNo", 2);
   const [loader, setLoader] = useState(false);
   const nav = useNavigate();
-  let [mark10, setMark10] = useState();
-  let [mark12, setMark12] = useState();
-  let [markkeam, setMarkKeam] = useState();
+ 
   const [imgLoader, setImgLoader] = useState(false);
   const [imgLoader12, setImgLoader12] = useState(false);
   const [imgLoaderKeam, setImgLoaderKeam] = useState(false);
@@ -63,12 +61,7 @@ const Education = () => {
         document.getElementById("keamp2").value = keam.markPaper2;
         document.getElementById("keamtotal").value = keam.totalMark;
 
-        mark12 = plusTwo.marksheet;
-        mark10 = tenTh.marksheet;
-        markkeam = keam.file;
-        setMark10(mark10);
-        setMark12(mark12);
-        setMarkKeam(markkeam);
+       
         if(plusTwo.marksheet != null){
           setIs12thpicked(true)
         }
@@ -316,7 +309,7 @@ const Education = () => {
 
   return (
     <div className="font-poppins min-h-screen w-11/12 lg:w-3/4 ">
-      {console.log(mark10)}
+      
       <div className="h-auto w-full my-20 bg-white rounded-[4px] flex p-2 flex-col xl:flex-row ">
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -369,26 +362,22 @@ const Education = () => {
               <label className="text-[15px]">Mark list upload [10th]</label>
 
               <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
-                <img
-                  className="w-40 p-1 border-[1px] border-black rounded-md"
-                  src={mark10}
-                  alt="mrk10file"
-                />
-                <div className="w-auto">
+               
+             
                   <input
                     id="file10th"
                     onChange={handle10thfile}
                     type="file"
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
-                  <Button
+                  <Button sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
                     onClick={markupload10th}
                   >
                     Upload
                   </Button>
-                </div>
+                
               </div>
               {imgLoader && <LinearProgress />}
               <label className="text-sm text-red-600">
@@ -437,26 +426,22 @@ const Education = () => {
               <label className="text-[15px]">Mark list upload [12th]</label>
 
               <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
-                <img
-                  className="w-40 p-1 border-[1px] border-black rounded-md"
-                  src={mark12}
-                  alt="mrk12file"
-                />
-                <div className="w-auto">
+                
+                
                   <input
                     id="file12th"
                     onChange={handle12thfile}
                     type="file"
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
-                  <Button
+                  <Button sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
                     onClick={markupload12th}
                   >
                     Upload
                   </Button>
-                </div>
+              
               </div>
               {imgLoader12 && <LinearProgress />}
 
@@ -528,22 +513,18 @@ const Education = () => {
               <label className="text-[15px]">Mark list upload [KEAM]</label>
 
               <div className="w-full xl:space-x-3  flex flex-col xl:flex-row">
-                <img
-                  className="w-40 p-1 border-[1px] border-black rounded-md"
-                  src={markkeam}
-                  alt="keamfile"
-                />
-                <div className="w-auto">
+               
+                
                   <input
                     id="fileKeam"
                     onChange={handlefileKeam}
                     type="file"
                     className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
                   />
-                  <Button variant="contained" onClick={keamupload}>
+                  <Button sx={{height:"100%"}} variant="contained" onClick={keamupload}>
                     Upload
                   </Button>
-                </div>
+                
               </div>
               {imgLoaderKeam && <LinearProgress />}
               <label className="text-sm text-red-600">
@@ -559,7 +540,7 @@ const Education = () => {
                 change the file later.Please refresh the page to view recent changes.
               </p>
             </div>
-            <Button className="" variant="contained">
+            <Button sx={{height:"100%"}} className="" variant="contained">
               <Link to="/nriform/payment" onClick={eduDetailUpload}>
                 Save
               </Link>
@@ -734,7 +715,7 @@ const Education = () => {
             </div>
             <div className="w-full flex flex-col items-end justify-end p-3">
             <div className="w-full rounded-md my-4 bg-red-100 h-24"></div>
-            <Button className="" variant="contained">
+            <Button sx={{height:"100%"}} className="" variant="contained">
             <Link to="/nriform/payment" onClick = { eduDetailUpload }>Save</Link>
             <Link to="/nriform/declaration">Save</Link>
             </Button>
