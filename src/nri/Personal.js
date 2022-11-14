@@ -564,8 +564,9 @@ function Personal() {
                 type="text"
                 size="small"
               /> */}
-              <label >Relation with NRI sponsor</label>
+              <label >Relation with NRI sponsor*</label>
               <select
+              required
                 className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
                 id="sponsorRelation"
               >

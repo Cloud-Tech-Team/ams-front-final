@@ -188,7 +188,7 @@ const Declaration = () => {
         </div>
         <p className="text-xl my-6 text-center underline">Instructions</p>
         <div className="w-full space-y-4 p-2">
-          <p className="font-semibold ">1.GROUP A branches </p>
+          <p className="font-semibold ">1.GROUP A branches [CE, ME, EEE, CyberSecurity]</p>
           <p>
             I am aware about the criteria followed by "Muthoot Institute
             of Technology and Science", for the B-Tech NRI Quota admission for
@@ -201,7 +201,7 @@ const Declaration = () => {
             Qualifying examination(State Board). If my ward failed to do so,
             there is no claim, from my side for the admission
           </p>
-          <p className="font-semibold ">2.GROUP B branches </p>
+          <p className="font-semibold ">2.GROUP B branches [ECE, CSE, Artificial Intelligence, AI&DS]</p>
           <p>
             I am aware about the criteria followed by "Muthoot Institute of
             Technology and Science", for the B-Tech NRI Quota admission for the
@@ -217,15 +217,15 @@ const Declaration = () => {
         </div>
 
         <div className="w-full space-y-4 p-2 border-[3px] rounded-md mt-3 border-red-500">
-          <p className="text-center font-semibold underline">EXIT OPTION </p>
+          <p className="text-center font-semibold text-red-600 underline">EXIT OPTION </p>
           <p>
-          1. A student can opt to <b>EXIT </b>from NRI quota before <b>5 </b>
-          days, after the publication of KEAM 2023 SCORE and will be reimbursed with
+          1. A student can opt to <b className="bg-yellow-200">EXIT</b> from NRI quota before <b>5 </b>
+          days, after the publication of <b className="bg-yellow-200">KEAM 2023 SCORE</b> and will be reimbursed with
           the entire amount after deducting Rs
           <b> 1000</b> as processing fee. However, a student will be automatically
           considered for MITS Management Merit Quota from NRI quota if he desires so
-          and has to freeze the registration in MITS by sending an email to admissions@mgits.ac.in . Request for exit should be
-          mailed to admissions@mgits.ac.in within the stipulated time. There
+          and has to <b className="bg-yellow-200">freeze</b> the registration in MITS by sending an email to admissions@mgits.ac.in .<b className="bg-yellow-200">Request for exit</b> should be
+          mailed to <b className="bg-yellow-200">admissions@mgits.ac.in</b> within the stipulated time. There
           after the registered choice will be frozen and will not be eligible
           for any refund, if the admission is cancelled after 5 days from the
           date of KEAM SCORE publication.
