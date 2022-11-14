@@ -11,8 +11,21 @@ const Declaration = () => {
   const [loader, setLoader] = useState(false);
   const [msg,setMsg] = useState('');
   const nav = useNavigate();
+  
   useEffect(() => {
-    return () => {};
+    setLoader(true);
+
+    axios
+      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((res) => {
+        setLoader(false);
+        console.log(res);
+        document.getElementById("bp").value = res.data.user.bp1;
+      });
   }, []);
 
   const handleBranch = async (e) => {
