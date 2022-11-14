@@ -13,10 +13,12 @@ const Supernumery = () => {
     else setRelation(false);
   };
   function checkFill() {
+    console.log( document.getElementById("parent-name").value)
     if (
       document.getElementById("quota-select").value === "" ||
       (document.getElementById("quota-select").value === "ciwg" &&
-        document.getElementById("relation-select").value === "")
+        document.getElementById("relation-select").value === "" ||
+         document.getElementById("parent-name").value === "")
     ) {
       window.alert("Please fill out all fields");
       return 1;
@@ -44,7 +46,7 @@ const Supernumery = () => {
           <AccountCircleIcon fontSize="large" />
         </button>
       </Tooltip>
-      <p className="absolute text-center top-3 left-6">
+      <p className="absolute text-lg text-right bottom-6 right-6">
         <b>Contact Support</b><br/>
         Ms.Rija   : 0000000000<br/>
         Mr.Binoy  : 000000000
@@ -62,7 +64,7 @@ const Supernumery = () => {
           <option value="ciwg">CIWG</option>
         </select>
         {relation && (
-          <div className="pb-3">
+          <div className="pb-2">
             <p className="mb-4">CIWG - Relation with applicant</p>
             <select
               className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
@@ -74,6 +76,16 @@ const Supernumery = () => {
             </select>
           </div>
         )}
+         {relation && 
+          
+            <input
+              className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
+              id="parent-name"
+              placeholder="Name of Parent"
+
+           / >
+             
+        }
         <Button
           onClick={handleProceed}
           color="greenary"

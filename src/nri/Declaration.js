@@ -153,12 +153,12 @@ const Declaration = () => {
       >
       </Backdrop>
       <div className="h-auto   w-full p-6 bg-white  rounded-[4px] ">
-        <div className=" w-auto xl:w-3/4 rounded-md border-[2px] p-4 py-8 space-y-6">
+        <div className=" w-auto  rounded-md border-[2px] p-4 py-8 space-y-6">
           <p className="text-lg mb-4">Branch Preference</p>
           <div className="sm:space-x-3 xl:flex justify-between">
             <label>Select Branch</label>
             <select
-              className="rounded-[4px]  border-[1px] hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
+              className="rounded-[4px] w-11/12 sm:w-auto  border-[1px] hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               id="bp"
               onChange={handleBranch}
             >
@@ -170,7 +170,7 @@ const Declaration = () => {
               <option value="CE">Civil Engineering</option>
               <option value="ME">Mechanical Engineering</option>
               <option value="EEE">Electrical and Electronics Engineering</option>
-              <option value="ECE">Electronics and Communication Engineeting</option>
+              <option value="ECE">Electronics and Communication Engineering</option>
             </select>
           </div>
           {loader && <LinearProgress color="primary" />}
