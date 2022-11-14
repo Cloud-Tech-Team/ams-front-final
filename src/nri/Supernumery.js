@@ -13,12 +13,16 @@ const Supernumery = () => {
     else setRelation(false);
   };
   function checkFill() {
-    console.log( document.getElementById("parent-name").value)
+    if (document.getElementById("quota-select").value === "") {
+      window.alert("Please fill out all fields");
+      return 1;
+    }
+    if(document.getElementById("quota-select").value !== "ciwg")
+      return 0;
     if (
-      document.getElementById("quota-select").value === "" ||
       (document.getElementById("quota-select").value === "ciwg" &&
-        document.getElementById("relation-select").value === "" ||
-         document.getElementById("parent-name").value === "")
+        document.getElementById("relation-select").value === "") ||
+      document.getElementById("parent-name").value === ""
     ) {
       window.alert("Please fill out all fields");
       return 1;
@@ -28,7 +32,7 @@ const Supernumery = () => {
   const handleProceed = (e) => {
     if (checkFill()) return;
     setloader(true);
-    nav('/nriform')
+    nav("/nriform");
   };
   return (
     <div className="h-screen w-screen bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex items-center justify-center">
@@ -47,9 +51,11 @@ const Supernumery = () => {
         </button>
       </Tooltip>
       <p className="absolute text-lg text-right bottom-6 right-6">
-        <b>Contact Support</b><br/>
-        Ms.Rija   : 0000000000<br/>
-        Mr.Binoy  : 000000000
+        <b>Contact Support</b>
+        <br />
+        Ms.Rija : 0000000000
+        <br />
+        Mr.Binoy : 000000000
       </p>
       <div className="w-9/12 sm:w-3/5 rounded-md xl:w-2/6 bg-white space-y-4 h-auto p-4">
         <p>Select Quota*</p>
@@ -57,6 +63,7 @@ const Supernumery = () => {
           className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
           id="quota-select"
           onChange={handleQuota}
+          required
         >
           <option value=""></option>
           <option value="oci">OCI</option>
@@ -67,6 +74,7 @@ const Supernumery = () => {
           <div className="pb-2">
             <p className="mb-4">CIWG - Relation with applicant</p>
             <select
+              required
               className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
               id="relation-select"
             >
@@ -76,16 +84,14 @@ const Supernumery = () => {
             </select>
           </div>
         )}
-         {relation && 
-          
-            <input
-              className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
-              id="parent-name"
-              placeholder="Name of Parent"
-
-           / >
-             
-        }
+        {relation && (
+          <input
+            required
+            className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
+            id="parent-name"
+            placeholder="Name of Parent"
+          />
+        )}
         <Button
           onClick={handleProceed}
           color="greenary"
