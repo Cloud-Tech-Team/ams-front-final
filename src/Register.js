@@ -74,18 +74,21 @@ function Register() {
           <div className="w-full  h-auto flex space-x-6">
             <input
               placeholder="First"
+              autoComplete="new-password"
               type="text"
               id="fname"
               className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
             <input
               placeholder="Middle"
+              autoComplete="new-password"
               type="text"
               id="mname"
               className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
             <input
               placeholder="Last"
+              autoComplete="new-password"
               type="text"
               id="lname"
               className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -107,12 +110,14 @@ function Register() {
           <div className="w-full   h-auto flex space-x-6">
             <input
               placeholder="Email"
+              autoComplete="new-password"
               type="text"
               id="email"
               className="h-11 w-2/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
             />
             <input
               placeholder="Phone"
+              autoComplete="new-password"
               type="text"
               id="phone"
               className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -136,6 +141,7 @@ function Register() {
           <div className="w-full  h-auto flex space-x-6">
           <select
               name="gender"
+              autoComplete="new-password"
               className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
               id="gender"
             >
@@ -146,6 +152,7 @@ function Register() {
             </select>
             <select
               name="program"
+              autoComplete="new-password"
               className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
               id="program"
             >
@@ -156,6 +163,7 @@ function Register() {
             </select>
             <select
               name="quota"
+              autoComplete="new-password"
               className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
               id="quota"
             >
@@ -181,6 +189,7 @@ function Register() {
           <div className="w-full h-auto flex space-x-6">
             <input
               placeholder="Aadhar No."
+              autoComplete="new-password"
               type="tel"
               id="aadhar"
               className="h-11 w-1/2 border-[2px] rounded-md pl-4 text-xl  focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -190,6 +199,7 @@ function Register() {
                 e.target.type = "date";
               }}
               placeholder="DOB"
+              autoComplete="new-password"
               type="date"
               id="dob"
               className="h-11 w-1/2 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -203,6 +213,7 @@ function Register() {
           <label className="text-lg  italic">Choose applying year</label>
         <select
               name="year"
+              autoComplete="new-password"
               className="h-11 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
               id="apply-year"
             >
