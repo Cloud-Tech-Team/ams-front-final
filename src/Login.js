@@ -24,7 +24,10 @@ const Login = () => {
         console.log(response);
         if (response.status === 200) {
           setLoading(false)
-          nav("/nriform");
+          if(response.data.quota === 'NRI')
+              nav("/nriform");
+          else
+              nav("/supernumery")
           // window.alert("login success")
           localStorage.setItem("access_token", response.data.token);
           localStorage.setItem("user_id", data.applicationNo);

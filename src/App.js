@@ -22,7 +22,7 @@ import Payment from "./nri/Payment"
 import Education from "./nri/Education";
 import Declaration from "./nri/Declaration";
 import { Verification } from "./nri/Verification";
-
+import Supernumery from "./nri/Supernumery"
 
 const themeOptions = {
   palette: {
@@ -57,6 +57,7 @@ function App() {
               <Route element={<Adminlogin/>} path='/adminlogin' exact/>
               <Route element={<Register/>} path='/register' exact/>
               <Route element={<PrivateRoutes/>}>
+                <Route element = {<Supernumery/>} path = '/supernumery' exact/>
                 <Route element={<Form/>}>
                   <Route element={<Personal/>} path="/nriform" exact/>
                   <Route element={<Education/>} path="/nriform/education" exact/>

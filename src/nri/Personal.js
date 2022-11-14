@@ -148,6 +148,7 @@ function Personal() {
    }
     setPreviewLoader(false)
   }
+  
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(!loader)
