@@ -77,14 +77,14 @@ function Personal() {
         document.getElementById("Ppincode").value =
           res.data.user.permanentAddress.pincode;
 
-        // document.getElementById("parentName").value =
-        //   res.data.user.fatherDetails.name;
-        // document.getElementById("parentOccupation").value =
-        //   res.data.user.fatherDetails.occupation;
-        // document.getElementById("sponsorName").value =
-        //   res.data.user.NRIdetails.name;
-        // document.getElementById("sponsorRelation").value =
-          // res.data.user.NRIdetails.relation;
+        document.getElementById("parentName").value =
+          res.data.user.guardianDetails.name;
+        document.getElementById("parentOccupation").value =
+          res.data.user.guardianDetails.occupation;
+        document.getElementById("sponsorName").value =
+          res.data.user.NRIdetails.name;
+        document.getElementById("sponsorRelation").value =
+          res.data.user.NRIdetails.relation;
         img = res.data.user.filePhotograph
         setImg(img)
         console.log(img)

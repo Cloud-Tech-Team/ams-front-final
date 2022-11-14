@@ -120,6 +120,7 @@ const Declaration = () => {
       console.log(error)
     }
   }else{
+    setLoader(false)
     window.alert("Kindly undertake the regulations");
   }
   };
@@ -176,10 +177,10 @@ const Declaration = () => {
             of Technology and Science", for the B-Tech NRI Quota admission for
             the year 2023, such that my ward has to attain 75% Marks for
             Mathematics individually and 75% put together in Physics, Chemistry
-            & Mathematics, in the 12th stadard, for Qualifying
+            & Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 75% Marks for Mathematics
             individually and 75% put together in Physics, Chemistry &
-            Mathematics, in the 12th stadard(Terminal-evaluation TE), for
+            Mathematics, in the 12th standard(Terminal Evaluation TE), for
             Qualifying examination(State Board). If my ward failed to do so,
             there is no claim, from my side for the admission
           </p>
@@ -189,10 +190,10 @@ const Declaration = () => {
             Technology and Science", for the B-Tech NRI Quota admission for the
             year 2023, such that my ward has to attain 70% Marks for Mathematics
             individually and 70% put together in Physics, Chemistry &
-            Mathematics, in the 12th stadard, for Qualifying
+            Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 70% Marks for Mathematics
             individually and 70% put together in Physics, Chemistry &
-            Mathematics, in the 12th stadard(Terminal-evaluation TE), for
+            Mathematics, in the 12th standard(Terminal Evaluation TE), for
             Qualifying examination(State Board). If my ward failed to do so,
             there is no claim, from my side for the admission
           </p>
@@ -201,16 +202,16 @@ const Declaration = () => {
         <div className="w-full space-y-4 p-2 border-[3px] rounded-md mt-3 border-red-500">
           <p className="text-center font-semibold underline">EXIT OPTION </p>
           <p>
-          1. A student can opt to <b>EXIT </b>from NRI quota before <b>5</b>
-          days after the publication of KEAM 2023 score and will be reimbursed
+          1. A student can opt to <b>EXIT </b>from NRI quota before <b>5 </b>
+          days, after the publication of KEAM 2023 SCORE and will be reimbursed with
           the entire amount after deducting Rs
-          <b> 1000</b> processing fee. However a student will be automatically
-          considered for MITS management quota from NRI quota if he desires so
-          and has to freeze the registration in MITS. Request for exit should be
-          mailed in admissions@mgits.ac.in within the stipulated time. There
-          after the registered choice will be freezed and will not be eligible
-          for any refund if the admission is cancelled after 5 days from the
-          date of KEAM result publication
+          <b> 1000</b> as processing fee. However, a student will be automatically
+          considered for MITS Management Merit Quota from NRI quota if he desires so
+          and has to freeze the registration in MITS by sending an email to admissions@mgits.ac.in . Request for exit should be
+          mailed to admissions@mgits.ac.in within the stipulated time. There
+          after the registered choice will be frozen and will not be eligible
+          for any refund, if the admission is cancelled after 5 days from the
+          date of KEAM SCORE publication.
           </p>
         
           <p>
