@@ -51,8 +51,8 @@ export const Verification = () => {
           />
           </div>
         </div>
-        <div className="h-auto m-3 xl:flex space-x-4">
-          <div className="w-1/2 space-y-3  p-4    rounded-md border-[2px] ">
+        <div className="h-auto m-3 xl:flex xl:space-x-4">
+          <div className="xl:w-1/2 space-y-3  p-4    rounded-md border-[2px] ">
             <div className="flex items-center justify-between">
               <label>Name of the applicant:</label>
               <label className="font-semibold">here</label>
@@ -94,7 +94,7 @@ export const Verification = () => {
               <label className="font-semibold">here</label>
             </div>
           </div>
-          <div className="w-1/2  p-4  space-y-3  rounded-md border-[2px] ">
+          <div className="xl:w-1/2  p-4  space-y-3  rounded-md border-[2px] ">
             <p className="font-semibold">Contact Address</p>
             <div className="flex items-center justify-between">
               <label>House Name</label>
