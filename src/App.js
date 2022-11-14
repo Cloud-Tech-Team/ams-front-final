@@ -36,6 +36,9 @@ const themeOptions = {
     greenary: {
       main: "#2fc32f"
     },
+    blue: {
+      main: "#0080ff"
+    },
     white:{
       main:'#ffffff'
     }
