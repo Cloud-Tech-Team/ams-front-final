@@ -25,6 +25,9 @@ const Declaration = () => {
         setLoader(false);
         console.log(res);
         document.getElementById("bp").value = res.data.user.bp1;
+        if(res.data.user.imgSign != null){
+             setSignPick(true)
+        }
       });
   }, []);
 
@@ -113,7 +116,7 @@ const Declaration = () => {
     const data = {
       bp1: document.getElementById("bp").value,
     };
-    if(isChecked === true && signPick ===true){
+    if(isChecked === true && signPick === true){
     try{
     await axios
       .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page3/" +localStorage.getItem("user_id"),

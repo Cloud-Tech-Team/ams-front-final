@@ -1,7 +1,32 @@
 import React from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 export const Verification = () => {
   localStorage.setItem('pageNo',4)
+  
+  useEffect(() => {
+    axios
+      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        let photograph = res.data.user.filePhotograph
+        let file10th = res.data.user.grade10.marksheet
+        let file12th = res.data.user.grade12.marksheet
+        let filekeam = res.data.user.keam.file
+        let sign = res.data.user.imgSign
+        console.log(photograph)
+        console.log(file10th)
+        console.log(file12th)
+        console.log(filekeam)
+        console.log(sign)
+      });
+  }, []);
+
   return (
     <div className="font-poppins min-h-screen mx-auto w-11/12 lg:w-4/6 py-10  xl:my-auto">
       <div className="h-auto w-full mt-10 bg-white rounded-[4px] ">
