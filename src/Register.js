@@ -197,9 +197,24 @@ function Register() {
           </div>
         </div>
 
+
+        
+        <div className="w-full ">
+          <label className="text-lg  italic">Choose applying year</label>
+        <select
+              name="year"
+              className="h-11 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
+              id="apply-year"
+            >
+              <option value=""></option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+        </div>
+
         {/* button_div */}
         <div className="w-full pt-2 flex items-center justify-between px-1">
-          <button className="w-auto h-auto p-3 text-xl text-white rounded-md italic hover:bg-pink-600 bg-pink-800"
+          <button className="w-auto h-auto py-2 p-3 uppercase text-white rounded-md  hover:bg-red-700 bg-red-600"
           onClick={nriregister}>
           Submit
           </button>
