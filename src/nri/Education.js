@@ -538,8 +538,8 @@ const Education = () => {
             <div className="w-full rounded-md my-4 bg-red-100 h-auto">
               <p className="p-2 text-center text-red-600 italic">
                 After selecting the mark list make sure you click <b>UPLOAD</b> button.
-                Your last change will be shown, you can also use the upload button to
-                change the file later.Please refresh the page to view recent changes.
+                Your last change will be saved, you can also use the upload button to
+                change the file later.
               </p>
             </div>
             <Button sx={{height:"100%"}} className="" variant="contained">
