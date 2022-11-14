@@ -44,6 +44,8 @@ function Personal() {
       })
       .then((res) => {
         setLoader(false);
+        if(res.data.user.applicationCompleted)
+          nav('/dashboard')
         console.log(res);
         document.getElementById("fname").value = res.data.user.firstName;
         document.getElementById("mname").value = res.data.user.middleName;

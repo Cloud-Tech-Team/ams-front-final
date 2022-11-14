@@ -50,10 +50,6 @@ function App() {
     <>
       <Router>
         <ThemeProvider theme={theme}>
-          {/* <Form /> */}
-          {/* <Register /> */}
-          {/* <Dashboard /> */}
-          {/* <Pdf /> */}
             <Routes>
               <Route element={<Home/>} path='/' exact/>
               <Route element={<Login/>} path='/login' exact/>
@@ -61,6 +57,7 @@ function App() {
               <Route element={<Register/>} path='/register' exact/>
               <Route element={<PrivateRoutes/>}>
                 <Route element = {<Supernumery/>} path = '/supernumery' exact/>
+                <Route element={<Dashboard/>} path='/dashboard' exact/>
                 <Route element={<Form/>}>
                   <Route element={<Personal/>} path="/nriform" exact/>
                   <Route element={<Education/>} path="/nriform/education" exact/>
@@ -68,7 +65,6 @@ function App() {
                   <Route element={<Verification/>} path="/nriform/verification" exact/>
                   <Route element={<Payment/>} path="/nriform/payment" exact/>
                 </Route>
-                <Route element={<Dashboard/>} path='/dashboard' exact/>
               </Route>
               <Route element={<ProtectedRoutes/>}>
                 <Route element={<Admin/>}>

@@ -3,13 +3,17 @@ import ErrorTwoToneIcon from "@mui/icons-material/ErrorTwoTone";
 import { TextField, Checkbox, Button, Dialog } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
 function Payment() {
   const nav = useNavigate();
+  useEffect(() => {
+    if(localStorage.getItem('dashboard'))
+      nav('/dashboard')
+  }, [])
   const [enable, setEnable] = useState(true);
   const handleCheck = () => {
     if (document.getElementById("check").checked === true) {

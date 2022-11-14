@@ -26,6 +26,8 @@ const Education = () => {
       })
       .then((res) => {
         setLoader(false);
+        if(res.data.user.applicationCompleted)
+          nav('/dashboard')
         console.log(res);
         const plusTwo = res.data.user.grade12;
         document.getElementById("hseschool").value = plusTwo.school;

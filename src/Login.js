@@ -24,10 +24,18 @@ const Login = () => {
         console.log(response);
         if (response.status === 200) {
           setLoading(false)
-          if(response.data.quota === 'NRI')
+          if(response.data.applicationCompleted){
+              localStorage.setItem('dashboard',true)
+              nav('/dashboard')
+          }
+          else{
+            if(response.data.quota === 'NRI'){
+              localStorage.setItem('dashboard',false)
               nav("/nriform");
-          else
-              nav("/supernumery")
+            }
+            else
+                nav("/supernumery")
+          }
           // window.alert("login success")
           localStorage.setItem("access_token", response.data.token);
           localStorage.setItem("user_id", data.applicationNo);
