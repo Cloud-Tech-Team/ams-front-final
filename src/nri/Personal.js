@@ -85,8 +85,11 @@ function Personal() {
           res.data.user.NRIdetails.name;
         document.getElementById("sponsorRelation").value =
           res.data.user.NRIdetails.relation;
-        setImg(res.data.user.filePhotograph)
-        console.log(img)
+        if(res.data.user.filePhotograph != null){
+          setImg(res.data.user.filePhotograph)
+          console.log(img)
+          setPhotopicked(true)
+        }
 
       });
   },[]);
@@ -147,7 +150,7 @@ function Personal() {
    }
     setPreviewLoader(false)
   }
-
+  
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(!loader)
@@ -157,6 +160,7 @@ function Personal() {
       lastName      : document.getElementById("lname").value,
       aPhone        : document.getElementById("phone1").value,
       phoneKerala   : document.getElementById("phoneKerala").value,
+      dob           : document.getElementById("dob").value,
 
         addressL1C: document.getElementById("Chouse").value,
         cityC     : document.getElementById("Ccity").value,
@@ -178,6 +182,10 @@ function Personal() {
 
     };
     console.log(data);
+     if(data.firstName && data.lastName && data.aPhone && data.phoneKerala && data.dob
+      && data.addressL1C && data.cityC && data.districtC && data.stateC && data.pincodeC
+      && data.addressL1P && data.cityP && data.districtP && data.stateP && data.pincodeP 
+      && data.guardianName && data.guardianOccupation && data.NRIname && data.NRIrelation && photopicked)  {
     try {
       await axios
         .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page1/"+localStorage.getItem("user_id"),data,
@@ -203,6 +211,10 @@ function Personal() {
       window.alert("error wrong happened")
       console.log(error);
     }
+  }else{
+    setLoader(false)
+    window.alert("Some required Field Empty")
+  }
   };
   return (
     <div className=" xl:w-[1180px] mx-auto flex items-center justify-center h-screen ">
