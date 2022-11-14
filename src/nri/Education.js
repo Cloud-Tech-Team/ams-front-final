@@ -69,10 +69,15 @@ const Education = () => {
         setMark10(mark10);
         setMark12(mark12);
         setMarkKeam(markkeam);
-
-        // console.log(tenTh)
-        // console.log(mark12);
-        // console.log(markKeam);
+        if(plusTwo.marksheet != null){
+          setIs12thpicked(true)
+        }
+        if(tenTh.marksheet != null){
+          setIs10thpicked(true)
+        }
+        if(keam.file != null){
+          setIskeampicked(true)
+        }
 
         handleBoardChange();
       });
@@ -264,7 +269,7 @@ const Education = () => {
       //  keamfile      : document.getElementById("keamfile").value
     };
     console.log(data);
-
+    if( data.sslcboard && data.sslcboard && is10thpicked){
     try {
       await axios
         .patch(
@@ -292,6 +297,9 @@ const Education = () => {
       setLoader(false);
       console.log(error);
     }
+  }else{
+    window.alert("Some required field Empty")
+  }
   };
 
   ///DOM-MANIP functions
