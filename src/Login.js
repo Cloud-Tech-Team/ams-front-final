@@ -19,7 +19,7 @@ const Login = () => {
     };
     console.log(data);
     axios
-      .post("https://ams-backend-api.herokuapp.com/user/login", data)
+      .post("https://ams-backend-368705.el.r.appspot.com/user/login", data)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

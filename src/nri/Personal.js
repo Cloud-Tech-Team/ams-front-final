@@ -53,9 +53,7 @@ function Personal() {
         document.getElementById("dob").valueAsDate = new Date(
           res.data.user.dob
         );
-        document.getElementById("phone1").value = res.data.user.aPhone = Number(
-          res.data.user.aPhone
-        );
+        document.getElementById("phone1").value = (res.data.user.aPhone);
 
         document.getElementById("Chouse").value =
           res.data.user.contactAddress.addressL1;
@@ -167,7 +165,6 @@ function Personal() {
       middleName: document.getElementById("mname").value,
       lastName: document.getElementById("lname").value,
       aPhone: document.getElementById("phone1").value,
-      phoneKerala: document.getElementById("phoneKerala").value,
       dob: document.getElementById("dob").value,
 
       addressL1C: document.getElementById("Chouse").value,
@@ -341,6 +338,7 @@ function Personal() {
                 type="text"
                 size="small"
                 required
+                
               />
               <TextField
                 label="DOB"

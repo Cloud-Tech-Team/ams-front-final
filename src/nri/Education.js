@@ -293,6 +293,7 @@ const Education = () => {
       console.log(error);
     }
   }else{
+    setLoader(false);
     window.alert("Some required field Empty")
   }
   };

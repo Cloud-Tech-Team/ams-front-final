@@ -13,7 +13,41 @@ export const Verification = () => {
   const [photo, setPhoto] = useState();
   const [sign, setSign] = useState();
   const [checked,setChecked] = useState(false)
-
+  const [user,setUser] = useState({
+    firstName:'',
+    middleName: '',
+    lastName : '',
+    dob:'',
+    gender:'',
+    aadhaar:'',
+    phone:'',
+    aPhone:'',
+    guardianDetails : {
+      name:'',
+      occupation : ''
+    },NRIdetails :{
+      name : '',
+      relation : ''
+    },contactAddress : {
+      addressL1:'',
+      city : '',
+      district : '',
+      state : '',
+      pincode : ''
+    },permanentAddress : {
+      addressL1:'',
+      city : '',
+      district : '',
+      state : '',
+      pincode : ''
+    },grade10:{
+      school:'',
+      board:''
+    },grade12:{
+      school:'',
+      board:''
+    }
+  });
   const nav = useNavigate()
 
   useEffect(() => {
@@ -35,6 +69,7 @@ export const Verification = () => {
         setMarklistKeam(filekeam);
         setPhoto(photograph)
         setSign(signature)
+        setUser(res.data.user)
       });
   }, []);
   
@@ -70,82 +105,82 @@ export const Verification = () => {
           <div className="xl:w-1/2 space-y-3  p-4    rounded-md border-[2px] ">
             <div className="flex items-center justify-between">
               <label>Name of the applicant:</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.firstName+' ' + (user.middleName ? (user.middleName+' ') : ' ') + user.lastName}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Date of Birth :</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.dob.toString().slice(0,10)}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Gender:</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.gender}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Aadhar:</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.aadhaar}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Phone 1(M):</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.aPhone}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Phone 2(In Kerala)):</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.phone}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Name of parent/Gaurdian:</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.guardianDetails.name}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Parent's Occupation:</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.guardianDetails.occupation}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>NRI sponsor:</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.NRIdetails.name}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>Relation with applicant:</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.NRIdetails.relation}</label>
             </div>
           </div>
           <div className="xl:w-1/2  p-4  space-y-3  rounded-md border-[2px] ">
             <p className="font-semibold">Contact Address</p>
             <div className="flex items-center justify-between">
               <label>House Name</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.contactAddress.addressL1}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>State</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.contactAddress.state}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>District,City</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.contactAddress.district + ' , '+user.contactAddress.city}</label>
             </div>
 
             <div className="flex items-center justify-between">
               <label>Pin</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.contactAddress.pincode}</label>
             </div>
 
             <p className="font-semibold">Permanent Address</p>
             <div className="flex items-center justify-between">
               <label>House Name</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.permanentAddress.addressL1}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>State</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.permanentAddress.state}</label>
             </div>
             <div className="flex items-center justify-between">
               <label>District,City</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.permanentAddress.district + ' , '+user.permanentAddress.city}</label>
             </div>
 
             <div className="flex items-center justify-between">
               <label>Pin</label>
-              <label className="font-semibold">here</label>
+              <label className="font-semibold">{user.permanentAddress.pincode}</label>
             </div>
           </div>
         </div>
@@ -157,7 +192,7 @@ export const Verification = () => {
             </p>
             <label>Name of Institution: </label>
             <br />
-            <label>Board: </label>
+            <label>Board: {user.grade10.school}</label>
             <div className="w-full mt-3  p-1 border-[2px] rounded-[4px]">
               <img src={marklist10} alt="mrklist10" />
             </div>

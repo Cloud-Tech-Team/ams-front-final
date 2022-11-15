@@ -29,8 +29,7 @@ function Register() {
        quota:document.getElementById("quota").value,
        aadhaar:document.getElementById("aadhar").value,
        dob:document.getElementById("dob").value,
-       age:20,
-       academicYear:document.getElementById("apply-year").value
+       acadamicYear:document.getElementById('apply-year').value
      }
      console.log(data);
      axios.post("https://ams-backend-api.herokuapp.com/user/register",data)

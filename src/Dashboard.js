@@ -198,19 +198,17 @@ const Dashboard = () => {
     let pdf = doc.output('blob')
      
 
-    const formData = new FormData();
-    formData.append("filePreview",pdf)
-
-    await axios.patch('https://ams-backend-368705.el.r.appspot.com/user/nri/preview/'+localStorage.getItem('user_id'),{
-      filePreview : pdf
-    },{
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-        'Content-Type': 'application/pdf',
-      },
-    }).then(res => {
-      console.log(res)
-    })
+    // const formData = new FormData();
+    // formData.append("filePreview",pdf)
+    // console.log(formData)
+    // await axios.post('https://ams-backend-368705.el.r.appspot.com/user/send_pdf/'+localStorage.getItem('user_id'),formData,{
+    //   headers: {
+    //     Authorization: "Bearer " + localStorage.getItem("access_token"),
+    //     'Content-Type': 'multipart/form-data',
+    //   },
+    // }).then(res => {
+    //   console.log(res)
+    // })
   };
 
   return (

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button, Backdrop, LinearProgress, Tooltip } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Supernumery = () => {
   const [relation, setRelation] = useState(false);
@@ -30,10 +31,18 @@ const Supernumery = () => {
     return 0;
   }
   const handleProceed = (e) => {
-    if (checkFill()) 
-       return;
+    e.preventDefault()
+    if (checkFill()) return;
     setloader(true);
-    nav("/nriform");
+    const data = {
+      quota : document.getElementById('quota-select').value,
+      NRIdetails : {
+        relation : document.getElementById('relation-select').value === null ? document.getElementById('relation-select').value : '',
+        name     : document.getElementById('parent-name').value === null ? document.getElementById('parent-name').value : ''
+      }
+    }
+    console.log(data)
+    setloader(false)
   };
   return (
     <div className="h-screen w-screen bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex items-center justify-center">
@@ -85,14 +94,15 @@ const Supernumery = () => {
             </select>
           </div>
         )}
-        {relation && (
-          <input
-            required
-            className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
-            id="parent-name"
-            placeholder="Name of Parent"
-          />
-        )}
+         {relation && 
+          
+            <input
+              className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
+              id="parent-name"
+              placeholder="Name of Parent"
+           / >
+             
+        }
         <Button
           onClick={handleProceed}
           color="greenary"
