@@ -14,6 +14,7 @@ import {
   Select,
   MenuItem,
   FormControl,
+  Alert,
 } from "@mui/material";
 
 function Register() {
@@ -30,39 +31,48 @@ function Register() {
   const [quota, setQuota] = useState("");
   const [pgm, setPgm] = useState("");
 
+
+
+  const alertBox = () => {
+    return(
+      <Alert>hai</Alert>
+    );
+  }
   const nriregister = async (e) => {
     e.preventDefault();
-    setLoader(true);
+    // setLoader(true);
     
     const data = {
       firstName: document.getElementById("fname").value,
       middleName: document.getElementById("mname").value,
       lastName: document.getElementById("lname").value,
       email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
+      phone: Number(document.getElementById("phone").value),
       gender: gender,
       course: pgm,
       quota: quota,
-      aadhaar: document.getElementById("aadhar").value,
+      aadhaar: Number(document.getElementById("aadhar").value),
       dob: document.getElementById("dob").value,
       acadamicYear: year,
     };
     console.log(data);
     axios
-      // .post("https://ams-backend-368705.el.r.appspot.com/user/register", data)
-      .post("https://ams-backend-api.herokuapp.com/user/register", data)
+      .post("https://ams-backend-368705.el.r.appspot.com/user/register", data)
+      // .post("https://ams-backend-api.herokuapp.com/user/register", data)
       .then((response) => {
         console.log(response);
         console.log(data);
         if (response.status === 200) {
           window.alert("Registration success");
           nav("/login");
-        } else window.alert(response.statusText);
+        } else 
+        window.alert(response.statusText);
         setLoader(false);
       })
       .catch((error) => {
         console.log(error);
         window.alert(error.response.data.message);
+        // alertBox()
         setLoader(false);
       });
   };
@@ -267,20 +277,20 @@ function Register() {
           Registration
         </p>
         <div className="grid grid-row-3 xl:py-5 p-3 lg:grid-cols-3 gap-3">
-          <TextField
-            required
+          <TextField autoComplete="new-password"
+            required={true}
             label="First Name"
             id="fname"
             size="small"
           />
-          <TextField label="Middle Name" id="mname" size="small" />
-          <TextField required label="Last Name" id="lname" size="small" />
+          <TextField autoComplete="new-password" label="Middle Name" id="mname" size="small" />
+          <TextField autoComplete="new-password" required={true} label="Last Name" id="lname" size="small" />
         </div>
 
         <div className="grid grid-row-3 py-5 p-3 lg:grid-cols-3 gap-3">
-          <TextField
+          <TextField autoComplete="new-password"
             className="lg:col-span-2"
-            required
+            required={true}
             label="Email"
             type="email"
             id="email"
@@ -288,18 +298,24 @@ function Register() {
             fullWidth
           />
 
-          <TextField
-            required
+          <TextField autoComplete="new-password"
+            required={true}
+
             label="Mobile No.(in Kerala)"
             id="phone"
             size="small"
+            type="tel"
+            inputProps={{
+              maxLength: 10
+            }}
           />
         </div>
 
         <div className="grid grid-row-3 py-5 p-3 lg:grid-cols-3 gap-3">
-          <FormControl size="small">
+          <FormControl required={true} size="small">
             <InputLabel id="gendr">Gender</InputLabel>
-            <Select
+            <Select 
+              required={true}
               labelId="gendr"
               id="gender"
               value={gender}
@@ -312,9 +328,9 @@ function Register() {
             </Select>
           </FormControl>
 
-          <FormControl size="small">
+          <FormControl required={true} size="small">
             <InputLabel id="qta">Quota</InputLabel>
-            <Select
+            <Select 
               labelId="qta"
               id="quota"
               value={quota}
@@ -327,9 +343,10 @@ function Register() {
               {opc && <MenuItem value="Others">OCI/PIO/CIWG</MenuItem>}
             </Select>
           </FormControl>
-          <FormControl size="small">
+          <FormControl required={true} size="small">
             <InputLabel id="pgm">Program</InputLabel>
-            <Select
+            <Select 
+              required={true}
               labelId="pgm"
               id="program"
               value={pgm}
@@ -344,9 +361,10 @@ function Register() {
         </div>
 
         <div className="grid grid-row-3 py-5 p-3 lg:grid-cols-3 gap-3">
-          <FormControl size="small">
+          <FormControl required={true} size="small">
             <InputLabel id="apply-year-label">Applying Year</InputLabel>
-            <Select
+            <Select 
+              required={true}
               labelId="apply-year-label"
               id="apply-year"
               value={year}
@@ -357,9 +375,11 @@ function Register() {
               <MenuItem value={2023}>2023</MenuItem>
             </Select>
           </FormControl>
-          <TextField label="Aadhar No." id="aadhar" size="small" />
-          <TextField
-            required
+          <TextField autoComplete="new-password" label="Aadhar No." id="aadhar" size="small" inputProps={{
+              maxLength: 12
+            }}/>
+          <TextField autoComplete="new-password"
+            required={true}
             label="Date of Birth"
             type="date"
             id="dob"
