@@ -167,13 +167,13 @@ const Dashboard = () => {
     doc.text(12,55,'GROUP A')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.text(12,60,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the \nB-Tech NRI Quota admission for the year 2023, such that my ward has to attain 75% Marks for \nMathematics individually and 75% put together in Physics, Chemistry & Mathematics, in the 12th \nstadard, for Qualifying examination(CBSE/ISC) OR attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th stadard(Terminal-evaluation \nTE), for Qualifying examination(State Board). If my ward failed to do so, there is no claim, from my \nside for the admission')
+    doc.text(12,60,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the \nB-Tech NRI Quota admission for the year 2023, such that my ward has to attain 75% Marks for \nMathematics individually and 75% put together in Physics, Chemistry & Mathematics, in the 12th \nstandard, for Qualifying examination(CBSE/ISC) OR attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th standard(Terminal-evaluation \nTE), for Qualifying examination(State Board). If my ward failed to do so, there is no claim, from my \nside for the admission')
     doc.setFontSize(15)
     doc.setFont("times", "bold");
     doc.text(12,100,'GROUP B')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.text(12,105,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the \nB-Tech NRI Quota admission for the year 2023, such that my ward has to attain 70% Marks for \nMathematics individually and 70% put together in Physics, Chemistry & Mathematics, in the 12th \nstadard, for Qualifying examination(CBSE/ISC) OR attain 70% Marks for Mathematics individually \nand 70% put together in Physics, Chemistry & Mathematics, in the 12th stadard(Terminal-evaluation \nTE), for Qualifying examination(State Board). If my ward failed to do so, there is no claim, from my \nside for the admission')
+    doc.text(12,105,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the \nB-Tech NRI Quota admission for the year 2023, such that my ward has to attain 70% Marks for \nMathematics individually and 70% put together in Physics, Chemistry & Mathematics, in the 12th \nstandard, for Qualifying examination(CBSE/ISC) OR attain 70% Marks for Mathematics individually \nand 70% put together in Physics, Chemistry & Mathematics, in the 12th standard(Terminal-evaluation \nTE), for Qualifying examination(State Board). If my ward failed to do so, there is no claim, from my \nside for the admission')
     doc.setFontSize(15)
     doc.setFont("times", "bold");
     doc.text(12,145,'EXIT OPTION')
