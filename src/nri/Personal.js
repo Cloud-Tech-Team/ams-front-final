@@ -24,13 +24,15 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import FormData from "form-data";
 
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Personal() {
+
   const [loader, setLoader] = useState(false);
-  const [previewLoader, setPreviewLoader] = useState(false);
   const [msg, setMsg] = useState(true);
-  const [ciwg,setCiwg] = useState(true)
+  const [ciwg,setCiwg] = useState(true);
+  const [photopicked, setPhotopicked] = useState(false);
+  const [alreadyUploaded,setAlreadyUploaded] = useState(false);
 
   localStorage.setItem("pageNo", 1);
   const nav = useNavigate();
@@ -85,7 +87,6 @@ function Personal() {
       });
   }, []);
 
-  //const [selectedFile, setSelectedFile] = useState(null);
 
   const autofill = (e) => {
     console.log(e.target.checked);
@@ -103,18 +104,14 @@ function Personal() {
     }
   };
 
-  const [photopicked, setPhotopicked] = useState(false);
-  const [alreadyUploaded,setAlreadyUploaded] = useState(false);
+
   const forphoto = async (e) => {
     setPhotopicked(true);
   };
+
   const handlephotoFile = async (e) => {
     e.preventDefault();
-    console.log("in");
-    setPreviewLoader(true);
     const file = document.getElementById("photo").files[0];
-    // setSelectedFile(file);
-    console.log(file);
     const formData = new FormData();
     formData.append("filePhotograph", file);
     console.log(formData);
@@ -137,20 +134,19 @@ function Personal() {
             if (res.data.status === "SUCCESS") {
               window.alert("photo uploaded");
             } else {
-              window.alert("Something wrong happened");
-              console.log("Something wrong happened");
+              window.alert("Something went Wrong!!Upload again");
             }
           });
       } catch (error) {
         setLoader(false);
-        window.alert("Something wrong happened");
+        window.alert("Technical Error..Try After Sometime");
         console.log(error);
       }
     } else {
       window.alert("Please select your photo");
     }
-    setPreviewLoader(false);
   };
+
 
   const personalUpload = async (e) => {
     e.preventDefault();
@@ -223,13 +219,13 @@ function Personal() {
               console.log("details patched");
             } else {
               setLoader(false);
-              window.alert("Something wrong happened");
+              window.alert(res.data.message);
               console.log("Something wrong happened");
             }
           });
       } catch (error) {
         setLoader(false);
-        window.alert("error wrong happened");
+        window.alert("eTechnical Error..Try After Sometime");
         console.log(error);
       }
     } else {
@@ -237,6 +233,8 @@ function Personal() {
       window.alert("Some required Field Empty");
     }
   };
+
+  
   return (
     <div className=" xl:w-[1180px] mx-auto flex items-center justify-center h-screen ">
       <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-6">
@@ -361,26 +359,7 @@ function Personal() {
               <Button variant="contained" onClick={handlephotoFile}>
                 Upload
               </Button>
-
-              {/* <p className="text-center p-2 bg-red-100 rounded-md w-1/2 text-sm mx-3">
-                Please select a passport size photo of file size less than 5mb
-              </p> */}
-              {/* <Tooltip arrow title={eye ? "preview" : "no preview"}>
-              <IconButton
-                sx={{ p: 1, mr: 1 }}
-                onClick={handleEye}
-                aria-label="upload picture"
-                component="label"
-              >
-                {eye ? <RemoveRedEyeIcon /> : <VisibilityOffIcon />}
-                {eye && <CircularProgress sx={{ position: "absolute" }} />}
-              </IconButton>
-            </Tooltip> */}
-              {/* <Button variant="contained" type="submit">
-              Upload
-            </Button> */}
             </div>
-            {previewLoader && <LinearProgress />}
             <div className=" flex flex-col space-y-2 p-5 mt-4 ">
               <label className="text-xl ml-2">Contact Address</label>
               <TextField
@@ -570,7 +549,6 @@ function Personal() {
             <div className=" flex px-5 py-2 mt-5 space-x-5">
               <Button variant="contained" onClick={personalUpload} id='save'>
                 Save
-                {/* Link to="/nriform/education">Save</Link>  */}
               </Button>
             </div>
           </div>
