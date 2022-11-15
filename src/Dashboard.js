@@ -8,6 +8,7 @@ import nri from "./nri.jpg";
 import application from "./application.pdf";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 
@@ -21,8 +22,57 @@ const Dashboard = () => {
 
   const doc = new jsPDF("p", "mm", [297, 210]);
   const [user,setUser] = useState();
+  const [details,setDetails] = useState({
+    firstName:'',
+    middleName:'',
+    lastName:'',
+    dob:'',
+    email:'',
+    aPhone:'',
+    phone:'',
+    guardianDetails:{
+      name:'',
+      occupation:'',
+    },
+    NRIdetails:{
+      name:'',
+      relation:''
+    },
+    permanentAddress:{
+      addressL1:'',
+      city:'',
+      district:'',
+      pincode:'',
+      state:'',
+    },
+    contactAddress:{
+      addressL1:'',
+      city:'',
+      district:'',
+      pincode:'',
+      state:'',
+    },
+    course:'',
+    quota:'',
+    bp1:'',
+    academicYear:'',
+  });
   const [img,setImg] = useState();
   const [signature,setSignature] = useState();
+
+  useEffect(() => {
+    axios
+      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res)
+        const name = res.data.user.firstName + " " + res.data.user.middleName + " " + res.data.user.lastName
+        setDetails(res.data.user)
+     });
+  }, []);
 
   function toDataUrl(url, callback) {
     let xhr = new XMLHttpRequest();
@@ -231,17 +281,17 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-full p-4 rounded-md h-2/5 ">
-          <p className="text-center font-bold text-lg uppercase ">
-            Marc Benedict
+          <p className="text-center font-bold text-lg uppercase " id="forname">
+            {details.firstName+' ' + (details.middleName ? (details.middleName+' ') : ' ') + details.lastName}
           </p>
           <div className="w-full font-semibold text-center text- italic h-auto py-6">
-            Dob:&nbsp;&nbsp;12/02/2001
+            Dob:&nbsp;&nbsp;{details.dob.toString().slice(0,10)}
             <br />
-            dhjgchx@gmail.com
+            {details.email}
             <br />
-            Ph1: 8923-398-329
+            {details.aPhone}
             <br />
-            Ph2: 4923-598-129
+            {details.phone}
           </div>
           <div className="flex space-x-2 items-center justify-center w-full h-auto">
             <button
@@ -267,13 +317,13 @@ const Dashboard = () => {
           </div>
           <p className="text-lg font-light mb-2 italic ">
             {" "}
-            Parent/Gaurdian: <b>Benedict</b>
+            Parent/Gaurdian: <b>{details.guardianDetails.name}</b>
             <br />
-            Occupation: <b>Advocate</b>
+            Occupation: <b>{details.guardianDetails.occupation}</b>
             <br />
-            Relation with Applicant: <b>Father</b>
+            Relation with Applicant: <b>{details.NRIdetails.relation}</b>
             <br />
-            NRI Sponsor: <b>Nil</b>
+            NRI Sponsor: <b>{details.NRIdetails.name}</b>
           </p>
           <div className="w-full flex items-center space-x-3">
             <HomeIcon />
@@ -281,9 +331,9 @@ const Dashboard = () => {
           </div>
           <p className="text-lg font-light italic ">
             {" "}
-            123 Main Street, New York, NY 10030
+            {details.permanentAddress.addressL1+','+details.permanentAddress.city }
             <br />
-            City, District, State, pin: 364378
+            {details.permanentAddress.district+','+details.permanentAddress.state+','+details.permanentAddress.pincode}
           </p>
         </div>
         <div className="xl:w-1/2 p-8 shadow-xl bg-white rounded-md">
@@ -293,9 +343,9 @@ const Dashboard = () => {
           </div>
           <p className="text-lg font-light italic ">
             {" "}
-            123 Main Street, New York, NY 10030
+            {details.contactAddress.addressL1+','+details.contactAddress.city }
             <br />
-            City, District, State, pin: 364378
+            {details.contactAddress.district+','+details.contactAddress.state+','+details.contactAddress.pincode}
           </p>
           <div className="w-full flex pt-8 items-baseline space-x-3">
             <SchoolIcon />
@@ -303,13 +353,13 @@ const Dashboard = () => {
           </div>
           <p className="text-lg font-light mt-2 italic ">
             {" "}
-            Course: <b>B-Tech</b>
+            Course: <b>{details.course}</b>
             <br />
-            Quota: <b>NRI</b>
+            Quota: <b>{details.quota}</b>
             <br />
-            Branch Opted: <b>Computer Science (waiting list 1)</b>
+            Branch Opted: <b>{details.bp1}</b>
             <br />
-            Academic Year: <b>2021-2025</b>
+            Academic Year: <b>{2000+Number(details.academicYear) + '-' + (2004+Number(details.academicYear))}</b>
           </p>
         </div>
       </div>

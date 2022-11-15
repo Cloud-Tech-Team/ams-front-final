@@ -96,7 +96,7 @@ function Personal() {
       });
   }, []);
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  //const [selectedFile, setSelectedFile] = useState(null);
 
   const autofill = (e) => {
     console.log(e.target.checked);
@@ -124,7 +124,7 @@ function Personal() {
     console.log("in");
     setPreviewLoader(true);
     const file = document.getElementById("photo").files[0];
-    setSelectedFile(file);
+    // setSelectedFile(file);
     console.log(file);
     const formData = new FormData();
     formData.append("filePhotograph", file);
