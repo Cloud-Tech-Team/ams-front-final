@@ -116,7 +116,7 @@ const Declaration = () => {
     const data = {
       bp1: document.getElementById("bp").value,
     };
-    if(isChecked === true && signPick === true){
+    if(isChecked === true && signPick === true && msg.props.children==='Seat available'){
     try{
     await axios
       .patch("https://ams-backend-368705.el.r.appspot.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
@@ -142,7 +142,10 @@ const Declaration = () => {
     }
   }else{
     setLoader(false)
-    window.alert("Kindly undertake the regulations");
+    if(msg.props.children === 'Seats in Preferred branch are filled..Please select another one')
+      window.alert("Seats in Preferred branch are filled..Please select another one")
+    else
+      window.alert("Kindly undertake the regulations");
   }
   };
   return (
