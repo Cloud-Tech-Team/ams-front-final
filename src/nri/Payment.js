@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function Payment() {
+  localStorage.setItem("pageNo", 5);
   const [enable, setEnable] = useState(true);
   const nav = useNavigate()
 

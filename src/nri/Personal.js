@@ -30,6 +30,7 @@ function Personal() {
   const [loader, setLoader] = useState(false);
   const [previewLoader, setPreviewLoader] = useState(false);
   const [msg, setMsg] = useState(true);
+  const [ciwg,setCiwg] = useState(true)
 
   localStorage.setItem("pageNo", 1);
   const nav = useNavigate();
@@ -87,6 +88,9 @@ function Personal() {
           res.data.user.NRIdetails.relation;
         if (res.data.user.filePhotograph != null) {
           setPhotopicked(true);
+        }
+        if(res.data.user.quota === 'ciwg'){
+          setCiwg(false)
         }
       });
   }, []);
@@ -357,6 +361,7 @@ function Personal() {
                 }}
                 required
               />
+            {photopicked && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
               <Button variant="contained" onClick={handlephotoFile}>
                 Upload
               </Button>
@@ -535,7 +540,7 @@ function Personal() {
                 size="small"
               />
             </div>
-            <div className=" flex items-center p-5 space-x-2">
+            {ciwg && <div className=" flex items-center p-5 space-x-2">
               <TextField
                 InputLabelProps={{
                   shrink: true,
@@ -547,16 +552,6 @@ function Personal() {
                 size="small"
                 required
               />
-              {/* <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="sponsorRelation"
-                className="w-1/2"
-                label="Relation with applicant"
-                type="text"
-                size="small"
-              /> */}
               <label >Relation with NRI sponsor*</label>
               <select
               required
@@ -575,7 +570,7 @@ function Personal() {
 
                
               </select>
-            </div>
+            </div>}
             <div className=" flex px-5 py-2 mt-5 space-x-5">
               <Button variant="contained" onClick={personalUpload}>
                 Save
