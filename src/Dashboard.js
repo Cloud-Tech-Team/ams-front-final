@@ -347,7 +347,7 @@ const Dashboard = () => {
             <br />
             Branch Opted: <b>{details.bp1}</b>
             <br />
-            Academic Year: <b>{2000+Number(details.academicYear) + '-' + (2004+Number(details.academicYear))}</b>
+            Academic Year: <b>{Number(details.academicYear) + '-' + (4+Number(details.academicYear))}</b>
           </p>
         </div>
       </div>
