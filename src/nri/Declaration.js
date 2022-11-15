@@ -188,7 +188,7 @@ const Declaration = () => {
         </div>
         <p className="text-xl my-6 text-center underline">Instructions</p>
         <div className="w-full space-y-4 p-2">
-          <p className="font-semibold ">1.GROUP A branches [CE, ME, EEE, CyberSecurity]</p>
+          <p className="font-semibold ">1.GROUP A branches [ECE, CSE, Artificial Intelligence, AI&DS, CyberSecurity]</p>
           <p>
             I am aware about the criteria followed by "Muthoot Institute
             of Technology and Science", for the B-Tech NRI Quota admission for
@@ -201,7 +201,7 @@ const Declaration = () => {
             Qualifying examination(State Board). If my ward failed to do so,
             there is no claim, from my side for the admission
           </p>
-          <p className="font-semibold ">2.GROUP B branches [ECE, CSE, Artificial Intelligence, AI&DS]</p>
+          <p className="font-semibold ">2.GROUP B branches [CE, ME, EEE,]</p>
           <p>
             I am aware about the criteria followed by "Muthoot Institute of
             Technology and Science", for the B-Tech NRI Quota admission for the
