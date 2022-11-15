@@ -373,6 +373,7 @@ const Education = () => {
                     type="file"
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
+                  {is10thpicked && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
                   <Button sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
@@ -437,6 +438,7 @@ const Education = () => {
                     type="file"
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
+                  {is12thpicked && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
                   <Button sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
@@ -524,6 +526,7 @@ const Education = () => {
                     type="file"
                     className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
                   />
+                  {iskeampicked && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
                   <Button sx={{height:"100%"}} variant="contained" onClick={keamupload}>
                     Upload
                   </Button>

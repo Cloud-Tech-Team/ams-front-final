@@ -242,6 +242,7 @@ const Declaration = () => {
 
         <div className=" xl:flex items-center my-3 gap-4 justify-center">
           <p className="font-semibold">Signature Upload (applicant)*</p>
+          {signPick && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
           <span className="sm:space-x-3">
           <input
             id="sign"
