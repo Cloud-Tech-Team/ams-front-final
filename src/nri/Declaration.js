@@ -98,7 +98,7 @@ const Declaration = () => {
             }
           });
       } catch (error) {
-        window.alert("error wrong happened");
+        window.alert("Something wrong happened");
       }
     } else {
       window.alert("Please Pick the Signature");

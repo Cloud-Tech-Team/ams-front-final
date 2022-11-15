@@ -56,6 +56,7 @@ const Dashboard = () => {
     quota:'',
     bp1:'',
     academicYear:'',
+    filePhotograph:'https://www.iconpacks.net/icons/1/free-user-icon-295-thumb.png'
   });
   const [img,setImg] = useState();
   const [signature,setSignature] = useState();
@@ -246,19 +247,6 @@ const Dashboard = () => {
     doc.save("MITS_application");
 
     let pdf = doc.output('blob')
-     
-
-    // const formData = new FormData();
-    // formData.append("filePreview",pdf)
-    // console.log(formData)
-    // await axios.post('https://ams-backend-368705.el.r.appspot.com/user/send_pdf/'+localStorage.getItem('user_id'),formData,{
-    //   headers: {
-    //     Authorization: "Bearer " + localStorage.getItem("access_token"),
-    //     'Content-Type': 'multipart/form-data',
-    //   },
-    // }).then(res => {
-    //   console.log(res)
-    // })
   };
 
   return (
@@ -274,7 +262,7 @@ const Dashboard = () => {
         <div className="w-full h-3/5 rounded-md flex pt-8 items-center justify-center ">
           <div className="w-44 h-44 rounded-full border-[3px] border-black">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzHQv_th9wq3ivQ1CVk7UZRxhbPq64oQrg5Q&usqp=CAU"
+              src={details.filePhotograph}
               alt=""
               className="object-cover h-full rounded-full w-full"
             />
@@ -331,9 +319,9 @@ const Dashboard = () => {
           </div>
           <p className="text-lg font-light italic ">
             {" "}
-            {details.permanentAddress.addressL1+','+details.permanentAddress.city }
+            {details.permanentAddress.addressL1+', '+details.permanentAddress.city }
             <br />
-            {details.permanentAddress.district+','+details.permanentAddress.state+','+details.permanentAddress.pincode}
+            {details.permanentAddress.district+', '+details.permanentAddress.state+', '+details.permanentAddress.pincode}
           </p>
         </div>
         <div className="xl:w-1/2 p-8 shadow-xl bg-white rounded-md">
@@ -343,9 +331,9 @@ const Dashboard = () => {
           </div>
           <p className="text-lg font-light italic ">
             {" "}
-            {details.contactAddress.addressL1+','+details.contactAddress.city }
+            {details.contactAddress.addressL1+', '+details.contactAddress.city }
             <br />
-            {details.contactAddress.district+','+details.contactAddress.state+','+details.contactAddress.pincode}
+            {details.contactAddress.district+', '+details.contactAddress.state+', '+details.contactAddress.pincode}
           </p>
           <div className="w-full flex pt-8 items-baseline space-x-3">
             <SchoolIcon />

@@ -51,41 +51,26 @@ function Personal() {
         document.getElementById("mname").value = res.data.user.middleName;
         document.getElementById("lname").value = res.data.user.lastName;
         document.getElementById("phoneKerala").value = res.data.user.phone;
-        document.getElementById("dob").valueAsDate = new Date(
-          res.data.user.dob
-        );
+        document.getElementById("dob").valueAsDate = new Date(res.data.user.dob);
         document.getElementById("phone1").value = (res.data.user.aPhone);
 
-        document.getElementById("Chouse").value =
-          res.data.user.contactAddress.addressL1;
-        document.getElementById("Ccity").value =
-          res.data.user.contactAddress.city;
-        document.getElementById("Cdistrict").value =
-          res.data.user.contactAddress.district;
-        document.getElementById("Cstate").value =
-          res.data.user.contactAddress.state;
-        document.getElementById("Cpincode").value =
-          res.data.user.contactAddress.pincode;
+        document.getElementById("Chouse").value = res.data.user.contactAddress.addressL1;
+        document.getElementById("Ccity").value = res.data.user.contactAddress.city;
+        document.getElementById("Cdistrict").value = res.data.user.contactAddress.district;
+        document.getElementById("Cstate").value = res.data.user.contactAddress.state;
+        document.getElementById("Cpincode").value = res.data.user.contactAddress.pincode;
 
-        document.getElementById("Phouse").value =
-          res.data.user.permanentAddress.addressL1;
-        document.getElementById("Pcity").value =
-          res.data.user.permanentAddress.city;
-        document.getElementById("Pdistrict").value =
-          res.data.user.permanentAddress.district;
-        document.getElementById("Pstate").value =
-          res.data.user.permanentAddress.state;
-        document.getElementById("Ppincode").value =
-          res.data.user.permanentAddress.pincode;
+        document.getElementById("Phouse").value = res.data.user.permanentAddress.addressL1;
+        document.getElementById("Pcity").value = res.data.user.permanentAddress.city;
+        document.getElementById("Pdistrict").value = res.data.user.permanentAddress.district;
+        document.getElementById("Pstate").value = res.data.user.permanentAddress.state;
+        document.getElementById("Ppincode").value = res.data.user.permanentAddress.pincode;
 
-        document.getElementById("parentName").value =
-          res.data.user.guardianDetails.name;
-        document.getElementById("parentOccupation").value =
-          res.data.user.guardianDetails.occupation;
-        document.getElementById("sponsorName").value =
-          res.data.user.NRIdetails.name;
-        document.getElementById("sponsorRelation").value =
-          res.data.user.NRIdetails.relation;
+        document.getElementById("parentName").value = res.data.user.guardianDetails.name;
+        document.getElementById("parentOccupation").value = res.data.user.guardianDetails.occupation;
+        document.getElementById("sponsorName").value = res.data.user.NRIdetails.name;
+        document.getElementById("sponsorRelation").value = res.data.user.NRIdetails.relation;
+        
         if (res.data.user.filePhotograph != null) {
           setPhotopicked(true);
           setAlreadyUploaded(true)
@@ -93,6 +78,10 @@ function Personal() {
         if(res.data.user.quota === 'ciwg'){
           setCiwg(false)
         }
+        setLoader(false)
+      }).catch(e=>{
+        console.log(e)
+        setLoader(false)
       });
   }, []);
 
@@ -154,7 +143,7 @@ function Personal() {
           });
       } catch (error) {
         setLoader(false);
-        window.alert(" wrong happened");
+        window.alert("Something wrong happened");
         console.log(error);
       }
     } else {
@@ -579,7 +568,7 @@ function Personal() {
               </select>
             </div>}
             <div className=" flex px-5 py-2 mt-5 space-x-5">
-              <Button variant="contained" onClick={personalUpload}>
+              <Button variant="contained" onClick={personalUpload} id='save'>
                 Save
                 {/* Link to="/nriform/education">Save</Link>  */}
               </Button>
