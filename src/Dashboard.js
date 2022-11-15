@@ -178,10 +178,10 @@ const Dashboard = () => {
     doc.text(12, 95 + 10 * 10, "6.Email : ");
     doc.text(102, 95 + 10 * 10, user.email); //user.email
   
-    doc.text(12, 95 + 10 * 11, "7.Phone No(Kerala): ");
+    doc.text(12, 95 + 10 * 11, "7.Phone No.(Kerala): ");
     doc.text(102, 95 + 10 * 11, user.phone.toString()); //user.phoneK
   
-    doc.text(12, 95 + 10 * 12, "8.Phone No(alternate): ");
+    doc.text(12, 95 + 10 * 12, "8.Phone No.(alternate): ");
     doc.text(102, 95 + 10 * 12, user.phone.toString()); //user.phoneM
   
     doc.text(12, 95 + 10 * 13, "9.Name of sponsor :");
@@ -197,7 +197,7 @@ const Dashboard = () => {
     doc.text(102, 95 + 10 * 16, user._id.toString()); //user.transactionId
     doc.setFontSize(10);
 
-    let today = new Date();
+    let today = new Date(user.registrationTimeStamp);
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
     let yyyy = today.getFullYear();
@@ -218,28 +218,34 @@ const Dashboard = () => {
     doc.text(12,55,'GROUP A')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.text(12,60,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the \nB-Tech NRI Quota admission for the year 2023, such that my ward has to attain 75% Marks for \nMathematics individually and 75% put together in Physics, Chemistry & Mathematics, in the 12th \nstandard, for Qualifying examination(CBSE/ISC) OR attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th standard(Terminal-evaluation \nTE), for Qualifying examination(State Board). If my ward failed to do so, there is no claim, from my \nside for the admission')
+    doc.text(12,60,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2023, such that my ward has to attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 75% Marks for Mathematics individually and 75% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission')
     doc.setFontSize(15)
     doc.setFont("times", "bold");
     doc.text(12,100,'GROUP B')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.text(12,105,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the \nB-Tech NRI Quota admission for the year 2023, such that my ward has to attain 70% Marks for \nMathematics individually and 70% put together in Physics, Chemistry & Mathematics, in the 12th \nstandard, for Qualifying examination(CBSE/ISC) OR attain 70% Marks for Mathematics individually \nand 70% put together in Physics, Chemistry & Mathematics, in the 12th standard(Terminal-evaluation \nTE), for Qualifying examination(State Board). If my ward failed to do so, there is no claim, from my \nside for the admission')
+    doc.text(12,105,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2023, such that my ward has to attain 70% Marks for Mathematics individually \nand 70% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 70% Marks for Mathematics individually and 70% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission')
     doc.setFontSize(15)
     doc.setFont("times", "bold");
     doc.text(12,145,'EXIT OPTION')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.text(12,152,'A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM 2023 \nSCORE and will be reimbursed with the entire amount after deducting Rs 1000 as processing fee. \nHowever, a student will be automatically considered for MITS Management Merit Quota from NRI \nquota if he desires so and has to freeze the registration in MITS by sending an email to \nadmissions@mgits.ac.in . Request for exit should be mailed to admissions@mgits.ac.in within the \nstipulated time. There after the registered choice will be frozen and will not be eligible for any refund, \nif the admission is cancelled after 5 days from the date of KEAM SCORE publication.')
+    doc.setFillColor(234, 245, 22)//highligh colour
+    doc.rect(51,148,10,5,'F')//exit
+    doc.rect(155,148,36,5,'F')//keam 2023 score
+    doc.rect(12,148+15,10,5,'F')//freze
+    doc.rect(149,148+15,20,5,'F')//request for exit
+    doc.rect(29,148+20,42,5,'F')//admissions@mgits.ac.in
+    doc.text(12,152,'1. A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM 2023 SCORE and \nwill be reimbursed with the entire amount after deducting Rs 1000 as processing fee. However, a student will \nbe automatically considered for MITS Management Merit Quota from NRI quota if he desires so and has to \nfreeze the registration in MITS by sending an email to admissions@mgits.ac.in . Request for exit should be \nmailed to admissions@mgits.ac.in within the stipulated time. There after the registered choice will be frozen \nand will not be eligible for any refund, if the admission is cancelled after 5 days from the date of \nKEAM SCORE publication.')
     doc.setFontSize(15)
   
-    doc.text(12, 85 + 10 * 11, "Name of the parent/guardian : ");
-    doc.text(150,85+(10*12),'Signature of student')
-    doc.addImage(signature, 'JPEG', 150, 210, 40, 25)
-    doc.text(85, 85 + 10 * 11, user.guardianDetails.name.toString()); //user.guardian.name
+    doc.text(12, 85 + 10 * 13, "Name of the parent/guardian : ");
+    doc.text(140,85+(10*14),'Signature of parent/guardian')
+    doc.addImage(signature, 'JPEG', 150, 230, 40, 25)
+    doc.text(80, 85 + 10 * 13, user.guardianDetails.name.toString()); //user.guardian.name
   
-    doc.text(12, 85 + 10 * 12, "Date : ");
-    doc.text(30, 85 + 10 * 12, today); //date of application
+    doc.text(12, 85 + 10 * 14, "Date : ");
+    doc.text(30, 85 + 10 * 14, today); //date of application
   
     doc.setFontSize(10);
     doc.text(70, 288, "This file was generated on " + today);

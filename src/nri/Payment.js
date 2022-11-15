@@ -45,7 +45,6 @@ function Payment() {
   }
   const finalsubmit = async(e) =>{
       e.preventDefault()
-      // window.confirm("After final submit no changes can be made, Proceed?")
       const formData= new FormData()
       formData.append("fileTransactionID", document.getElementById('Transactionslip').files[0]);
       formData.append("transactionID",document.getElementById("TransactionId").value);
@@ -72,6 +71,7 @@ function Payment() {
         })
       }catch(error){
         console.log(error)
+        window.alert("Technical Error..Try Again Later")
       }
      }
   }
