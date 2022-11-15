@@ -8,11 +8,16 @@ import axios from "axios";
 const Supernumery = () => {
   const [relation, setRelation] = useState(false);
   const [loader, setloader] = useState(false);
+
   const nav = useNavigate();
+
+
   const handleQuota = (e) => {
     if (e.target.value === "ciwg") setRelation(true);
     else setRelation(false);
   };
+
+
   function checkFill() {
     if (document.getElementById("quota-select").value === "") {
       window.alert("Please fill out all fields");
@@ -30,6 +35,8 @@ const Supernumery = () => {
     }
     return 0;
   }
+
+
   const handleProceed = async(e) => {
     if (checkFill()) 
        return;
@@ -63,6 +70,8 @@ const Supernumery = () => {
       }
     })
   };
+
+  
   return (
     <div className="h-screen w-screen bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex items-center justify-center">
       <Backdrop
