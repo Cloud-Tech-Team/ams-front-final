@@ -32,7 +32,7 @@ function Register() {
        acadamicYear:document.getElementById('apply-year').value
      }
      console.log(data);
-     axios.post("https://ams-backend-api.herokuapp.com/user/register",data)
+     axios.post("https://ams-backend-368705.el.r.appspot.com/user/register",data)
      .then((response)=>{
         console.log(response);
         console.log(data);

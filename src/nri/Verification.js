@@ -46,10 +46,21 @@ export const Verification = () => {
     },grade12:{
       school:'',
       board:''
-    }
+    },keam:{
+    markPaper1: '',
+    markPaper2: '',
+    rank: '',
+    rollNumber: "",
+    totalMark:'',
+    year:''
+    },bp1:''
   });
   const nav = useNavigate()
-
+  const branch = {'CSE':'Computer Science and Engineering',
+                  'ECE':'Electronics and Communication Engineering',
+                  'EEE':'Electrical and Electronics Engineering',
+                  'ME':'Mechanical Engineering',
+                  'CE' : 'Civil Engineeting'}
   useEffect(() => {
     axios
       .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
@@ -190,9 +201,9 @@ export const Verification = () => {
             <p className="text-lg my-3 underline font-semibold">
               10th Marks Details{" "}
             </p>
-            <label>Name of Institution: </label>
+            <label>Name of Institution: <p>{user.grade10.school}</p></label>
             <br />
-            <label>Board: {user.grade10.school}</label>
+            <label>Board: {user.grade10.board}</label>
             <div className="w-full mt-3  p-1 border-[2px] rounded-[4px]">
               <img src={marklist10} alt="mrklist10" />
             </div>
@@ -201,9 +212,9 @@ export const Verification = () => {
             <p className="text-lg my-3 underline font-semibold">
               12th Marks Details{" "}
             </p>
-            <label>Name of Institution: </label>
+            <label>Name of Institution: <p>{user.grade12.school}</p></label>
             <br />
-            <label>Board: </label>
+            <label>Board: {user.grade12.board}</label>
             <div className="w-full mt-3 h-auto p-1 border-[2px] rounded-[4px]">
               <img src={marklist12} alt="mrklist10" />
             </div>
@@ -218,31 +229,31 @@ export const Verification = () => {
             <div className="w-full space-y-3 p-3 border-[2px] rounded-[4px]">
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-6">Year</label>
-                <label className="font-semibold">here</label>
+                <label className="font-semibold">{user.keam.year}</label>
               </div>
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-8">Roll No</label>
-                <label className="font-semibold">here</label>
+                <label className="font-semibold">{user.keam.rollNumber}</label>
               </div>
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-6">Rank</label>
-                <label className="font-semibold">here</label>
+                <label className="font-semibold">{user.keam.rank}</label>
               </div>
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-6">
                   Paper I score(Physics & chemistry)
                 </label>
-                <label className="font-semibold">here</label>
+                <label className="font-semibold">{user.keam.markPaper1}</label>
               </div>
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-6">
                   Paper II score(Mathematics)
                 </label>
-                <label className="font-semibold">here</label>
+                <label className="font-semibold">{user.keam.markPaper2}</label>
               </div>
               <div className="w-auto justify-between sm:flex items-center">
                 <label className="text-md  mr-6">Total KEAM Score</label>
-                <label className="font-semibold">here</label>
+                <label className="font-semibold">{user.keam.totalMark}</label>
               </div>
             </div>
           </div>
@@ -259,7 +270,7 @@ export const Verification = () => {
             <p className="text-lg font-semibold mb-2">Branch Preference</p>
             <div className="sm:space-x-3 xl:flex justify-between">
               {/* <label>Preference</label> */}
-              <label>Computer science and Enginerring</label>
+              <label>{branch[user.bp1]}</label>
             </div>
           </div>
         </div>
