@@ -88,6 +88,7 @@ function Personal() {
           res.data.user.NRIdetails.relation;
         if (res.data.user.filePhotograph != null) {
           setPhotopicked(true);
+          setAlreadyUploaded(true)
         }
         if(res.data.user.quota === 'ciwg'){
           setCiwg(false)
@@ -114,6 +115,7 @@ function Personal() {
   };
 
   const [photopicked, setPhotopicked] = useState(false);
+  const [alreadyUploaded,setAlreadyUploaded] = useState(false);
   const forphoto = async (e) => {
     setPhotopicked(true);
   };
@@ -366,7 +368,7 @@ function Personal() {
                 }}
                 required
               />
-            {photopicked && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
+            {alreadyUploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
               <Button variant="contained" onClick={handlephotoFile}>
                 Upload
               </Button>
