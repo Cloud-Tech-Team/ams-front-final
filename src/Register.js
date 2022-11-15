@@ -33,18 +33,19 @@ function Register() {
   const nriregister = async (e) => {
     e.preventDefault();
     setLoader(true);
+    
     const data = {
       firstName: document.getElementById("fname").value,
       middleName: document.getElementById("mname").value,
       lastName: document.getElementById("lname").value,
       email: document.getElementById("email").value,
       phone: document.getElementById("phone").value,
-      gender: document.getElementById("gender").value,
-      course: document.getElementById("program").value,
-      quota: document.getElementById("quota").value,
+      gender: gender,
+      course: pgm,
+      quota: quota,
       aadhaar: document.getElementById("aadhar").value,
       dob: document.getElementById("dob").value,
-      acadamicYear: document.getElementById("apply-year").value,
+      acadamicYear: year,
     };
     console.log(data);
     axios
@@ -257,6 +258,7 @@ function Register() {
             <LinearProgress color="primary" />
           </div>
         </Backdrop>
+       
       <Link to="/">
         <img className="absolute top-6 left-6" src={Home} alt="home" />
       </Link>
@@ -302,7 +304,7 @@ function Register() {
               id="gender"
               value={gender}
               label="Gender"
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) => {setGender(e.target.value)}}
             >
               <MenuItem value="Male">Male</MenuItem>
               <MenuItem value="Female">Female</MenuItem>
