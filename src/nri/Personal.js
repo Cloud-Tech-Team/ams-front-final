@@ -192,6 +192,11 @@ function Personal() {
     console.log(data);
     if (
       data.firstName && data.lastName && data.aPhone && data.dob && data.addressL1C &&
+      data.firstName &&
+      data.lastName &&
+      data.aPhone &&
+      data.dob &&
+      data.addressL1C &&
       data.cityC &&
       data.districtC &&
       data.stateC &&

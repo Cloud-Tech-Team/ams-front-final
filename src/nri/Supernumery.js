@@ -30,19 +30,38 @@ const Supernumery = () => {
     }
     return 0;
   }
-  const handleProceed = (e) => {
-    e.preventDefault()
-    if (checkFill()) return;
+  const handleProceed = async(e) => {
+    if (checkFill()) 
+       return;
     setloader(true);
-    const data = {
-      quota : document.getElementById('quota-select').value,
-      NRIdetails : {
-        relation : document.getElementById('relation-select').value === null ? document.getElementById('relation-select').value : '',
-        name     : document.getElementById('parent-name').value === null ? document.getElementById('parent-name').value : ''
+    let data;
+    if(document.getElementById("quota-select").value !== "ciwg"){
+      data = {
+        quota : document.getElementById("quota-select").value
+      }
+    }else{
+      data = {
+        quota : document.getElementById("quota-select").value,
+        NRIdetails :{
+          name : document.getElementById("parent-name").value,
+          relation: document.getElementById("parent-name").value
+        }
       }
     }
     console.log(data)
-    setloader(false)
+    await 
+    axios.patch("https://ams-backend-368705.el.r.appspot.com/user/quota_edit/",data,
+    {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      },
+    }).then((res) =>{
+      console.log(res)
+      if(res.data.status === "SUCCESS"){
+        setloader(false)
+        nav("/nriform");
+      }
+    })
   };
   return (
     <div className="h-screen w-screen bg-gradient-to-tl from-rock-blue-300 via-rock-blue-300 to-rock-blue-400 flex items-center justify-center">
