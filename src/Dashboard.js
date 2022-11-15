@@ -178,10 +178,10 @@ const Dashboard = () => {
     doc.text(12, 95 + 10 * 10, "6.Email : ");
     doc.text(102, 95 + 10 * 10, user.email); //user.email
   
-    doc.text(12, 95 + 10 * 11, "7.Phone No(Kerala): ");
+    doc.text(12, 95 + 10 * 11, "7.Phone No.(Kerala): ");
     doc.text(102, 95 + 10 * 11, user.phone.toString()); //user.phoneK
   
-    doc.text(12, 95 + 10 * 12, "8.Phone No(alternate): ");
+    doc.text(12, 95 + 10 * 12, "8.Phone No.(alternate): ");
     doc.text(102, 95 + 10 * 12, user.phone.toString()); //user.phoneM
   
     doc.text(12, 95 + 10 * 13, "9.Name of sponsor :");
@@ -197,7 +197,7 @@ const Dashboard = () => {
     doc.text(102, 95 + 10 * 16, user._id.toString()); //user.transactionId
     doc.setFontSize(10);
 
-    let today = new Date();
+    let today = new Date(user.registrationTimeStamp);
     let dd = String(today.getDate()).padStart(2, "0");
     let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
     let yyyy = today.getFullYear();
@@ -230,16 +230,23 @@ const Dashboard = () => {
     doc.text(12,145,'EXIT OPTION')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
+    doc.setFillColor(234, 245, 22)//highligh colour
+    doc.rect(55,148,10,5,'F')
+    doc.rect(167,148,23,5,'F')
+    doc.rect(12,153,15,5,'F')
+    doc.rect(74,148+15,12,5,'F')
+    doc.rect(61,148+20,16,5,'F')
+    doc.rect(130,148+20,45,5,'F')
     doc.text(12,152,'A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM 2023 \nSCORE and will be reimbursed with the entire amount after deducting Rs 1000 as processing fee. \nHowever, a student will be automatically considered for MITS Management Merit Quota from NRI \nquota if he desires so and has to freeze the registration in MITS by sending an email to \nadmissions@mgits.ac.in . Request for exit should be mailed to admissions@mgits.ac.in within the \nstipulated time. There after the registered choice will be frozen and will not be eligible for any refund, \nif the admission is cancelled after 5 days from the date of KEAM SCORE publication.')
     doc.setFontSize(15)
   
-    doc.text(12, 85 + 10 * 11, "Name of the parent/guardian : ");
-    doc.text(150,85+(10*12),'Signature of student')
-    doc.addImage(signature, 'JPEG', 150, 210, 40, 25)
-    doc.text(85, 85 + 10 * 11, user.guardianDetails.name.toString()); //user.guardian.name
+    doc.text(12, 85 + 10 * 13, "Name of the parent/guardian : ");
+    doc.text(140,85+(10*13),'Signature of parent/guardian')
+    doc.addImage(signature, 'JPEG', 150, 220, 40, 25)
+    doc.text(80, 85 + 10 * 13, user.guardianDetails.name.toString()); //user.guardian.name
   
-    doc.text(12, 85 + 10 * 12, "Date : ");
-    doc.text(30, 85 + 10 * 12, today); //date of application
+    doc.text(12, 85 + 10 * 14, "Date : ");
+    doc.text(30, 85 + 10 * 14, today); //date of application
   
     doc.setFontSize(10);
     doc.text(70, 288, "This file was generated on " + today);
