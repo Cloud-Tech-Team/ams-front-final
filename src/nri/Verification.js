@@ -55,6 +55,7 @@ export const Verification = () => {
     year:''
     },bp1:''
   });
+  
   const nav = useNavigate()
   const branch = {'CSE':'Computer Science and Engineering',
                   'ECE':'Electronics and Communication Engineering',
