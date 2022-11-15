@@ -7,14 +7,21 @@ import { Backdrop, LinearProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const Education = () => {
-  localStorage.setItem("pageNo", 2);
   const [loader, setLoader] = useState(false);
-  const nav = useNavigate();
- 
-  const [imgLoader, setImgLoader] = useState(false);
-  const [imgLoader12, setImgLoader12] = useState(false);
-  const [imgLoaderKeam, setImgLoaderKeam] = useState(false);
+  const [file10th, setFile10th] = useState();
+  const [file12th, setFile12th] = useState();
+  const [filekeam, setFilekeam] = useState();
+  const [is10thpicked, setIs10thpicked] = useState(false);
+  const [is12thpicked, setIs12thpicked] = useState(false);
+  const [iskeampicked, setIskeampicked] = useState(false);
+  const [is10thuploaded, setIs10thuploaded] = useState(false);
+  const [is12thuploaded, setIs12thuploaded] = useState(false);
+  const [iskeamuploaded, setIskeamthuploaded] = useState(false);
 
+
+  const nav = useNavigate();
+  localStorage.setItem("pageNo", 2);
+ 
   useEffect(() => {
     setLoader(true);
 
@@ -81,16 +88,6 @@ const Education = () => {
       });
   }, []);
 
-  const [file10th, setFile10th] = useState();
-  const [file12th, setFile12th] = useState();
-  const [filekeam, setFilekeam] = useState();
-  const [is10thpicked, setIs10thpicked] = useState(false);
-  const [is12thpicked, setIs12thpicked] = useState(false);
-  const [iskeampicked, setIskeampicked] = useState(false);
-  const [is10thuploaded, setIs10thuploaded] = useState(false);
-  const [is12thuploaded, setIs12thuploaded] = useState(false);
-  const [iskeamuploaded, setIskeamthuploaded] = useState(false);
-
   const handle10thfile = async (e) => {
     console.log(e.target.id);
     setFile10th(e.target.files[0]);
@@ -98,7 +95,6 @@ const Education = () => {
   };
   const markupload10th = async (e) => {
     e.preventDefault();
-    setImgLoader(true);
     const formData = new FormData();
     formData.append("file10th", file10th);
     console.log(formData);
@@ -119,20 +115,16 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              setImgLoader(false);
-              window.alert("photo uploaded");
+              window.alert("Photo Uploaded");
             } else {
-              setImgLoader(false);
-              window.alert("Something wrong happened");
+              window.alert("Something went Wrong..Upload again");
             }
           });
       } catch (error) {
-        setImgLoader(false);
-        window.alert("error wrong happened");
+        window.alert("Some Technical Error..Try After Sometime");
       }
     } else {
       window.alert("Please Pick the 10th gradecard");
-      setImgLoader(false);
     }
   };
 
@@ -144,8 +136,6 @@ const Education = () => {
 
   const markupload12th = async (e) => {
     e.preventDefault();
-    console.log(file12th);
-    setImgLoader12(true);
     const formData = new FormData();
     formData.append("file12th", file12th);
     console.log(formData);
@@ -166,19 +156,15 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              setImgLoader12(false);
-              window.alert("photo uploaded");
+              window.alert("Photo Uploaded");
             } else {
-              setImgLoader12(false);
-              window.alert("Something wrong happened");
+              window.alert("Something went Wrong..Upload again");
             }
           });
       } catch (error) {
-        setImgLoader12(false);
-        window.alert("error wrong happened");
+        window.alert("Some Technical Error..Try After Sometime");
       }
     } else {
-      setImgLoader12(false);
       window.alert("Please upload your keam grade card");
     }
   };
@@ -191,8 +177,6 @@ const Education = () => {
 
   const keamupload = async (e) => {
     e.preventDefault();
-    setImgLoaderKeam(true);
-    console.log(filekeam);
     const formData = new FormData();
     formData.append("fileKeam", filekeam);
     console.log(formData);
@@ -213,20 +197,16 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              setImgLoaderKeam(false);
-              window.alert("photo uploaded");
+              window.alert("Photo Uploaded");
             } else {
-              setImgLoaderKeam(false);
-              window.alert("Something wrong happened");
+              window.alert("Something went Wrong..Upload again");
             }
           });
       } catch (error) {
-        setImgLoaderKeam(false);
-        window.alert("error wrong happened");
+        window.alert("Some Technical Error..Try After Sometime");
         console.log(error);
       }
     } else {
-      setImgLoaderKeam(false);
       window.alert("Please upload your keam grade card");
     }
   };
@@ -290,7 +270,7 @@ const Education = () => {
             setLoader(false);
             nav("/nriform/declaration");
           } else {
-            console.log("something went wrong");
+            console.log("Something went wrong..Try Again");
             setLoader(false);
           }
         });
@@ -328,7 +308,6 @@ const Education = () => {
             <LinearProgress color="primary" />
           </div>
         </Backdrop>
-        {/* <div className="w-full  h-auto flex p-3 flex-col xl:flex-row  "> */}
         <div className="xl:w-1/2  p-4 h-full">
           <p className="text-md mb-3 font-semibold text-center">
             10th Exam details{" "}
@@ -389,7 +368,7 @@ const Education = () => {
                   </Button>
                 
               </div>
-              {imgLoader && <LinearProgress />}
+              {/* {imgLoader && <LinearProgress />} */}
               <label className="text-sm text-red-600">
                 upload an  image file of size less than 5mb*
               </label>
@@ -454,7 +433,7 @@ const Education = () => {
                   </Button>
               
               </div>
-              {imgLoader12 && <LinearProgress />}
+              {/* {imgLoader12 && <LinearProgress />} */}
 
               <label className="text-sm text-red-600">
                 upload an  image file of size less than 5mb*
@@ -538,7 +517,7 @@ const Education = () => {
                   </Button>
                 
               </div>
-              {imgLoaderKeam && <LinearProgress />}
+              {/* {imgLoaderKeam && <LinearProgress />} */}
               <label className="text-sm text-red-600">
                 upload an  image file of size less than 5mb*
               </label>
@@ -553,187 +532,12 @@ const Education = () => {
               </p>
             </div>
             <Button sx={{height:"100%"}} className="" variant="contained">
-              <Link to="/nriform/payment" onClick={eduDetailUpload}>
+              <Link  onClick={eduDetailUpload}>
                 Save
               </Link>
-              {/* <Link to="/nriform/declaration">Save</Link> */}
             </Button>
           </div>
         </div>
-        {/* </div> */}
-        {/* <div className="w-full  h-auto flex p-1 flex-col xl:flex-row shadow-md ">
-          <div className="xl:w-1/2   p-4 h-full">
-            <p className="text-md mb-3  text-center">10th Marks Details*</p>
-            <div className="w-full  ">
-              <input
-                id="sslcschool"
-                type="text"
-                placeholder=" Name of School/lnstitution attended for SSLC/AlSSE(10th)*"
-                className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-              />
-
-              <input
-                id="sslcboard"
-                type="text"
-                placeholder="Board*"
-                className="rounded-[4px]  border-[1px] w-full my-3 hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-              />
-            </div>
-            <p className="text-md my-3 text-center">Percentage obtained in 10th </p>
-            <div className="w-full space-y-3 p-3 border-[2px] rounded-[4px]">
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-1">1.</label>
-                <label className="text-[15px]  mr-6">English</label>
-                <input
-                  id="sslceng"
-                  type="text"
-                  placeholder="Percentage-obtained*"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-1">2.</label>
-                <label className="text-[15px]  mr-8">Maths</label>
-                <input
-                  id="sslcmaths"
-                  type="text"
-                  placeholder="Percentage-obtained*"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-1">3.</label>
-                <label className="text-[15px]  mr-6">Science</label>
-                <input
-                  id="sslccs"
-                  type="text"
-                  placeholder="Percentage-obtained*"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-1">4.</label>
-                <label className="text-[15px]  mr-6">Physics</label>
-                <input
-                  id="sslcphy"
-                  type="text"
-                  placeholder="Percentage-obtained*"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-1">5.</label>
-                <label className="text-[15px]  mr-6">Chemistry</label>
-                <input
-                  id="sslcchem"
-                  type="text"
-                  placeholder="Percentage-obtained*"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-1">6.</label>
-                <label className="text-[15px]  mr-6">Biology</label>
-                <input
-                  id="sslcbio"
-                  type="text"
-                  placeholder="Percentage-obtained*"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-            </div>
-            <div className="w-full pt-3 space-y-2">
-              <label className="text-[15px]">Mark list upload [10th]*</label>
-              <input
-                id="file10th"
-                 onChange={markupload}
-                type="file"
-                className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-              />
-              <label className="text-sm text-red-600">
-                upload a  image file of size less than 5mb*
-              </label>
-            </div>
-          </div>
-          <div className="xl:w-1/2 flex items-end  flex-col  p-4 h-full">
-            <p className="text-md mb-3 mx-auto ">
-              Details of Common Entrance Test (KEAM)
-            </p>
-            <div className="w-full space-y-3 p-3 border-[2px] rounded-[4px]">
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-6">Year</label>
-                <input
-                  id="keamyear"
-                  type="text"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-8">Roll No</label>
-                <input
-                  id="keamroll"
-                  type="text"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-6">Rank</label>
-                <input
-                  id="keamrank"
-                  type="text"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-6">
-                  Paper I score(Physics & chemistry)
-                </label>
-                <input
-                  id="keamp1"
-                  type="text"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-6">
-                  Paper II score(Mathematics)
-                </label>
-                <input
-                  id="keamp2"
-                  type="text"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-              <div className="w-auto justify-between sm:flex items-center">
-                <label className="text-[15px]  mr-6">Total KEAM Score</label>
-                <input
-                  id="keamtotal"
-                  type="text"
-                  className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-                />
-              </div>
-            </div>
-            <div className="w-full pt-3 space-y-2">
-              <label className="text-[15px]">Mark list upload [KEAM]</label>
-              <input
-                id="fileKeam"
-                 onChange={markupload}
-                type="file"
-                className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400 p-[4px] "
-              />
-              <label className="text-sm text-red-600">
-                upload a  image file of size less than 5mb*
-              </label>
-            </div>
-            <div className="w-full flex flex-col items-end justify-end p-3">
-            <div className="w-full rounded-md my-4 bg-red-100 h-24"></div>
-            <Button sx={{height:"100%"}} className="" variant="contained">
-            <Link to="/nriform/payment" onClick = { eduDetailUpload }>Save</Link>
-            <Link to="/nriform/declaration">Save</Link>
-            </Button>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );
