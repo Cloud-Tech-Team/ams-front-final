@@ -7,10 +7,15 @@ import { Backdrop, LinearProgress } from "@mui/material";
 import FormData from "form-data";
 
 const Declaration = () => {
-  localStorage.setItem("pageNo", 3);
+
   const [loader, setLoader] = useState(false);
   const [msg,setMsg] = useState('');
+  const [filesign, setFilesign] = useState();
+  const [signPick,setSignPick] = useState(false)
+  const [isChecked , setIschecked] = useState(false)
+
   const nav = useNavigate();
+  localStorage.setItem("pageNo", 3);
   
   useEffect(() => {
     setLoader(true);
@@ -49,10 +54,8 @@ const Declaration = () => {
           for (let i = 0; i < res.data.list.length; i++) {
             if (res.data.list[i].name === branch) {
               if (res.data.list[i].NRIOccupied >= res.data.list[i].NRISeats) {
-                // window.alert("Seats in Preferred branch are filled..Select another one");
                 setMsg(<p className="text-red-500 text-lg">Seats in Preferred branch are filled..Please select another one</p>)
               }else{
-                // window.alert("Seat available")
                 setMsg(<p className="text-green-500 text-lg">Seat available</p>)
               }
             }
@@ -60,12 +63,12 @@ const Declaration = () => {
         });
     } catch (error) {
          console.log(error);
+         window.alert("Technical Error..Try Again Later")
     }
     setLoader(false)
   };
   
-  const [filesign, setFilesign] = useState();
-  const [signPick,setSignPick] = useState(false)
+ 
   const handlesign = async(e) =>{
     console.log(e.target.id);
     setFilesign(e.target.files[0]);
@@ -92,20 +95,20 @@ const Declaration = () => {
           .then((res) => {
             console.log(res);
             if (res.data.status === "SUCCESS ") {
-              window.alert("photo uploaded");
+              window.alert("Photo Uploaded");
             } else {
-              window.alert("Something wrong happened");
+              window.alert("Something Went Wrong..Upload Again");
             }
           });
       } catch (error) {
-        window.alert("Something wrong happened");
+        window.alert("Technical Error..Try Again Later");
       }
     } else {
-      window.alert("Please Pick the Signature");
+      window.alert("Please selcet the Signature");
     }
   }
 
-  const [isChecked , setIschecked] = useState(false)
+  
   const handlecheck = async(e) =>{
     setIschecked(true)
     console.log(e.target.id)
@@ -134,11 +137,12 @@ const Declaration = () => {
           console.log(res);
         } else {
           console.log(res);
-          console.log("something went wrong");
+          console.log("Something went wrong");
         }
       });
     }catch(error){
       console.log(error)
+      window.alert("Technical Error..Try Again Later")
     }
   }else{
     setLoader(false)
@@ -178,16 +182,6 @@ const Declaration = () => {
           </div>
           {loader && <LinearProgress color="primary" />}
           <label>{msg}</label>
-          {/* <div className="xl:w-1/2 mt-6 xl:mt-0 xl:mx-8 p-4 bg-red-50 border-[2px] border-red-500 rounded-lg ">
-            <b>Please Note</b><br/>
-            A student opting to <b>EXIT</b> before <b>5</b> days after the publication of KEAM
-            2023 score will be reimbursed the entire amount after deducting Rs
-            <b> 1000</b> processing fee However a student will be automatically
-            considered for MITS management quota from NRI quota. There after the
-            registered choice will be freezed and will not be eligible for any
-            refund if the admission is cancelled after 5 days from the date of
-            KEAM result publication
-          </div> */}
         </div>
         <p className="text-xl my-6 text-center underline">Instructions</p>
         <div className="w-full space-y-4 p-2">
@@ -256,8 +250,7 @@ const Declaration = () => {
           <Button variant="contained" onClick={signupload}>Upload</Button>
           </span>
           
-        </div>
-        {/* <LinearProgress sx={{width: "75%",margin:"auto"}} /> */}
+        </div>        
         <p className="text-center my-4 text-red-600">
           upload an image file (jpeg/png) of size less than 1mb*
         </p>
