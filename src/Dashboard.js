@@ -42,7 +42,7 @@ const Dashboard = () => {
     e.preventDefault();
       try {
         await axios
-          .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+          .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("access_token"),
             },
@@ -201,7 +201,7 @@ const Dashboard = () => {
     const formData = new FormData();
     formData.append("filePreview",pdf)
 
-    await axios.patch('https://ams-backend-api.herokuapp.com/user/nri/preview/'+localStorage.getItem('user_id'),{
+    await axios.patch('https://ams-backend-368705.el.r.appspot.com/user/nri/preview/'+localStorage.getItem('user_id'),{
       filePreview : pdf
     },{
       headers: {

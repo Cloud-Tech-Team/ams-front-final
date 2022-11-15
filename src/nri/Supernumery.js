@@ -30,7 +30,8 @@ const Supernumery = () => {
     return 0;
   }
   const handleProceed = (e) => {
-    if (checkFill()) return;
+    if (checkFill()) 
+       return;
     setloader(true);
     nav("/nriform");
   };

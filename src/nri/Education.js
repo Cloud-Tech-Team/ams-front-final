@@ -19,7 +19,7 @@ const Education = () => {
     setLoader(true);
 
     axios
-      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -100,7 +100,7 @@ const Education = () => {
       try {
         await axios
           .patch(
-            "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -147,7 +147,7 @@ const Education = () => {
       try {
         await axios
           .patch(
-            "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -194,7 +194,7 @@ const Education = () => {
       try {
         await axios
           .patch(
-            "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -268,7 +268,7 @@ const Education = () => {
     try {
       await axios
         .patch(
-          "https://ams-backend-api.herokuapp.com/user/nri/application-page2/" +
+          "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
             localStorage.getItem("user_id"),
           data,
           {

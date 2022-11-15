@@ -14,7 +14,7 @@ function Payment() {
 
   useEffect(() => {
     axios
-      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -27,7 +27,7 @@ function Payment() {
         }
       });
   }, []);
-  
+
   const handleCheck = () => {
     if (document.getElementById("check").checked === true) {
       console.log("something");
@@ -52,7 +52,7 @@ function Payment() {
       if(slipselect === true){
         try{
         await axios
-        .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page5/" +localStorage.getItem("user_id"),
+        .patch("https://ams-backend-368705.el.r.appspot.com/user/nri/application-page5/" +localStorage.getItem("user_id"),
         formData,
         {
           headers: {

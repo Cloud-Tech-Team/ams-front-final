@@ -16,7 +16,7 @@ const Declaration = () => {
     setLoader(true);
 
     axios
-      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -38,7 +38,7 @@ const Declaration = () => {
     console.log(branch);
     try {
       await axios
-        .get("https://ams-backend-api.herokuapp.com/branch/get", {
+        .get("https://ams-backend-368705.el.r.appspot.com/branch/get", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
@@ -80,7 +80,7 @@ const Declaration = () => {
      if (signPick === true) {
       try {
         await axios
-          .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
+          .patch("https://ams-backend-368705.el.r.appspot.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
             formData,
             {
               headers: {
@@ -119,7 +119,7 @@ const Declaration = () => {
     if(isChecked === true && signPick === true){
     try{
     await axios
-      .patch("https://ams-backend-api.herokuapp.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
+      .patch("https://ams-backend-368705.el.r.appspot.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
         data,
         {
           headers: {

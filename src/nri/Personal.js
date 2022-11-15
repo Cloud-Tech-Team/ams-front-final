@@ -37,7 +37,7 @@ function Personal() {
   useEffect(() => {
     setLoader(!loader);
     axios
-      .get("https://ams-backend-api.herokuapp.com/user/nri/application", {
+      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -129,7 +129,7 @@ function Personal() {
       try {
         await axios
           .patch(
-            "https://ams-backend-api.herokuapp.com/user/nri/application-page1/" +
+            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page1/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -214,7 +214,7 @@ function Personal() {
       try {
         await axios
           .patch(
-            "https://ams-backend-api.herokuapp.com/user/nri/application-page1/" +
+            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page1/" +
               localStorage.getItem("user_id"),
             data,
             {
