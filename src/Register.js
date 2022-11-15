@@ -29,7 +29,8 @@ function Register() {
        quota:document.getElementById("quota").value,
        aadhaar:document.getElementById("aadhar").value,
        dob:document.getElementById("dob").value,
-       age:20
+       age:20,
+       academicYear:document.getElementById("apply-year").value
      }
      console.log(data);
      axios.post("https://ams-backend-api.herokuapp.com/user/register",data)
@@ -44,7 +45,7 @@ function Register() {
         setLoader(false)
      }).catch((error)=>{
       console.log(error)
-      window.alert("Registration Failed")
+      window.alert(error.response.data.message)
       setLoader(false)
     })
   }
