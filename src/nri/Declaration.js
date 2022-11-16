@@ -13,6 +13,7 @@ const Declaration = () => {
   const [filesign, setFilesign] = useState();
   const [signPick,setSignPick] = useState(false)
   const [isChecked , setIschecked] = useState(false)
+  const [issignuploaded, setIssignuploaded] = useState(false)
 
   const nav = useNavigate();
   localStorage.setItem("pageNo", 3);
@@ -33,6 +34,7 @@ const Declaration = () => {
         res.data.user.bp1 ? setMsg(<p className="text-green-500 text-lg">Branch already selected</p>):setMsg(<p>Branch not selected</p>)
         if(res.data.user.imgSign != null){
              setSignPick(true)
+             setIssignuploaded(true)
         }
       });
   }, []);
@@ -242,7 +244,7 @@ const Declaration = () => {
 
         <div className=" xl:flex items-center my-3 gap-4 justify-center">
           <p className="font-semibold">Signature Upload (applicant)*</p>
-          {signPick && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
+          {issignuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
           <span className="sm:space-x-3">
           <input
             id="sign"
