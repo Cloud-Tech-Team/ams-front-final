@@ -25,7 +25,7 @@ ChartJS.register(
   LineElement
 );
 
-const RegChart = () => {
+const RegChart = (props) => {
   const data = {
     labels: ["CSE","CSE-AI","AI&DS","CyberSecurity","CE","ME","EEE","ECE"],
     datasets: [

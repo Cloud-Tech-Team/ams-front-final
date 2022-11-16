@@ -9,6 +9,15 @@ const HomePage = () => {
   const [gov, setGov] = useState(0);
   const [nri, setNri] = useState(0);
   const [mgmt, setMgmt] = useState(0);
+  const [cse, setCse] = useState(0);
+  const [ce, setCe] = useState(0);
+  const [me, setMe] = useState(0);
+  const [eee, setEee] = useState(0);
+  const [ece, setEce] = useState(0);
+  const [cseai, setCseai] = useState(0);
+  const [cyber, setCyber] = useState(0);
+  const [aids, setAids] = useState(0);
+  const [branchCount,setBranchcount] = useState([]);
   const [verified, setVerified] = useState(0);
   const [completed, setCompleted] = useState(0);
   const token = localStorage.getItem("admin_access_token")
@@ -17,13 +26,6 @@ const HomePage = () => {
       authorization: "Bearer " + token,
       "content-type" : 'application/json'
     },
-    // queries: [
-    //   { quota: "Government" },
-    //   { quota: "Management" },
-    //   { quota: "Nri" },
-    //   { verified: false },
-    //   { verified: true },
-    // ],
   };
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
   useEffect(() => {
@@ -40,6 +42,43 @@ const HomePage = () => {
       });
   },[]);
 
+  useEffect(() => {
+    axios
+      .get(api+'branch/getall',query)
+      .then((res) => {
+        console.log(res.data);
+        for(let i=0; i<res.data.list.length ; i++){
+          if(res.data.list[i].branch === "CSE"){
+             setCse(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "CE"){
+            setCe(Number(res.data.list[i].occupiedSeats))
+          }
+         else if(res.data.list[i].branch === "ME"){
+          setMe(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "EEE"){
+            setEee(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "ECE"){
+            setEce(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "CSE-AI"){
+            setCseai(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "AI&DS"){
+            setAids(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "CY"){
+            setCyber(Number(res.data.list[i].occupiedSeats))
+          }
+        }
+      });
+      const count = [cse,cseai,aids,cyber,ce,me,eee,ece]
+      console.log(branchCount)
+      setBranchcount(count)
+  },[]);
+
   return (
     <div className="w-full pb-6 xl:p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
       <div className="w-full xl:w-1/2 h-full flex flex-col items-center justify-center shadow-xl bg-white rounded-md">
@@ -47,7 +86,10 @@ const HomePage = () => {
           Registration Statistics
         </p>
         <div className="px-4 sm:p-0 w-[340px] h-auto sm:w-[400px]">
-          <RegChart />
+          {/* {branchCount.map((index)=>{
+            return(<RegChart key={branchCount.indexOf(index)} data={index} />)
+          })} */}
+          <RegChart/>
         </div>
       </div>
       <div className=" w-full xl:w-1/2 h-auto flex flex-col  space-y-6">
