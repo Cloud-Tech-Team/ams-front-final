@@ -33,24 +33,35 @@ const CoAdmin = () => {
     }
   }
 
-  const saveCoadmin=(e)=>{
+  const saveCoadmin= async(e) =>{
     e.preventDefault()
     addCard([...card, card.length])
     setActionIcon("+") 
     const data = {
-      "headers" : {
-        'Authorization':'Bearer '+localStorage.getItem("admin_access_token"),
-      },
-      "firstName":document.getElementById("firstName").value,
-      "middleName":document.getElementById("middleName").value,
-      "lastName":document.getElementById("lastName").value,
-      "email":document.getElementById("email").value,
-      "password":document.getElementById("password").value,
+      name:document.getElementById("Name").value,
+      email:document.getElementById("email").value,
+      department:document.getElementById("demo-select-small").value,
+      password:document.getElementById("password").value,
     }
     console.log("something")
-    axios.post(api+"admin/add_coadmin",data).then((res)=>{
-        console.log(res)
-      }).catch((e)=>{console.log(e)})
+    try{
+    await
+    axios.post(api+"admin/add_coadmin",data,
+    {
+      headers : {
+        'Authorization':'Bearer '+localStorage.getItem("admin_access_token"),
+      },
+    }).then((res) =>{
+      console.log(res)
+      if(res.data.status === "SUCCESS"){
+        window.alert("res.data.message")
+      }else{
+        window.alert("Something went wrong..Try Again")
+      }
+    })
+  }catch(error){
+    console.log(error)
+  }
   }
 
   return (  
@@ -72,16 +83,8 @@ const CoAdmin = () => {
             <div className="w-full space-y-4 sm:space-y-0 h-auto sm:flex sm:space-x-3">
               <TextField
                 required
-                label="FirstName"
-                id="firstName"
-                type="text"
-                size="small"
-                fullWidth
-              />
-              <TextField
-                required
-                label="LastName"
-                id="lastName"
+                label="Name"
+                id="Name"
                 type="text"
                 size="small"
                 fullWidth
@@ -96,12 +99,12 @@ const CoAdmin = () => {
                 onChange={handleDeptChange}
                 label="Dept."
               >
-                <MenuItem value={10}>Computer Science</MenuItem>
-                <MenuItem value={20}>Computer Science (AI&DS)</MenuItem>
-                <MenuItem value={30}>Electronics and Communications</MenuItem>
-                <MenuItem value={40}>Electrical and Electronics</MenuItem>
-                <MenuItem value={50}>Mechanical</MenuItem>
-                <MenuItem value={60}>Civil</MenuItem>
+                <MenuItem value={"CSE"}>Computer Science</MenuItem>
+                <MenuItem value={"CSE AI&DS"}>Computer Science (AI&DS)</MenuItem>
+                <MenuItem value={"ECE"}>Electronics and Communications</MenuItem>
+                <MenuItem value={"EEE"}>Electrical and Electronics</MenuItem>
+                <MenuItem value={"ME"}>Mechanical</MenuItem>
+                <MenuItem value={"CE"}>Civil</MenuItem>
               </Select>
             </FormControl>
             <TextField
