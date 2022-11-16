@@ -5,10 +5,11 @@ import { LinearProgress } from '@mui/material';
 
 function Branch(props) {
     const [loader,setLoader] = useState(false)
+    const api = 'https://ams-backend-368717.el.r.appspot.com/'
     const submit =(e)=>{
       e.preventDefault()
       setLoader(true)
-      axios.patch('https://ams-backend-368705.el.r.appspot.com/branch/edit/'+props.name+'/2023',
+      axios.patch(api+'branch/edit/'+props.name+'/2023',
       {
         NRISeats : document.getElementById(props.name+"nri").value,
         MgmtSeats: document.getElementById(props.name+"mgmt").value,

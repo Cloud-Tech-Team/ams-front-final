@@ -62,9 +62,10 @@ export const Verification = () => {
                   'EEE':'Electrical and Electronics Engineering',
                   'ME':'Mechanical Engineering',
                   'CE' : 'Civil Engineeting'}
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   useEffect(() => {
     axios
-      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+      .get(api+"user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },

@@ -7,6 +7,7 @@ import axios from "axios";
 import {Backdrop,LinearProgress} from "@mui/material";
 
 function Settings() {
+      const api = 'https://ams-backend-368717.el.r.appspot.com/'
       const [loader,setLoader] = useState(false)
       const branch = {'CSE':'Computer Science and Engineering',
                       'ECE':'Electronics and Communication Engineering',
@@ -16,7 +17,7 @@ function Settings() {
       const [seats,setSeats] = useState([]);
         useEffect(()=>{
           setLoader(true)
-          axios.get('https://ams-backend-368705.el.r.appspot.com/branch/get',{
+          axios.get(api+'branch/get',{
             headers: {
               Authorization: "Bearer " + localStorage.getItem("admin_access_token"),
             },

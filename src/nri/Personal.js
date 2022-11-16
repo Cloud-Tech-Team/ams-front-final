@@ -27,7 +27,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Personal() {
-
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [loader, setLoader] = useState(false);
   const [msg, setMsg] = useState(true);
   const [ciwg,setCiwg] = useState(true);
@@ -82,7 +82,7 @@ function Personal() {
   useEffect(() => {
     setLoader(!loader);
     axios
-      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+      .get(api+"user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -163,7 +163,7 @@ function Personal() {
       try {
         await axios
           .patch(
-            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page1/" +
+            api+"user/nri/application-page1/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -246,7 +246,7 @@ function Personal() {
       try {
         await axios
           .patch(
-            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page1/" +
+            api+"user/nri/application-page1/" +
               localStorage.getItem("user_id"),
             data,
             {

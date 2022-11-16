@@ -36,7 +36,7 @@ function Register() {
   const nriregister = async (e) => {
     e.preventDefault();
     setLoader(true);
-    
+    const api = 'https://ams-backend-368717.el.r.appspot.com/'
     const data = {
       firstName: document.getElementById("fname").value,
       middleName: document.getElementById("mname").value,
@@ -52,7 +52,7 @@ function Register() {
     };
     console.log(data);
     axios
-      .post("https://ams-backend-368705.el.r.appspot.com/user/register", data)
+      .post(api+"user/register", data)
       .then((response) => {
         console.log(response);
         console.log(data);

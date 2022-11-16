@@ -44,6 +44,7 @@ function Payment() {
     setslipselect(true)
   }
   const finalsubmit = async(e) =>{
+    const api = 'https://ams-backend-368717.el.r.appspot.com/'
       e.preventDefault()
       const formData= new FormData()
       formData.append("fileTransactionID", document.getElementById('Transactionslip').files[0]);
@@ -52,7 +53,7 @@ function Payment() {
       if(slipselect === true){
         try{
         await axios
-        .patch("https://ams-backend-368705.el.r.appspot.com/user/nri/application-page5/" +localStorage.getItem("user_id"),
+        .patch(api+"user/nri/application-page5/" +localStorage.getItem("user_id"),
         formData,
         {
           headers: {

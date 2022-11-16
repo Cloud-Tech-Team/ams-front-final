@@ -18,7 +18,7 @@ const Education = () => {
   const [is12thuploaded, setIs12thuploaded] = useState(false);
   const [iskeamuploaded, setIskeamthuploaded] = useState(false);
 
-
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const nav = useNavigate();
   localStorage.setItem("pageNo", 2);
  
@@ -26,7 +26,7 @@ const Education = () => {
     setLoader(true);
 
     axios
-      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+      .get(api+"user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -102,7 +102,7 @@ const Education = () => {
       try {
         await axios
           .patch(
-            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
+            api+"user/nri/application-page2/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -143,7 +143,7 @@ const Education = () => {
       try {
         await axios
           .patch(
-            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
+            api+"user/nri/application-page2/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -184,7 +184,7 @@ const Education = () => {
       try {
         await axios
           .patch(
-            "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
+            api+"user/nri/application-page2/" +
               localStorage.getItem("user_id"),
             formData,
             {
@@ -254,7 +254,7 @@ const Education = () => {
     try {
       await axios
         .patch(
-          "https://ams-backend-368705.el.r.appspot.com/user/nri/application-page2/" +
+          api+"user/nri/application-page2/" +
             localStorage.getItem("user_id"),
           data,
           {

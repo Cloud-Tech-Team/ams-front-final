@@ -6,6 +6,7 @@ import { Backdrop, Button, LinearProgress, TextField } from "@mui/material";
 import Home from "./Icons/home.svg"
 
 const Login = () => {
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [loading, setLoading] = useState(false);
   const [ForgotPassword, setForgotPassword] = useState(false);
   const nav = useNavigate();
@@ -19,7 +20,7 @@ const Login = () => {
     };
     console.log(data);
     axios
-      .post("https://ams-backend-368705.el.r.appspot.com/user/login", data)
+      .post(api+"user/login", data)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

@@ -7,7 +7,7 @@ import { Backdrop, LinearProgress } from "@mui/material";
 import FormData from "form-data";
 
 const Declaration = () => {
-
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [loader, setLoader] = useState(false);
   const [msg,setMsg] = useState('');
   const [filesign, setFilesign] = useState();
@@ -22,7 +22,7 @@ const Declaration = () => {
     setLoader(true);
 
     axios
-      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+      .get(api+"user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -46,7 +46,7 @@ const Declaration = () => {
     console.log(branch);
     try {
       await axios
-        .get("https://ams-backend-368705.el.r.appspot.com/branch/get", {
+        .get(api+"branch/get", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
@@ -87,7 +87,7 @@ const Declaration = () => {
      if (signPick === true) {
       try {
         await axios
-          .patch("https://ams-backend-368705.el.r.appspot.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
+          .patch(api+"user/nri/application-page3/" +localStorage.getItem("user_id"),
             formData,
             {
               headers: {
@@ -127,7 +127,7 @@ const Declaration = () => {
     if(isChecked === true && signPick === true && msg.props.children==='Seat available'){
     try{
     await axios
-      .patch("https://ams-backend-368705.el.r.appspot.com/user/nri/application-page3/" +localStorage.getItem("user_id"),
+      .patch(api+"user/nri/application-page3/" +localStorage.getItem("user_id"),
         data,
         {
           headers: {

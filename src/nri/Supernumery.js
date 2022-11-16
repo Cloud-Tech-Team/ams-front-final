@@ -11,10 +11,10 @@ const Supernumery = () => {
   const [loader, setloader] = useState(false);
 
   const nav = useNavigate();
-
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   useEffect(() => {
     axios
-      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+      .get(api+"user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -74,7 +74,7 @@ const Supernumery = () => {
     }
     console.log(data)
     await 
-    axios.patch("https://ams-backend-368705.el.r.appspot.com/user/quota_edit/",data,
+    axios.patch(api+"user/quota_edit/",data,
     {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("access_token"),
