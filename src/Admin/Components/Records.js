@@ -3,8 +3,8 @@ import React from 'react'
 const Records = (props) => {
   return (
     <div className='w-full flex items-center p-2 justify-between bg-white  rounded-md'>
-        <img src={props.data.filePhotograph} className='w-9 object-cover h-9 rounded-full' alt='avatar' />
-        <p>{props.data.applicationNo}</p>
+        <img src={props.data.filePhotograph} className='w-9 h-9 rounded-full' alt='avatar' />
+        <p className='w-1/9'>{props.data.applicationNo}</p>
         <p>{props.data.firstName +' '+props.data.lastName}</p>
         <p>{props.data.bp1 === null ? ' ': props.data.bp1 }</p>
         <p>BTech</p>
