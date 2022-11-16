@@ -121,9 +121,7 @@ function Personal() {
           setPhotopicked(true);
           setAlreadyUploaded(true)
         }
-        console.log(res.data.user.quota)
         if(res.data.user.quota === "ciwg"){
-          console.log("in")
           setCiwg(false)
         }
         setLoader(false)
@@ -131,7 +129,7 @@ function Personal() {
         console.log(e)
         setLoader(false)
       });
-  }, [ciwg]);
+  }, []);
 
 
   const autofill = (e) => {
@@ -284,7 +282,6 @@ function Personal() {
   return (
     <div className=" xl:w-[1180px] mx-auto flex items-center justify-center h-screen ">
       <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-6">
-        {console.log(ciwg)}
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={loader}
