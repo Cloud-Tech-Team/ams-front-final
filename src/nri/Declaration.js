@@ -29,7 +29,8 @@ const Declaration = () => {
       .then((res) => {
         setLoader(false);
         console.log(res);
-        document.getElementById("bp").value = res.data.user.bp1;
+        document.getElementById("bp").value = res.data.user.bp1
+        res.data.user.bp1 ? setMsg(<p className="text-green-500 text-lg">Branch already selected</p>):setMsg(<p>Branch not selected</p>)
         if(res.data.user.imgSign != null){
              setSignPick(true)
         }

@@ -53,12 +53,12 @@ function Register() {
       quota: quota,
       aadhaar: Number(document.getElementById("aadhar").value),
       dob: document.getElementById("dob").value,
-      acadamicYear: year,
+      academicYear: year,
     };
     console.log(data);
     axios
+      // .post("https://ams-backend-368705.el.r.appspot.com/user/register", data)
       .post("https://ams-backend-368705.el.r.appspot.com/user/register", data)
-      // .post("https://ams-backend-api.herokuapp.com/user/register", data)
       .then((response) => {
         console.log(response);
         console.log(data);
