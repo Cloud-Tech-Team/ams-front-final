@@ -33,31 +33,25 @@ function Register() {
 
 
 
-  const alertBox = () => {
-    return(
-      <Alert>hai</Alert>
-    );
-  }
   const nriregister = async (e) => {
     e.preventDefault();
-    // setLoader(true);
+    setLoader(true);
     
     const data = {
       firstName: document.getElementById("fname").value,
       middleName: document.getElementById("mname").value,
       lastName: document.getElementById("lname").value,
       email: document.getElementById("email").value,
-      phone: Number(document.getElementById("phone").value),
+      phone: document.getElementById("phone").value,
       gender: gender,
       course: pgm,
       quota: quota,
-      aadhaar: Number(document.getElementById("aadhar").value),
+      aadhaar: document.getElementById("aadhar").value,
       dob: document.getElementById("dob").value,
       academicYear: year,
     };
     console.log(data);
     axios
-      // .post("https://ams-backend-368705.el.r.appspot.com/user/register", data)
       .post("https://ams-backend-368705.el.r.appspot.com/user/register", data)
       .then((response) => {
         console.log(response);
@@ -72,7 +66,7 @@ function Register() {
       .catch((error) => {
         console.log(error);
         window.alert(error.response.data.message);
-        // alertBox()
+        
         setLoader(false);
       });
   };
@@ -95,28 +89,28 @@ function Register() {
 
     //     {/* first_row_div */}
     //     <div className="w-full  h-auto ">
-    //       <label htmlFor="name" className="text-lg ml-1 italic">
+    //       <label htmlFor="name" className="text-md ml-1 italic">
     //         Name*
     //       </label>
 
     //       <div className="w-full  h-auto flex space-x-6">
     //         <input
     //           placeholder="First"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           type="text"
     //           id="fname"
     //           className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
     //         />
     //         <input
     //           placeholder="Middle"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           type="text"
     //           id="mname"
     //           className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
     //         />
     //         <input
     //           placeholder="Last"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           type="text"
     //           id="lname"
     //           className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -127,10 +121,10 @@ function Register() {
     //     {/* sec_row_div */}
     //     <div className="w-full  h-auto ">
     //       <div className="flex w-full justify-between">
-    //         <label htmlFor="name" className="text-lg ml-1 italic">
+    //         <label htmlFor="name" className="text-md ml-1 italic">
     //           Email*
     //         </label>
-    //         <label htmlFor="name" className="text-lg mr-28 italic">
+    //         <label htmlFor="name" className="text-md mr-28 italic">
     //           Phone
     //         </label>
     //       </div>
@@ -138,14 +132,14 @@ function Register() {
     //       <div className="w-full   h-auto flex space-x-6">
     //         <input
     //           placeholder="Email"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           type="text"
     //           id="email"
     //           className="h-11 w-2/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
     //         />
     //         <input
     //           placeholder="Phone"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           type="text"
     //           id="phone"
     //           className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -156,20 +150,20 @@ function Register() {
     //     {/* third_row_div */}
     //     <div className="w-full  h-auto ">
     //       <div className="flex w-full justify-between">
-    //         <label htmlFor="name" className="text-lg ml-1  italic">
+    //         <label htmlFor="name" className="text-md ml-1  italic">
     //           Gender*
     //         </label>
-    //         <label htmlFor="name" className="text-lg mr-20 italic">
+    //         <label htmlFor="name" className="text-md mr-20 italic">
     //           Program*
     //         </label>
-    //         <label htmlFor="name" className="text-lg italic">
+    //         <label htmlFor="name" className="text-md italic">
     //           Quota*
     //         </label>
     //       </div>
     //       <div className="w-full  h-auto flex space-x-6">
     //       <select
     //           name="gender"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
     //           id="gender"
     //         >
@@ -180,7 +174,7 @@ function Register() {
     //         </select>
     //         <select
     //           name="program"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
     //           id="program"
     //         >
@@ -191,7 +185,7 @@ function Register() {
     //         </select>
     //         <select
     //           name="quota"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           className="h-11 w-1/3 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
     //           id="quota"
     //         >
@@ -207,17 +201,17 @@ function Register() {
     //     {/* fourth_row_div */}
     //     <div className="w-full  h-auto ">
     //       <div className="flex w-full justify-between">
-    //         <label htmlFor="name" className="text-lg ml-1 italic">
+    //         <label htmlFor="name" className="text-md ml-1 italic">
     //           Aadhar Number
     //         </label>
-    //         <label htmlFor="name" className="text-lg mr-36 italic">
+    //         <label htmlFor="name" className="text-md mr-36 italic">
     //           Date of Birth*
     //         </label>
     //       </div>
     //       <div className="w-full h-auto flex space-x-6">
     //         <input
     //           placeholder="Aadhar No."
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           type="tel"
     //           id="aadhar"
     //           className="h-11 w-1/2 border-[2px] rounded-md pl-4 text-xl  focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -227,7 +221,7 @@ function Register() {
     //             e.target.type = "date";
     //           }}
     //           placeholder="DOB"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           type="date"
     //           id="dob"
     //           className="h-11 w-1/2 border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
@@ -236,10 +230,10 @@ function Register() {
     //     </div>
 
     //     <div className="w-full ">
-    //       <label className="text-lg  italic">Choose applying year</label>
+    //       <label className="text-md  italic">Choose applying year</label>
     //     <select
     //           name="year"
-    //           autoComplete="new-password"
+    //           autoComplete="off"
     //           className="h-11 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
     //           id="apply-year"
     //         >
@@ -255,7 +249,7 @@ function Register() {
     //       onClick={nriregister}>
     //       Submit
     //       </button>
-    //       <p className="font-thin text-lg">Already Registered ? Try <Link className="font-semibold hover:text-blue-500" to="/login">Sign-in</Link></p>
+    //       <p className="font-thin text-md">Already Registered ? Try <Link className="font-semibold hover:text-blue-500" to="/login">Sign-in</Link></p>
     //     </div>
     //   </form>
     // </div>
@@ -276,20 +270,20 @@ function Register() {
         <p className="text-center text-3xl my-6 font-semibold uppercase">
           Registration
         </p>
-        <div className="grid grid-row-3 xl:py-5 p-3 lg:grid-cols-3 gap-3">
-          <TextField autoComplete="new-password"
+        <div className="grid grid-row-3 xl:py-5 p-3 md:grid-cols-3 gap-3">
+          <TextField autoComplete="off"
             required={true}
             label="First Name"
             id="fname"
             size="small"
           />
-          <TextField autoComplete="new-password" label="Middle Name" id="mname" size="small" />
-          <TextField autoComplete="new-password" required={true} label="Last Name" id="lname" size="small" />
+          <TextField autoComplete="off" label="Middle Name" id="mname" size="small" />
+          <TextField autoComplete="off" required={true} label="Last Name" id="lname" size="small" />
         </div>
 
-        <div className="grid grid-row-3 py-5 p-3 lg:grid-cols-3 gap-3">
-          <TextField autoComplete="new-password"
-            className="lg:col-span-2"
+        <div className="grid grid-row-3 py-5 p-3 md:grid-cols-3 gap-3">
+          <TextField autoComplete="off"
+            className="md:col-span-2"
             required={true}
             label="Email"
             type="email"
@@ -298,7 +292,7 @@ function Register() {
             fullWidth
           />
 
-          <TextField autoComplete="new-password"
+          <TextField autoComplete="off"
             required={true}
 
             label="Mobile No.(in Kerala)"
@@ -311,7 +305,7 @@ function Register() {
           />
         </div>
 
-        <div className="grid grid-row-3 py-5 p-3 lg:grid-cols-3 gap-3">
+        <div className="grid grid-row-3 py-5 p-3 md:grid-cols-3 gap-3">
           <FormControl required={true} size="small">
             <InputLabel id="gendr">Gender</InputLabel>
             <Select 
@@ -360,7 +354,7 @@ function Register() {
           </FormControl>
         </div>
 
-        <div className="grid grid-row-3 py-5 p-3 lg:grid-cols-3 gap-3">
+        <div className="grid grid-row-3 py-5 p-3 md:grid-cols-3 gap-3">
           <FormControl required={true} size="small">
             <InputLabel id="apply-year-label">Applying Year</InputLabel>
             <Select 
@@ -375,10 +369,10 @@ function Register() {
               <MenuItem value={2023}>2023</MenuItem>
             </Select>
           </FormControl>
-          <TextField autoComplete="new-password" label="Aadhar No." id="aadhar" size="small" inputProps={{
+          <TextField autoComplete="off" label="Aadhar No." id="aadhar" size="small" inputProps={{
               maxLength: 12
             }}/>
-          <TextField autoComplete="new-password"
+          <TextField autoComplete="off"
             required={true}
             label="Date of Birth"
             type="date"

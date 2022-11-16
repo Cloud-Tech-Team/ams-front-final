@@ -9,11 +9,14 @@ const Navbar = (props) => {
         <Link onClick={props.onToggle} to="/admin" className="text-white   hover:scale-110  italic ">
           Home
         </Link>
-        <Link onClick={props.onToggle} to="/admin/search" className="text-white  hover:scale-110  italic ">
-          Search
-        </Link>
         <Link onClick={props.onToggle} to="/admin/nri" className="text-white hover:scale-110 italic ">
           Coadmin
+        </Link>
+        <Link onClick={props.onToggle} to="/admin/nnri" className="text-white  hover:scale-110  italic ">
+          NRI
+        </Link>
+        <Link onClick={props.onToggle} to="/admin/super" className="text-white  hover:scale-110  italic ">
+          Supernumerary
         </Link>
         <Link onClick={props.onToggle} to="mgmt" className="text-white  hover:scale-110  italic ">
           Management
@@ -21,9 +24,7 @@ const Navbar = (props) => {
         <Link onClick={props.onToggle} to="gov" className="text-white  hover:scale-110  italic ">
           Government
         </Link>
-        <Link onClick={props.onToggle} to="verify" className="text-white  hover:scale-110  italic ">
-          Profile Verification
-        </Link>
+        
         <Link onClick={props.onToggle} to="/admin/settings" className="text-white  hover:scale-110  italic ">
           Settings
         </Link>
