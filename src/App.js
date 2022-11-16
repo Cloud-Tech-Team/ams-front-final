@@ -70,8 +70,8 @@ function App() {
               <Route element={<ProtectedRoutes/>}>
                 <Route element={<Admin/>}>
                   <Route element={<HomePage/>} path="/admin" exact/>
-                  <Route element={<Nri/>} path="/admin/nnri" exact/>
-                  <Route element={<CoAdmin/>} path="/admin/nri" exact/>
+                  <Route element={<Nri/>} path="/admin/nri" exact/>
+                  <Route element={<CoAdmin/>} path="/admin/coadmin" exact/>
                   <Route element={<Settings/>} path="/admin/settings" exact/>
                   <Route element={<Search/>} path="/admin/search" exact/>
                 </Route>
