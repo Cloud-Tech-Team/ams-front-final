@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Records = () => {
+const Records = (props) => {
   return (
     <div className='w-full flex items-center p-2 justify-between bg-white  rounded-md'>
-        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0NlGVCtXmSW_seQQ8ksxj24ZnWiLPRxdPTevd8xxB0A&s' className='w-9 h-9 rounded-full' alt='avatar' />
-        <p>NBT230011</p>
-        <p>Nandakrishnan PN</p>
-        <p>CSE</p>
+        <img src={props.data.filePhotograph} className='w-9 object-cover h-9 rounded-full' alt='avatar' />
+        <p>{props.data.applicationNo}</p>
+        <p>{props.data.firstName +' '+props.data.lastName}</p>
+        <p>{props.data.bp1 === null ? ' ': props.data.bp1 }</p>
         <p>BTech</p>
         <p>8848978215</p>
         <p className='text-green-500'>Payment completed</p>
