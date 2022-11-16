@@ -124,7 +124,7 @@ const Declaration = () => {
     const data = {
       bp1: document.getElementById("bp").value,
     };
-    if(isChecked === true && signPick === true && msg.props.children==='Seat available'){
+    if(isChecked === true && signPick === true){
     try{
     await axios
       .patch(api+"user/nri/application-page3/" +localStorage.getItem("user_id"),
