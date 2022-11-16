@@ -194,7 +194,7 @@ const Dashboard = () => {
     doc.text(102, 95 + 10 * 15, user.bp1.toString()); //user.bp
   
     doc.text(12, 95 + 10 * 16, "12.Transaction ID :");
-    doc.text(102, 95 + 10 * 16, user._id.toString()); //user.transactionId
+    doc.text(102, 95 + 10 * 16, user.transactionID.toString()); //user.transactionId
     doc.setFontSize(10);
 
     let today = new Date(user.registrationTimeStamp);

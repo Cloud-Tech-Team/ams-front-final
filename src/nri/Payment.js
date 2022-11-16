@@ -22,7 +22,7 @@ function Payment() {
       })
       .then((res) => {
         console.log(res)
-        document.getElementById("TransactionId").value = res.data.user.transactionID ;
+        document.getElementById("TransactionId").value = res.data.user.transactionID === undefined ? " " : res.data.user.transactionID ;
         if(res.data.user.fileTransactionID != null){
             setslipselect(true)
         }

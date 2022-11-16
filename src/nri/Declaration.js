@@ -78,6 +78,7 @@ const Declaration = () => {
 
   const signupload = async(e) =>{
      e.preventDefault()
+     setLoader(true)
      const formData = new FormData();
      formData.append("imgSign", filesign);
      console.log(formData);
@@ -102,11 +103,12 @@ const Declaration = () => {
             }
           });
       } catch (error) {
-        window.alert("Technical Error..Try Again Later");
+        window.alert("Technical Error..Try Again Later"+error.message);
       }
     } else {
       window.alert("Please selcet the Signature");
     }
+    setLoader(false)
   }
 
   
@@ -159,6 +161,7 @@ const Declaration = () => {
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={loader}
       >
+        {loader && <LinearProgress color="primary" />}
       </Backdrop>
       <div className="h-auto   w-full p-6 bg-white  rounded-[4px] ">
         <div className=" w-auto  rounded-md border-[2px] p-4 py-8 space-y-6">
@@ -181,7 +184,6 @@ const Declaration = () => {
               <option value="ECE">Electronics and Communication Engineering</option>
             </select>
           </div>
-          {loader && <LinearProgress color="primary" />}
           <label>{msg}</label>
         </div>
         <p className="text-xl my-6 text-center underline">Instructions</p>
