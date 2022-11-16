@@ -30,7 +30,7 @@ const Nri = () => {
 
         </div>
         {list.map((index)=>{
-            return(<Records key={list.indexOf(index)} />)
+            return(<Records key={list.indexOf(index)} data={index} />)
           
         })}
     </div>
