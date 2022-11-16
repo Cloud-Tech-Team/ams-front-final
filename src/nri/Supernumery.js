@@ -4,6 +4,7 @@ import { Button, Backdrop, LinearProgress, Tooltip } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
 
 const Supernumery = () => {
   const [relation, setRelation] = useState(false);
@@ -11,7 +12,23 @@ const Supernumery = () => {
 
   const nav = useNavigate();
 
-
+  useEffect(() => {
+    axios
+      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+      })
+      .then((res) => {
+        console.log(res)
+        document.getElementById("quota-select").value = res.data.user.quota
+        if(res.data.user.quota === "ciwg"){
+          setRelation(true)
+          document.getElementById("relation-select").value = res.data.user.NRIdetails.relation
+          document.getElementById("parent-name").value = res.data.user.NRIdetails.name
+        }
+      });
+  }, []);
   const handleQuota = (e) => {
     if (e.target.value === "ciwg") setRelation(true);
     else setRelation(false);
