@@ -5,7 +5,6 @@ import { useEffect,useState } from 'react'
 import axios from 'axios'
 
 const Nri = () => {
-  const cards = [0,1,2,3,5,7]
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [list,setList] = useState([])
   useEffect(() => {
@@ -32,7 +31,6 @@ const Nri = () => {
         </div>
         {list.map((index)=>{
             return(<Records key={list.indexOf(index)} data={index} />)
-          
         })}
     </div>
   )

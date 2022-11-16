@@ -25,12 +25,11 @@ const HomePage = () => {
     //   { verified: true },
     // ],
   };
-  const local = "http://localhost:3001/admin/count"
-  const api = "https://ams-backend-api.herokuapp.com/admin/count"
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   useEffect(() => {
     console.log(token)
     axios
-      .get(api,query)
+      .get(api+'admin/count',query)
       .then((res) => {
         console.log(res.data);
         setGov(Number(res.data.result[0]))

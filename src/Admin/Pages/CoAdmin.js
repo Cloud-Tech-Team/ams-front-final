@@ -16,6 +16,7 @@ const CoAdmin = () => {
   const [dept, setDept] = useState();
   const [card, addCard] = useState([]);
   const [actionIcon, setActionIcon] = useState("+");
+  const api = 'https://ams-backend-368717.el.r.appspot.com/'
   console.log(card);
   function handleDeptChange(e) {
     setDept(e.target.value);
@@ -47,7 +48,7 @@ const CoAdmin = () => {
       "password":document.getElementById("password").value,
     }
     console.log("something")
-    axios.post("https://ams-backend-api.herokuapp.com/admin/add_coadmin",data).then((res)=>{
+    axios.post(api+"admin/add_coadmin",data).then((res)=>{
         console.log(res)
       }).catch((e)=>{console.log(e)})
   }
