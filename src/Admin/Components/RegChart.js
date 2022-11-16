@@ -27,11 +27,11 @@ ChartJS.register(
 
 const RegChart = () => {
   const data = {
-    labels: ["CSE","CSE-AI","CE","ME","EEE","ECE"],
+    labels: ["CSE","CSE-AI","AI&DS","CyberSecurity","CE","ME","EEE","ECE"],
     datasets: [
       {
         label: "Registration's",
-        data: [310, 120, 210, 150, 300, 280],
+        data: [310, 120, 210, 150, 300, 280, 100, 50],
         backgroundColor: [
           "rgb(255, 99, 132)",
           "rgb(75, 192, 192)",
@@ -39,6 +39,8 @@ const RegChart = () => {
           "rgb(201, 203, 207)",
           "rgb(54, 162, 235)",
           "rgb(125,97,186)",
+          "rgb(125,17,186)",
+          "rgb(200,97,186)"
         ],
         hoverOffset: 4,
       },

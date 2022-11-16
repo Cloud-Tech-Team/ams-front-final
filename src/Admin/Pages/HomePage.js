@@ -88,30 +88,40 @@ const HomePage = () => {
           </div>
         </div>
         <div className="sm:h-1/3 w-full flex flex-row border-l-[8px] bg-white py-3 sm:p-0 border-black">
-          <div className="w-1/3 h-full flex flex-col items-center justify-center bg-white">
+        <div className="w-1/4 h-full flex flex-col items-center justify-center bg-white ">
+            <p className="text-center text-bold uppercase text-2xl sm:text-4xl">
+              SUP
+            </p>
+            <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl ">
+              {/* change here */}
+              {30}
+            </p>
+          </div>
+          <div className="w-1/4 h-full flex flex-col items-center justify-center bg-white">
             <p className="text-center text-bold uppercase text-2xl sm:text-4xl">
               NRI
             </p>
-            <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
+            <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl ">
               {nri}
             </p>
           </div>
-          <div className="w-1/3 h-full flex flex-col  items-center justify-center bg-white ">
+          <div className="w-1/4 h-full flex flex-col  items-center justify-center bg-white ">
             <p className="text-center text-bold uppercase text-2xl sm:text-4xl">
               Mgmt
             </p>
-            <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
+            <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl ">
               {mgmt}
             </p>
           </div>
-          <div className="w-1/3 h-full flex flex-col items-center justify-center bg-white ">
+          <div className="w-1/4 h-full flex flex-col items-center justify-center bg-white ">
             <p className="text-center text-bold uppercase text-2xl sm:text-4xl">
               gov
             </p>
-            <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
+            <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl ">
               {gov}
             </p>
           </div>
+         
         </div>
       </div>
       {/*  */}
