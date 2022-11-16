@@ -52,8 +52,8 @@ const CoAdmin = () => {
       }).catch((e)=>{console.log(e)})
   }
 
-  return (
-    <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-black xl:pr-5 space-y-4 lg:space-y-0  lg:grid grid-cols-2 xl:grid-cols-3 gap-3 w-[350px] h-auto sm:w-auto">
+  return (  
+  <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-rounded-full scrollbar-thumb-black xl:pr-5 space-y-4 lg:space-y-0  lg:grid grid-cols-2 xl:grid-cols-3 gap-3 w-[350px] h-auto sm:w-auto">
       {card.length === 0 && (
         <div className="w-full col-span-3 italic h-[500px]  flex items-center justify-center">
           <p className="text-3xl text-center">Click + to add Co-Admin</p>
