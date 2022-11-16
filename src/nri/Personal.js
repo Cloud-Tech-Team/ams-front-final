@@ -271,7 +271,7 @@ function Personal() {
           });
       } catch (error) {
         setLoader(false);
-        window.alert("eTechnical Error..Try After Sometime");
+        window.alert("Technical Error..Try After Sometime");
         console.log(error);
       }
     } else {
@@ -280,7 +280,7 @@ function Personal() {
     }
   };
 
-  
+
   return (
     <div className=" xl:w-[1180px] mx-auto flex items-center justify-center h-screen ">
       <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-6">
