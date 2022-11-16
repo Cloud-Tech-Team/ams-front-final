@@ -93,29 +93,29 @@ function Personal() {
         if (res.data.user.applicationCompleted) 
           nav("/dashboard");
         console.log(res);
-        document.getElementById("fname").value = user.firstName;
-        document.getElementById("mname").value = user.middleName;
-        document.getElementById("lname").value = user.lastName;
-        document.getElementById("phoneKerala").value = user.phone;
-        document.getElementById("dob").valueAsDate = new Date(user.dob);
-        document.getElementById("phone1").value = user.aPhone === null ? ' ':user.aPhone;
+        document.getElementById("fname").value = res.data.user.firstName;
+        document.getElementById("mname").value = res.data.user.middleName;
+        document.getElementById("lname").value = res.data.user.lastName;
+        document.getElementById("phoneKerala").value = res.data.user.phone;
+        document.getElementById("dob").valueAsDate = new Date(res.data.user.dob);
+        document.getElementById("phone1").value = res.data.user.aPhone === undefined ? ' ': res.data.user.aPhone;
 
-        document.getElementById("Chouse").value = user.contactAddress.addressL1;
-        document.getElementById("Ccity").value = user.contactAddress.city;
-        document.getElementById("Cdistrict").value = user.contactAddress.district;
-        document.getElementById("Cstate").value = user.contactAddress.state;
-        document.getElementById("Cpincode").value = user.contactAddress.pincode;
+        document.getElementById("Chouse").value = res.data.user.contactAddress.addressL1;
+        document.getElementById("Ccity").value = res.data.user.contactAddress.city;
+        document.getElementById("Cdistrict").value = res.data.user.contactAddress.district;
+        document.getElementById("Cstate").value = res.data.user.contactAddress.state;
+        document.getElementById("Cpincode").value = res.data.user.contactAddress.pincode;
 
-        document.getElementById("Phouse").value = user.permanentAddress.addressL1;
-        document.getElementById("Pcity").value = user.permanentAddress.city;
-        document.getElementById("Pdistrict").value = user.permanentAddress.district;
-        document.getElementById("Pstate").value = user.permanentAddress.state;
-        document.getElementById("Ppincode").value = user.permanentAddress.pincode;
+        document.getElementById("Phouse").value = res.data.user.permanentAddress.addressL1;
+        document.getElementById("Pcity").value = res.data.user.permanentAddress.city;
+        document.getElementById("Pdistrict").value = res.data.user.permanentAddress.district;
+        document.getElementById("Pstate").value = res.data.user.permanentAddress.state;
+        document.getElementById("Ppincode").value = res.data.user.permanentAddress.pincode;
 
-        document.getElementById("parentName").value = user.guardianDetails.name;
-        document.getElementById("parentOccupation").value = user.guardianDetails.occupation;
-        document.getElementById("sponsorName").value = user.NRIdetails.name;
-        document.getElementById("sponsorRelation").value = user.NRIdetails.relation;
+        document.getElementById("parentName").value = res.data.user.guardianDetails.name;
+        document.getElementById("parentOccupation").value = res.data.user.guardianDetails.occupation;
+        document.getElementById("sponsorName").value = res.data.user.NRIdetails.name;
+        document.getElementById("sponsorRelation").value = res.data.user.NRIdetails.relation;
         
         if (res.data.user.filePhotograph != null) {
           setPhotopicked(true);
