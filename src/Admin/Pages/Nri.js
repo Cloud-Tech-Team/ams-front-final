@@ -21,14 +21,14 @@ const Nri = () => {
       });
   }, [])
   return (
-    <div className="overflow-x-auto scrollbar-thin space-y-3 border-[1px] p-4 border-black scrollbar-thumb-rounded-full scrollbar-thumb-black ">
-        <div className='w-full flex space-x-4 items-end justify-end h-auto'>
+    <div className="overflow-x-auto grid gird-cols-9 scrollbar-thin space-y-3  p-4 scrollbar-thumb-rounded-full scrollbar-thumb-black ">
+        {/* <div className='w-full  space-x-4 items-end justify-end h-auto'>
             <div className='w-auto h-8 rounded-full bg-white'>
-                {/* <input */}
+        
             </div>
             <div className='w-9 h-9 rounded-full bg-white'></div>
 
-        </div>
+        </div> */}
         {list.map((index)=>{
             return(<Records key={list.indexOf(index)} data={index} />)
         })}
