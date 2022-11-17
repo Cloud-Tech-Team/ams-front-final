@@ -245,20 +245,39 @@ const Declaration = () => {
         </div>
         <p className="mt-6 text-center"> <input id="proof" onChange={handlecheck} type="checkbox" className="w-4 h-4 accent-red-600 mr-2"/><label>I have clearly read the instructions mentioned above and would like to proceed further</label></p>
 
-        <div className=" xl:flex items-center my-3 gap-4 justify-center">
+        <div className=" xl:flex items-center mt-3 gap-4 justify-center">
           <p className="font-semibold">Signature Upload (applicant)*</p>
-          {issignuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
+          {/* {issignuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
           <span className="sm:space-x-3">
           <input
             id="sign"
             onChange={handlesign}
             type="file"
-            className="rounded-[4px] mb-2 border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
+            className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
           />
+          
           <Button variant="contained" onClick={signupload}>Upload</Button>
           </span>
           
+        </div>  
+        {issignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
+        <div className=" xl:flex items-center mt-3 gap-4 justify-center">
+          <p className="font-semibold ">Signature Upload (Parent/Gaurdian)*</p>
+         
+          <span className="sm:space-x-3">
+          <input
+            id="sign"
+            // onChange={handlesign}
+            type="file"
+            className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
+          />
+          
+          
+          <Button variant="contained" onClick={signupload}>Upload</Button>
+          </span>
         </div>        
+        {issignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
+       
         <p className="text-center my-4 text-red-600">
           upload an image file (jpeg/png) of size less than 1mb*
         </p>
@@ -267,6 +286,7 @@ const Declaration = () => {
         <Button
           sx={{
             color: "#fff",
+            
           }}
           color="greenary"
           variant="contained"
