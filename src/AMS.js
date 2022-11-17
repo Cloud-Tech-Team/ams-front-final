@@ -11,23 +11,23 @@ function AMS() {
     <div className="w-screen h-screen  bg-shade">
       <div className="w-screen z-10 h-screen opacity-60 bg-gray-900 absolute"></div>
       <div className="flex fixed z-20 font-poppins items-center text-white cursor-pointer space-x-8 justify-between p-8 w-screen h-16">
-       <div className="w-auto flex gap-8">
-       <p className="text-xl  hover:text-red-600">Home</p>
-        <p className="text-xl hover:text-red-600">About</p>
+       <div className="w-auto text-sm xl:text-md flex gap-4 xl:gap-8">
+       <p className="  hover:text-red-600">Home</p>
+        <p className=" hover:text-red-600">About</p>
         <Link
           to="/register"
-          className="text-xl  hover:text-red-600 underline"
+          className=" hover:text-red-600 underline"
         >
           Register
         </Link>
-        <Link to="/login" className="text-xl  hover:text-red-600 underline">
+        <Link to="/login" className="  hover:text-red-600 underline">
           Login
         </Link>
        </div>
-        <img className="h-20 mt-3" src={mits_logo}/>
+        <img className=" h-5 xl:h-20 xl:mt-3" src={mits_logo}/>
       </div>
       {/* <div className="bg-shade w-full  sm:flex sm:flex-col md:flex-row justify-between p-8 h-full"> */}
-        <div className="w-[380px] absolute z-50 mt-20 xl:mt-14 xl:ml-40 2xl:mt-24 h-[520px] 2xl:ml-20">
+        {/* <div className="w-[380px] absolute z-50 mt-20 xl:mt-14 xl:ml-40 2xl:mt-24 h-[520px] 2xl:ml-20">
           <div className="h-[300px]  rounded-md w-[400px]  shadow-xl bg-slate-300 top-8 -right-10 absolute"></div>
           <div className="h-[300px]  rounded-md w-[400px]  shadow-xl bg-slate-200 top-12 -right-16 absolute"></div>
           <div className="h-[300px] rounded-md w-[400px] shadow-xl  bg-slate-50 top-16 -right-24 absolute">
@@ -53,7 +53,7 @@ function AMS() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
         <video className="object-cover object-bottom h-screen w-full" src={video} autoPlay loop muted />
       {/* </div> */}
     </div>
