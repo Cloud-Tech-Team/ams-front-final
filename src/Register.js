@@ -57,7 +57,7 @@ function Register() {
         console.log(response);
         console.log(data);
         if (response.status === 200) {
-          window.alert("Registration success");
+          window.alert("Registration success.Login Credentials Are Send to Registered EmailId");
           nav("/login");
         } else 
         window.alert(response.statusText);
