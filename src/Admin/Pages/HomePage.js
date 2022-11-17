@@ -65,15 +65,15 @@ const HomePage = () => {
           else if(res.data.list[i].branch === "ECE"){
             setEce(Number(res.data.list[i].occupiedSeats))
           }
-          // else if(res.data.list[i].branch === "CSE-AI"){
-          //   setCseai(Number(res.data.list[i].occupiedSeats))
-          // }
-          // else if(res.data.list[i].branch === "AI&DS"){
-          //   setAids(Number(res.data.list[i].occupiedSeats))
-          // }
-          // else if(res.data.list[i].branch === "CY"){
-          //   setCyber(Number(res.data.list[i].occupiedSeats))
-          // }
+          else if(res.data.list[i].branch === "CSE-AI"){
+            setCseai(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "AI&DS"){
+            setAids(Number(res.data.list[i].occupiedSeats))
+          }
+          else if(res.data.list[i].branch === "CY"){
+            setCyber(Number(res.data.list[i].occupiedSeats))
+          }
         }
       });
       const count = [cse,cseai,aids,cyber,ce,me,eee,ece]
