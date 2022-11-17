@@ -130,18 +130,6 @@ const Login = () => {
               size="small"
               fullWidth
             />
-            <FormControl className="w-full" size="small">
-              <InputLabel id="role-select">Role</InputLabel>
-              <Select
-                id="role-select"
-                value={role}
-                onChange={handleRoleChange}
-                label="Role"
-              >
-                <MenuItem value={10}>Admin</MenuItem>
-                <MenuItem value={20}>CoAdmin</MenuItem>
-              </Select>
-            </FormControl>
             <TextField
               required
               label="Password"

@@ -80,7 +80,7 @@ function Personal() {
   const nav = useNavigate();
 
   useEffect(() => {
-    setLoader(!loader);
+    setLoader(true);
     axios
       .get(api+"user/nri/application", {
         headers: {
@@ -117,9 +117,11 @@ function Personal() {
         document.getElementById("sponsorName").value = res.data.user.NRIdetails.name;
         document.getElementById("sponsorRelation").value = res.data.user.NRIdetails.relation;
         
-        if (res.data.user.filePhotograph != null) {
-          setPhotopicked(true);
+        if (res.data.user.filePhotograph) {
+          // setPhotopicked(true);
           setAlreadyUploaded(true)
+        }else{
+          setAlreadyUploaded(false)
         }
         if(res.data.user.quota === "ciwg"){
           setCiwg(false)
@@ -129,6 +131,7 @@ function Personal() {
         console.log(e)
         setLoader(false)
       });
+      setLoader(false)
   }, []);
 
 
@@ -151,10 +154,12 @@ function Personal() {
 
   const forphoto = async (e) => {
     setPhotopicked(true);
+    console.log(alreadyUploaded)
   };
 
   const handlephotoFile = async (e) => {
     e.preventDefault();
+    setLoader(true)
     const file = document.getElementById("photo").files[0];
     const formData = new FormData();
     formData.append("filePhotograph", file);
@@ -174,7 +179,7 @@ function Personal() {
             }
           )
           .then((res) => {
-            console.log("this is the response \n" + res);
+            console.log(res);
             if (res.data.status === "SUCCESS") {
               window.alert("Photograph Uploaded Successfully");
             } else {
@@ -189,12 +194,13 @@ function Personal() {
     } else {
       window.alert("Please select your photo");
     }
+    setLoader(false)
   };
 
 
   const personalUpload = async (e) => {
     e.preventDefault();
-    setLoader(!loader);
+    setLoader(true);
     const data = {
       // firstName: document.getElementById("fname").value,
       // middleName: document.getElementById("mname").value,
@@ -274,6 +280,7 @@ function Personal() {
       setLoader(false);
       window.alert("Some required Field Empty");
     }
+    setLoader(false)
   };
 
 
@@ -300,7 +307,7 @@ function Personal() {
           >
             <DialogTitle>Important Message</DialogTitle>
             <DialogContent>
-              We recommed you to contact
+              We recommend you to contact
               <br />
               <b>Mr Binoy P.K (ph:9446717178) </b> before proceeding
               <br />
@@ -403,7 +410,7 @@ function Personal() {
                 }}
                 required
               />
-            {alreadyUploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
+            {user.filePhotograph && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
               <Button variant="contained" onClick={handlephotoFile}>
                 Upload
               </Button>
