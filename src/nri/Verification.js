@@ -2,11 +2,13 @@ import React from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Backdrop, CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 
 export const Verification = () => {
   localStorage.setItem("pageNo", 4);
+  const [loader,setLoader] = useState(true)
   const [marklist10, setMarklist10] = useState();
   const [marklist12, setMarklist12] = useState();
   const [marklistKeam, setMarklistKeam] = useState();
@@ -61,8 +63,10 @@ export const Verification = () => {
                   'ECE':'Electronics and Communication Engineering',
                   'EEE':'Electrical and Electronics Engineering',
                   'ME':'Mechanical Engineering',
-                  'CE' : 'Civil Engineeting'}
+                  'CE' : 'Civil Engineeting',
+                  'CS':'Cyber Security'}
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
+
   useEffect(() => {
     axios
       .get(api+"user/nri/application", {
@@ -84,6 +88,7 @@ export const Verification = () => {
         setSign(signature)
         setUser(res.data.user)
       });
+      setLoader(false)
   }, []);
   
   const handlecheck = (e) =>{
@@ -99,6 +104,12 @@ export const Verification = () => {
 
   return (
     <div className="font-poppins min-h-screen mx-auto w-11/12 lg:w-4/6 py-10  xl:my-auto">
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loader}
+      >
+        <CircularProgress color="blue"/>
+      </Backdrop>
       <div className="h-auto w-full mt-10 p-2 bg-white rounded-[4px] ">
         <div className="flex items-center px-6 justify-between">
           <img

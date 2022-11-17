@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
@@ -166,6 +166,7 @@ const Declaration = () => {
         open={loader}
       >
         {loader && <LinearProgress color="primary" />}
+        <CircularProgress color="blue"/>
       </Backdrop>
       <div className="h-auto   w-full p-6 bg-white  rounded-[4px] ">
         <div className=" w-auto  rounded-md border-[2px] p-4 py-8 space-y-6">

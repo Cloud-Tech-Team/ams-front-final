@@ -1,6 +1,6 @@
 import React from "react";
 import ErrorTwoToneIcon from "@mui/icons-material/ErrorTwoTone";
-import { TextField, Checkbox, Button, Dialog } from "@mui/material";
+import { TextField, Checkbox, Button, CircularProgress, Backdrop } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
@@ -12,10 +12,11 @@ function Payment() {
   localStorage.setItem("pageNo", 5);
   const [enable, setEnable] = useState(true);
   const nav = useNavigate()
+  const [loader,setLoader] = useState(false)
 
   useEffect(() => {
     axios
-      .get("https://ams-backend-368705.el.r.appspot.com/user/nri/application", {
+      .get("https://ams-backend-368717.el.r.appspot.com/user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
@@ -44,6 +45,7 @@ function Payment() {
     setslipselect(true)
   }
   const finalsubmit = async(e) =>{
+    setLoader(true)
     const api = 'https://ams-backend-368717.el.r.appspot.com/'
       e.preventDefault()
       const formData= new FormData()
@@ -75,11 +77,18 @@ function Payment() {
         window.alert("Technical Error..Try Again Later")
       }
      }
+     setLoader(false)
   }
 
     
     return(
     <div className="font-poppins min-h-screen  w-11/12 lg:w-3/5 py-20">
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loader}
+      >
+        <CircularProgress color="blue"/>
+      </Backdrop>
       <div className="h-auto w-full mt-10 p-6 space-y-5 bg-white rounded-[4px] ">
         <p className="text-center mb-4 font-semibold text-red-500">
           Pay advance Provisional registration fee of Rs 1,00,500 to the
