@@ -228,7 +228,7 @@ const Declaration = () => {
             >
               <option value="branch"></option>
               <option value="CSE">Computer Science and Engineering</option>
-              <option value="CS">Cyber Security</option>
+              <option value="CY">CSE(Cyber Security)</option>
               <option value="AI">Artificial Intelligence</option>
               <option value="AI&DS">CSE-AI&DS</option>
               <option value="CE">Civil Engineering</option>

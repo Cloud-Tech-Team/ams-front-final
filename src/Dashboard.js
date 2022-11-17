@@ -19,6 +19,14 @@ const Dashboard = () => {
     localStorage.removeItem("access_token");
     nav("/login");
   };
+  const branch = {'CSE':'Computer Science and Engineering',
+  'ECE':'Electronics and Communication Engineering',
+  'EEE':'Electrical and Electronics Engineering',
+  'ME':'Mechanical Engineering',
+  'CE' : 'Civil Engineering',
+  'CY':'Computer Science and Engineering(CY)',
+  'AI':'Computer Science and Engineering(AI)',
+  'AI&DS':'Artificial intelligence & Data Science'}
 
   const doc = new jsPDF("p", "mm", [297, 210]);
   const [user,setUser] = useState();
@@ -60,6 +68,7 @@ const Dashboard = () => {
   });
   const [img,setImg] = useState();
   const [signature,setSignature] = useState();
+  const [childSign,setChildSign] = useState();
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
 
   useEffect(() => {
@@ -104,6 +113,7 @@ const Dashboard = () => {
             if (res.status === 200) {
               setUser(res.data.user);
               toDataUrl(res.data.user.filePhotograph,function(myBase64) {setImg(myBase64.toString())})
+              toDataUrl(res.data.user.parentSign,function(myBase64) {setSignature(myBase64.toString())})
               toDataUrl(res.data.user.imgSign,function(myBase64) {setSignature(myBase64.toString())})
             } else {
               window.alert("Something wrong happened");
@@ -192,7 +202,7 @@ const Dashboard = () => {
     doc.text(102, 95 + 10 * 14, user.NRIdetails.relation.toString()); //usre.relation
   
     doc.text(12, 95 + 10 * 15, "11.Selected Branch :");
-    doc.text(102, 95 + 10 * 15, user.bp1.toString()); //user.bp
+    doc.text(102, 95 + 10 * 15, branch[user.bp1]); //user.bp
   
     doc.text(12, 95 + 10 * 16, "12.Transaction ID :");
     doc.text(102, 95 + 10 * 16, user.transactionID.toString()); //user.transactionId
@@ -241,8 +251,12 @@ const Dashboard = () => {
     doc.setFontSize(15)
   
     doc.text(12, 85 + 10 * 13, "Name of the parent/guardian : ");
-    doc.text(140,85+(10*14),'Signature of parent/guardian')
-    doc.addImage(signature, 'JPEG', 150, 230, 40, 25)
+    doc.text(12,85+(10*15),'Signature of parent/guardian')
+    doc.addImage(signature, 'JPEG', 12, 240, 40, 25)
+
+
+    doc.text(140,85+(10*14),'Signature of applicant')
+    doc.addImage(childSign, 'JPEG', 150, 230, 40, 25)
     doc.text(80, 85 + 10 * 13, user.guardianDetails.name.toString()); //user.guardian.name
   
     doc.text(12, 85 + 10 * 14, "Date : ");

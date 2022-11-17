@@ -63,8 +63,10 @@ export const Verification = () => {
                   'ECE':'Electronics and Communication Engineering',
                   'EEE':'Electrical and Electronics Engineering',
                   'ME':'Mechanical Engineering',
-                  'CE' : 'Civil Engineeting',
-                  'CS':'Cyber Security'}
+                  'CE' : 'Civil Engineering',
+                  'CY':'Computer Science and Engineering(CY)',
+                  'AI':'Computer Science and Engineering(AI)',
+                  'AI&DS':'Artificial intelligence & Data Science'}
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
 
   useEffect(() => {
