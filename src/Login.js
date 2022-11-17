@@ -78,7 +78,7 @@ const Login = () => {
     <div className="min-w-screen relative  h-screen flex items-center justify-center bg-gradient-to-br  from-rock-blue-200 via-rock-blue-300 to-rock-blue-400">
       <div className="w-full top-1 h-14 absolute flex items-center justify-between px-8">
         <Link to="/">
-        <img src={Home} alt="home" />
+        <img  src={Home} alt="home" />
         </Link>
         <p className="absolute text-right text-sm xl:text-md right-6 top-6"><b className="text-red-600">Note:</b>&nbsp;The login credentials has been sent to your registered email-id<br/><b className="text-red-600">Check the spam folder also</b></p>
         <Backdrop
@@ -116,7 +116,7 @@ const Login = () => {
             onClick={() => {
               setForgotPassword(!ForgotPassword);
             }}
-            className="text-right cursor-pointer hover:text-red-700 text-lg mr-4 "
+            className="text-right  cursor-pointer hover:text-red-700 text-lg mr-4 "
           >
             Sign-In
           </p>
@@ -127,7 +127,7 @@ const Login = () => {
           onSubmit={Login}
           className="w-80 sm:w-[350px] p-4 sm:p-8  h-auto absolute z-20 shadow-2xl rounded-sm  bg-white"
         >
-          <p className="text-4xl mt-3 text-center sm:font-semibold">SIGN-IN</p>
+          <p className="text-4xl text-red-600 mt-3 text-center sm:font-semibold">SIGN-IN</p>
           <div className="w-full mt-5 space-y-8 p-2 h-auto ">
             <TextField
               required
