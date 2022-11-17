@@ -362,6 +362,9 @@ function Personal() {
                 label="Contact Ph. No(M)"
                 type="text"
                 size="small"
+                inputProps={{
+                  maxLength: 10
+                }}
                 required
               />
               <TextField
@@ -372,6 +375,9 @@ function Personal() {
                 label="Contact Ph. No(Kerala)"
                 type="text"
                 size="small"
+                inputProps={{
+                  maxLength: 10
+                }}
                 required
                 
               />
@@ -460,6 +466,9 @@ function Personal() {
                 label="Pincode"
                 type="text"
                 size="small"
+                inputProps={{
+                  maxLength: 6
+                }}
               />
             </div>
           </div>
@@ -523,6 +532,9 @@ function Personal() {
                 label="Pincode"
                 type="text"
                 size="small"
+                inputProps={{
+                  maxLength: 6
+                }}
               />
             </div>
             <div className="w-full px-3">
