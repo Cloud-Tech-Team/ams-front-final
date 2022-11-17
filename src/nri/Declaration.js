@@ -101,7 +101,7 @@ const Declaration = () => {
           .then((res) => {
             console.log(res);
             if (res.data.status === "SUCCESS ") {
-              window.alert("Photo Uploaded");
+              window.alert("Signature Uploaded Successfully");
             } else {
               window.alert("Something Went Wrong..Upload Again");
             }

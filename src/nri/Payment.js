@@ -76,6 +76,8 @@ function Payment() {
         console.log(error)
         window.alert("Technical Error..Try Again Later")
       }
+     }else{
+      window.alert("Please Fill The Required Fields")
      }
      setLoader(false)
   }

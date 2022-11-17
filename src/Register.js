@@ -66,7 +66,6 @@ function Register() {
       .catch((error) => {
         console.log(error);
         window.alert(error.response.data.message);
-        
         setLoader(false);
       });
   };

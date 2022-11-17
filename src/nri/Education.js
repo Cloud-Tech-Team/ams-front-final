@@ -115,7 +115,7 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              window.alert("Photo Uploaded");
+              window.alert("10th Certificate Uploaded");
             } else {
               window.alert("Something went Wrong..Upload again");
             }
@@ -124,7 +124,7 @@ const Education = () => {
         window.alert("Some Technical Error..Try After Sometime");
       }
     } else {
-      window.alert("Please Pick the 10th gradecard");
+      window.alert("Please Pick the 10th Certificate");
     }
   };
 
@@ -156,7 +156,7 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              window.alert("Photo Uploaded");
+              window.alert("12th Certificate Uploaded");
             } else {
               window.alert("Something went Wrong..Upload again");
             }
@@ -165,7 +165,7 @@ const Education = () => {
         window.alert("Some Technical Error..Try After Sometime");
       }
     } else {
-      window.alert("Please upload your keam grade card");
+      window.alert("Please upload your 12th Certificate");
     }
   };
 
@@ -197,7 +197,7 @@ const Education = () => {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              window.alert("Photo Uploaded");
+              window.alert("Keam GradeCard  Uploaded");
             } else {
               window.alert("Something went Wrong..Upload again");
             }
@@ -229,7 +229,6 @@ const Education = () => {
       // plustwophymark: document.getElementById("+2phy").value,
       // plutwochemark: document.getElementById("+2chem").value,
       // plustwobiomark: document.getElementById("+2bio").value,
-      // plustwofile   : document.getElementById("+2file").value,
 
       sslcschool: document.getElementById("sslcschool").value,
       sslcboard: document.getElementById("sslcboard").value,
@@ -239,7 +238,6 @@ const Education = () => {
       // sslcphymark: document.getElementById("sslcphy").value,
       // sslcchemmark: document.getElementById("sslcchem").value,
       // sslcbiomark: document.getElementById("sslcbio").value,
-      // sslcfile      : document.getElementById("sslcfile").value,
 
       keamyear: document.getElementById("keamyear").value,
       keamrollno: document.getElementById("keamroll").value,
@@ -247,10 +245,9 @@ const Education = () => {
       keampaper1: document.getElementById("keamp1").value,
       keampaper2: document.getElementById("keamp2").value,
       keamtotal: document.getElementById("keamtotal").value,
-      //  keamfile      : document.getElementById("keamfile").value
     };
     console.log(data);
-    if( data.sslcboard && data.sslcboard && is10thpicked){
+    if( data.sslcboard && data.sslcschool && is10thpicked){
     try {
       await axios
         .patch(

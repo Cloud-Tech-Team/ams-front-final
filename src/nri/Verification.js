@@ -98,7 +98,7 @@ export const Verification = () => {
     if(checked === true){
      nav("/nriform/payment")
     }else{
-      window.alert("Confirm the form has Reviewed")
+      window.alert("Confirm that You Have Reviweed The Details")
     }
   }
 

@@ -176,9 +176,9 @@ function Personal() {
           .then((res) => {
             console.log("this is the response \n" + res);
             if (res.data.status === "SUCCESS") {
-              window.alert("photo uploaded");
+              window.alert("Photograph Uploaded Successfully");
             } else {
-              window.alert("Something went Wrong!!Upload again");
+              window.alert("Failed to Upload.Try Again");
             }
           });
       } catch (error) {
