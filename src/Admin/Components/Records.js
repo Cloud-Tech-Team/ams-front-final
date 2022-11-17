@@ -8,6 +8,7 @@ import { useState } from 'react';
 const Records = (props) => {
   const [viewMore,setViewMore] = useState(false)
   let name = props.data.middleName ? props.data.firstName +" "+props.data.middleName+" "+props.data.lastName : props.data.firstName + ' ' + props.data.lastName
+  let date = new Date(props.data.registrationTimeStamp)
   return (
     <div className='w-full grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 items-center p-2 justify-between bg-white  rounded-md'>
         <img src={props.data.filePhotograph} className='w-9 object-cover h-9 rounded-full' alt='avatar' />
@@ -28,6 +29,7 @@ const Records = (props) => {
             <MoreVertIcon />
           </IconButton>  
         </div>
+        <p>{date.toLocaleDateString('en-GB')}</p>
        {viewMore && <div className='col-span-6 h-auto'>
         
       <div className="h-auto w-full mt-10 p-2 bg-white rounded-[4px] ">

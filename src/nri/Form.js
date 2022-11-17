@@ -99,16 +99,13 @@ function Form() {
           <Dialog open={help} onClose={handleHelp}>
             <DialogTitle>Help</DialogTitle>
             <DialogContent>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum
+              Welcome to Muthoot Institute of Technology and Science(MITS).
+              Kindly fill the following procedure in order to complete your application
+              form. Please make sure you click the upload button to upload your image files.
+              For any queries or problems happening in between, kindly contact our admission team 
+              through the following ways:
+              Phone: Mr. Binoy P K 9446717178
+              Mail: mitsadmissions@mgits.ac.in
             </DialogContent>
             <DialogActions>
               <Button onClick={handleHelp}>Close</Button>

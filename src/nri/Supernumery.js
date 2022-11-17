@@ -104,7 +104,7 @@ const Supernumery = () => {
       <p className="absolute text-lg text-right bottom-6 right-6">
         <b>Contact Support</b>
         <br />
-        Ms.Rija : 0000000000
+        Ms.Rija : 
         <br />
         Mr.Binoy : 000000000
       </p>

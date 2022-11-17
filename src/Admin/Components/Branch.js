@@ -4,6 +4,14 @@ import axios from 'axios';
 import { LinearProgress } from '@mui/material';
 
 function Branch(props) {
+  const branch = {'CSE':'Computer Science and Engineering',
+  'ECE':'Electronics and Communication Engineering',
+  'EEE':'Electrical and Electronics Engineering',
+  'ME':'Mechanical Engineering',
+  'CE' : 'Civil Engineering',
+  'CY':'Computer Science and Engineering(CY)',
+  'AI':'Computer Science and Engineering(AI)',
+  'AI&DS':'Artificial intelligence & Data Science'}
     const [loader,setLoader] = useState(false)
     const api = 'https://ams-backend-368717.el.r.appspot.com/'
     const submit =(e)=>{
@@ -28,7 +36,7 @@ function Branch(props) {
     }
   return <div key={props.keys} className="w-full h-auto bg-white p-3 shadow-xl rounded-md">
               <div className="w-full items-center justify-between py-4  flex">
-                  <p className="text-xl font-semibold uppercase">{props.name}</p>
+                  <p className="text-xl font-semibold uppercase">{branch[props.name]}</p>
                   <div className="w-auto h-full space-x-2">
                       <button 
                       onClick={submit}
@@ -53,7 +61,7 @@ function Branch(props) {
                   <input
                     type="text"
                     id={props.name+"gov"}
-                    defaultValue = {props.data.totalSeats}
+                    defaultValue = {props.data.SuperSeats}
                     className="h-8 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
                   />
                   </div>

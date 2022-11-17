@@ -12,8 +12,11 @@ const Declaration = () => {
   const [msg,setMsg] = useState('');
   const [filesign, setFilesign] = useState();
   const [signPick,setSignPick] = useState(false)
-  const [isChecked , setIschecked] = useState(false)
-  const [issignuploaded, setIssignuploaded] = useState(false)
+  const [filesignP, setFilesignP] = useState();
+  const [signPickP,setSignPickP] = useState(false);
+  const [isChecked , setIschecked] = useState(false);
+  const [issignuploaded, setIssignuploaded] = useState(false);
+  const [parentSignuploaded, setParentsignuploaded] = useState(false);
   const [b,setB] = useState(false)
 
   const nav = useNavigate();
@@ -36,6 +39,10 @@ const Declaration = () => {
         if(res.data.user.imgSign != null){
              setSignPick(true)
              setIssignuploaded(true)
+        }
+        if(res.data.user.parentSign != null){
+          setSignPickP(true);
+          setParentsignuploaded(true);
         }
       });
   }, [b]);
@@ -80,6 +87,7 @@ const Declaration = () => {
     setSignPick(true);
   }
 
+
   const signupload = async(e) =>{
      e.preventDefault()
      setLoader(true)
@@ -115,6 +123,46 @@ const Declaration = () => {
     setLoader(false)
   }
 
+  const handleParentSign = async(e) =>{
+    console.log(e.target.id);
+    setFilesignP(e.target.files[0]);
+    setSignPickP(true);
+  }
+
+  const signuploadParent = async(e) =>{
+    e.preventDefault()
+    setLoader(true)
+    const formData = new FormData();
+    formData.append("parentSign", filesignP);
+    console.log(formData);
+    if (signPickP === true) {
+     try {
+       await axios
+         .patch(api+"user/nri/application-page3/" +localStorage.getItem("user_id"),
+           formData,
+           {
+             headers: {
+               Authorization: "Bearer " + localStorage.getItem("access_token"),
+               "Content-Type": "multipart/form-data",
+             },
+           }
+         )
+         .then((res) => {
+           console.log(res);
+           if (res.data.status === "SUCCESS ") {
+             window.alert("Signature Uploaded Successfully");
+           } else {
+             window.alert("Something Went Wrong..Upload Again");
+           }
+         });
+     } catch (error) {
+       window.alert("Technical Error..Try Again Later"+error.message);
+     }
+   } else {
+     window.alert("Please selcet the Signature of Parent");
+   }
+   setLoader(false)
+ }
   
   const handlecheck = async(e) =>{
     setIschecked(true)
@@ -180,7 +228,7 @@ const Declaration = () => {
             >
               <option value="branch"></option>
               <option value="CSE">Computer Science and Engineering</option>
-              <option value="CS">Cyber Security</option>
+              <option value="CY">CSE(Cyber Security)</option>
               <option value="AI">Artificial Intelligence</option>
               <option value="AI&DS">CSE-AI&DS</option>
               <option value="CE">Civil Engineering</option>
@@ -260,23 +308,23 @@ const Declaration = () => {
           </span>
           
         </div>  
-        {issignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
+        {setParentsignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
         <div className=" xl:flex items-center mt-3 gap-4 justify-center">
           <p className="font-semibold ">Signature Upload (Parent/Gaurdian)*</p>
          
           <span className="sm:space-x-3">
           <input
             id="sign"
-            // onChange={handlesign}
+            onChange = { handleParentSign }
             type="file"
             className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
           />
           
           
-          <Button variant="contained" onClick={signupload}>Upload</Button>
+          <Button variant="contained" onClick={signuploadParent}>Upload</Button>
           </span>
         </div>        
-        {issignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
+        {parentSignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
        
         <p className="text-center my-4 text-red-600">
           upload an image file (jpeg/png) of size less than 1mb*
