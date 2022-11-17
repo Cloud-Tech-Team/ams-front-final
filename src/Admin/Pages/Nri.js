@@ -8,8 +8,9 @@ const Nri = () => {
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [list,setList] = useState([])
   useEffect(() => {
-      axios.get(api+'admin/search',
-        {
+      axios.post(api+'admin/search',{
+        "applicationCompleted" : true
+    },{
         headers : {
           Authorization : 'Bearer '+localStorage.getItem('admin_access_token')
         }
