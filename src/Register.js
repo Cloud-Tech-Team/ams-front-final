@@ -182,8 +182,8 @@ function Register() {
               label="Applying year"
               onChange={(e) => setYear(e.target.value)}
             >
-              <MenuItem value={2022}>2022</MenuItem>
               <MenuItem value={2023}>2023</MenuItem>
+              <MenuItem value={2024}>2024</MenuItem>
             </Select>
           </FormControl>
           <TextField autoComplete="off" label="Aadhar No." id="aadhar" size="small" inputProps={{

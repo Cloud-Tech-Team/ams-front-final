@@ -11,7 +11,8 @@ function AMS() {
     <div className="w-screen h-screen  bg-shade">
       <div className="w-screen z-10 h-screen opacity-60 bg-gray-900 absolute"></div>
       <div className="flex fixed z-20 font-poppins items-center text-white cursor-pointer space-x-8 justify-between p-8 w-screen h-16">
-       <div className="w-auto text-sm xl:text-md flex gap-4 xl:gap-8">
+      <img className=" h-5 md:h-10 xl:h-20 xl:mt-3" src={mits_logo}/>
+       <div className="w-auto text-sm md:text-lg  flex gap-4 xl:gap-8">
        <p className="  hover:text-red-600">Home</p>
         <p className=" hover:text-red-600">About</p>
         <Link
@@ -24,7 +25,7 @@ function AMS() {
           Login
         </Link>
        </div>
-        <img className=" h-5 xl:h-20 xl:mt-3" src={mits_logo}/>
+       
       </div>
       {/* <div className="bg-shade w-full  sm:flex sm:flex-col md:flex-row justify-between p-8 h-full"> */}
         {/* <div className="w-[380px] absolute z-50 mt-20 xl:mt-14 xl:ml-40 2xl:mt-24 h-[520px] 2xl:ml-20">
