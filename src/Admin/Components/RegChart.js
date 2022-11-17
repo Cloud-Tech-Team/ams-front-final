@@ -31,8 +31,8 @@ const RegChart = (props) => {
     datasets: [
       {
         label: "Registration's",
-        // data: [310, 120, 210, 150, 300, 280, 100, 50],
-        data : props.data,
+        data: props.labeldata,
+        
         backgroundColor: [
           "rgb(255, 99, 132)",
           "rgb(75, 192, 192)",

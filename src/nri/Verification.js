@@ -201,18 +201,18 @@ export const Verification = () => {
         <div className="w-full  h-auto flex p-3  flex-col xl:flex-row  mt-3">
           <div className="xl:w-1/2  p-3  h-full">
             <p className="text-lg my-3 underline font-semibold">
-              10th Marks Details{" "}
+              10th Marks Details-(Mandatory)
             </p>
-            <label>Name of Institution: <p>{user.grade10.school}</p></label>
+            <label>Name of Institution*: <p>{user.grade10.school}</p></label>
             <br />
-            <label>Board: {user.grade10.board}</label>
+            <label>Board*: {user.grade10.board}</label>
             <div className="w-full mt-3  p-1 border-[2px] rounded-[4px]">
               <img src={marklist10} alt="mrklist10" />
             </div>
           </div>
           <div className="xl:w-1/2  p-3 ">
             <p className="text-lg my-3 underline font-semibold">
-              12th Marks Details{" "}
+              12th Marks Details
             </p>
             <label>Name of Institution: <p>{user.grade12.school}</p></label>
             <br />

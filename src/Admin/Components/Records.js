@@ -22,7 +22,7 @@ const Records = (props) => {
           <p>{props.data.email}</p>
         </div>
         {/* {props.data.paymentCompleted === true ? <p className='text-green-500'>Payment Completed</p> : <p className='text-red-500'>Payment pending</p> } */}
-        <div className='flex items-end justify-end'>
+        <div className='flex items-center justify-end'>
           <Button color="greenary" size="small" sx={{width:"30%",color:"#FFF"}} variant="contained">Print</Button>
           <IconButton onClick={()=>{setViewMore(!viewMore)}}>
             <MoreVertIcon />

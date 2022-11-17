@@ -2,7 +2,9 @@ import axios from "axios";
 import React from "react";
 import Admin from "../Admin.js";
 import RegChart from "../Components/RegChart.js";
+import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 import { useEffect, useState } from "react";
+import { IconButton } from "@mui/material";
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -29,11 +31,11 @@ const HomePage = () => {
   };
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
   useEffect(() => {
-    console.log(token)
+    // console.log(token)
     axios
       .get(api+'admin/count',query)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setGov(Number(res.data.result[0]))
         setMgmt(Number(res.data.result[1]))
         setNri(Number(res.data.result[2]))
@@ -75,21 +77,27 @@ const HomePage = () => {
         }
       });
       const count = [cse,cseai,aids,cyber,ce,me,eee,ece]
-      console.log(branchCount)
+      // const arr = [310, 120, 210, 150, 300, 280, 100, 50]
+      
       setBranchcount(count)
   },[]);
 
   return (
     <div className="w-full pb-6 xl:p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
-      <div className="w-full xl:w-1/2 h-full flex flex-col items-center justify-center shadow-xl bg-white rounded-md">
+      <div className="w-full xl:w-1/2 relative h-full flex flex-col items-center justify-center shadow-xl bg-white rounded-md">
+      <IconButton sx={{position:"absolute",right:"5%",top:"5%"}}>
+            <ChangeCircleIcon fontSize="large" />
+          </IconButton>
         <p className="text-center font-semibold 2xl:text-4xl my-3 2xl:mb-6 sm:text-3xl text-xl">
           Registration Statistics
         </p>
-        <div className="px-4 sm:p-0 w-[340px] h-auto sm:w-[400px]">
+      
+        <div className="px-4  sm:p-0 w-[340px] h-auto sm:w-[400px]">
+        
           {/* {branchCount.map((index)=>{
             return(<RegChart key={branchCount.indexOf(index)} data={index} />)
           })} */}
-          <RegChart data={branchCount}/>
+          <RegChart labeldata = {branchCount}/>
         </div>
       </div>
       <div className=" w-full xl:w-1/2 h-auto flex flex-col  space-y-6">
