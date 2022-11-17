@@ -17,7 +17,9 @@ const Declaration = () => {
   const [isChecked , setIschecked] = useState(false);
   const [issignuploaded, setIssignuploaded] = useState(false);
   const [parentSignuploaded, setParentsignuploaded] = useState(false);
-  const [b,setB] = useState(false)
+  const [quota, setQuota] = useState()
+  const [b, setB] = useState(false)
+  const [branch,setBranch] = useState()
 
   const nav = useNavigate();
   localStorage.setItem("pageNo", 3);
@@ -34,7 +36,11 @@ const Declaration = () => {
       .then((res) => {
         setLoader(false);
         console.log(res);
-        document.getElementById("bp").value = res.data.user.bp1 ? res.data.user.bp1 : document.getElementById("bp").value 
+        if(res.data.user.bp1 !== null){
+          setB(true);
+          setBranch(res.data.user.bp1);
+          document.getElementById("bp").value = res.data.user.bp1; 
+        }
         res.data.user.bp1 ? setMsg(<p className="text-green-500 text-lg">Branch already selected</p>):setMsg(<p>Branch not selected</p>)
         if(res.data.user.imgSign != null){
              setSignPick(true)
@@ -44,40 +50,57 @@ const Declaration = () => {
           setSignPickP(true);
           setParentsignuploaded(true);
         }
+        setQuota(res.data.user.quota);
       });
-  }, [b]);
+  }, []);
 
   const handleBranch = async (e) => {
-    e.preventDefault();
-    setLoader(true)
-    setB(!b)
-    const branch = document.getElementById("bp").value;
-    console.log(branch);
-    try {
-      await axios
-        .get(api+"branch/get", {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("access_token"),
-          },
-        })
-        .then((res) => {
-          console.log(res);
-          console.log(res.data.list.length);
-          for (let i = 0; i < res.data.list.length; i++) {
-            if (res.data.list[i].name === branch) {
-              if (res.data.list[i].NRIOccupied >= res.data.list[i].NRISeats) {
-                setMsg(<p className="text-red-500 text-lg">Seats in Preferred branch are filled..Please select another one</p>)
-              }else{
+   e.preventDefault()
+   setLoader(true)
+  //  setB(!b)
+   if(!b){
+   const branch = document.getElementById("bp").value;
+   console.log(branch);
+   try{
+    await 
+    axios.get(api+"/branch/get",{
+      headers:{
+        Authorization:"Bearer " + localStorage.getItem("access_token"),
+      }
+    }).then((res) =>{
+      console.log(res)
+      setLoader(false)
+      for(let i=0; i<res.data.list.length ; i++){
+         if(res.data.list[i].name === branch){
+             if(quota === "oci" || quota==="pio" || quota==="ciwg"){
+              if(res.data.list[i].SuperOccupied < res.data.list[i].SuperSeats){
                 setMsg(<p className="text-green-500 text-lg">Seat available</p>)
+              }else{
+                setMsg(<p className="text-red-500 text-lg">Seats in Preferred branch are filled..Please select another one</p>)
               }
-            }
-          }
-        });
-    } catch (error) {
-         console.log(error);
-         window.alert("Technical Error..Try Again Later")
-    }
+             }else if(quota === "NRI"){
+              if(res.data.list[i].NRIOccupied < res.data.list[i].NRISeats){
+                setMsg(<p className="text-green-500 text-lg">Seat available</p>)
+              }else{
+                setMsg(<p className="text-red-500 text-lg">Seats in Preferred branch are filled..Please select another one</p>)
+              }
+             }else{
+              if(res.data.list[i].MgmtOccupied < res.data.list[i].MgmtSeats){
+                setMsg(<p className="text-green-500 text-lg">Seat available</p>)
+              }else{
+                setMsg(<p className="text-red-500 text-lg">Seats in Preferred branch are filled..Please select another one</p>)
+              }
+             }
+         }
+      }
+    })
+   }catch(error){
+    console.log(error)
+   }}else{
+    window.alert("You cant Change the Branch Once Selected")
+    document.getElementById("bp").value = branch;
     setLoader(false)
+   }
   };
   
  
@@ -175,7 +198,12 @@ const Declaration = () => {
     const data = {
       bp1: document.getElementById("bp").value,
     };
-    if(isChecked === true && signPick === true){
+    if(msg.props.children === 'Seats in Preferred branch are filled..Please select another one'){
+      window.alert("Seats in Preferred branch are filled..Please select another one")
+      setLoader(false)
+    }
+    else{
+    if(isChecked === true && signPick === true && signPickP === true ){
     try{
     await axios
       .patch(api+"user/nri/application-page3/" +localStorage.getItem("user_id"),
@@ -202,11 +230,8 @@ const Declaration = () => {
     }
   }else{
     setLoader(false)
-    if(msg.props.children === 'Seats in Preferred branch are filled..Please select another one')
-      window.alert("Seats in Preferred branch are filled..Please select another one")
-    else
-      window.alert("Kindly undertake the regulations");
-  }
+    window.alert("Kindly undertake the regulations");
+  }}
   };
   return (
     <div className="font-poppins py-20 h-auto min-h-screen  mx-auto w-11/12 lg:w-3/5 flex items-center xl:my-auto">
