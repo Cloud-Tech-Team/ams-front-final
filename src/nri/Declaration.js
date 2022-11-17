@@ -14,6 +14,7 @@ const Declaration = () => {
   const [signPick,setSignPick] = useState(false)
   const [isChecked , setIschecked] = useState(false)
   const [issignuploaded, setIssignuploaded] = useState(false)
+  const [b,setB] = useState(false)
 
   const nav = useNavigate();
   localStorage.setItem("pageNo", 3);
@@ -37,11 +38,12 @@ const Declaration = () => {
              setIssignuploaded(true)
         }
       });
-  }, [document.getElementById("bp").value]);
+  }, [b]);
 
   const handleBranch = async (e) => {
     e.preventDefault();
     setLoader(true)
+    setB(!b)
     const branch = document.getElementById("bp").value;
     console.log(branch);
     try {
@@ -175,7 +177,7 @@ const Declaration = () => {
               id="bp"
               onChange={handleBranch}
             >
-              <option value=""></option>
+              <option value="branch"></option>
               <option value="CSE">Computer Science and Engineering</option>
               <option value="CS">Cyber Security</option>
               <option value="AI">Artificial Intelligence</option>
