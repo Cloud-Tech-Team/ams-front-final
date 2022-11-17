@@ -1,16 +1,15 @@
-
 import React from 'react'
 import Records from '../Components/Records'
 import { useEffect,useState } from 'react'
 import axios from 'axios'
 
-const Nri = () => {
-  const api = 'https://ams-backend-368717.el.r.appspot.com/'
+const Supernumery = () => {
+    const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [list,setList] = useState([])
   useEffect(() => {
       axios.post(api+'admin/search',{
         "applicationCompleted" : true,
-        "quota" : "NRI"
+        $or : [{"quota" : "ciwg"},{"quota":"pio"},{"quota":"oci"}]
     },{
         headers : {
           Authorization : 'Bearer '+localStorage.getItem('admin_access_token')
@@ -38,4 +37,4 @@ const Nri = () => {
   )
 }
 
-export default Nri
+export default Supernumery

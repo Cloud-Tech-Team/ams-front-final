@@ -24,6 +24,7 @@ import Declaration from "./nri/Declaration";
 import { Verification } from "./nri/Verification";
 import Supernumery from "./nri/Supernumery"
 import Nri from "./Admin/Pages/Nri";
+import Supnumery from "./Admin/Pages/Supernumery"
 
 const themeOptions = {
   palette: {
@@ -71,6 +72,7 @@ function App() {
                 <Route element={<Admin/>}>
                   <Route element={<HomePage/>} path="/admin" exact/>
                   <Route element={<Nri/>} path="/admin/nri" exact/>
+                  <Route element={<Supnumery/>} path="/admin/super" exact/>
                   <Route element={<CoAdmin/>} path="/admin/coadmin" exact/>
                   <Route element={<Settings/>} path="/admin/settings" exact/>
                   <Route element={<Search/>} path="/admin/search" exact/>
