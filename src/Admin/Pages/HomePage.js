@@ -89,7 +89,7 @@ const HomePage = () => {
           {/* {branchCount.map((index)=>{
             return(<RegChart key={branchCount.indexOf(index)} data={index} />)
           })} */}
-          <RegChart/>
+          <RegChart data={branchCount}/>
         </div>
       </div>
       <div className=" w-full xl:w-1/2 h-auto flex flex-col  space-y-6">
