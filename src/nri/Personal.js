@@ -196,9 +196,9 @@ function Personal() {
     e.preventDefault();
     setLoader(!loader);
     const data = {
-      firstName: document.getElementById("fname").value,
-      middleName: document.getElementById("mname").value,
-      lastName: document.getElementById("lname").value,
+      // firstName: document.getElementById("fname").value,
+      // middleName: document.getElementById("mname").value,
+      // lastName: document.getElementById("lname").value,
       aPhone: document.getElementById("phone1").value,
       dob: document.getElementById("dob").value,
 
@@ -222,9 +222,7 @@ function Personal() {
     };
     console.log(data);
     if (
-      data.firstName && data.lastName && data.aPhone && data.dob && data.addressL1C &&
-      data.firstName &&
-      data.lastName &&
+      data.aPhone && data.dob && data.addressL1C &&
       data.aPhone &&
       data.dob &&
       data.addressL1C &&
@@ -559,7 +557,7 @@ function Personal() {
                 size="small"
               />
             </div>
-            {ciwg && <div className=" flex items-center p-5 space-x-2">
+            {user.quota != 'ciwg' && <div className=" flex items-center p-5 space-x-2">
               <TextField
                 InputLabelProps={{
                   shrink: true,

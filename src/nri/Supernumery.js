@@ -20,12 +20,8 @@ const Supernumery = () => {
         },
       })
       .then((res) => {
-        console.log(res)
-        document.getElementById("quota-select").value = res.data.user.quota
-        if(res.data.user.quota === "ciwg"){
-          setRelation(true)
-          document.getElementById("relation-select").value = res.data.user.NRIdetails.relation
-          document.getElementById("parent-name").value = res.data.user.NRIdetails.name
+        if(res.data.user.quota != 'Others'){
+          nav('/nriform')
         }
       });
   }, []);
