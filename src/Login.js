@@ -80,7 +80,7 @@ const Login = () => {
         <Link to="/">
         <img  src={Home} alt="home" />
         </Link>
-        <p className="absolute text-right text-sm xl:text-md right-6 top-6"><b className="text-red-600">Note:</b>&nbsp;The login credentials has been sent to your registered email-id<br/><b className="text-red-600">Check the spam folder also</b></p>
+        <p className="absolute text-right text-sm xl:text-md right-6 top-6"><b className="text-red-600">Note:</b>&nbsp;The login credentials<br/> has been sent to your <br/>registered email-id<br/><b className="text-red-600">Check the spam folder also</b></p>
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={loading}
