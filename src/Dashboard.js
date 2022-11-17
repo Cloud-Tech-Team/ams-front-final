@@ -114,7 +114,7 @@ const Dashboard = () => {
               setUser(res.data.user);
               toDataUrl(res.data.user.filePhotograph,function(myBase64) {setImg(myBase64.toString())})
               toDataUrl(res.data.user.parentSign,function(myBase64) {setSignature(myBase64.toString())})
-              toDataUrl(res.data.user.imgSign,function(myBase64) {setSignature(myBase64.toString())})
+              toDataUrl(res.data.user.imgSign,function(myBase64) {setChildSign(myBase64.toString())})
             } else {
               window.alert("Something wrong happened");
             }

@@ -134,6 +134,7 @@ const Declaration = () => {
     setLoader(true)
     const formData = new FormData();
     formData.append("parentSign", filesignP);
+    console.log(filesignP)
     console.log(formData);
     if (signPickP === true) {
      try {
