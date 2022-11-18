@@ -127,7 +127,7 @@ const Login = () => {
           onSubmit={Login}
           className="w-80 sm:w-[350px] p-4 sm:p-8  h-auto absolute z-20 shadow-2xl rounded-sm  bg-white"
         >
-          <p className="text-4xl text-red-600 mt-3 text-center sm:font-semibold">SIGN-IN</p>
+          <p className="text-4xl mt-3 text-center sm:font-semibold">SIGN-IN</p>
           <div className="w-full mt-5 space-y-8 p-2 h-auto ">
             <TextField
               required
