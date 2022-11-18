@@ -20,6 +20,7 @@ function Branch(props) {
       axios.patch(api+'branch/edit/'+props.name+'/2023',
       {
         NRISeats : document.getElementById(props.name+"nri").value,
+        SuperSeats : document.getElementById(props.name+"sup").value,
         MgmtSeats: document.getElementById(props.name+"mgmt").value,
       }
       ,{
@@ -60,7 +61,7 @@ function Branch(props) {
                     <p className="text-lg italic">Supernumery</p>
                   <input
                     type="text"
-                    id={props.name+"gov"}
+                    id={props.name+"sup"}
                     defaultValue = {props.data.SuperSeats}
                     className="h-8 w-full border-[2px] rounded-md pl-4 text-xl focus:outline-none focus:border-pink-500 italic border-gray-500"
                   />
