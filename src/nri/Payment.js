@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 function Payment() {
   localStorage.setItem("pageNo", 5);
   const [enable, setEnable] = useState(true);
+  const [disable, setDisable] = useState(true);
   const nav = useNavigate()
   const [loader,setLoader] = useState(false)
 
@@ -48,6 +49,10 @@ function Payment() {
     const validex = ["png","jpg","jpeg"]
     if(! validex.includes(extension)){
       window.alert("Please select an image file(.jpg/jpeg/png)")
+      setDisable(true)
+    }
+    else{
+      setDisable(false)
     }
     setslipselect(true)
   }
@@ -170,7 +175,7 @@ function Payment() {
               <Link to="/nriform">Back</Link>
             </Button>
             <Button
-            disabled = {enable}
+            disabled = {enable || disable} 
               
               onClick={finalsubmit}
               variant="contained"

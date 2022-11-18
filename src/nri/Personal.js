@@ -27,6 +27,7 @@ function Personal() {
   const [ciwg,setCiwg] = useState(true);
   const [photopicked, setPhotopicked] = useState(false);
   const [alreadyUploaded,setAlreadyUploaded] = useState(false);
+  const [disable,setDisable] = useState(true)
   const [user,setUser] = useState({
     firstName:'',
     middleName: '',
@@ -152,7 +153,11 @@ function Personal() {
     const extension = file.split(".").pop();
     const validex = ["png","jpg","jpeg"]
     if(! validex.includes(extension)){
+      setDisable(true)
       window.alert("Please select an image file(.jpg/jpeg/png)")
+    }else
+    {
+      setDisable(false)
     }
     setPhotopicked(true);
     console.log(alreadyUploaded)
@@ -415,7 +420,7 @@ function Personal() {
             required
           />
           {/* {alreadyUploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-          <Button variant="contained" onClick={handlephotoFile}>
+          <Button disabled={disable} variant="contained" onClick={handlephotoFile}>
             Upload
           </Button>
         </div>
@@ -631,7 +636,8 @@ function Personal() {
           <label className="text-sm md:text-md text-red-500">
             Note: Make sure you click upload button before proceeding
           </label>
-          <Button onClick={personalUpload} id="save" variant="contained">
+          <Button
+          disabled={disable} onClick={personalUpload} id="save" variant="contained">
             Save
           </Button>
         </div>

@@ -10,7 +10,9 @@ const Education = () => {
   const [loader1, setLoader1] = useState(false);
   const [loader2, setLoader2] = useState(false);
   const [loader3, setLoader3] = useState(false);
+  const [disable,setDisable] = useState(true)
   const [pageLoader, setPageLoader] = useState(false);
+  
   const [file10th, setFile10th] = useState();
   const [file12th, setFile12th] = useState();
   const [filekeam, setFilekeam] = useState();
@@ -99,6 +101,10 @@ const Education = () => {
     const validex = ["png","jpg","jpeg"]
     if(! validex.includes(extension)){
       window.alert("Please select an image file(.jpg/jpeg/png)")
+      setDisable(true)
+    }
+    else{
+      setDisable(false)
     }
     setFile10th(e.target.files[0]);
     setIs10thpicked(true);
@@ -148,6 +154,10 @@ const Education = () => {
     const validex = ["png","jpg","jpeg"]
     if(! validex.includes(extension)){
       window.alert("Please select an image file(.jpg/jpeg/png)")
+      setDisable(true)
+    }
+    else{
+      setDisable(false)
     }
     setFile12th(e.target.files[0]);
     setIs12thpicked(true);
@@ -198,6 +208,10 @@ const Education = () => {
     const validex = ["png","jpg","jpeg"]
     if(! validex.includes(extension)){
       window.alert("Please select an image file(.jpg/jpeg/png)")
+      setDisable(true)
+    }
+    else{
+      setDisable(false)
     }
     setFilekeam(e.target.files[0]);
     setIskeampicked(true);
@@ -387,7 +401,7 @@ const Education = () => {
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
                   {/* {is10thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-                  <Button sx={{height:"100%"}}
+                  <Button disabled={disable} sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
                     onClick={markupload10th}
@@ -461,7 +475,7 @@ const Education = () => {
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
                   {/* {is12thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-                  <Button sx={{height:"100%"}}
+                  <Button  disabled={disable}sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
                     onClick={markupload12th}
@@ -557,7 +571,7 @@ const Education = () => {
                     className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
                   />
                   {/* {iskeamuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-                  <Button sx={{height:"100%"}} variant="contained" onClick={keamupload}>
+                  <Button  disabled={disable}sx={{height:"100%"}} variant="contained" onClick={keamupload}>
                     Upload
                   </Button>
                 
@@ -585,7 +599,7 @@ const Education = () => {
                 change the file later.
               </p>
             </div>
-            <Button sx={{height:"100%"}} className="" variant="contained">
+            <Button  disabled={disable}sx={{height:"100%"}} className="" variant="contained">
               <Link  onClick={eduDetailUpload}>
                 Save
               </Link>

@@ -20,6 +20,7 @@ const Declaration = () => {
   const [quota, setQuota] = useState()
   const [b, setB] = useState(false)
   const [branch,setBranch] = useState()
+  const [disable,setDisable] = useState(true)
 
   const nav = useNavigate();
   localStorage.setItem("pageNo", 3);
@@ -112,6 +113,10 @@ const Declaration = () => {
     const validex = ["png","jpg","jpeg"]
     if(! validex.includes(extension)){
       window.alert("Please select an image file(.jpg/jpeg/png)")
+      setDisable(true)
+    }
+    else{
+      setDisable(false)
     }
     setFilesign(e.target.files[0]);
     setSignPick(true);
@@ -161,6 +166,10 @@ const Declaration = () => {
     const validex = ["png","jpg","jpeg"]
     if(! validex.includes(extension)){
       window.alert("Please select an image file(.jpg/jpeg/png)")
+      setDisable(true)
+    }
+    else{
+      setDisable(false)
     }
     setFilesignP(e.target.files[0]);
     setSignPickP(true);
@@ -345,7 +354,8 @@ const Declaration = () => {
             className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
           />
           
-          <Button variant="contained" onClick={signupload}>Upload</Button>
+          <Button
+            disabled={disable} variant="contained" onClick={signupload}>Upload</Button>
           </span>
           
         </div>  
@@ -362,7 +372,8 @@ const Declaration = () => {
           />
           
           
-          <Button variant="contained" onClick={signuploadParent}>Upload</Button>
+          <Button
+            disabled={disable} variant="contained" onClick={signuploadParent}>Upload</Button>
           </span>
         </div>        
         {parentSignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
@@ -373,6 +384,7 @@ const Declaration = () => {
         
 
         <Button
+          disabled={disable}
           sx={{
             color: "#fff",
             
