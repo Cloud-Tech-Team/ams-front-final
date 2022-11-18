@@ -414,7 +414,11 @@ function Personal() {
               <Button variant="contained" onClick={handlephotoFile}>
                 Upload
               </Button>
+              
             </div>
+              <label className="text-sm text-red-600 mx-10">
+                upload an  image file of size less than 5mb*
+              </label>
             <div className=" flex flex-col space-y-2 p-5 mt-4 ">
               <label className="text-xl ml-2">Contact Address</label>
               <TextField
@@ -608,6 +612,9 @@ function Personal() {
               </select>
             </div>}
             <div className=" flex px-5 py-2 mt-5 space-x-5">
+            <p className="p-2 text-center text-red-600 italic">
+                After selecting photo make sure you click <b>UPLOAD</b> button.
+              </p>
               <Button variant="contained" onClick={personalUpload} id='save'>
                 Save
               </Button>

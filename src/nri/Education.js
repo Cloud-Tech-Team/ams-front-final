@@ -307,7 +307,7 @@ const Education = () => {
         </Backdrop>
         <div className="xl:w-1/2  p-4 h-full">
           <p className="text-md mb-3 font-semibold text-center">
-            10th Exam details{" "}
+            10th Exam details{" *"}
           </p>
           <div className="w-full border-[2px] rounded-[4px] p-3 mb-3 ">
             <label className="">
@@ -372,7 +372,7 @@ const Education = () => {
             </div>
           </div>
           <p className="text-md my-4 font-semibold text-center">
-            12th Exam details{" "}
+            12th Exam details{" (optional)"}
           </p>
           <div className="w-full border-[2px] rounded-[4px] p-3 mb-3 ">
             <label className="">
@@ -441,7 +441,7 @@ const Education = () => {
 
         <div className="xl:w-1/2   p-4 h-full">
           <p className="text-md font-semibold my-3 text-center">
-            Details of Common Entrance Test (KEAM)
+            Details of Common Entrance Test (KEAM)(optional)
           </p>
           <div className="w-full space-y-3 p-3 border-[2px] rounded-[4px]">
             <div className="w-auto justify-between sm:flex items-center">
