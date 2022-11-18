@@ -52,7 +52,7 @@ const Declaration = () => {
         }
         setQuota(res.data.user.quota);
       });
-  }, []);
+  }, [b]);
 
   const handleBranch = async (e) => {
    e.preventDefault()
@@ -63,7 +63,7 @@ const Declaration = () => {
    console.log(branch);
    try{
     await 
-    axios.get(api+"/branch/get",{
+    axios.post(api+"/branch/get",{},{
       headers:{
         Authorization:"Bearer " + localStorage.getItem("access_token"),
       }
