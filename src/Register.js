@@ -22,7 +22,7 @@ function Register() {
   const nav = useNavigate();
 
   let nri = true;
-  let mgmt = false;
+  let mgmt = true;
   let gov = false;
   let opc = true;
 
@@ -79,7 +79,7 @@ function Register() {
           <LinearProgress color="primary" />
         </div>
       </Backdrop>
-      <p className="absolute text-right text-[13px] xl:text-[15px] right-4 top-4">
+      <p className="absolute text-right text-[13px] xl:text-[14px] right-4 top-4">
         <CallIcon fontSize="small" />
         <b className="text-red-600">Technical Support</b>
         <br />

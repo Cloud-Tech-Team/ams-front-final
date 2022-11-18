@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 //components
 import Form from "./nri/Form";
-import { Pdf } from "./Pdf";
+// import { Pdf } from "./Pdf";
 import Dashboard from "./Dashboard"
 import Register from "./Register";
 import PrivateRoutes from "./components/PrivateRoutes";
@@ -25,6 +25,7 @@ import { Verification } from "./nri/Verification";
 import Supernumery from "./nri/Supernumery"
 import Nri from "./Admin/Pages/Nri";
 import Supnumery from "./Admin/Pages/Supernumery"
+import Mgmt from "./Admin/Pages/Mgmt";
 // import NPersonal from "./nri/nPersonal";
 
 const themeOptions = {
@@ -74,6 +75,7 @@ function App() {
                   <Route element={<HomePage/>} path="/admin" exact/>
                   <Route element={<Nri/>} path="/admin/nri" exact/>
                   <Route element={<Supnumery/>} path="/admin/super" exact/>
+                  <Route element={<Mgmt/>} path="/admin/mgmt" exact/>
                   <Route element={<CoAdmin/>} path="/admin/coadmin" exact/>
                   <Route element={<Settings/>} path="/admin/settings" exact/>
                   <Route element={<Search/>} path="/admin/search" exact/>
