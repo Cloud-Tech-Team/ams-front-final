@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import {
   TextField,
   Button,
-  
   Checkbox,
- 
   LinearProgress,
   Dialog,
   DialogTitle,
   Backdrop,
   DialogContent,
   DialogActions,
+  CircularProgress,
 } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -23,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 function Personal() {
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [loader, setLoader] = useState(false);
+  const [photoLoader, setPhotoLoader] = useState(false);
   const [msg, setMsg] = useState(true);
   const [ciwg,setCiwg] = useState(true);
   const [photopicked, setPhotopicked] = useState(false);
@@ -153,7 +153,7 @@ function Personal() {
 
   const handlephotoFile = async (e) => {
     e.preventDefault();
-    setLoader(true)
+    setPhotoLoader(true)
     const file = document.getElementById("photo").files[0];
     const formData = new FormData();
     formData.append("filePhotograph", file);
@@ -188,7 +188,7 @@ function Personal() {
     } else {
       window.alert("Please select your photo");
     }
-    setLoader(false)
+    setPhotoLoader(false)
   };
 
 
@@ -619,6 +619,14 @@ function Personal() {
     // </div>
     <div className="font-poppins py-20 h-auto min-h-screen  mx-auto w-11/12 sm:w-3/4 md:flex items-center xl:my-auto">
     <div className="h-auto xl:flex w-full p-2 bg-white  rounded-[4px]">
+    <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loader}
+        >
+          <div className="w-screen absolute flex items-center justify-center">
+            <CircularProgress />
+          </div>
+      </Backdrop>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={msg}
@@ -744,11 +752,14 @@ function Personal() {
         </div>
         <div className="w-full px-3 flex text-sm md:text-md items-center justify-between">
           <label className="text-red-500 ">
-            Upload an image file of size less than 1mb
+            Upload an image file of size less than 2mb
           </label>
           {alreadyUploaded && (
             <label className="text-green-500 ">Already uploaded</label>
           )}
+        </div>
+        <div className="w-full p-3">
+        {photoLoader && <LinearProgress/>}
         </div>
         <div className=" flex flex-col p-3">
           <label className="text-xl m-2 ">Contact Address</label>

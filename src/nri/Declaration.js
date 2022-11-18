@@ -354,7 +354,7 @@ const Declaration = () => {
         {parentSignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
        
         <p className="text-center my-4 text-red-600">
-          upload an image file (jpeg/png) of size less than 1mb*
+          upload an image file (jpeg/png) of size less than 2mb*
         </p>
         
 

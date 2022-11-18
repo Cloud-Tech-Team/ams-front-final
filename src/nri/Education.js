@@ -7,7 +7,10 @@ import { Backdrop, LinearProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const Education = () => {
-  const [loader, setLoader] = useState(false);
+  const [loader1, setLoader1] = useState(false);
+  const [loader2, setLoader2] = useState(false);
+  const [loader3, setLoader3] = useState(false);
+  const [pageLoader, setPageLoader] = useState(false);
   const [file10th, setFile10th] = useState();
   const [file12th, setFile12th] = useState();
   const [filekeam, setFilekeam] = useState();
@@ -23,8 +26,7 @@ const Education = () => {
   localStorage.setItem("pageNo", 2);
  
   useEffect(() => {
-    setLoader(true);
-
+    setPageLoader(true);
     axios
       .get(api+"user/nri/application", {
         headers: {
@@ -32,7 +34,7 @@ const Education = () => {
         },
       })
       .then((res) => {
-        setLoader(false);
+        setPageLoader(false);
         if(res.data.user.applicationCompleted)
           nav('/dashboard')
         console.log(res);
@@ -86,6 +88,7 @@ const Education = () => {
 
         handleBoardChange();
       });
+      // setPageLoader(false)
   }, []);
 
   const handle10thfile = async (e) => {
@@ -94,6 +97,7 @@ const Education = () => {
     setIs10thpicked(true);
   };
   const markupload10th = async (e) => {
+    setLoader1(true)
     e.preventDefault();
     const formData = new FormData();
     formData.append("file10th", file10th);
@@ -126,6 +130,7 @@ const Education = () => {
     } else {
       window.alert("Please Pick the 10th Certificate");
     }
+    setLoader1(false)
   };
 
   const handle12thfile = async (e) => {
@@ -135,6 +140,7 @@ const Education = () => {
   };
 
   const markupload12th = async (e) => {
+    setLoader2(true)
     e.preventDefault();
     const formData = new FormData();
     formData.append("file12th", file12th);
@@ -167,6 +173,7 @@ const Education = () => {
     } else {
       window.alert("Please upload your 12th Certificate");
     }
+    setLoader2(false)
   };
 
   const handlefileKeam = async (e) => {
@@ -176,6 +183,7 @@ const Education = () => {
   };
 
   const keamupload = async (e) => {
+    setLoader3(true)
     e.preventDefault();
     const formData = new FormData();
     formData.append("fileKeam", filekeam);
@@ -209,11 +217,12 @@ const Education = () => {
     } else {
       window.alert("Please upload your keam grade card");
     }
+    setLoader3(false)
   };
 
   const eduDetailUpload = async (e) => {
     e.preventDefault();
-    setLoader(true);
+    setPageLoader(true);
     const data = {
       plustwoschool: document.getElementById("hseschool").value,
       plustwoboard: document.getElementById("hseboard").value,
@@ -264,21 +273,22 @@ const Education = () => {
           console.log(res);
           if (res.data.status === "SUCCESS") {
             console.log(res);
-            setLoader(false);
+            
             nav("/nriform/declaration");
           } else {
             console.log("Something went wrong..Try Again");
-            setLoader(false);
+           
           }
         });
     } catch (error) {
-      setLoader(false);
+      
       console.log(error);
     }
   }else{
-    setLoader(false);
+
     window.alert("Some required field Empty")
   }
+  setPageLoader(false)
   };
 
   ///DOM-MANIP functions
@@ -297,14 +307,14 @@ const Education = () => {
     <div className="font-poppins min-h-screen w-11/12 lg:w-3/4 ">
       
       <div className="h-auto w-full my-20 bg-white rounded-[4px] flex p-2 flex-col xl:flex-row ">
-        <Backdrop
+      <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={loader}
+          open={pageLoader}
         >
-          <div className="w-screen absolute top-0">
-            <LinearProgress color="primary" />
+          <div className="w-screen absolute flex items-center justify-center">
+            <CircularProgress />
           </div>
-        </Backdrop>
+      </Backdrop>
         <div className="xl:w-1/2  p-4 h-full">
           <p className="text-md mb-3 font-semibold text-center">
             10th Exam details{" *"}
@@ -355,7 +365,7 @@ const Education = () => {
                     type="file"
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
-                  {is10thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
+                  {/* {is10thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
                   <Button sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
@@ -366,10 +376,18 @@ const Education = () => {
                 
               </div>
               {/* {imgLoader && <LinearProgress />} */}
-              <label className="text-sm text-red-600">
+              {/* <label className="text-sm text-red-600">
                 upload an  image file of size less than 5mb*
-              </label>
-              {loader && <LinearProgress/>}
+              </label> */}
+              <div className="w-full px-3 flex text-sm md:text-md items-center justify-between">
+          <label className="text-red-500 ">
+            Upload an image file of size less than 2mb
+          </label>
+          {is10thuploaded && (
+            <label className="text-green-500 ">Already uploaded</label>
+          )}
+        </div>
+              {loader1 && <LinearProgress/>}
             </div>
           </div>
           <p className="text-md my-4 font-semibold text-center">
@@ -421,7 +439,7 @@ const Education = () => {
                     type="file"
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
-                  {is12thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
+                  {/* {is12thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
                   <Button sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
@@ -432,10 +450,18 @@ const Education = () => {
               
               </div>
               {/* {imgLoader12 && <LinearProgress />} */}
-
-              <label className="text-sm text-red-600">
+              {loader2 && <LinearProgress/>}
+              {/* <label className="text-sm text-red-600">
                 upload an  image file of size less than 5mb*
-              </label>
+              </label> */}
+               <div className="w-full px-3 flex text-sm md:text-md items-center justify-between">
+          <label className="text-red-500 ">
+            Upload an image file of size less than 2mb
+          </label>
+          {is12thuploaded && (
+            <label className="text-green-500 ">Already uploaded</label>
+          )}
+        </div>
             </div>
           </div>
         </div>
@@ -509,16 +535,25 @@ const Education = () => {
                     type="file"
                     className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
                   />
-                  {iskeamuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
+                  {/* {iskeamuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
                   <Button sx={{height:"100%"}} variant="contained" onClick={keamupload}>
                     Upload
                   </Button>
                 
               </div>
               {/* {imgLoaderKeam && <LinearProgress />} */}
-              <label className="text-sm text-red-600">
+              {loader3 && <LinearProgress/>}
+              {/* <label className="text-sm text-red-600">
                 upload an  image file of size less than 5mb*
-              </label>
+              </label> */}
+              <div className="w-full px-3 flex text-sm md:text-md items-center justify-between">
+          <label className="text-red-500 ">
+            Upload an image file of size less than 2mb
+          </label>
+          {iskeamuploaded && (
+            <label className="text-green-500 ">Already uploaded</label>
+          )}
+        </div>
             </div>
           </div>
           <div className="w-full flex flex-col items-end justify-end ">

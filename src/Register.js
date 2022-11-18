@@ -22,7 +22,7 @@ function Register() {
   const nav = useNavigate();
 
   let nri = true;
-  let mgmt = true;
+  let mgmt = false;
   let gov = false;
   let opc = true;
 

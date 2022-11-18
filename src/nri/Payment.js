@@ -91,7 +91,7 @@ function Payment() {
       >
         <CircularProgress color="blue"/>
       </Backdrop>
-      <div className="h-auto w-full mt-10 p-6 space-y-5 bg-white rounded-[4px] ">
+      <div className="h-auto w-full mt-10 p-6 space-y-3 bg-white rounded-[4px] ">
         <p className="text-center mb-4 font-semibold text-red-500">
           Pay advance Provisional registration fee of Rs 1,00,500 to the
           following bank account and upload the photo of transaction slip here
@@ -99,7 +99,7 @@ function Payment() {
         <div className="w-full sm:flex  p-2 ">
           <div className="sm:w-1/2 space-y-5">
             <p>
-              Name: <b>Muthoot Institute of Technolgy and Science</b>
+              Name: <b>Muthoot M George Institute of Technology</b>
             </p>
             <p>
               Address: <b>Varikoli, Puthencruz - 682308</b>
@@ -128,7 +128,12 @@ function Payment() {
             <p>
               MICR Code: <b>682049055</b>
             </p>
-            <div className="w-full sm:flex items-center ">
+            <p>
+              Account No.: <b>12230200217387</b>
+            </p>
+          </div>
+          </div>
+          <div className="w-full flex justify-center ">
               <p className="text-md mr-3">Transaction No:</p>
               <input
                 id="TransactionId"
@@ -136,8 +141,6 @@ function Payment() {
                 className="rounded-[4px] p-1  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "
               />
             </div>
-          </div>
-          </div>
           <div className="w-full flex justify-center ">
             <label className="text-md mr-3">Transaction Slip:</label>
             <input
@@ -147,6 +150,7 @@ function Payment() {
               required
             />
           </div>
+          <p className="text-center text-red-600">Upload an <b>image</b> file of size less than 2mb</p>
           <div className="w-full flex justify-center items-center">
             <Checkbox id="check" onClick={handleCheck} required className="ml-6"></Checkbox>
             <label>
