@@ -158,8 +158,8 @@ function Personal() {
     }else
     {
       setDisable(false)
+      setPhotopicked(true);
     }
-    setPhotopicked(true);
     console.log(alreadyUploaded)
   };
 

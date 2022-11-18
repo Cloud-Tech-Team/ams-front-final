@@ -105,9 +105,9 @@ const Education = () => {
     }
     else{
       setDisable(false)
+      setIs10thpicked(true);
     }
     setFile10th(e.target.files[0]);
-    setIs10thpicked(true);
   };
   const markupload10th = async (e) => {
     setLoader1(true)
@@ -158,9 +158,9 @@ const Education = () => {
     }
     else{
       setDisable(false)
+      setIs12thpicked(true);
     }
     setFile12th(e.target.files[0]);
-    setIs12thpicked(true);
   };
 
   const markupload12th = async (e) => {
@@ -212,9 +212,9 @@ const Education = () => {
     }
     else{
       setDisable(false)
+      setIskeampicked(true);
     }
     setFilekeam(e.target.files[0]);
-    setIskeampicked(true);
   };
 
   const keamupload = async (e) => {

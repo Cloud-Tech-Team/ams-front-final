@@ -53,8 +53,8 @@ function Payment() {
     }
     else{
       setDisable(false)
+      setslipselect(true)
     }
-    setslipselect(true)
   }
   const finalsubmit = async(e) =>{
     setLoader(true)

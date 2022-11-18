@@ -117,9 +117,9 @@ const Declaration = () => {
     }
     else{
       setDisable(false)
+      setSignPick(true);
     }
     setFilesign(e.target.files[0]);
-    setSignPick(true);
   }
 
 
@@ -170,9 +170,9 @@ const Declaration = () => {
     }
     else{
       setDisable(false)
+      setSignPickP(true);
     }
     setFilesignP(e.target.files[0]);
-    setSignPickP(true);
   }
 
   const signuploadParent = async(e) =>{
@@ -182,7 +182,7 @@ const Declaration = () => {
     formData.append("parentSign", filesignP);
     console.log(filesignP)
     console.log(formData);
-    if (signPickP === true) {
+    if (signPickP === true && signPick === true) {
      try {
        await axios
          .patch(api+"user/nri/application-page3/" +localStorage.getItem("user_id"),
