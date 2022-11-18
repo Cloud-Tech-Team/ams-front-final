@@ -42,6 +42,13 @@ function Payment() {
   const [slipselect, setslipselect] = useState(false)
   const handleslip = async(e) =>{
     console.log(e.target.id)
+    const file = (document.getElementById("Transactionslip").files[0]).name;
+    console.log(file)
+    const extension = file.split(".").pop();
+    const validex = ["png","jpg","jpeg"]
+    if(! validex.includes(extension)){
+      window.alert("Please select an image file(.jpg/jpeg/png)")
+    }
     setslipselect(true)
   }
   const finalsubmit = async(e) =>{

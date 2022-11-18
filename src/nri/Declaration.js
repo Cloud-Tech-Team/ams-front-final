@@ -106,6 +106,13 @@ const Declaration = () => {
  
   const handlesign = async(e) =>{
     console.log(e.target.id);
+    const file = (document.getElementById("sign").files[0]).name;
+    console.log(file)
+    const extension = file.split(".").pop();
+    const validex = ["png","jpg","jpeg"]
+    if(! validex.includes(extension)){
+      window.alert("Please select an image file(.jpg/jpeg/png)")
+    }
     setFilesign(e.target.files[0]);
     setSignPick(true);
   }
@@ -148,6 +155,13 @@ const Declaration = () => {
 
   const handleParentSign = async(e) =>{
     console.log(e.target.id);
+    const file = (document.getElementById("signP").files[0]).name;
+    console.log(file)
+    const extension = file.split(".").pop();
+    const validex = ["png","jpg","jpeg"]
+    if(! validex.includes(extension)){
+      window.alert("Please select an image file(.jpg/jpeg/png)")
+    }
     setFilesignP(e.target.files[0]);
     setSignPickP(true);
   }
@@ -341,7 +355,7 @@ const Declaration = () => {
          
           <span className="sm:space-x-3">
           <input
-            id="sign"
+            id="signP"
             onChange = { handleParentSign }
             type="file"
             className="rounded-[4px]  border-[1px] w-full sm:w-auto hover:border-black focus:outline-red-600 border-gray-400  "

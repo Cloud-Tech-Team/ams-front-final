@@ -93,6 +93,13 @@ const Education = () => {
 
   const handle10thfile = async (e) => {
     console.log(e.target.id);
+    const file = (document.getElementById("file10th").files[0]).name;
+    console.log(file)
+    const extension = file.split(".").pop();
+    const validex = ["png","jpg","jpeg"]
+    if(! validex.includes(extension)){
+      window.alert("Please select an image file(.jpg/jpeg/png)")
+    }
     setFile10th(e.target.files[0]);
     setIs10thpicked(true);
   };
@@ -135,6 +142,13 @@ const Education = () => {
 
   const handle12thfile = async (e) => {
     console.log(e.target.id);
+    const file = (document.getElementById("file12th").files[0]).name;
+    console.log(file)
+    const extension = file.split(".").pop();
+    const validex = ["png","jpg","jpeg"]
+    if(! validex.includes(extension)){
+      window.alert("Please select an image file(.jpg/jpeg/png)")
+    }
     setFile12th(e.target.files[0]);
     setIs12thpicked(true);
   };
@@ -178,6 +192,13 @@ const Education = () => {
 
   const handlefileKeam = async (e) => {
     console.log(e.target.id);
+    const file = (document.getElementById("fileKeam").files[0]).name;
+    console.log(file)
+    const extension = file.split(".").pop();
+    const validex = ["png","jpg","jpeg"]
+    if(! validex.includes(extension)){
+      window.alert("Please select an image file(.jpg/jpeg/png)")
+    }
     setFilekeam(e.target.files[0]);
     setIskeampicked(true);
   };
