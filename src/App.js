@@ -25,6 +25,7 @@ import { Verification } from "./nri/Verification";
 import Supernumery from "./nri/Supernumery"
 import Nri from "./Admin/Pages/Nri";
 import Supnumery from "./Admin/Pages/Supernumery"
+// import NPersonal from "./nri/nPersonal";
 
 const themeOptions = {
   palette: {
