@@ -37,7 +37,7 @@ function Branch(props) {
     }
   return <div key={props.keys} className="w-full h-auto bg-white p-3 shadow-xl rounded-md">
               <div className="w-full items-center justify-between py-4  flex">
-                  <p className="text-xl font-semibold uppercase">{branch[props.name]}</p>
+                  <p className="text-mg font-bold uppercase">{branch[props.name]}</p>
                   <div className="w-auto h-full space-x-2">
                       <button 
                       onClick={submit}

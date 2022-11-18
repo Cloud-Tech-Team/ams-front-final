@@ -118,7 +118,7 @@ function Personal() {
         document.getElementById("sponsorRelation").value = res.data.user.NRIdetails.relation;
         
         if (res.data.user.filePhotograph) {
-          // setPhotopicked(true);
+          setPhotopicked(true);
           setAlreadyUploaded(true)
         }else{
           setAlreadyUploaded(false)

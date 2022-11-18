@@ -65,7 +65,7 @@ function Payment() {
         })
         .then((res) =>{
           console.log(res)
-          if(res.data.status === "SUCCESS "){
+          if(res.data.status === "SUCCESS"){
             window.alert("Your Application Was Submitted")
             nav("/dashboard")
           }else{

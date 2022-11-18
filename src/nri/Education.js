@@ -369,6 +369,7 @@ const Education = () => {
               <label className="text-sm text-red-600">
                 upload an  image file of size less than 5mb*
               </label>
+              {loader && <LinearProgress/>}
             </div>
           </div>
           <p className="text-md my-4 font-semibold text-center">

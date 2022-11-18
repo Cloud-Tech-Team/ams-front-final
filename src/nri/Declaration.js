@@ -36,7 +36,7 @@ const Declaration = () => {
       .then((res) => {
         setLoader(false);
         console.log(res);
-        if(res.data.user.bp1 !== null){
+        if(res.data.user.bp1!=null){
           setB(true);
           setBranch(res.data.user.bp1);
           document.getElementById("bp").value = res.data.user.bp1; 
@@ -252,7 +252,7 @@ const Declaration = () => {
               id="bp"
               onChange={handleBranch}
             >
-              <option value="branch"></option>
+              <option value=""></option>
               <option value="CSE">Computer Science and Engineering</option>
               <option value="CY">CSE(Cyber Security)</option>
               <option value="AI">Artificial Intelligence</option>
@@ -322,6 +322,7 @@ const Declaration = () => {
         <div className=" xl:flex items-center mt-3 gap-4 justify-center">
           <p className="font-semibold">Signature Upload (applicant)*</p>
           {/* {issignuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
+          {/* {issignuploaded && <p className="text-green-500 text-center">Already uploaded</p>} */}
           <span className="sm:space-x-3">
           <input
             id="sign"
@@ -334,7 +335,7 @@ const Declaration = () => {
           </span>
           
         </div>  
-        {setParentsignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
+        {issignuploaded && <p className="text-green-500 text-center">Already uploaded</p>}
         <div className=" xl:flex items-center mt-3 gap-4 justify-center">
           <p className="font-semibold ">Signature Upload (Parent/Gaurdian)*</p>
          
