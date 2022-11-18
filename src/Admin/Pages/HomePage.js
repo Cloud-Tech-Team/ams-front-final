@@ -144,7 +144,7 @@ const HomePage = () => {
             </p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl ">
               {/* change here */}
-              {30}
+              {0}
             </p>
           </div>
           <div className="w-1/4 h-full flex flex-col items-center justify-center bg-white">

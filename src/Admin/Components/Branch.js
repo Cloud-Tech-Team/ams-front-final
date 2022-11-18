@@ -19,9 +19,9 @@ function Branch(props) {
       setLoader(true)
       axios.patch(api+'branch/edit/'+props.name+'/2023',
       {
-        NRISeats : document.getElementById(props.name+"nri").value,
-        SuperSeats : document.getElementById(props.name+"sup").value,
-        MgmtSeats: document.getElementById(props.name+"mgmt").value,
+        NRISeats : Number(document.getElementById(props.name+"nri").value),
+        SuperSeats : Number(document.getElementById(props.name+"sup").value),
+        MgmtSeats: Number(document.getElementById(props.name+"mgmt").value),
       }
       ,{
         headers: {

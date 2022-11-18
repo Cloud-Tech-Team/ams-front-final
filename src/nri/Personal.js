@@ -2,21 +2,14 @@ import React, { useState, useEffect } from "react";
 import {
   TextField,
   Button,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormControl,
   Checkbox,
-  IconButton,
-  Tooltip,
-  CircularProgress,
   LinearProgress,
   Dialog,
   DialogTitle,
-  Box,
   Backdrop,
   DialogContent,
   DialogActions,
+  CircularProgress,
 } from "@mui/material";
 import { Stepper, Step, StepLabel } from "@mui/material";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -29,10 +22,12 @@ import { useNavigate } from "react-router-dom";
 function Personal() {
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
   const [loader, setLoader] = useState(false);
+  const [photoLoader, setPhotoLoader] = useState(false);
   const [msg, setMsg] = useState(true);
   const [ciwg,setCiwg] = useState(true);
   const [photopicked, setPhotopicked] = useState(false);
   const [alreadyUploaded,setAlreadyUploaded] = useState(false);
+  const [disable,setDisable] = useState(true)
   const [user,setUser] = useState({
     firstName:'',
     middleName: '',
@@ -153,13 +148,24 @@ function Personal() {
 
 
   const forphoto = async (e) => {
-    setPhotopicked(true);
+    const file = (document.getElementById("photo").files[0]).name;
+    console.log(file)
+    const extension = file.split(".").pop();
+    const validex = ["png","jpg","jpeg"]
+    if(! validex.includes(extension)){
+      setDisable(true)
+      window.alert("Please select an image file(.jpg/jpeg/png)")
+    }else
+    {
+      setDisable(false)
+      setPhotopicked(true);
+    }
     console.log(alreadyUploaded)
   };
 
   const handlephotoFile = async (e) => {
     e.preventDefault();
-    setLoader(true)
+    setPhotoLoader(true)
     const file = document.getElementById("photo").files[0];
     const formData = new FormData();
     formData.append("filePhotograph", file);
@@ -194,7 +200,7 @@ function Personal() {
     } else {
       window.alert("Please select your photo");
     }
-    setLoader(false)
+    setPhotoLoader(false)
   };
 
 
@@ -285,302 +291,314 @@ function Personal() {
 
 
   return (
-    <div className=" xl:w-[1180px] mx-auto flex items-center justify-center h-screen ">
-      <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-6">
-        <Backdrop
+    <div className="font-poppins py-20 h-auto min-h-screen  mx-auto w-11/12 sm:w-3/4 md:flex items-center xl:my-auto">
+    <div className="h-auto xl:flex w-full p-2 bg-white  rounded-[4px]">
+    <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={loader}
         >
-          <div className="w-screen absolute top-0">
-            <LinearProgress color="primary" />
+          <div className="w-screen absolute flex items-center justify-center">
+            <CircularProgress />
           </div>
-        </Backdrop>
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      </Backdrop>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={msg}
+      >
+        <Dialog
           open={msg}
+          onClose={() => {
+            setMsg(false);
+          }}
         >
-          <Dialog
-            open={msg}
-            onClose={() => {
-              setMsg(false);
+          <DialogTitle>Important Message</DialogTitle>
+          <DialogContent>
+            We recommend you to contact
+            <br />
+            <b>Mr Binoy P.K (ph:9446717178) </b> before proceeding
+            <br />
+            Ignore this message if already contacted
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                setMsg(false);
+              }}
+            >
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Backdrop>
+      <div className="xl:w-1/2  h-full p-2">
+        <div className="w-full p-3 space-y-4 md:space-y-0 md:flex md:gap-4">
+          <TextField
+            className="w-full md:w-1/3"
+            InputLabelProps={{
+              shrink: true,
             }}
-          >
-            <DialogTitle>Important Message</DialogTitle>
-            <DialogContent>
-              We recommend you to contact
-              <br />
-              <b>Mr Binoy P.K (ph:9446717178) </b> before proceeding
-              <br />
-              Ignore this message if already contacted
-            </DialogContent>
-            <DialogActions>
-              <Button
-                onClick={() => {
-                  setMsg(false);
-                }}
-              >
-                Close
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </Backdrop>
-
-        <div className="w-full bg-white rounded-md h-auto flex flex-col xl:flex-row shadow-md mt-8">
-          <div className="xl:w-1/2 h-[584px] pt-6 ">
-            <div className="flex items-center justify-center p-5 space-x-2">
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="fname"
-                defaultValue=""
-                label="First Name"
-                type="text"
-                size="small"
-                required
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="mname"
-                label="Middle Name"
-                type="text"
-                size="small"
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="lname"
-                label="Last Name"
-                type="text"
-                size="small"
-                required
-              />
-            </div>
-
-            <div className=" flex  p-5 space-x-2">
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="phone1"
-                label="Contact Ph. No(M)"
-                type="text"
-                size="small"
-                inputProps={{
-                  maxLength: 10
-                }}
-                required
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="phoneKerala"
-                label="Contact Ph. No(Kerala)"
-                type="text"
-                size="small"
-                inputProps={{
-                  maxLength: 10
-                }}
-                required
-                
-              />
-              <TextField
-                label="DOB"
-                type="date"
-                size="small"
-                id="dob"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </div>
-            <div className=" flex items-center  p-5  justify-between">
-              <TextField
-                label="Photo Upload"
-                type="file"
-                size="small"
-                id="photo"
-                onChange={forphoto}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                required
-              />
-            {user.filePhotograph && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>}
-              <Button variant="contained" onClick={handlephotoFile}>
-                Upload
-              </Button>
-              
-            </div>
-              <label className="text-sm text-red-600 mx-10">
-                upload an  image file of size less than 5mb*
-              </label>
-            <div className=" flex flex-col space-y-2 p-5 mt-4 ">
-              <label className="text-xl ml-2">Contact Address</label>
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Chouse"
-                fullWidth
-                label="House Name"
-                type="text"
-                size="small"
-                required
-              />
-            </div>
-            <div className=" flex items-center p-5 space-x-2">
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Cstate"
-                className="w-1/2"
-                label="State"
-                type="text"
-                size="small"
-                required
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Cdistrict"
-                className="w-1/2"
-                label="District"
-                type="text"
-                size="small"
-              />
-            </div>
-            <div className=" flex items-center p-5 space-x-2">
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Ccity"
-                className="w-1/2"
-                label="City"
-                type="text"
-                size="small"
-                required
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Cpincode"
-                className="w-1/2"
-                label="Pincode"
-                type="text"
-                size="small"
-                inputProps={{
-                  maxLength: 6
-                }}
-              />
-            </div>
-          </div>
-          <div className="xl:w-1/2  h-[584px]">
-            <div className=" flex flex-col space-y-2 p-5 mt-1 ">
-              <label className="text-xl ml-2">Permanent Address</label>
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Phouse"
-                fullWidth
-                label="House Name"
-                type="text"
-                size="small"
-                required
-              />
-            </div>
-            <div className=" flex items-center p-5 space-x-2">
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Pstate"
-                className="w-1/2"
-                label="State"
-                type="text"
-                size="small"
-                required
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Pdistrict"
-                className="w-1/2"
-                label="District"
-                type="text"
-                size="small"
-              />
-            </div>
-            <div className=" flex items-center p-5 space-x-2">
-              <TextField
-               autoComplete="new-password"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Pcity"
-                className="w-1/2"
-                label="City"
-                type="text"
-                size="small"
-                required
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="Ppincode"
-                className="w-1/2"
-                label="Pincode"
-                type="text"
-                size="small"
-                inputProps={{
-                  maxLength: 6
-                }}
-              />
-            </div>
-            <div className="w-full px-3">
-              <Checkbox
-                className="ml-6"
-                id="checkbox"
-                onClick={autofill}
-              ></Checkbox>
-              <label>Use Contact address as Permanent address</label>
-            </div>
-
-            <div className=" flex items-center p-5 space-x-2">
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="parentName"
-                className="w-1/2"
-                label="Parent/Gaurdian"
-                type="text"
-                size="small"
-                required
-              />
-              <TextField
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                id="parentOccupation"
-                className="w-1/2"
-                label="Occupation"
-                type="text"
-                size="small"
-              />
-            </div>
-            {user.quota != 'ciwg' && <div className=" flex items-center p-5 space-x-2">
+            id="fname"
+            defaultValue=""
+            label="First Name"
+            type="text"
+            size="small"
+            required
+          />
+          <TextField
+            className=" w-full md:w-1/3"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="mname"
+            label="Middle Name"
+            type="text"
+            size="small"
+          />
+          <TextField
+            className=" w-full md:w-1/3"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="lname"
+            label="Last Name"
+            type="text"
+            size="small"
+            required
+          />
+        </div>
+        <div className="w-full p-3 space-y-4 md:space-y-0 md:flex md:gap-4">
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            className=" w-full md:w-1/3"
+            id="phone1"
+            label="Contact Ph. No(M)"
+            type="text"
+            size="small"
+            inputProps={{
+              maxLength: 10,
+            }}
+            required
+          />
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            className=" w-full md:w-1/3"
+            id="phoneKerala"
+            label="Contact Ph. No(Kerala)"
+            type="text"
+            size="small"
+            inputProps={{
+              maxLength: 10,
+            }}
+            required
+          />
+          <TextField
+            className="w-full md:w-2/5"
+            label="DOB"
+            type="date"
+            size="small"
+            id="dob"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </div>
+        <div className="w-full space-y-3 md:space-y-0 gap-3 p-3 md:flex ">
+          <TextField
+            label="Photo Upload"
+            type="file"
+            size="small"
+            id="photo"
+            fullWidth
+            onChange={forphoto}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            required
+          />
+          {/* {alreadyUploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
+          <Button disabled={disable} variant="contained" onClick={handlephotoFile}>
+            Upload
+          </Button>
+        </div>
+        <div className="w-full px-3 flex text-sm md:text-md items-center justify-between">
+          <label className="text-red-500 ">
+            Upload an image file of size less than 2mb
+          </label>
+          {alreadyUploaded && (
+            <label className="text-green-500 ">Already uploaded</label>
+          )}
+        </div>
+        <div className="w-full p-3">
+        {photoLoader && <LinearProgress/>}
+        </div>
+        <div className=" flex flex-col p-3">
+          <label className="text-xl m-2 ">Contact Address</label>
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Chouse"
+            fullWidth
+            label="House Name"
+            type="text"
+            size="small"
+            required
+          />
+        </div>
+        <div className="space-y-3 md:space-y-0 md:flex items-center p-3 gap-3 ">
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Cstate"
+            className="w-full md:w-1/2"
+            label="State"
+            type="text"
+            size="small"
+            required
+          />
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Cdistrict"
+            className="w-full md:w-1/2"
+            label="District"
+            type="text"
+            size="small"
+          />
+        </div>
+        <div className="space-y-3 md:space-y-0 md:flex items-center gap-3 p-3">
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Ccity"
+            className="w-full md:w-1/2"
+            label="City"
+            type="text"
+            size="small"
+            required
+          />
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Cpincode"
+            className="w-full md:w-1/2"
+            label="Pincode"
+            type="text"
+            size="small"
+            inputProps={{
+              maxLength: 6,
+            }}
+          />
+        </div>
+        <div className="w-full p-1">
+          <Checkbox
+            className="ml-6"
+            id="checkbox"
+            onClick={autofill}
+          ></Checkbox>
+          <label>Use Contact address as Permanent address</label>
+        </div>
+      </div>
+      <div className="xl:w-1/2  h-full ">
+        <div className=" flex flex-col p-3">
+          <label className="text-xl ml-2 mb-2 ">Permanent Address</label>
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Phouse"
+            fullWidth
+            label="House Name"
+            type="text"
+            size="small"
+            required
+          />
+        </div>
+        <div className="space-y-3 md:space-y-0 md:flex items-center p-3 gap-3 ">
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Pstate"
+            className="w-full md:w-1/2"
+            label="State"
+            type="text"
+            size="small"
+            required
+          />
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Pdistrict"
+            className="w-full md:w-1/2"
+            label="District"
+            type="text"
+            size="small"
+          />
+        </div>
+        <div className="space-y-3 md:space-y-0 md:flex items-center gap-3 p-3">
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Pcity"
+            className="w-full md:w-1/2"
+            label="City"
+            type="text"
+            size="small"
+            required
+          />
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="Ppincode"
+            className="w-full md:w-1/2"
+            label="Pincode"
+            type="text"
+            size="small"
+            inputProps={{
+              maxLength: 6,
+            }}
+          />
+        </div>
+        <label className="text-xl ml-5 m-2">Parental Details</label>
+        <div className="space-y-3 md:space-y-0 md:flex items-center gap-3 p-3">
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="parentName"
+            className="w-full md:w-1/2"
+            label="Parent/Gaurdian"
+            type="text"
+            size="small"
+            required
+          />
+          <TextField
+            InputLabelProps={{
+              shrink: true,
+            }}
+            id="parentOccupation"
+            className="w-full md:w-1/2"
+            label="Occupation"
+            type="text"
+            size="small"
+          />
+        </div>
+        {user.quota != "ciwg" && (
+          <div className="w-full">
+            {" "}
+            <div className=" flex items-center p-3 space-x-2">
               <TextField
                 InputLabelProps={{
                   shrink: true,
@@ -590,12 +608,15 @@ function Personal() {
                 label="NRI Sponsor"
                 type="text"
                 size="small"
+                fullWidth
                 required
               />
-              <label >Relation with NRI sponsor*</label>
+            </div>
+            <div className="w-full px-3">
+              <label className="ml-2">Relation with NRI sponsor*</label>
               <select
-              required
-                className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[5px] "
+                required
+                className="rounded-[4px] border-[1px] w-full hover:border-black focus:outline-red-600 border-gray-400 p-[8px] "
                 id="sponsorRelation"
               >
                 <option value=""></option>
@@ -607,22 +628,23 @@ function Personal() {
                 <option value="Sister">Sister</option>
                 <option value="Niece">Niece</option>
                 <option value="Nephew">Nephew</option>
-
-               
               </select>
-            </div>}
-            <div className=" flex px-5 py-2 mt-5 space-x-5">
-            <p className="p-2 text-center text-red-600 italic">
-                After selecting photo make sure you click <b>UPLOAD</b> button.
-              </p>
-              <Button variant="contained" onClick={personalUpload} id='save'>
-                Save
-              </Button>
             </div>
           </div>
+        )}
+        <div className="w-full  flex items-center p-4 justify-between">
+          <label className="text-sm md:text-md text-red-500">
+            Note: Make sure you click upload button before proceeding
+          </label>
+          <Button
+           onClick={personalUpload} id="save" variant="contained">
+            Save
+          </Button>
         </div>
       </div>
     </div>
+  </div>
+
   );
 }
 

@@ -105,6 +105,8 @@ function Form() {
               For any queries or problems happening in between, kindly contact our admission team 
               through the following ways:
               Phone: Mr. Binoy P K 9446717178
+              Phone: Mr. Nandakrishnan P N 8848978215
+              Phone: Ms Elby Baby 9633236639
               Mail: mitsadmissions@mgits.ac.in
             </DialogContent>
             <DialogActions>

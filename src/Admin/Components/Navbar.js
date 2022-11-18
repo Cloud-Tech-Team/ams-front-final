@@ -18,7 +18,7 @@ const Navbar = (props) => {
         <Link onClick={props.onToggle} to="/admin/super" className="text-white  hover:scale-110  italic ">
           Supernumerary
         </Link>
-        <Link onClick={props.onToggle} to="mgmt" className="text-white  hover:scale-110  italic ">
+        <Link onClick={props.onToggle} to="/admin/mgmt" className="text-white  hover:scale-110  italic ">
           Management
         </Link>
         <Link onClick={props.onToggle} to="gov" className="text-white  hover:scale-110  italic ">
