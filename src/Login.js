@@ -140,7 +140,7 @@ const Login = () => {
             <TextField
               required
               label="Password"
-              type="text"
+              type="password"
               id="password"
               varient="outlined"
               size="small"

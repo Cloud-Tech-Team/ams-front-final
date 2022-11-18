@@ -17,7 +17,7 @@ function Settings() {
       const [seats,setSeats] = useState([]);
         useEffect(()=>{
           setLoader(true)
-          axios.get(api+'branch/get',{
+          axios.post(api+'branch/get',{},{
             headers: {
               Authorization: "Bearer " + localStorage.getItem("admin_access_token"),
             },
