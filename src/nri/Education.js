@@ -599,7 +599,7 @@ const Education = () => {
                 change the file later.
               </p>
             </div>
-            <Button  disabled={disable}sx={{height:"100%"}} className="" variant="contained">
+            <Button sx={{height:"100%"}} className="" variant="contained">
               <Link  onClick={eduDetailUpload}>
                 Save
               </Link>

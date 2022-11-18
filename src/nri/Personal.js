@@ -637,7 +637,7 @@ function Personal() {
             Note: Make sure you click upload button before proceeding
           </label>
           <Button
-          disabled={disable} onClick={personalUpload} id="save" variant="contained">
+           onClick={personalUpload} id="save" variant="contained">
             Save
           </Button>
         </div>

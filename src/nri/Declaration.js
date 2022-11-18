@@ -384,7 +384,7 @@ const Declaration = () => {
         
 
         <Button
-          disabled={disable}
+          
           sx={{
             color: "#fff",
             
