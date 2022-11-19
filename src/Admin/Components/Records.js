@@ -281,7 +281,7 @@ const Records = (props) => {
                   <p>Transaction Slip</p>
                   <img
                     className="w-36"
-                    src={props.data.fileTransactionID}
+                    src={props.data.fileTransactionID.toString().slice(0,-3)+'jpg'}
                     alt="transaction slip"
                   />
                 </div>
@@ -420,7 +420,7 @@ const Records = (props) => {
                 <br />
                 <label>Board: <b>{props.data.grade10.board}</b></label>
                 <div className="w-full mt-3  p-1 border-[2px] rounded-[4px]">
-                  <img src={props.data.grade10.marksheet} alt="mrklist10" />
+                  <img src={props.data.grade10.marksheet.toString().slice(0,-3)+'jpg'} alt="mrklist10" />
                 </div>
               </div>
               <div className="xl:w-1/2  p-3 ">
@@ -433,7 +433,7 @@ const Records = (props) => {
                 <br />
                 <label>Board: <b>{props.data.grade12.board}</b></label>
                 <div className="w-full mt-3 h-auto p-1 border-[2px] rounded-[4px]">
-                  <img src={props.data.grade12.marksheet} alt="mrklist12" />
+                  <img src={props.data.grade12.marksheet ? props.data.grade12.marksheet.toString().slice(0,-3)+'jpg' : 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg'} alt="mrklist12" />
                 </div>
               </div>
             </div>
@@ -489,7 +489,7 @@ const Records = (props) => {
               <div className="xl:w-1/2 px-4 ">
                 <p className="text-lg my-3 text-center">KEAM Marklist </p>
                 <div className="w-full p-1 border-[2px] rounded-[4px]">
-                  <img src={props.data.keam.file} alt="mrklistkeam" />
+                  <img src={props.data.keam.file ? props.data.keam.file.filetoString().slice(0,-3)+'jpg' : 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg'} alt="mrklistkeam" />
                 </div>
               </div>
             </div>
