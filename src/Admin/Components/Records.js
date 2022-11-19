@@ -489,7 +489,7 @@ const Records = (props) => {
               <div className="xl:w-1/2 px-4 ">
                 <p className="text-lg my-3 text-center">KEAM Marklist </p>
                 <div className="w-full p-1 border-[2px] rounded-[4px]">
-                  <img src={props.data.keam.file ? props.data.keam.file.filetoString().slice(0,-3)+'jpg' : 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg'} alt="mrklistkeam" />
+                  <img src={props.data.keam.file ? props.data.keam.file.toString().slice(0,-3)+'jpg' : 'https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg'} alt="mrklistkeam" />
                 </div>
               </div>
             </div>

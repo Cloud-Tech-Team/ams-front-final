@@ -10,7 +10,7 @@ const Education = () => {
   const [loader1, setLoader1] = useState(false);
   const [loader2, setLoader2] = useState(false);
   const [loader3, setLoader3] = useState(false);
-  const [disable,setDisable] = useState(true)
+  // const [disable,setDisable] = useState(true)
   const [pageLoader, setPageLoader] = useState(false);
   
   const [file10th, setFile10th] = useState();
@@ -94,19 +94,19 @@ const Education = () => {
   }, []);
 
   const handle10thfile = async (e) => {
-    console.log(e.target.id);
-    const file = (document.getElementById("file10th").files[0]).name;
-    console.log(file)
-    const extension = file.split(".").pop();
-    const validex = ["png","jpg","jpeg"]
-    if(! validex.includes(extension)){
-      window.alert("Please select an image file(.jpg/jpeg/png)")
-      setDisable(true)
-    }
-    else{
-      setDisable(false)
+    // console.log(e.target.id);
+    // const file = (document.getElementById("file10th").files[0]).name;
+    // console.log(file)
+    // const extension = file.split(".").pop();
+    // const validex = ["png","jpg","jpeg"]
+    // if(! validex.includes(extension)){
+    //   window.alert("Please select an image file(.jpg/jpeg/png)")
+    //   setDisable(true)
+    // }
+    // else{
+    //   setDisable(false)
       setIs10thpicked(true);
-    }
+    // }
     setFile10th(e.target.files[0]);
   };
   const markupload10th = async (e) => {
@@ -147,19 +147,19 @@ const Education = () => {
   };
 
   const handle12thfile = async (e) => {
-    console.log(e.target.id);
-    const file = (document.getElementById("file12th").files[0]).name;
-    console.log(file)
-    const extension = file.split(".").pop();
-    const validex = ["png","jpg","jpeg"]
-    if(! validex.includes(extension)){
-      window.alert("Please select an image file(.jpg/jpeg/png)")
-      setDisable(true)
-    }
-    else{
-      setDisable(false)
+    // console.log(e.target.id);
+    // const file = (document.getElementById("file12th").files[0]).name;
+    // console.log(file)
+    // const extension = file.split(".").pop();
+    // const validex = ["png","jpg","jpeg"]
+    // if(! validex.includes(extension)){
+    //   window.alert("Please select an image file(.jpg/jpeg/png)")
+    //   setDisable(true)
+    // }
+    // else{
+    //   setDisable(false)
       setIs12thpicked(true);
-    }
+    // }
     setFile12th(e.target.files[0]);
   };
 
@@ -201,19 +201,19 @@ const Education = () => {
   };
 
   const handlefileKeam = async (e) => {
-    console.log(e.target.id);
-    const file = (document.getElementById("fileKeam").files[0]).name;
-    console.log(file)
-    const extension = file.split(".").pop();
-    const validex = ["png","jpg","jpeg"]
-    if(! validex.includes(extension)){
-      window.alert("Please select an image file(.jpg/jpeg/png)")
-      setDisable(true)
-    }
-    else{
-      setDisable(false)
+    // console.log(e.target.id);
+    // const file = (document.getElementById("fileKeam").files[0]).name;
+    // console.log(file)
+    // const extension = file.split(".").pop();
+    // const validex = ["png","jpg","jpeg"]
+    // if(! validex.includes(extension)){
+    //   window.alert("Please select an image file(.jpg/jpeg/png)")
+    //   setDisable(true)
+    // }
+    // else{
+    //   setDisable(false)
       setIskeampicked(true);
-    }
+    // }
     setFilekeam(e.target.files[0]);
   };
 
@@ -401,7 +401,9 @@ const Education = () => {
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
                   {/* {is10thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-                  <Button disabled={disable} sx={{height:"100%"}}
+                  <Button
+                  //  disabled={disable} 
+                   sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
                     onClick={markupload10th}
@@ -475,7 +477,9 @@ const Education = () => {
                     className="rounded-[4px] w-full mb-2 border-[1px] hover:border-black focus:outline-red-600 border-gray-400  "
                   />
                   {/* {is12thuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-                  <Button  disabled={disable}sx={{height:"100%"}}
+                  <Button  
+                  // disabled={disable}
+                  sx={{height:"100%"}}
                     id="file10th"
                     variant="contained"
                     onClick={markupload12th}
@@ -571,7 +575,9 @@ const Education = () => {
                     className="rounded-[4px]  border-[1px] w-full mb-3 hover:border-black focus:outline-red-600 border-gray-400  "
                   />
                   {/* {iskeamuploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-                  <Button  disabled={disable}sx={{height:"100%"}} variant="contained" onClick={keamupload}>
+                  <Button 
+                  //  disabled={disable}
+                   sx={{height:"100%"}} variant="contained" onClick={keamupload}>
                     Upload
                   </Button>
                 
