@@ -8,7 +8,7 @@ const Mgmt = () => {
   const [list,setList] = useState([])
   useEffect(() => {
       axios.post(api+'admin/search',{
-        "applicationCompleted" : true,
+        // "applicationCompleted" : true,
         "quota" : "Management"
     },{
         headers : {
