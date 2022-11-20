@@ -27,7 +27,7 @@ ChartJS.register(
 
 const RegChart = (props) => {
   const data = {
-    labels: ["CSE","CSE-AI","AI&DS","CyberSecurity","CE","ME","EEE","ECE"],
+    labels: ["CSE","AI","AI&DS","CY","CE","ME","EEE","ECE"],
     datasets: [
       {
         label: "Registration's",
@@ -63,9 +63,15 @@ const RegChart = (props) => {
       },
     },
   };
-
+  console.log(props.graph)
   return (
-       <Bar  data={data} height={400} options={options} />   
+       <>
+        {(props.graph===0)&&<Bar  data={data} height={400} options={options} />}  
+        {(props.graph===1)&&<Doughnut  data={data} height={400} options={options} />}  
+        {(props.graph===2)&&<Line  data={data} height={400} options={options} />}  
+        {(props.graph===3)&&<Pie  data={data} height={400} options={options} />}  
+        {(props.graph===4)&&<PolarArea  data={data} height={400} options={options} />}  
+       </> 
   );
 };
 

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 function Payment() {
   localStorage.setItem("pageNo", 5);
   const [enable, setEnable] = useState(true);
-  const [disable, setDisable] = useState(true);
+  // const [disable, setDisable] = useState(true);
   const nav = useNavigate()
   const [loader,setLoader] = useState(false)
 
@@ -42,19 +42,19 @@ function Payment() {
 
   const [slipselect, setslipselect] = useState(false)
   const handleslip = async(e) =>{
-    console.log(e.target.id)
-    const file = (document.getElementById("Transactionslip").files[0]).name;
-    console.log(file)
-    const extension = file.split(".").pop();
-    const validex = ["png","jpg","jpeg"]
-    if(! validex.includes(extension)){
-      window.alert("Please select an image file(.jpg/jpeg/png)")
-      setDisable(true)
-    }
-    else{
-      setDisable(false)
+    // console.log(e.target.id)
+    // const file = (document.getElementById("Transactionslip").files[0]).name;
+    // console.log(file)
+    // const extension = file.split(".").pop();
+    // const validex = ["png","jpg","jpeg"]
+    // if(! validex.includes(extension)){
+    //   window.alert("Please select an image file(.jpg/jpeg/png)")
+    //   setDisable(true)
+    // }
+    // else{
+    //   setDisable(false)
       setslipselect(true)
-    }
+    // }
   }
   const finalsubmit = async(e) =>{
     setLoader(true)
@@ -175,7 +175,7 @@ function Payment() {
               <Link to="/nriform">Back</Link>
             </Button>
             <Button
-            disabled = {enable || disable} 
+            disabled = {enable} 
               
               onClick={finalsubmit}
               variant="contained"

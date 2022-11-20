@@ -64,7 +64,7 @@ const Supernumery = () => {
         quota : document.getElementById("quota-select").value,
         NRIdetails :{
           name : document.getElementById("parent-name").value,
-          relation: document.getElementById("parent-name").value
+          relation: document.getElementById("relation-select").value
         }
       }
     }

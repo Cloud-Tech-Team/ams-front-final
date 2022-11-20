@@ -127,13 +127,13 @@ const Login = () => {
               label="Email ID"
               type="email"
               id="email"
-              size="small"
+              size="small" 
               fullWidth
             />
             <TextField
               required
               label="Password"
-              type="text"
+              type="password"
               id="password"
               varient="outlined"
               size="small"

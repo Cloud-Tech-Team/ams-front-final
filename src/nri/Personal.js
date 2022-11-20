@@ -420,7 +420,9 @@ function Personal() {
             required
           />
           {/* {alreadyUploaded && <p className="text-green-500 text-center bg-green-200 rounded-md px-2 border-[2px] border-green-400">Already<br/>uploaded</p>} */}
-          <Button disabled={disable} variant="contained" onClick={handlephotoFile}>
+          <Button 
+          disabled={disable}
+           variant="contained" onClick={handlephotoFile}>
             Upload
           </Button>
         </div>
