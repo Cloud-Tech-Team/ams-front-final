@@ -11,6 +11,7 @@ const HomePage = () => {
   const [gov, setGov] = useState(0);
   const [nri, setNri] = useState(0);
   const [mgmt, setMgmt] = useState(0);
+  const [superNumery,setSuperNumery] = useState(0);
   const [cse, setCse] = useState(0);
   const [ce, setCe] = useState(0);
   const [me, setMe] = useState(0);
@@ -19,9 +20,11 @@ const HomePage = () => {
   const [cseai, setCseai] = useState(0);
   const [cyber, setCyber] = useState(0);
   const [aids, setAids] = useState(0);
-  const [branchCount,setBranchcount] = useState([]);
+  const [branchCount,setBranchCount] = useState([]);
   const [verified, setVerified] = useState(0);
   const [completed, setCompleted] = useState(0);
+  const [refresh,setRefrect] = useState(false)
+
   const token = localStorage.getItem("admin_access_token")
   const query = {
     headers: {
@@ -30,23 +33,10 @@ const HomePage = () => {
     },
   };
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
-  useEffect(() => {
-    // console.log(token)
-    axios
-      .get(api+'admin/count',query)
-      .then((res) => {
-        // console.log(res.data);
-        setGov(Number(res.data.result[0]))
-        setMgmt(Number(res.data.result[1]))
-        setNri(Number(res.data.result[2]))
-        setCount(Number(res.data.result[3]))
-        setVerified(Number(res.data.result[4]))
-      });
-  },[]);
 
   useEffect(() => {
     axios
-      .get(api+'branch/getall',query)
+      .post(api+'branch/getAll',{},query)
       .then((res) => {
         console.log(res.data);
         for(let i=0; i<res.data.list.length ; i++){
@@ -65,7 +55,7 @@ const HomePage = () => {
           else if(res.data.list[i].branch === "ECE"){
             setEce(Number(res.data.list[i].occupiedSeats))
           }
-          else if(res.data.list[i].branch === "CSE-AI"){
+          else if(res.data.list[i].branch === "AI"){
             setCseai(Number(res.data.list[i].occupiedSeats))
           }
           else if(res.data.list[i].branch === "AI&DS"){
@@ -75,17 +65,27 @@ const HomePage = () => {
             setCyber(Number(res.data.list[i].occupiedSeats))
           }
         }
+        for(let branch of res.data.list){
+          setNri(nri=>(nri+branch.occupiedSeatsNRI))
+          setSuperNumery(superNumery=>(superNumery+branch.occupiedSeatsSuper))
+          setMgmt(mgmt=>(mgmt+branch.occupiedSeatsMgmt))
+          setGov(gov=>(gov+branch.occupiedSeatsGov))
+        }
+        const count = [cse,cseai,aids,cyber,ce,me,eee,ece]
+        setBranchCount(count)
       });
-      const count = [cse,cseai,aids,cyber,ce,me,eee,ece]
-      // const arr = [310, 120, 210, 150, 300, 280, 100, 50]
       
-      setBranchcount(count)
-  },[]);
-
+  },[refresh]);
   return (
     <div className="w-full pb-6 xl:p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
       <div className="w-full xl:w-1/2 relative h-full flex flex-col items-center justify-center shadow-xl bg-white rounded-md">
-      <IconButton sx={{position:"absolute",right:"5%",top:"5%"}}>
+      <IconButton sx={{position:"absolute",right:"5%",top:"5%"}} onClick={()=>{
+        setNri(0)
+        setSuperNumery(0)
+        setMgmt(0)
+        setGov(0)
+        setRefrect(!refresh)
+      }}>
             <ChangeCircleIcon fontSize="large" />
           </IconButton>
         <p className="text-center font-semibold 2xl:text-4xl my-3 2xl:mb-6 sm:text-3xl text-xl">
@@ -107,7 +107,7 @@ const HomePage = () => {
               Total
             </p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
-              {count}
+              {nri+mgmt+superNumery}
             </p>
           </div>
           <div className="w-1/2 h-auto flex flex-col items-center justify-center bg-white border-l-[8px] border-black">
@@ -144,7 +144,7 @@ const HomePage = () => {
             </p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl ">
               {/* change here */}
-              {0}
+              {superNumery}
             </p>
           </div>
           <div className="w-1/4 h-full flex flex-col items-center justify-center bg-white">

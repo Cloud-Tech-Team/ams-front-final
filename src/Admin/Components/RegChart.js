@@ -27,7 +27,7 @@ ChartJS.register(
 
 const RegChart = (props) => {
   const data = {
-    labels: ["CSE","CSE-AI","AI&DS","CyberSecurity","CE","ME","EEE","ECE"],
+    labels: ["CSE","AI","AI&DS","CY","CE","ME","EEE","ECE"],
     datasets: [
       {
         label: "Registration's",
