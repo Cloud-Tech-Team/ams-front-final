@@ -5,6 +5,7 @@ import RegChart from "../Components/RegChart.js";
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 import { useEffect, useState } from "react";
 import { IconButton } from "@mui/material";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const HomePage = () => {
   const [count, setCount] = useState(0);
@@ -23,7 +24,9 @@ const HomePage = () => {
   const [branchCount,setBranchCount] = useState([]);
   const [verified, setVerified] = useState(0);
   const [completed, setCompleted] = useState(0);
-  const [refresh,setRefrect] = useState(false)
+  const [refresh,setRefrect] = useState()
+  const [graph,setGraph] = useState(0)
+  let g = 0;
 
   const token = localStorage.getItem("admin_access_token")
   const query = {
@@ -71,15 +74,14 @@ const HomePage = () => {
           setMgmt(mgmt=>(mgmt+branch.occupiedSeatsMgmt))
           setGov(gov=>(gov+branch.occupiedSeatsGov))
         }
-        const count = [cse,cseai,aids,cyber,ce,me,eee,ece]
-        setBranchCount(count)
+        setBranchCount([cse,cseai,aids,cyber,ce,me,eee,ece])
       });
       
   },[refresh]);
   return (
     <div className="w-full pb-6 xl:p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
       <div className="w-full xl:w-1/2 relative h-full flex flex-col items-center justify-center shadow-xl bg-white rounded-md">
-      <IconButton sx={{position:"absolute",right:"5%",top:"5%"}} onClick={()=>{
+      <IconButton sx={{position:"absolute",right:"0%",top:"5%"}} onClick={()=>{
         setNri(0)
         setSuperNumery(0)
         setMgmt(0)
@@ -87,6 +89,11 @@ const HomePage = () => {
         setRefrect(!refresh)
       }}>
             <ChangeCircleIcon fontSize="large" />
+          </IconButton>
+      <IconButton sx={{position:"absolute",right:"8%",top:"6.5%"}} onClick={()=>{
+        setGraph(graph=>((++graph)%5))
+      }}>
+            <ArrowForwardIosIcon fontSize="small" />
           </IconButton>
         <p className="text-center font-semibold 2xl:text-4xl my-3 2xl:mb-6 sm:text-3xl text-xl">
           Registration Statistics
@@ -97,7 +104,7 @@ const HomePage = () => {
           {/* {branchCount.map((index)=>{
             return(<RegChart key={branchCount.indexOf(index)} data={index} />)
           })} */}
-          <RegChart labeldata = {branchCount}/>
+          <RegChart labeldata = {branchCount} graph={graph}/>
         </div>
       </div>
       <div className=" w-full xl:w-1/2 h-auto flex flex-col  space-y-6">

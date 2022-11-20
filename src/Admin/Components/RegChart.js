@@ -63,9 +63,15 @@ const RegChart = (props) => {
       },
     },
   };
-
+  console.log(props.graph)
   return (
-       <Bar  data={data} height={400} options={options} />   
+       <>
+        {(props.graph===0)&&<Bar  data={data} height={400} options={options} />}  
+        {(props.graph===1)&&<Doughnut  data={data} height={400} options={options} />}  
+        {(props.graph===2)&&<Line  data={data} height={400} options={options} />}  
+        {(props.graph===3)&&<Pie  data={data} height={400} options={options} />}  
+        {(props.graph===4)&&<PolarArea  data={data} height={400} options={options} />}  
+       </> 
   );
 };
 
