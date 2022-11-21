@@ -509,7 +509,7 @@ const Records = (props) => {
 
             <div className="w-full mt-8 items-center px-5 xl:flex space-y-3 xl:space-y-0 xl:space-x-6">
               <div className=" p-3 rounded-md border-[2px]  lg:w-1/2 ">
-                <p className="text-lg font-semibold text-sm text-right sm:text-left sm:text-[16px] mb-2">Branch Preference</p>
+                <p className=" font-semibold text-sm sm:text-[16px] mb-2">Branch Preference</p>
                 <div className="sm:space-x-3 xl:flex justify-between">
                   <label>{branch[props.data.bp1]}</label>
                 </div>
