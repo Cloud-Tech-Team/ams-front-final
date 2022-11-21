@@ -5,6 +5,7 @@ import { useEffect,useState } from 'react'
 import axios from 'axios'
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import * as XLSX from 'xlsx'
+import { Tooltip } from '@mui/material';
 
 const Nri = () => {
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
@@ -95,7 +96,7 @@ const Nri = () => {
   }
 
   return (
-    <div className="overflow-x-auto grid gird-cols-9 scrollbar-thin space-y-3  p-4 scrollbar-thumb-rounded-full scrollbar-thumb-black ">
+    <div className="overflow-x-auto grid gird-cols-9 scrollbar-thin space-y-3  px-4 scrollbar-thumb-rounded-full scrollbar-thumb-black ">
         {/* <div className='w-full  space-x-4 items-end justify-end h-auto'>
             <div className='w-auto h-8 rounded-full bg-white'>
         
@@ -103,8 +104,10 @@ const Nri = () => {
             <div className='w-9 h-9 rounded-full bg-white'></div>
 
         </div> */}
-        <div>
-          <CloudDownloadIcon fontSize='large' onClick={dataToExcel} />
+        <div className='w-full justify-end items-center flex px-3'>
+          <Tooltip title="Download Excel">
+          <CloudDownloadIcon  fontSize='large' onClick={dataToExcel} />
+          </Tooltip>
         </div>
         {list.map((index)=>{
             return(<Records key={list.indexOf(index)} data={index} />)

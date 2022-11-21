@@ -231,16 +231,18 @@ const Records = (props) => {
   };
 
   return (
-    <div className="w-full grid xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 items-center p-2 justify-between bg-white  rounded-md">
+    <div className="w-full grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 items-center p-2 justify-between bg-white  rounded-md">
       <img
         src={props.data.filePhotograph}
         className="w-9 object-cover h-9 rounded-full"
         alt="avatar"
       />
-      <p>{date.toLocaleDateString("en-GB")}</p>
+     <div>
+     <p>{date.toLocaleDateString("en-GB")}</p>
       <p>{props.data.applicationNo}</p>
+     </div>
       <p>{name}</p>
-      <div>
+      <div className="flex flex-col items-center">
         <p>{props.data.course}</p>
         <p>{props.data.bp1 === null ? " " : props.data.bp1}</p>
       </div>
