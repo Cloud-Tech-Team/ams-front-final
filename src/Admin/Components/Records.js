@@ -238,8 +238,9 @@ const Records = (props) => {
         alt="avatar"
       />
      <div>
-     <p>{date.toLocaleDateString("en-GB")}</p>
+     
       <p>{props.data.applicationNo}</p>
+      <p>{date.toLocaleDateString("en-GB")}</p>
      </div>
       <p>{name}</p>
       <div className="flex flex-col items-center">
