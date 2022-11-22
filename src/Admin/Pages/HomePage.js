@@ -24,7 +24,7 @@ const HomePage = () => {
   const [branchCount,setBranchCount] = useState([]);
   const [verified, setVerified] = useState(0);
   const [completed, setCompleted] = useState(0);
-  const [refresh,setRefrect] = useState()
+  const [refresh,setRefrect] = useState(null)
   const [graph,setGraph] = useState(0)
   let g = 0;
 
@@ -68,6 +68,10 @@ const HomePage = () => {
             setCyber(Number(res.data.list[i].occupiedSeats))
           }
         }
+        setNri(0)
+        setSuperNumery(0)
+        setMgmt(0)
+        setGov(0)
         for(let branch of res.data.list){
           setNri(nri=>(nri+branch.occupiedSeatsNRI))
           setSuperNumery(superNumery=>(superNumery+branch.occupiedSeatsSuper))
@@ -77,17 +81,16 @@ const HomePage = () => {
         setBranchCount([cse,cseai,aids,cyber,ce,me,eee,ece])
       });
       
-  },[refresh]);
+  },[refresh,nri,gov,mgmt,superNumery]);
   return (
     <div className="w-full pb-6 xl:p-1 sm:h-full 2xl:p-4 space-y-6 xl:space-y-0 xl:space-x-6 flex flex-col xl:flex-row ">
       <div className="w-full xl:w-1/2 relative h-full flex flex-col items-center justify-center shadow-xl bg-white rounded-md">
       <IconButton sx={{position:"absolute",right:"0%",top:"5%"}} onClick={()=>{
         setNri(0)
-        setSuperNumery(0)
-        setMgmt(0)
         setGov(0)
-        setRefrect(!refresh)
-      }}>
+        setMgmt(0)
+        setSuperNumery(0)
+        setRefrect(!refresh)}}>
             <ChangeCircleIcon fontSize="large" />
           </IconButton>
       <IconButton sx={{position:"absolute",right:"8%",top:"6.5%"}} onClick={()=>{
@@ -122,7 +125,7 @@ const HomePage = () => {
               completed
             </p>
             <p className="text-center mt-3 font-bold uppercase text-2xl sm:text-4xl 2xl:text-5xl">
-              {completed}
+              {nri+mgmt+superNumery}
             </p>
           </div>
         </div>

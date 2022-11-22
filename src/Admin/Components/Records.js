@@ -231,30 +231,33 @@ const Records = (props) => {
   };
 
   return (
-    <div className="w-full grid xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 items-center p-2 justify-between bg-white  rounded-md">
+    <div className="w-full  grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center p-2 justify-between bg-white  rounded-md">
       <img
         src={props.data.filePhotograph}
-        className="w-9 object-cover h-9 rounded-full"
+        className="w-9 hidden sm:flex object-cover h-9 rounded-full"
         alt="avatar"
       />
-      <p>{date.toLocaleDateString("en-GB")}</p>
+     <div>
+     
       <p>{props.data.applicationNo}</p>
-      <p>{name}</p>
-      <div>
+      <p>{date.toLocaleDateString("en-GB")}</p>
+     </div>
+      <p className="text-center hidden md:flex  tracking-tight">{name}</p>
+      <div className="lg:flex flex-col items-center hidden" >
         <p>{props.data.course}</p>
         <p>{props.data.bp1 === null ? " " : props.data.bp1}</p>
       </div>
-      <div>
+      <div className="hidden xl:flex flex-col">
         <p>{props.data.phone}</p>
-        <p>{props.data.email}</p>
+        <p className="xl:tracking-tighter text-sm 2xl:text-[16px] 2xl:tracking-tight">{props.data.email}</p>
       </div>
       {/* {props.data.paymentCompleted === true ? <p className='text-green-500'>Payment Completed</p> : <p className='text-red-500'>Payment pending</p> } */}
-      <div className="flex items-center justify-end">
+      <div className="flex  items-center justify-end">
         <Button
           onClick={printPdf}
           color="greenary"
           size="small"
-          sx={{ width: "30%", color: "#FFF" }}
+          sx={{ width: "20%", color: "#FFF" }}
           variant="contained"
         >
           Print
@@ -271,7 +274,7 @@ const Records = (props) => {
       {viewMore && (
         <div className="col-span-7 h-auto">
           <div className="h-auto w-full mt-10 p-2 bg-white rounded-[4px] ">
-            <div className="flex items-center px-6 justify-between">
+            <div className="flex items-center px-0 sm:px-6 space-x-2 justify-between">
               <a href={props.data.filePhotograph} target="_blank">
                 <img
                   className="w-36"
@@ -294,7 +297,7 @@ const Records = (props) => {
               <div className="xl:w-1/2 space-y-3  p-4    rounded-md border-[2px] ">
                 <div className="flex items-center justify-between">
                   <label>Name of the applicant:</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.firstName +
                       " " +
                       (props.data.middleName
@@ -305,29 +308,29 @@ const Records = (props) => {
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Date of Birth :</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.dob.toString().slice(0, 10)}
                   </label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Gender:</label>
-                  <label className="font-semibold">{props.data.gender}</label>
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">{props.data.gender}</label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Aadhar:</label>
-                  <label className="font-semibold">{props.data.aadhaar}</label>
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">{props.data.aadhaar}</label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Phone 1(M):</label>
-                  <label className="font-semibold">{props.data.aPhone}</label>
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">{props.data.aPhone}</label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Phone 2(In Kerala)):</label>
-                  <label className="font-semibold">{props.data.phone}</label>
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">{props.data.phone}</label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Name of parent/Gaurdian:</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.guardianDetails.name === null
                       ? ""
                       : props.data.guardianDetails.name}
@@ -335,40 +338,40 @@ const Records = (props) => {
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Parent's Occupation:</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.guardianDetails.occupation}
                   </label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>NRI sponsor:</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.NRIdetails.name}
                   </label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>Relation with applicant:</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.NRIdetails.relation}
                   </label>
                 </div>
               </div>
               <div className="xl:w-1/2  p-4  space-y-3  rounded-md border-[2px] ">
-                <p className="font-semibold">Contact Address</p>
+                <p className="font-semibold text-sm  sm:text-[16px]">Contact Address</p>
                 <div className="flex items-center justify-between">
                   <label>House Name</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.contactAddress.addressL1}
                   </label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>State</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.contactAddress.state}
                   </label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>District,City</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.contactAddress.district +
                       " , " +
                       props.data.contactAddress.city}
@@ -377,27 +380,27 @@ const Records = (props) => {
 
                 <div className="flex items-center justify-between">
                   <label>Pin</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.contactAddress.pincode}
                   </label>
                 </div>
 
-                <p className="font-semibold">Permanent Address</p>
+                <p className="font-semibold text-sm  sm:text-[16px]">Permanent Address</p>
                 <div className="flex items-center justify-between">
                   <label>House Name</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.permanentAddress.addressL1}
                   </label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>State</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.permanentAddress.state}
                   </label>
                 </div>
                 <div className="flex items-center justify-between">
                   <label>District,City</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.permanentAddress.district +
                       " , " +
                       props.data.permanentAddress.city}
@@ -406,7 +409,7 @@ const Records = (props) => {
 
                 <div className="flex items-center justify-between">
                   <label>Pin</label>
-                  <label className="font-semibold">
+                  <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                     {props.data.permanentAddress.pincode}
                   </label>
                 </div>
@@ -415,7 +418,7 @@ const Records = (props) => {
 
             <div className="w-full  h-auto flex p-3  flex-col xl:flex-row  mt-3">
               <div className="xl:w-1/2  p-3  h-full">
-                <p className="text-lg my-3 underline font-semibold">
+                <p className="text-lg my-3 underline font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                   10th Marks Details{" "}
                 </p>
                 <label>
@@ -430,7 +433,7 @@ const Records = (props) => {
                 </div>
               </div>
               <div className="xl:w-1/2  p-3 ">
-                <p className="text-lg my-3 underline font-semibold">
+                <p className="text-lg my-3 underline font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                   12th Marks Details{" "}
                 </p>
                 <label>
@@ -448,25 +451,25 @@ const Records = (props) => {
 
             <div className="w-full  h-auto flex p-1 flex-col xl:flex-row">
               <div className="xl:w-1/2 flex items-end  flex-col  p-4 ">
-                <p className="text-lg mb-3 underline font-semibold mx-auto ">
+                <p className="text-lg mb-3 underline font-semibold text-sm text-right sm:text-left sm:text-[16px] mx-auto ">
                   Details of Common Entrance Test (KEAM)
                 </p>
                 <div className="w-full space-y-3 p-3 border-[2px] rounded-[4px]">
                   <div className="w-auto justify-between sm:flex items-center">
                     <label className="text-md  mr-6">Year</label>
-                    <label className="font-semibold">
+                    <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                       {props.data.keam.year}
                     </label>
                   </div>
                   <div className="w-auto justify-between sm:flex items-center">
                     <label className="text-md  mr-8">Roll No</label>
-                    <label className="font-semibold">
+                    <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                       {props.data.keam.rollNumber}
                     </label>
                   </div>
                   <div className="w-auto justify-between sm:flex items-center">
                     <label className="text-md  mr-6">Rank</label>
-                    <label className="font-semibold">
+                    <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                       {props.data.keam.rank}
                     </label>
                   </div>
@@ -474,7 +477,7 @@ const Records = (props) => {
                     <label className="text-md  mr-6">
                       Paper I score(Physics & chemistry)
                     </label>
-                    <label className="font-semibold">
+                    <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                       {props.data.keam.markPaper1}
                     </label>
                   </div>
@@ -482,13 +485,13 @@ const Records = (props) => {
                     <label className="text-md  mr-6">
                       Paper II score(Mathematics)
                     </label>
-                    <label className="font-semibold">
+                    <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                       {props.data.keam.markPaper2}
                     </label>
                   </div>
                   <div className="w-auto justify-between sm:flex items-center">
                     <label className="text-md  mr-6">Total KEAM Score</label>
-                    <label className="font-semibold">
+                    <label className="font-semibold text-sm text-right sm:text-left sm:text-[16px]">
                       {props.data.keam.totalMark}
                     </label>
                   </div>
@@ -506,7 +509,7 @@ const Records = (props) => {
 
             <div className="w-full mt-8 items-center px-5 xl:flex space-y-3 xl:space-y-0 xl:space-x-6">
               <div className=" p-3 rounded-md border-[2px]  lg:w-1/2 ">
-                <p className="text-lg font-semibold mb-2">Branch Preference</p>
+                <p className=" font-semibold text-sm sm:text-[16px] mb-2">Branch Preference</p>
                 <div className="sm:space-x-3 xl:flex justify-between">
                   <label>{branch[props.data.bp1]}</label>
                 </div>

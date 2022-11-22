@@ -63,7 +63,6 @@ const RegChart = (props) => {
       },
     },
   };
-  console.log(props.graph)
   return (
        <>
         {(props.graph===0)&&<Bar  data={data} height={400} options={options} />}  
