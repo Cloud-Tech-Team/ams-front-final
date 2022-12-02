@@ -8,7 +8,7 @@ const Search = () => {
 const [data,setData] = useState([""])
 const handleSearch =(e)=>{
     e.preventDefault()
-    axios.get('https://ams-backend-api.herokuapp.com/admin/search',{
+    axios.get('https://ams-backend-368717.el.r.appspot.com/admin/search',{
         headers : {
         'authorization':'Bearer '+localStorage.getItem("admin_access_token"),
       }
