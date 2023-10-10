@@ -83,9 +83,9 @@ function Register() {
         <CallIcon fontSize="small" />
         <b className="text-red-600">Technical Support</b>
         <br />
-        Mr. Nandakrishnan: &nbsp;<b>88489 78215</b>
+        Ms. Jeena Varghese: &nbsp;<b>88489 78215</b>
         <br />
-        Mrs. Elby Baby: &nbsp;<b>96332 36639</b>
+        Ms. Rija Jose: &nbsp;<b>96332 36639</b>
         <br />
       </p>
       <Link to="/">
