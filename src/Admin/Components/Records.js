@@ -183,7 +183,7 @@ const Records = (props) => {
     doc.text(
       12,
       60,
-      'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2023, such that my ward has to attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 75% Marks for Mathematics individually and 75% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission'
+      'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2024, such that my ward has to attain 80% Marks for Mathematics individually \nand 80% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 80% Marks for Mathematics individually and 80% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission'
     );
     doc.setFontSize(15);
     doc.setFont("times", "bold");
@@ -193,7 +193,7 @@ const Records = (props) => {
     doc.text(
       12,
       105,
-      'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2023, such that my ward has to attain 70% Marks for Mathematics individually \nand 70% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 70% Marks for Mathematics individually and 70% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission'
+      'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2024, such that my ward has to attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 75% Marks for Mathematics individually and 75% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission'
     );
     doc.setFontSize(15);
     doc.setFont("times", "bold");
@@ -209,7 +209,7 @@ const Records = (props) => {
     doc.text(
       12,
       152,
-      "1. A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM 2023 SCORE and \nwill be reimbursed with the entire amount after deducting Rs 1000 as processing fee. However, a student will \nbe automatically considered for MITS Management Merit Quota from NRI quota if he desires so and has to \nfreeze the registration in MITS by sending an email to admissions@mgits.ac.in . Request for exit should be \nmailed to admissions@mgits.ac.in within the stipulated time. There after the registered choice will be frozen \nand will not be eligible for any refund, if the admission is cancelled after 5 days from the date of \nKEAM SCORE publication."
+      "1. A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM 2024 SCORE/answer key(whichever is earlier) and \nwill be reimbursed with the entire amount after deducting Rs 1000 as processing fee. However, a student will \nbe automatically considered for MITS Management Merit Quota from NRI quota if he desires so and has to \nfreeze the registration in MITS by sending an email to admissions@mgits.ac.in . Request for exit should be \nmailed to admissions@mgits.ac.in within the stipulated time. There after the registered choice will be frozen \nand will not be eligible for any refund, if the admission is cancelled after 5 days from the date of \nKEAM SCORE publication."
     );
     doc.setFontSize(15);
 
