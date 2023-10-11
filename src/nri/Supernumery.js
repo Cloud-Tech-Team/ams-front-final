@@ -104,9 +104,9 @@ const Supernumery = () => {
       <p className="absolute text-lg text-right bottom-6 right-6">
         <b>Contact Support</b>
         <br />
-        Ms.Rija : 
+        Ms.Rija : 6309387606
         <br />
-        Mr.Binoy : 000000000
+        Mr.Binoy : 9446717178
       </p>
       <div className="w-9/12 sm:w-3/5 rounded-md xl:w-2/6 bg-white space-y-4 h-auto p-4">
         <p>Select Quota*</p>
