@@ -20,7 +20,7 @@ const Supernumery = () => {
         },
       })
       .then((res) => {
-        if(res.data.user.quota != 'Others'){
+        if(res.data.user.quota !== 'Others'){
           nav('/nriform')
         }
       });
