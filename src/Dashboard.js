@@ -234,7 +234,7 @@ const Dashboard = () => {
     doc.rect(12,148+15,10,5,'F')//freeze
     doc.rect(149,148+15,20,5,'F')//request for exit
     doc.rect(29,148+20,42,5,'F')//admissions@mgits.ac.in
-    doc.text(12,152,'1. A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM 2024 SCORE/answerkey whichever is earlier and \nwill be reimbursed with the entire amount after deducting Rs 1000 as processing fee. However, a student will \nbe automatically considered for MITS Management Merit Quota from NRI quota if he desires so and has to \nfreeze the registration in MITS by sending an email to admissions@mgits.ac.in . Request for exit should be \nmailed to admissions@mgits.ac.in within the stipulated time. There after the registered choice will be frozen \nand will not be eligible for any refund, if the admission is cancelled after 5 days from the date of \nKEAM SCORE publication.')
+    doc.text(12,152,'A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM 2024 SCORE/answerkey whichever is earlier and \nwill be reimbursed with the entire amount after deducting Rs 1000 as processing fee. However, a student will \nbe automatically considered for MITS Management Merit Quota from NRI quota if he desires so and has to \nfreeze the registration in MITS by sending an email to admissions@mgits.ac.in . Request for exit should be \nmailed to admissions@mgits.ac.in within the stipulated time. There after the registered choice will be frozen \nand will not be eligible for any refund, if the admission is cancelled after 5 days from the date of \nKEAM SCORE publication.')
     doc.setFontSize(15)
   
     doc.text(12, 85 + 10 * 13, "Name of the parent/guardian : ");
