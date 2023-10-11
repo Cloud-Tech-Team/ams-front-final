@@ -294,7 +294,7 @@ const Declaration = () => {
           <p>
             I am aware about the criteria followed by "Muthoot Institute
             of Technology and Science", for the B-Tech NRI Quota admission for
-            the year 2023, such that my ward has to attain 80% Marks for
+            the year 2024, such that my ward has to attain 80% Marks for
             Mathematics individually and 80% put together in Physics, Chemistry
             & Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 80% Marks for Mathematics
@@ -307,7 +307,7 @@ const Declaration = () => {
           <p>
             I am aware about the criteria followed by "Muthoot Institute of
             Technology and Science", for the B-Tech NRI Quota admission for the
-            year 2023, such that my ward has to attain 75% Marks for Mathematics
+            year 2024, such that my ward has to attain 75% Marks for Mathematics
             individually and 75% put together in Physics, Chemistry &
             Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 75% Marks for Mathematics
