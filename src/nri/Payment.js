@@ -105,7 +105,7 @@ function Payment() {
       </Backdrop>
       <div className="h-auto w-full mt-10 p-6 space-y-3 bg-white rounded-[4px] ">
         <p className="text-center mb-4 font-semibold text-red-500">
-          Pay advance Provisional registration fee of Rs 1,00,500 to the
+          Pay advance Provisional registration fee of Rs 1,50,500 for CSE ,Rs 1,00,500 for CS-AI,CS-AI & DS,CS-Cybersecurity,ECE and Rs 50,500 for Group-B programmes to the
           following bank account and upload the photo of transaction slip here
         </p>
         <div className="w-full sm:flex  p-2 ">
