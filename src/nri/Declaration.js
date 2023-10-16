@@ -278,8 +278,8 @@ const Declaration = () => {
               <option value=""></option>
               <option value="CSE">Computer Science and Engineering</option>
               <option value="CY">CSE(Cyber Security)</option>
-              <option value="AI">Artificial Intelligence</option>
-              <option value="AI&DS">CSE-AI&DS</option>
+              <option value="AI">CSE(AI)</option>
+              <option value="AI&DS">AI&DS</option>
               <option value="CE">Civil Engineering</option>
               <option value="ME">Mechanical Engineering</option>
               <option value="EEE">Electrical and Electronics Engineering</option>
