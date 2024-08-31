@@ -294,7 +294,7 @@ const Declaration = () => {
           <p>
             I am aware about the criteria followed by "Muthoot Institute
             of Technology and Science", for the B-Tech NRI Quota admission for
-            the year 2024, such that my ward has to attain 80% Marks for
+            the year 2025, such that my ward has to attain 80% Marks for
             Mathematics individually and 80% put together in Physics, Chemistry
             & Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 80% Marks for Mathematics
@@ -307,7 +307,7 @@ const Declaration = () => {
           <p>
             I am aware about the criteria followed by "Muthoot Institute of
             Technology and Science", for the B-Tech NRI Quota admission for the
-            year 2024, such that my ward has to attain 75% Marks for Mathematics
+            year 2025, such that my ward has to attain 75% Marks for Mathematics
             individually and 75% put together in Physics, Chemistry &
             Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 75% Marks for Mathematics
@@ -322,7 +322,7 @@ const Declaration = () => {
           <p className="text-center font-semibold text-red-600 underline">EXIT OPTION </p>
           <p>
           1. A student can opt to <b className="bg-yellow-200">EXIT</b> from NRI quota before <b>5 </b>
-          days, after the publication of <b className="bg-yellow-200">KEAM 2024 SCORE/answer key</b> whichever is earlier and will be reimbursed with
+          days, after the publication of <b className="bg-yellow-200">KEAM 2025 SCORE/answer key</b> whichever is earlier and will be reimbursed with
           the entire amount after deducting Rs
           <b> 1000</b> as processing fee. However, a student will be automatically
           considered for MITS Management Merit Quota from NRI quota if he desires so
