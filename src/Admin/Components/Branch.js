@@ -17,7 +17,7 @@ function Branch(props) {
     const submit =(e)=>{
       e.preventDefault()
       setLoader(true)
-      axios.patch(api+'branch/edit/'+props.name+'/2023',
+      axios.patch(api+`branch/edit/${props.name}/${props.year}`,
       {
         NRISeats : Number(document.getElementById(props.name+"nri").value),
         SuperSeats : Number(document.getElementById(props.name+"sup").value),
