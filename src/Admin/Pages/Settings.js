@@ -49,7 +49,7 @@ function Settings() {
         {/* <Branch name="cse" /> */}
         {seats.map((index)=>{
           return(
-            <Branch keys={index} name={seats[seats.indexOf(index)].name} data={index}/>
+            <Branch keys={index} year={seats[seats.indexOf(index)].year} name={seats[seats.indexOf(index)].name} data={index}/>
           )
         })}
       </div>
