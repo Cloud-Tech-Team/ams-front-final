@@ -14,6 +14,7 @@ function Branch(props) {
   'AI&DS':'Artificial intelligence & Data Science'}
     const [loader,setLoader] = useState(false)
     const api = 'https://ams-backend-368717.el.r.appspot.com/'
+    // console.log("prop data:",props)
     const submit =(e)=>{
       e.preventDefault()
       setLoader(true)

@@ -5,9 +5,21 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import {Backdrop,LinearProgress} from "@mui/material";
+import useStore from "../../hooks/yearStore";
 
 function Settings() {
+  const { year, setYear } = useStore((state) => ({
+    year: state.year,
+    setYear: state.setYear,
+  }));
+
+  useEffect(() => {
+    setYear(2024); // Update the year to 2025
+    // console.log("year", year);
+  }, [setYear]);
+
       const api = 'https://ams-backend-368717.el.r.appspot.com/'
+      // const api = 'http://localhost:3001/'
       const [loader,setLoader] = useState(false)
       const branch = {'CSE':'Computer Science and Engineering',
                       'ECE':'Electronics and Communication Engineering',
@@ -17,7 +29,9 @@ function Settings() {
       const [seats,setSeats] = useState([]);
         useEffect(()=>{
           setLoader(true)
-          axios.post(api+'branch/get',{},{
+          axios.post(api+'branch/get',{
+            year: year
+          },{
             headers: {
               Authorization: "Bearer " + localStorage.getItem("admin_access_token"),
             },
@@ -28,7 +42,7 @@ function Settings() {
             console.log(e)
           });
           setLoader(false)
-        },[])
+        },[year])
 
       const handleToggle = (e) => {
       }
