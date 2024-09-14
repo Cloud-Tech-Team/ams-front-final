@@ -1,12 +1,22 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useStore from "../../hooks/yearStore";
 
 const TitleBar = (props) => {
+  const { year, setYear } = useStore((state) => ({
+    year: state.year,
+    setYear: state.setYear,
+  }));
+  
   const nav = useNavigate()
   const logout=()=>{
     localStorage.removeItem("admin_access_token");
     nav("/adminlogin")
   }
+  const handleChange = (event) => {
+    setYear(event.target.value);
+    console.log("new year",event.target.value) 
+  };
   return (
     <div className="w-full  rounded-md flex justify-between p-3 sm:px-8 items-center bg-white shadow-xl ">
       <div className="flex w-auto">
@@ -39,6 +49,7 @@ const TitleBar = (props) => {
         <p className="text-lg ml-6 italic">Year</p>
         <select
           defaultValue="2022"
+          id="year-select" value={year} onChange={handleChange}
           className="w-auto ml-2 px-2 bg-slate-200 rounded-full h-8"
         >
           <option value="2019">2019</option>
@@ -47,6 +58,8 @@ const TitleBar = (props) => {
           <option value="2022">2022</option>
           <option value="2023">2023</option>
           <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
         </select>
         <img
           src="https://cdn-icons-png.flaticon.com/512/2645/2645897.png"

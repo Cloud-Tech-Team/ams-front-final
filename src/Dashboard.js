@@ -82,7 +82,7 @@ const Dashboard = () => {
         },
       })
       .then((res) => {
-        console.log(res)
+        // console.log("user data",res)
         const name = res.data.user.firstName + " " + res.data.user.middleName + " " + res.data.user.lastName
         setDetails(res.data.user)
         setUser(res.data.user);
@@ -216,13 +216,13 @@ const Dashboard = () => {
     doc.text(12,55,'GROUP A')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.text(12,60,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2024, such that my ward has to attain 80% Marks for Mathematics individually \nand 80% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 80% Marks for Mathematics individually and 80% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission')
+    doc.text(12,60,`I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the ${details.course} NRI \nQuota admission for the year ${details.academicYear}, such that my ward has to attain 80% Marks for Mathematics individually \nand 80% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 80% Marks for Mathematics individually and 80% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission`)
     doc.setFontSize(15)
     doc.setFont("times", "bold");
     doc.text(12,100,'GROUP B')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.text(12,105,'I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the B-Tech NRI \nQuota admission for the year 2024, such that my ward has to attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 75% Marks for Mathematics individually and 75% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission')
+    doc.text(12,105,`I am aware about the criteria followed by "Muthoot Institute of Technology and Science", for the ${details.course} NRI \nQuota admission for the year ${details.academicYear}, such that my ward has to attain 75% Marks for Mathematics individually \nand 75% put together in Physics, Chemistry & Mathematics, in the 12th standard, for Qualifying examination\n(CBSE/ISC) OR attain 75% Marks for Mathematics individually and 75% put together in Physics, Chemistry \n& Mathematics, in the 12th standard(Terminal-evaluation TE), for Qualifying examination(State Board). \nIf my ward failed to do so, there is no claim, from my side for the admission`)
     doc.setFontSize(15)
     doc.setFont("times", "bold");
     doc.text(12,145,'EXIT OPTION')
@@ -234,7 +234,7 @@ const Dashboard = () => {
     doc.rect(12,148+15,10,5,'F')//freeze
     doc.rect(149,148+15,20,5,'F')//request for exit
     doc.rect(29,148+20,42,5,'F')//admissions@mgits.ac.in
-    doc.text(12,152,'A student can opt to EXIT from NRI quota before 5 days, after the publication of \nKEAM 2024 SCORE/answerkey whichever is earlier and will be reimbursed with the entire amount \nafter deducting Rs 1000 as processing fee. However, a student will be automatically considered \nfor MITS Management Merit Quota from NRI quota if he desires so and has to freeze the registration in MITS by \nsending an email to admissions@mgits.ac.in . Request for exit should be mailed to admissions@mgits.ac.in \nwithin the stipulated time. There after the registered choice will be frozen and will not be eligible \nfor any refund, if the admission is cancelled after 5 days from the date of KEAM SCORE publication.')
+    doc.text(12,152,`A student can opt to EXIT from NRI quota before 5 days, after the publication of \nKEAM ${details.academicYear} SCORE/answerkey whichever is earlier and will be reimbursed with the entire amount \nafter deducting Rs 1000 as processing fee. However, a student will be automatically considered \nfor MITS Management Merit Quota from NRI quota if he desires so and has to freeze the registration in MITS by \nsending an email to admissions@mgits.ac.in . Request for exit should be mailed to admissions@mgits.ac.in \nwithin the stipulated time. There after the registered choice will be frozen and will not be eligible \nfor any refund, if the admission is cancelled after 5 days from the date of KEAM SCORE publication.`)
     doc.setFontSize(15)
   
     doc.text(12, 85 + 10 * 13, "Name of the parent/guardian : ");

@@ -12,6 +12,7 @@ const Supernumery = () => {
 
   const nav = useNavigate();
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
+  // const api = "http://localhost:3001/";
   useEffect(() => {
     axios
       .get(api+"user/nri/application", {
