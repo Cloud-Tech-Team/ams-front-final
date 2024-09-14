@@ -16,7 +16,7 @@ const CoAdmin = () => {
   const [dept, setDept] = useState();
   const [card, addCard] = useState([]);
   const [actionIcon, setActionIcon] = useState("+");
-  const api = 'https://ams-backend-368717.el.r.appspot.com/'
+  const api = 'https://ams-backend-625439536314.asia-south1.run.app'
   console.log(card);
   function handleDeptChange(e) {
     setDept(e.target.value);

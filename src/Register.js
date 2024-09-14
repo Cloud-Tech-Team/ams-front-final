@@ -35,7 +35,7 @@ function Register() {
   const nriregister = async (e) => {
     e.preventDefault();
     setLoader(true);
-    const api = "https://ams-backend-368717.el.r.appspot.com/";
+    const api = "https://ams-backend-625439536314.asia-south1.run.app";
     const data = {
       firstName: document.getElementById("fname").value,
       middleName: document.getElementById("mname").value,

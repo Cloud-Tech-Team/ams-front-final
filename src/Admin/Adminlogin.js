@@ -23,7 +23,7 @@ const Login = () => {
     };
     console.log(data);
     axios
-      .post("https://ams-backend-368717.el.r.appspot.com/admin/login", data)
+      .post("https://ams-backend-625439536314.asia-south1.run.appadmin/login", data)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

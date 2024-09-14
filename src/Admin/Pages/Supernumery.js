@@ -7,7 +7,7 @@ import * as XLSX from 'xlsx'
 
 
 const Supernumery = () => {
-    const api = 'https://ams-backend-368717.el.r.appspot.com/'
+    const api = 'https://ams-backend-625439536314.asia-south1.run.app'
   const [list,setList] = useState([])
   useEffect(() => {
       axios.post(api+'admin/search',{
