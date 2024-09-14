@@ -59,6 +59,8 @@ function Payment() {
   const finalsubmit = async(e) =>{
     setLoader(true)
     const api = 'https://ams-backend-368717.el.r.appspot.com/'
+  // const api = "http://localhost:3001/";
+
       e.preventDefault()
       const formData= new FormData()
       formData.append("fileTransactionID", document.getElementById('Transactionslip').files[0]);

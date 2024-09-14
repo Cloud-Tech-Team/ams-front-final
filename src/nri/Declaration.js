@@ -8,6 +8,7 @@ import FormData from "form-data";
 
 const Declaration = () => {
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
+  // const api = 'http://localhost:3001/';
   const [loader, setLoader] = useState(false);
   const [msg,setMsg] = useState('');
   const [filesign, setFilesign] = useState();
@@ -21,6 +22,7 @@ const Declaration = () => {
   const [b, setB] = useState(false)
   const [branch,setBranch] = useState()
   const [disable,setDisable] = useState(true)
+  const [year, setyear] = useState(2024)
 
   const nav = useNavigate();
   localStorage.setItem("pageNo", 3);
@@ -32,10 +34,13 @@ const Declaration = () => {
       .get(api+"user/nri/application", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("access_token"),
+          'Content-Type': 'application/json'
         },
+        
       })
       .then((res) => {
         setLoader(false);
+        setyear(res.data.user.academicYear)
         console.log(res);
         if(res.data.user.bp1!=null){
           setB(true);
@@ -292,29 +297,29 @@ const Declaration = () => {
         <div className="w-full space-y-4 p-2">
           <p className="font-semibold ">1.GROUP A branches [ECE, CSE, Artificial Intelligence, AI&DS, CyberSecurity]</p>
           <p>
-            I am aware about the criteria followed by "Muthoot Institute
+            {`I am aware about the criteria followed by "Muthoot Institute
             of Technology and Science", for the B-Tech NRI Quota admission for
-            the year 2025, such that my ward has to attain 80% Marks for
+            the year ${year}, such that my ward has to attain 80% Marks for
             Mathematics individually and 80% put together in Physics, Chemistry
             & Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 80% Marks for Mathematics
             individually and 80% put together in Physics, Chemistry &
             Mathematics, in the 12th standard(Terminal Evaluation TE), for
             Qualifying examination(State Board). If my ward failed to do so,
-            there is no claim, from my side for the admission
+            there is no claim, from my side for the admission`}
           </p>
           <p className="font-semibold ">2.GROUP B branches [CE, ME, EEE,]</p>
           <p>
-            I am aware about the criteria followed by "Muthoot Institute of
+            {`I am aware about the criteria followed by "Muthoot Institute of
             Technology and Science", for the B-Tech NRI Quota admission for the
-            year 2025, such that my ward has to attain 75% Marks for Mathematics
+            year ${year}, such that my ward has to attain 75% Marks for Mathematics
             individually and 75% put together in Physics, Chemistry &
             Mathematics, in the 12th standard, for Qualifying
             examination(CBSE/ISC) OR attain 75% Marks for Mathematics
             individually and 75% put together in Physics, Chemistry &
             Mathematics, in the 12th standard(Terminal Evaluation TE), for
             Qualifying examination(State Board). If my ward failed to do so,
-            there is no claim, from my side for the admission
+            there is no claim, from my side for the admission`}
           </p>
         </div>
 
@@ -322,7 +327,7 @@ const Declaration = () => {
           <p className="text-center font-semibold text-red-600 underline">EXIT OPTION </p>
           <p>
           1. A student can opt to <b className="bg-yellow-200">EXIT</b> from NRI quota before <b>5 </b>
-          days, after the publication of <b className="bg-yellow-200">KEAM 2025 SCORE/answer key</b> whichever is earlier and will be reimbursed with
+          days, after the publication of <b className="bg-yellow-200">KEAM {year} SCORE/answer key</b> whichever is earlier and will be reimbursed with
           the entire amount after deducting Rs
           <b> 1000</b> as processing fee. However, a student will be automatically
           considered for MITS Management Merit Quota from NRI quota if he desires so

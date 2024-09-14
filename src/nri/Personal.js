@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 
 function Personal() {
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
+  // const api = "http://localhost:3001/";
   const [loader, setLoader] = useState(false);
   const [photoLoader, setPhotoLoader] = useState(false);
   const [msg, setMsg] = useState(true);

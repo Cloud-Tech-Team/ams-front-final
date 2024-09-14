@@ -68,6 +68,7 @@ export const Verification = () => {
                   'AI':'Computer Science and Engineering(AI)',
                   'AI&DS':'Artificial intelligence & Data Science'}
   const api = 'https://ams-backend-368717.el.r.appspot.com/'
+  // const api = 'http://localhost:3001/'
 
   useEffect(() => {
     axios
