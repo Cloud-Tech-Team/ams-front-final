@@ -11,7 +11,7 @@ const Supernumery = () => {
   const [loader, setloader] = useState(false);
 
   const nav = useNavigate();
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app'
+  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
   // const api = "http://localhost:3001/";
   useEffect(() => {
     axios

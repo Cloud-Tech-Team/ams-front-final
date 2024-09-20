@@ -6,7 +6,7 @@ import { Backdrop, Button, LinearProgress, TextField } from "@mui/material";
 import Home from "./Icons/home.svg"
 
 const Login = () => {
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app'
+  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
   const [loading, setLoading] = useState(false);
   const [ForgotPassword, setForgotPassword] = useState(false);
   const nav = useNavigate();

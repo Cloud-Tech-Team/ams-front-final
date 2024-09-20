@@ -20,7 +20,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Personal() {
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app'
+  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
   // const api = "http://localhost:3001/";
   const [loader, setLoader] = useState(false);
   const [photoLoader, setPhotoLoader] = useState(false);

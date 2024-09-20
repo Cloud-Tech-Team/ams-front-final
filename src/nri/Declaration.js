@@ -7,7 +7,7 @@ import { Backdrop, LinearProgress } from "@mui/material";
 import FormData from "form-data";
 
 const Declaration = () => {
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app'
+  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
   // const api = 'http://localhost:3001/';
   const [loader, setLoader] = useState(false);
   const [msg,setMsg] = useState('');

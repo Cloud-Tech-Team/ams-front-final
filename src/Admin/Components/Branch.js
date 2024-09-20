@@ -28,7 +28,7 @@ function Branch(props) {
   }, [data]);
 
   // const api = 'http://localhost:3001/';
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app'
+  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
   console.log("prop data:", props);
 
   const submit = (e) => {
