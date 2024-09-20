@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 const NPersonal = () => {
-  const api = "https://ams-backend-625439536314.asia-south1.run.app";
+  const api = "https://ams-backend-625439536314.asia-south1.run.app/";
   const [loader, setLoader] = useState(false);
   const [msg, setMsg] = useState(true);
   const [ciwg, setCiwg] = useState(true);

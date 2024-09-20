@@ -35,7 +35,7 @@ const HomePage = () => {
       "content-type" : 'application/json'
     },
   };
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app'
+  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
 
   useEffect(() => {
     axios
