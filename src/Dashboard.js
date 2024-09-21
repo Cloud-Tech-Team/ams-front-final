@@ -228,13 +228,13 @@ const Dashboard = () => {
     doc.text(12,145,'EXIT OPTION')
     doc.setFont("times", "normal");
     doc.setFontSize(12)
-    doc.setFillColor(234, 245, 22)//highligh colour
+    doc.setFillColor(255, 255, 255)//highligh colour
     doc.rect(51,148,10,5,'F')//exit
     doc.rect(155,148,36,5,'F')//keam 2024 score
     doc.rect(12,148+15,10,5,'F')//freeze
     doc.rect(149,148+15,20,5,'F')//request for exit
     doc.rect(29,148+20,42,5,'F')//admissions@mgits.ac.in
-    doc.text(12,152,`A student can opt to EXIT from NRI quota before 5 days, after the publication of \nKEAM ${details.academicYear} SCORE/answerkey whichever is earlier and will be reimbursed with the entire amount \nafter deducting Rs 1000 as processing fee. However, a student will be automatically considered \nfor MITS Management Merit Quota from NRI quota if he desires so and has to freeze the registration in MITS by \nsending an email to admissions@mgits.ac.in . Request for exit should be mailed to admissions@mgits.ac.in \nwithin the stipulated time. There after the registered choice will be frozen and will not be eligible \nfor any refund, if the admission is cancelled after 5 days from the date of KEAM SCORE publication.`)
+    doc.text(12,152,`A student can opt to EXIT from NRI quota before 5 days, after the publication of KEAM ${details.academicYear}SCORE/\nanswerkeywhichever is earlier and will be reimbursed with the entire amount after deducting Rs 1000 as\nprocessing fee. However, a student will be automatically considered for MITS Management Merit Quota\nfrom NRI quota if he desires so and has to freeze the registration in MITS by sending an email to\nadmissions@mgits.ac.in . Request for exit should be mailed to admissions@mgits.ac.in \nwithin the stipulated time. There after the registered choice will be frozen and will not be eligible \nfor any refund, if the admission is cancelled after 5 days from the date of KEAM SCORE publication.`)
     doc.setFontSize(15)
   
     doc.text(12, 85 + 10 * 13, "Name of the parent/guardian : ");
