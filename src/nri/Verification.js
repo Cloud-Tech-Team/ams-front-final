@@ -67,7 +67,7 @@ export const Verification = () => {
                   'CY':'Computer Science and Engineering(CY)',
                   'AI':'Computer Science and Engineering(AI)',
                   'AI&DS':'Artificial intelligence & Data Science'}
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
+  const api = 'https://ams-backend-687825430145.asia-east1.run.app/'
   // const api = 'http://localhost:3001/'
 
   useEffect(() => {
