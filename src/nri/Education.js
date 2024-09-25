@@ -23,7 +23,7 @@ const Education = () => {
   const [is12thuploaded, setIs12thuploaded] = useState(false);
   const [iskeamuploaded, setIskeamthuploaded] = useState(false);
 
-  const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
+  const api = 'https://ams-backend-687825430145.asia-east1.run.app/'
   const nav = useNavigate();
   localStorage.setItem("pageNo", 2);
  

@@ -23,7 +23,7 @@ const Login = () => {
     };
     console.log(data);
     axios
-      .post("https://ams-backend-625439536314.asia-south1.run.app/admin/login", data)
+      .post("https://ams-backend-687825430145.asia-east1.run.app/admin/login", data)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {

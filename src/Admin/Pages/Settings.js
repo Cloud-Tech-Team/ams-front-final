@@ -18,7 +18,7 @@ function Settings() {
     // console.log("year", year);
   }, [setYear]);
 
-      const api = 'https://ams-backend-625439536314.asia-south1.run.app/'
+      const api = 'https://ams-backend-687825430145.asia-east1.run.app/'
       // const api = 'http://localhost:3001/'
       const [loader,setLoader] = useState(false)
       const branch = {'CSE':'Computer Science and Engineering',
