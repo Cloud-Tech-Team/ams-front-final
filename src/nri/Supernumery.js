@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Button, Backdrop, LinearProgress, Tooltip } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
@@ -70,6 +70,7 @@ const Supernumery = () => {
       }
     }
     console.log(data)
+    window.localStorage.setItem("sponsor_details", JSON.stringify(data.NRIdetails));
     await 
     axios.patch(api+"user/quota_edit/",data,
     {

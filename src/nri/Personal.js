@@ -208,6 +208,8 @@ function Personal() {
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(true);
+    let sponsor_details = JSON.parse(window.localStorage.getItem("sponsor_details"))
+    console.log(sponsor_details);
     const data = {
       // firstName: document.getElementById("fname").value,
       // middleName: document.getElementById("mname").value,
@@ -230,8 +232,8 @@ function Personal() {
       guardianName: document.getElementById("parentName").value,
       guardianOccupation: document.getElementById("parentOccupation").value,
 
-      NRIname: ciwg ? document.getElementById("sponsorName").value : user.NRIdetails.name,
-      NRIrelation: ciwg ? document.getElementById("sponsorRelation").value : user.NRIdetails.relation,
+      NRIname: ciwg ? sponsor_details.name : user.NRIdetails.name,
+      NRIrelation: ciwg ? sponsor_details.relation : user.NRIdetails.relation,
     };
     console.log(data);
     if (
@@ -250,8 +252,8 @@ function Personal() {
       data.pincodeP &&
       data.guardianName &&
       data.guardianOccupation &&
-      data.NRIname &&
-      data.NRIrelation &&
+      sponsor_details.name &&
+      sponsor_details.relation &&
       photopicked 
     ) {
       try {
