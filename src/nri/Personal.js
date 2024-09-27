@@ -208,8 +208,16 @@ function Personal() {
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(true);
-    let sponsor_details = JSON.parse(window.localStorage.getItem("sponsor_details"))
-    console.log(sponsor_details);
+    let sponsor_details;
+    try{
+      sponsor_details = JSON.parse(window.localStorage.getItem("sponsor_details"))
+      console.log(sponsor_details);
+    }
+    catch{
+      console.log("not ciwg")
+    }
+    console.log("value of ",user.quota);
+    console.log("nri details",user.NRIdetails.name,user.NRIdetails.relation);
     const data = {
       // firstName: document.getElementById("fname").value,
       // middleName: document.getElementById("mname").value,
@@ -231,9 +239,9 @@ function Personal() {
 
       guardianName: document.getElementById("parentName").value,
       guardianOccupation: document.getElementById("parentOccupation").value,
-
-      NRIname: ciwg ? sponsor_details.name : user.NRIdetails.name,
-      NRIrelation: ciwg ? sponsor_details.relation : user.NRIdetails.relation,
+      
+      NRIname: user.quota != "ciwg" ? document.getElementById("sponsorName").value : sponsor_details.name,
+      NRIrelation: user.quota != "ciwg" ? document.getElementById("sponsorRelation").value : sponsor_details.relation,
     };
     console.log(data);
     if (
@@ -252,8 +260,8 @@ function Personal() {
       data.pincodeP &&
       data.guardianName &&
       data.guardianOccupation &&
-      sponsor_details.name &&
-      sponsor_details.relation &&
+      data.NRIname &&
+      data.NRIrelation &&
       photopicked 
     ) {
       try {
