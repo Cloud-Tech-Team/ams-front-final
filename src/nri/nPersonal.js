@@ -28,7 +28,7 @@ const NPersonal = () => {
     gender: "",
     aadhaar: "",
     phone: "",
-    aPhone: " ",
+    aPhone: "",
     guardianDetails: {
       name: "",
       occupation: "",
