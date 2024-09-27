@@ -75,11 +75,16 @@ const Declaration = () => {
       }
     }).then((res) =>{
       console.log(res)
+      console.log(year)
       setLoader(false)
       for(let i=0; i<res.data.list.length ; i++){
-         if(res.data.list[i].name === branch){
+         if(res.data.list[i].name === branch  && res.data.list[i].year == year){
+          console.log(res.data.list[i].year)
              if(quota === "oci" || quota==="pio" || quota==="ciwg"){
               if(res.data.list[i].SuperOccupied < res.data.list[i].SuperSeats){
+                console.log("Super")
+                console.log(res.data.list[i].SuperOccupied)
+                console.log(res.data.list[i].SuperSeats)
                 setMsg(<p className="text-green-500 text-lg">Seat available</p>)
               }else{
                 setMsg(<p className="text-red-500 text-lg">Seats in Preferred branch are filled..Please select another one</p>)
