@@ -81,8 +81,8 @@ const Declaration = () => {
          if(res.data.list[i].name === branch  && res.data.list[i].year == year){
           console.log(res.data.list[i].year)
              if(quota === "oci" || quota==="pio" || quota==="ciwg"){
+              console.log("super")
               if(res.data.list[i].SuperOccupied < res.data.list[i].SuperSeats){
-                console.log("Super")
                 console.log(res.data.list[i].SuperOccupied)
                 console.log(res.data.list[i].SuperSeats)
                 setMsg(<p className="text-green-500 text-lg">Seat available</p>)

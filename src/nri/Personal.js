@@ -37,7 +37,7 @@ function Personal() {
     gender:'',
     aadhaar:'',
     phone:'',
-    aPhone:' ',
+    aPhone:'',
     guardianDetails : {
       name:'',
       occupation : ''
