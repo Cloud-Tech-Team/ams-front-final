@@ -378,7 +378,7 @@ function Personal() {
             type="text"
             size="small"
             inputProps={{
-              maxLength: 10,
+              maxLength: 11,
             }}
             required
           />
@@ -392,7 +392,7 @@ function Personal() {
             type="text"
             size="small"
             inputProps={{
-              maxLength: 10,
+              maxLength: 11,
             }}
             required
           />
