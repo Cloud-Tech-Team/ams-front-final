@@ -242,6 +242,7 @@ function Register() {
           </p>
         </div>
       </div>
+      <p className="absolute bottom-10 right-10 text-red-600 font-bold text-right">Please be advised that the fields mentioned <br /> are not editable in any subsequent stages.</p>
     </div>
   );
 }
