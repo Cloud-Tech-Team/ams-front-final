@@ -212,6 +212,7 @@ function Register() {
           <TextField
             autoComplete="off"
             label="Aadhar No."
+            required={true}
             id="aadhar"
             size="small"
             inputProps={{
