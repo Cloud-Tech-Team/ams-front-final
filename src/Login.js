@@ -31,10 +31,10 @@ const Login = () => {
           }
           else{
             localStorage.setItem('dashboard',false)
-            if(response.data.quota === 'NRI' || response.data.quota === 'nri' )
-              nav("/nriform")
+            if(response.data.quota === 'Others' )
+              nav("/supernumery");
             else
-              nav("/supernumerary");
+              nav("/nriform")
           }
           // window.alert("login success")
           localStorage.setItem("access_token", response.data.token);
