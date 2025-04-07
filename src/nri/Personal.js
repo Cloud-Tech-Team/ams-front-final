@@ -208,20 +208,35 @@ function Personal() {
   const personalUpload = async (e) => {
     e.preventDefault();
     setLoader(true);
-    let sponsor_details;
-    try{
-      sponsor_details = JSON.parse(window.localStorage.getItem("sponsor_details"))
-      console.log(sponsor_details);
+    let sponsor_details = null;
+    try {
+      const sponsorData = window.localStorage.getItem("sponsor_details");
+      if (sponsorData) {
+        sponsor_details = JSON.parse(sponsorData);
+        console.log("Sponsor details from localStorage:", sponsor_details);
+      } else {
+        console.log("No sponsor_details found in localStorage");
+      }
+    } catch (error) {
+      console.log("Error parsing sponsor_details:", error);
     }
-    catch{
-      console.log("not ciwg")
+    
+    console.log("value of quota:", user.quota);
+    console.log("nri details:", user.NRIdetails.name, user.NRIdetails.relation);
+    
+    // Determine NRI name and relation - fallback to user.NRIdetails if sponsor_details is null
+    let nriName, nriRelation;
+    if (user.quota != "ciwg") {
+      // For non-CIWG users, use the form values
+      nriName = document.getElementById("sponsorName").value;
+      nriRelation = document.getElementById("sponsorRelation").value;
+    } else {
+      // For CIWG users, use sponsor_details from localStorage if available, otherwise fall back to user.NRIdetails
+      nriName = sponsor_details?.name || user.NRIdetails.name;
+      nriRelation = sponsor_details?.relation || user.NRIdetails.relation;
     }
-    console.log("value of ",user.quota);
-    console.log("nri details",user.NRIdetails.name,user.NRIdetails.relation);
+
     const data = {
-      // firstName: document.getElementById("fname").value,
-      // middleName: document.getElementById("mname").value,
-      // lastName: document.getElementById("lname").value,
       aPhone: document.getElementById("phone1").value,
       dob: document.getElementById("dob").value,
 
@@ -240,8 +255,8 @@ function Personal() {
       guardianName: document.getElementById("parentName").value,
       guardianOccupation: document.getElementById("parentOccupation").value,
       
-      NRIname: user.quota != "ciwg" ? document.getElementById("sponsorName").value : sponsor_details.name,
-      NRIrelation: user.quota != "ciwg" ? document.getElementById("sponsorRelation").value : sponsor_details.relation,
+      NRIname: nriName,
+      NRIrelation: nriRelation,
     };
     console.log(data);
     if (
